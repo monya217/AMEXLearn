@@ -1,0 +1,30 @@
+.aim{
+    margin: 100px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.aim-left{
+    width: 40%;
+}
+.aim-right{
+    flex-basis: 56%;
+}
+.aim-img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.aim h3{
+    color: var(-primary-hue);
+    font-weight: 700;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.aim h2{
+    margin-bottom: 15px;    
+    font-size: 20px;
+}

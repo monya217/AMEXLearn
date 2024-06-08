@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Gafata&display=swap');
+
+.bg-image-section {
+    background-image: url('../../images/homepage-bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: black;
+  }
+  
+  .overlay-text {
+    position: absolute;
+    text-align: left;
+    left: 0; 
+    padding: 2rem;
+    border-radius: 10px;
+    font-family: 'Gafata', sans-serif; 
+    width: 50%;
+  }
+  
+  .overlay-text h1 {
+    font-size: 5rem;
+    margin: 0;
+  }
+  
+  .overlay-text p {
+    font-size: 1.5rem;
+  }
+
+.white-background {
+    background-color: white;
+    padding: 1rem 0;
+}

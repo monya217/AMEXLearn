@@ -1,0 +1,13 @@
+.footer{
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #797979;
+    padding: 15px 30px;
+}
+.footer ul li{
+    display: inline-block;
+    margin-left: 20px;
+    gap: 10px;
+}

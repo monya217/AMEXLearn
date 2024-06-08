@@ -1,0 +1,100 @@
+.
+├── README.md
+├── directory_structure.txt
+├── package-lock.json
+├── package.json
+├── public
+│   ├── Certificate1.jpg
+│   ├── Certificate2.png
+│   ├── Certificate3.jpg
+│   ├── Consultant2.jpg
+│   ├── consultant1.png
+│   ├── google.png
+│   ├── index.html
+│   ├── login.jpg
+│   ├── post1.jpg
+│   └── signup.jpg
+└── src
+    ├── App.jsx
+    ├── FAQs.js
+    ├── GetInTouchIcons
+    │   └── Constants.jsx
+    ├── GetInTouchLayouts
+    │   └── PageLayout
+    │       └── PageLayout.jsx
+    ├── components
+    │   ├── AuthForm
+    │   │   ├── AuthForm.jsx
+    │   │   ├── GoogleAuth.jsx
+    │   │   ├── Login.jsx
+    │   │   └── Signup.jsx
+    │   ├── Chatbot.jsx
+    │   ├── Consultants
+    │   │   ├── SearchConsultants.jsx
+    │   │   └── SuggestedConsultant.jsx
+    │   ├── FaqContribute.css
+    │   ├── FaqContribute.jsx
+    │   ├── FeedPosts
+    │   │   ├── FeedPost.jsx
+    │   │   ├── FeedPosts.jsx
+    │   │   ├── PostFooter.jsx
+    │   │   └── PostHeader.jsx
+    │   ├── GetInTouch
+    │   │   ├── Sidebar
+    │   │   │   └── Sidebar.jsx
+    │   │   └── Trending.jsx
+    │   ├── HeroSection
+    │   │   ├── HeroSection.css
+    │   │   └── HeroSection.jsx
+    │   ├── Navbar
+    │   │   ├── Navbar.css
+    │   │   └── Navbar.jsx
+    │   ├── Programs
+    │   │   ├── Programs.css
+    │   │   └── Programs.jsx
+    │   └── videos
+    │       └── amex_landing_page.mp4
+    ├── data.js
+    ├── firebase
+    │   └── firebase.js
+    ├── hooks
+    │   ├── useLogin.js
+    │   ├── useLogout.js
+    │   ├── useShowToast.js
+    │   └── useSignUpWithEmailAndPassword.js
+    ├── images
+    │   ├── dark-arrow.png
+    │   ├── homepage-bg.jpg
+    │   ├── program-1.png
+    │   ├── program-2.png
+    │   └── program-3.png
+    ├── index.css
+    ├── index.js
+    ├── pages
+    │   ├── GetinTouchProfile
+    │   │   └── ProfilePage.jsx
+    │   ├── authPage
+    │   │   └── AuthPage.jsx
+    │   ├── contribute
+    │   │   ├── Contribute.jsx
+    │   │   └── contribute.css
+    │   ├── dashboard
+    │   │   ├── Dashboard.jsx
+    │   │   └── dashboard.css
+    │   ├── getInTouch
+    │   │   ├── GetInTouch.jsx
+    │   │   └── getintouch.css
+    │   ├── home
+    │   │   ├── Home.jsx
+    │   │   └── home.css
+    │   ├── learn
+    │   │   ├── Learn.jsx
+    │   │   └── learn.css
+    │   └── notFound
+    │       ├── NotFound.jsx
+    │       └── notfound.css
+    ├── store
+    │   └── authStore.js
+    └── ui
+
+30 directories, 68 files

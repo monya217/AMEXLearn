@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap');
+nav{
+    width: 100%;
+    height: 50px;
+    color:white;
+    padding: 4px 0;
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+nav ul li{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin: 5px 20px;
+    font-size: 16px;
+    
+}
+.navbar-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-top: 0px;
+  }
+  
+.navbar-links li {
+    margin-right: 140px;
+    font-family: 'Actor', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.navbar-links li:hover,
+.navbar-links li:active {
+    text-decoration: underline;
+}
+
+.navbar-brand li {
+    font-family: 'Gilda Display', serif; /* Custom font for AMEXLearn */
+    font-size: 24px;
+    margin-left:0px;
+    font-weight: 500;
+}
+
+  .navbar-auth {
+    margin-right: 0px; 
+}
+.dark-nav{
+    background: var(--primary-hue);
+    transition: 0.5s;
+}

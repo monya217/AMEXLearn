@@ -1,0 +1,48 @@
+/* Stock.module.css 
+
+.body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .heading {
+    color: #3cfefe;
+    margin: 0;
+  }
+  
+  .text {
+    color: white;
+    margin: 0;
+  }
+  
+  .button {
+    background-color: #3cfefe;
+    transition-duration: 0s;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .button:hover {
+    background-color: #ff66fe;
+  }
+  
+  .button:active {
+    transform: scale(0.98);
+  }
+  
+  .warning {
+    color: #f38518;
+  }
+  
+  .input {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+  }
+  
+  .row {
+    height: 2em;
+  }*/
