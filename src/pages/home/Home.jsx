@@ -12,7 +12,7 @@ const Home = () => {
     <div>
         <HeroSection/>
         <div className="white-background">
-            <Title subTitle='Our Program title' title='What We Offer' />
+            <Title subTitle='OUR SERVICES' title='What We Offer' />
             <div className='container_2'>
                 <Programs />
             </div>

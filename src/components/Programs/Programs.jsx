@@ -13,10 +13,6 @@ import econai_bg from '../../images/bg/econai.jpeg'
 import dashboard_bg from '../../images/bg/personalised-finance-help.jpeg'
 import learn_bg from '../../images/bg/play-and-learn.jpeg'
 
-
-
-
-
 const Programs = () => {
   return (
     <div className = 'programs'>
@@ -25,7 +21,7 @@ const Programs = () => {
             <img src={community_support_bg}/>
             <div className='caption'>
               <img src = {community_support_icon}/>
-              <p>Learn</p>
+              <p>Community Support</p>
             </div>
         </div>
         <div className='program'>
@@ -39,7 +35,7 @@ const Programs = () => {
             <img src={courses_bg}/>
             <div className='caption'>
               <img src = {courses_icon}/>
-              <p>Contribute</p>
+              <p>Courses</p>
             </div>
         </div>
       </div>
@@ -48,21 +44,21 @@ const Programs = () => {
             <img src={econai_bg}/>
             <div className='caption'>
               <img src = {econai_icon}/>
-              <p>Contribute</p>
+              <p>Econ AI</p>
             </div>
         </div>
         <div className='program'>
             <img src={dashboard_bg}/>
             <div className='caption'>
               <img src = {dashboard_icon}/>
-              <p>Contribute</p>
+              <p>Personalised finance help</p>
             </div>
         </div>
         <div className='program'>
             <img src={learn_bg}/>
             <div className='caption'>
               <img src = {learn_icon}/>
-              <p>Contribute</p>
+              <p>Play and Learn</p>
             </div>
         </div>
       </div>

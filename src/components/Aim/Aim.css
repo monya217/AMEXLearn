@@ -18,13 +18,20 @@
 }
 
 .aim h3{
-    color: var(-primary-hue);
-    font-weight: 700;
-    font-size: 40px;
-    margin-bottom: 30px;
+    color:var(--primary-hue);
+    font-size: 35px;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .aim h2{
-    margin-bottom: 15px;    
-    font-size: 20px;
+    font-weight: 600;
+    font-size: 22px;
+    color: #000F38;
+    margin-top: 5px;
+    text-transform: none;
+    margin-bottom: 50px;
+}
+.aim p{
+    font-size: 18px;
 }
