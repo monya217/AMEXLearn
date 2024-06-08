@@ -20,7 +20,7 @@ const ProfileHeader = () => {
     <Flex justifyContent={"space-between"} alignItems={"center"} w={"full"}>
       <Flex alignItems={"center"} gap={2}>
         <Link as={RouterLink} to={"/dashboard"} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-          <Avatar size={"md"} src={authUser.profilePicURL} />
+          <Avatar size={"sm"} src={authUser.profilePicURL} />
           <Text fontSize={15} fontWeight={"bold"} ml={2}>
             {authUser.username}
           </Text>
