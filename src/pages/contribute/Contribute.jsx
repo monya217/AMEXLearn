@@ -1,16 +1,24 @@
-import './contribute.css'
-import FaqContribute from '../../components/FaqContribute'
-import {faqs} from '../../FAQs'
-import { FaQuestion } from "react-icons/fa";
+import React from 'react';
+import { ContributeLayout } from '../../components/Contribute/ContributeLayout'; // Importing ContributeLayout
+import { Box, Container, Flex, Text, useBreakpointValue } from "@chakra-ui/react";
 
 const Contribute = () => {
-  return (
-    <div className='FAQs Container'>
-      <span>FaQuestion</span>
-      <h1>FAQs</h1>
+  const textAlign = useBreakpointValue({ base: "left", lg: "center" });
 
-    </div>
-  )
+  return (
+    <ContributeLayout>
+      <Container maxW={"container.lg"} py={10} mt={12}>
+        <Flex direction="column" align={textAlign === "center" ? "center" : "flex-start"}>
+          <Text fontSize="3xl" fontWeight="bold" mb={4} textAlign={textAlign}>
+            Contribute Page
+          </Text>
+          <Text fontSize="md" color="gray.600" textAlign={textAlign}>
+            Welcome to the contribute page!
+          </Text>
+        </Flex>
+      </Container>
+    </ContributeLayout>
+  );
 }
 
-export default Contribute
+export default Contribute;
