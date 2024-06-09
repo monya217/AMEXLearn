@@ -17,7 +17,7 @@ const Course = (props) => {
         <div className='item-rating flex'>
           <span className='rating-star-val'>{rating_star}</span>
           <StarRating rating_star = {rating_star} />
-          <span className='rating-count'>({rating_count})</span>
+          <span className='rating-count'>({rating_count} Ratings)</span>
         </div>
         <div className='item-price'>
           <span className='item-price-new'>₹{discounted_price}</span>

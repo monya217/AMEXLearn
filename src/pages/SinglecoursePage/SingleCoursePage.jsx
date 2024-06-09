@@ -58,8 +58,8 @@ const SingleCoursePage = () => {
             <div className='course-rating flex'>
               <span className='rating-star-val fw-8 fs-16'>{rating_star}</span>
               <StarRating rating_star={rating_star} />
-              <span className='rating-count fw-5 fs-14'>({rating_count})</span>
-              <span className='students-count fs-14'>{students}</span>
+              <span className='rating-count fw-5 fs-14'>({rating_count} Ratings)</span>
+              <span className='students-count fs-14'>{students} Students</span>
             </div>
 
             <ul className='course-info'>
@@ -93,8 +93,11 @@ const SingleCoursePage = () => {
               to="/cart"
               className='add-to-cart-btn d-inline-block fw-7 bg-purple'
               onClick={() => addToCart(courseID, image, course_name, creator, discounted_price, category)}
+              style={{ background: 'var(--primary-hue)', color: '#fff', padding: '10px 20px', borderRadius: '5px' }}
             >
-              <FaShoppingCart /> Add to cart
+              
+              Enroll Now
+              
             </Link>
           </div>
         </div>
@@ -131,6 +134,7 @@ const SingleCoursePage = () => {
 const SingleCourseWrapper = styled.div`
   background: var(--clr-dark);
   color: var(--clr-white);
+  
   
   .course-intro {
     padding: 40px 16px;
@@ -172,10 +176,12 @@ const SingleCourseWrapper = styled.div`
       font-size: 38px;
       line-height: 1.2;
       padding: 12px 0 0 0;
+      font-family: 'Actor', sans-serif; 
     }
 
     .course-para {
       padding: 12px 0;
+      font-family: 'Gafata', sans-serif; 
     }
 
     .rating-star-val {
@@ -188,9 +194,11 @@ const SingleCourseWrapper = styled.div`
       margin-left: 8px;
     }
 
-    .rating-count {
-      margin-left: 6px;
-      color: #d097f6;
+    .rating-count{
+      font-size: 12.5px;
+      margin-left: 3px;
+      font-weight: 500;
+      opacity: 0.8;
     }
 
     .course-info {
@@ -199,6 +207,7 @@ const SingleCourseWrapper = styled.div`
         &:nth-child(2) {
           margin-top: 10px;
         }
+        font-family: 'Actor', sans-serif; 
       }
 
       .course-info-txt {
@@ -212,7 +221,7 @@ const SingleCourseWrapper = styled.div`
       margin-top: 12px;
 
       .new-price {
-        color: #eceb98;
+        color: #ffffff;
       }
 
       .old-price {
@@ -224,12 +233,14 @@ const SingleCourseWrapper = styled.div`
 
     .course-btn {
       margin-top: 16px;
+      
 
       .add-to-cart-btn {
-        padding: 12px 28px;
+        padding: 10px 20px;
+        font-family: 'Actor', sans-serif; 
 
         span {
-          margin-left: 12px;
+          margin-left: auto;
         }
       }
     }
