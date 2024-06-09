@@ -1,14 +1,15 @@
-import React from 'react'
+import React,{ useState }   from 'react'
 import'./Contact.css'
 import msg_icon from './../../images/msg-icon.png'
 import mail_icon from './../../images/mail-icon.png'
 import phone_icon from './../../images/phone-icon.png'
 import location_icon from './../../images/location-icon.png'
-import white_arrow from './../../images/white-arrow.png'
+import white_arrow from './../../images/white_arrow.png'
+import blue_arrow from './../../images/blue_arrow.png';
 
 const Contact = () => {
     const [result, setResult] = React.useState("");
-
+    const [arrowSrc, setArrowSrc] = useState(white_arrow)
     const onSubmit = async (event) => {
       event.preventDefault();
       setResult("Sending....");
@@ -41,7 +42,7 @@ const Contact = () => {
                 strive to provide exceptional service to our community.
             </p>
             <ul>
-                <li> <img src = {mail_icon}/>AMEXLearnotc@gmail.com</li>
+                <li> <img src = {mail_icon}/>amexlearnotc@gmail.com</li>
                 <li> <img src = {phone_icon}/>+91 9999999999</li>
                 <li> <img src = {location_icon}/>IGDTUW, Kashmere Gate, Delhi</li>
             </ul>
@@ -56,7 +57,14 @@ const Contact = () => {
                 required/>
                 <label>Write your message here</label>
                 <textarea name = "message" rows = "6" placeholder='Enter your message' required></textarea>
-                <button type = 'submit' className='btn dark-btn'>Submit Now <img src = {white_arrow}/></button>
+                <button 
+                  type = 'submit'
+                  className='btn' 
+                  onMouseEnter={() => setArrowSrc(blue_arrow)} 
+                  onMouseLeave={() => setArrowSrc(white_arrow)}
+                >
+                  Submit Now<img src={arrowSrc} alt='Arrow'/>
+                  </button>
             </form>
             <span>{result}</span>
         </div>

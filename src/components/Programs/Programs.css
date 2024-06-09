@@ -1,22 +1,38 @@
-.firstRow{
+.firstRow {
     margin: 50px auto;
     width: 90%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap; /* Allow flex items to wrap to the next line */
     margin-bottom: 5%;
+}
 
+.program {
+    flex-basis: calc(33.33% - 20px); /* Initially, 3 programs per row */
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Media queries for responsive layout */
+
+@media (max-width: 1200px) {
+    .program {
+        flex-basis: calc(50% - 20px); /* 2 programs per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .program {
+        flex-basis: calc(100% - 20px); /* 1 program per row */
+    }
 }
 .program img{
     width: 100%;
     border-radius:10px ;
     display: block;
 }
-.program{
-    flex-basis: 31%;
-    position: relative;
-}
-.caption{
+.caption {
     border-radius: 10px;
     position: absolute;
     top: 0;
@@ -33,6 +49,16 @@
     opacity: 0;
     padding-top: 70%;
     transition: 0.4s;
+    font-weight: 600;
+    
+}
+.caption{
+    font-size: 18px;
+}
+.caption p{
+    font-size: 14px;
+    text-align: center;
+    
 }
 .caption img{
     width: 60px;

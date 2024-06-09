@@ -21,44 +21,55 @@ const Programs = () => {
             <img src={community_support_bg}/>
             <div className='caption'>
               <img src = {community_support_icon}/>
-              <p>Community Support</p>
+              <h1>Community Support</h1>
+              <p>Users can discuss about all things finance and book 
+                sessions to connect with financial advisors for 
+                personalized guidance.
+              </p>
             </div>
         </div>
         <div className='program'>
             <img src={contribute_bg}/>
             <div className='caption'>
               <img src = {contribute_icon}/>
-              <p>Contribute</p>
+              <h1>Insight Enchange</h1>
+              <p>Users can write articles to share their own experiences and insights.
+              </p>
             </div>
         </div>
         <div className='program'>
             <img src={courses_bg}/>
             <div className='caption'>
               <img src = {courses_icon}/>
-              <p>Courses</p>
+              <h1>Educational Courses</h1>
+              <p>Learn essential financial skills with comprehensive, interactive courses.
+              </p>
             </div>
         </div>
-      </div>
-      <div className='firstRow'>
         <div className='program'>
             <img src={econai_bg}/>
             <div className='caption'>
               <img src = {econai_icon}/>
-              <p>Econ AI</p>
+              <h1>Econ AI</h1>
+              <p>Get expert financial advice using OpenAI's GPT-3 trained on financial documents for tailored insights.
+              </p>
             </div>
         </div>
         <div className='program'>
             <img src={dashboard_bg}/>
             <div className='caption'>
               <img src = {dashboard_icon}/>
-              <p>Personalised finance help</p>
+              <h1>Personalised Dashboard</h1>
+              <p>Customize financial view for easy tracking and management.
+              </p>
             </div>
         </div>
         <div className='program'>
             <img src={learn_bg}/>
             <div className='caption'>
               <img src = {learn_icon}/>
-              <p>Play and Learn</p>
+              <h1>Play and Learn</h1>
+              <p>Engage with fun games while mastering financial concepts.</p>
             </div>
         </div>
       </div>

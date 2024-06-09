@@ -1,11 +1,10 @@
 .contact{
-    margin: 80px 150px; /*auto*/
+    margin: 80px 80px; /*auto*/
     max-width: 90%;
     display: flex;
     align-items: flex-start;
     align-content: center;
     justify-content: space-between;
-    gap: 20px;
 }
 .contact-col{
     flex-basis: 48%;
@@ -24,7 +23,7 @@
     margin-left: 10px;
 }
 .contact-col p{
-    max-width: 450px;
+    flex-basis: 48%;
     list-style: 0.3;
 }
 .contact-col ul li{
@@ -53,4 +52,23 @@
 .contact-col span{
     display: block;
     margin: 20px 0;
+}
+@media(max-width: 900px){
+    .contact{
+        margin: 50px 50px;
+    }
+    
+}
+@media(max-width: 800px){
+    .contact{
+        display: block;
+    }
+    .contact-col{
+        flex-basis: 100%;
+        padding: 20px;
+    }
+    .contact-col p{
+        flex-basis: 100%;
+        list-style: 0.3;
+    }
 }

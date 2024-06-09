@@ -35,3 +35,24 @@
 .aim p{
     font-size: 18px;
 }
+@media (max-width: 900px) {
+    .aim {
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .aim-left{
+        width: 70%;
+        justify-content: center; 
+        margin-bottom: 30px;
+        flex-basis: 100%;
+        order:2;
+    }
+    .aim-right {
+        width: 100%; 
+        margin-bottom: 30px;
+        text-align: left;
+        margin-left: 50px;
+    }
+}

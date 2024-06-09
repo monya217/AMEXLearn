@@ -31,24 +31,42 @@ video{
     max-width: 800px;
 }
 
-.hero-text h1 {
-    font-size: 1.5rem;
-    font-family: 'Gafata', sans-serif;
-    margin-bottom: 0px;
-    
-}
 
-.hero-text h2 {
-    font-size: 5rem;
+.hero-text h1 {
+    font-size: 7rem;
     font-family: 'Gilda Display'; 
     font-weight:400;
     margin-top: 1rem; 
 }
 
 
-.hero-text h3 {
+.hero-text h2 {
     font-size: 2rem;
     font-family: 'Gafata', sans-serif;
     margin-bottom: 3rem; 
+}
+
+@media (max-width: 850px){
+    .hero-text{
+        padding-left: 3rem;
+    }
+    .hero-text h1 {
+        font-size: 6rem;
+
+    }
+    
+    .hero-text h2 {
+        font-size: 1.5rem;
+    }
+}
+@media (max-width: 700px){
+    .hero-text h1 {
+        font-size: 5rem;
+
+    }
+    
+    .hero-text h2 {
+        font-size: 1rem;
+    }
 }
 
