@@ -98,6 +98,11 @@ const TabsWrapper = styled.div`
       }
     }
 
+    .tabs-head-item button.active {
+      background-color: var(--clr-black);
+      color: var(--clr-white);
+    }
+
     .tabs-body {
       margin-top: 32px;
     }
