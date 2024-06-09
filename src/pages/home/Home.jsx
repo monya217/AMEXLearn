@@ -6,14 +6,16 @@ import Aim from '../../components/Aim/Aim.jsx';
 import Testimonials from '../../components/Testimonials/Testimonials.jsx';
 import Contact from '../../components/Contact/Contact.jsx';
 import Footer from '../../components/Footer/Footer.jsx';
+import React, { useRef } from 'react';
 
 const Home = () => {
+  const programsRef = useRef(null);
   return (
     <div>
-        <HeroSection/>
+        <HeroSection programsRef={programsRef} />
         <div className="white-background">
             <Title subTitle='OUR SERVICES' title='What We Offer' />
-            <div className='container_2'>
+            <div className='container_2' ref={programsRef}>
                 <Programs />
             </div>
             <Aim/>
