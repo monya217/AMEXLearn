@@ -3,7 +3,7 @@ import { course_images } from "./images";
 const courses = [
     {
         id: "xMHCZl",
-        category: "python",
+        category: "personal finance management",
         image: course_images.python_5,
         course_name: "Learn Python: The Complete Python Programming Course",
         description: "Learn A-Z everything about Python, from the basics, to advanced topics like Python GUI, Python Data Analysis, and more!",
@@ -32,7 +32,7 @@ const courses = [
     },
     {
         id: "dtfo9e",
-        category: "python",
+        category: "personal finance management",
         image: course_images.python_4,
         course_name: "Learning Python for Data Analysis and Visualization",
         description: "Learn python and how to use it to analyze,visualize and present data. Includes tons of sample code and hours of video!",

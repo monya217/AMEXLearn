@@ -21,11 +21,12 @@ const Course = (props) => {
         </div>
         <div className='item-price'>
           <span className='item-price-new'>${discounted_price}</span>
-          <span className='item-price-old'>${actual_price}</span>
+    
         </div>
       </div>
       <div className='item-btns flex'>
-        <Link to={`/courses/${id}`} className="item-btn see-details-btn">See details</Link>
+        <Link to={`/learn/courses/${id}`} className="item-btn see-details-btn">See details</Link>
+        <Link to={`/learn/courses/${id}`} className="item-btn enroll-btn">Enroll Now</Link>
         
       </div>
     </CourseCard>
@@ -45,7 +46,8 @@ const CourseCard = styled.div`
     .item-name{
       font-size: 15px;
       line-height: 1.4;
-      font-weight: 800;
+      font-weight: 900;
+      
     }
     .item-creator{
       font-size: 12.5px;
@@ -53,7 +55,7 @@ const CourseCard = styled.div`
       color: rgba(0, 0, 0, 0.6);
     }
     .rating-star-val{
-      margin-bottom: 5px;
+      margin-bottom: 1px;
       font-size: 14px;
       font-weight: 800;
       color: #b4690e;
@@ -101,14 +103,15 @@ const CourseCard = styled.div`
         }
       }
 
-      &.add-to-cart-btn{
-        background: rgba(0, 0, 0, 0.9);
-        color: var(--clr-white);
-        border: 1px solid rgba(0, 0, 0, 0.9);
+      &.enroll-btn {
+        background-color: black;
+        color: white;
+        border: 1px solid black;
+        margin-right: 5px;
 
-        &:hover{
-          background-color: transparent;
-          color: rgba(0, 0, 0, 0.9);
+        &:hover {
+          background-color: white;
+          color: black;
         }
       }
     }

@@ -1,6 +1,6 @@
-export const PYTHON = "python";     
-export const WEB_DEVELOPMENT = "web development";
-export const DATA_SCIENCE = "data science";
-export const AWS = "aws";
-export const DESIGN = "design";
-export const MARKETING = "marketing";
+export const PERSONAL = "personal finance management";     
+export const RISK = "financial risk management";
+export const ESTATE = "estate planning";
+export const INSURANCE = "insurance fundamentals";
+export const INVESTMENT = "investment basics";
+export const PLAY = "play & learn";

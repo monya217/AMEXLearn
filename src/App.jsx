@@ -14,6 +14,8 @@ import { StockGeeks } from './components/GetInTouch/StockGeeks';
 import ProfilePage from './pages/GetinTouchProfile/ProfilePage';
 import { CoursesProvider } from './context/course_context';
 import { CartProvider } from './context/cart_context';
+import LearnRoutes from './LearnRoutes';
+
 
 const App = () => {
   const [authUser] = useAuthState(auth);
@@ -24,11 +26,11 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route 
-          path="/learn" 
+          path="/learn/*" 
           element={
             <CoursesProvider>
               <CartProvider>
-                <Learn />
+                <LearnRoutes />
               </CartProvider>
             </CoursesProvider>
           } 

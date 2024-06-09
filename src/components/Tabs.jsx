@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Course from './Course';
-import { PYTHON, WEB_DEVELOPMENT, DATA_SCIENCE, AWS, DESIGN, MARKETING } from '../utils/constants';
-import courses from '../utils/data';
+import { PERSONAL, RISK, ESTATE, INSURANCE, INVESTMENT, PLAY } from '../utils/constants';
+import courses from '../utils/datacourse';
 
 const Tabs = () => {
-  const [activeTab, setActiveTab] = useState(PYTHON);
+  const [activeTab, setActiveTab] = useState(PERSONAL);
   const tabHandler = (category) => {
     setActiveTab(category);
   };
@@ -17,55 +17,55 @@ const Tabs = () => {
           <li className='tabs-head-item'>
             <button
               type="button"
-              className={`tab-btn ${activeTab === PYTHON ? 'active' : ''}`}
-              onClick={() => tabHandler(PYTHON)}
+              className={`tab-btn ${activeTab === PERSONAL ? 'active' : ''}`}
+              onClick={() => tabHandler(PERSONAL)}
             >
-              Python
+              Personal Finance Management
             </button>
           </li>
           <li className='tabs-head-item'>
             <button
               type="button"
-              className={`tab-btn ${activeTab === WEB_DEVELOPMENT ? 'active' : ''}`}
-              onClick={() => tabHandler(WEB_DEVELOPMENT)}
+              className={`tab-btn ${activeTab === RISK ? 'active' : ''}`}
+              onClick={() => tabHandler(RISK)}
             >
-              Web Development
+              Financial Risk Management
             </button>
           </li>
           <li className='tabs-head-item'>
             <button
               type="button"
-              className={`tab-btn ${activeTab === DATA_SCIENCE ? 'active' : ''}`}
-              onClick={() => tabHandler(DATA_SCIENCE)}
+              className={`tab-btn ${activeTab === ESTATE ? 'active' : ''}`}
+              onClick={() => tabHandler(ESTATE)}
             >
-              Data Science
+              Estate Planning
             </button>
           </li>
           <li className='tabs-head-item'>
             <button
               type="button"
-              className={`tab-btn ${activeTab === AWS ? 'active' : ''}`}
-              onClick={() => tabHandler(AWS)}
+              className={`tab-btn ${activeTab === INSURANCE ? 'active' : ''}`}
+              onClick={() => tabHandler(INSURANCE)}
             >
-              AWS Certification
+              Insurance Fundamentals
             </button>
           </li>
           <li className='tabs-head-item'>
             <button
               type="button"
-              className={`tab-btn ${activeTab === DESIGN ? 'active' : ''}`}
-              onClick={() => tabHandler(DESIGN)}
+              className={`tab-btn ${activeTab === INVESTMENT ? 'active' : ''}`}
+              onClick={() => tabHandler(INVESTMENT)}
             >
-              Design
+              Investment Basics
             </button>
           </li>
           <li className='tabs-head-item'>
             <button
               type="button"
-              className={`tab-btn ${activeTab === MARKETING ? 'active' : ''}`}
-              onClick={() => tabHandler(MARKETING)}
+              className={`tab-btn ${activeTab === PLAY ? 'active' : ''}`}
+              onClick={() => tabHandler(PLAY)}
             >
-              Marketing
+              Play & Learn
             </button>
           </li>
         </ul>

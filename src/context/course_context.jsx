@@ -1,7 +1,7 @@
 import React, {useContext, useReducer, useEffect} from "react";
 import { GET_CATEGORIES, GET_COURSES, GET_SINGLE_COURSE } from "../actions";
 import reducer from "../reducers/courses_reducer";
-import courses from "../utils/data";
+import courses from "../utils/datacourse";
 
 const initialState = {
     courses: [],
