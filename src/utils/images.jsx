@@ -1,4 +1,9 @@
 import hero_img from "../assets/images/hero_img.png";
+import hero_img1 from "../assets/images/hero_img1.jpg";
+import hero_img3 from "../assets/images/hero_img3.png";
+import hero_img5 from "../assets/images/hero_img5.webp";
+import hero_img6 from "../assets/images/hero_img6.jpg";
+import hero_img7 from "../assets/images/hero_img7.jpeg";
 import logo_udemy from "../assets/images/logo_udemy.svg";
 
 
@@ -36,7 +41,7 @@ const course_images = {
     ins_1, ins_2, ins_3
   };
 
-const other_images = {hero_img, logo_udemy};
+const other_images = {hero_img, logo_udemy, hero_img1, hero_img3, hero_img5, hero_img6, hero_img7};
 
 /*const categories_images = [cat_python, cat_web_development,  cat_data_science, cat_aws, cat_design, cat_marketing ];*/
 
