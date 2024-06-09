@@ -372,4 +372,24 @@
       transition: none!important;
     }
   }
+  .leaderboard-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #0f0202;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .leaderboard-button:hover {
+    background-color: #444;
+  }
+  
   

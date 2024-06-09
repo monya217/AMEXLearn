@@ -22,16 +22,79 @@
     ├── GetInTouchLayouts
     │   └── PageLayout
     │       └── PageLayout.jsx
+    ├── LearnRoutes.jsx
+    ├── actions.js
+    ├── assets
+    │   ├── images
+    │   │   ├── desktop.ini
+    │   │   ├── est_1.jpeg
+    │   │   ├── est_2.jpeg
+    │   │   ├── est_3.jpeg
+    │   │   ├── est_4.jpeg
+    │   │   ├── est_5.jpeg
+    │   │   ├── fb-icon.svg
+    │   │   ├── hero_img.png
+    │   │   ├── hero_img1.jpg
+    │   │   ├── hero_img3.png
+    │   │   ├── hero_img5.webp
+    │   │   ├── hero_img6.jpg
+    │   │   ├── hero_img7.jpeg
+    │   │   ├── ins_1.jpeg
+    │   │   ├── ins_2.jpeg
+    │   │   ├── ins_3.jpeg
+    │   │   ├── inv_1.jpeg
+    │   │   ├── inv_2.jpeg
+    │   │   ├── leader_1.jpeg
+    │   │   ├── logo_udemy.svg
+    │   │   ├── per_1.jpeg
+    │   │   ├── per_2.jpeg
+    │   │   ├── per_3.jpeg
+    │   │   ├── per_4.jpeg
+    │   │   ├── per_5.jpeg
+    │   │   ├── risk_1.jpeg
+    │   │   ├── risk_2.jpeg
+    │   │   ├── risk_3.jpeg
+    │   │   ├── risk_4.jpeg
+    │   │   └── risk_5.jpeg
+    │   └── images_leader
+    │       ├── csv.png
+    │       ├── excel.png
+    │       ├── export.png
+    │       ├── html_table.jpg
+    │       ├── json.png
+    │       ├── leader_1.jpeg
+    │       ├── leader_2.jpeg
+    │       ├── leader_3.jpeg
+    │       ├── leader_4.jpeg
+    │       ├── pdf.png
+    │       ├── search.png
+    │       └── userimg.jpg
     ├── components
+    │   ├── Aim
+    │   │   ├── Aim.css
+    │   │   └── Aim.jsx
     │   ├── AuthForm
     │   │   ├── AuthForm.jsx
     │   │   ├── GoogleAuth.jsx
     │   │   ├── Login.jsx
     │   │   └── Signup.jsx
+    │   ├── Category.jsx
     │   ├── Chatbot.jsx
     │   ├── Consultants
     │   │   ├── SearchConsultants.jsx
     │   │   └── SuggestedConsultant.jsx
+    │   ├── Contact
+    │   │   ├── Contact.css
+    │   │   └── Contact.jsx
+    │   ├── Course.jsx
+    │   ├── CourseList.js
+    │   ├── Dashboard
+    │   │   ├── DashboardCards.jsx
+    │   │   ├── DashboardChart.jsx
+    │   │   ├── DashboardCourseProgress.jsx
+    │   │   ├── DashboardCreditScore.jsx
+    │   │   ├── DashboardPieChart.jsx
+    │   │   └── DashboardTable.jsx
     │   ├── FaqContribute.css
     │   ├── FaqContribute.jsx
     │   ├── FeedPosts
@@ -39,21 +102,52 @@
     │   │   ├── FeedPosts.jsx
     │   │   ├── PostFooter.jsx
     │   │   └── PostHeader.jsx
+    │   ├── Footer
+    │   │   ├── Footer.css
+    │   │   └── Footer.jsx
     │   ├── GetInTouch
     │   │   ├── Sidebar
     │   │   │   └── Sidebar.jsx
+    │   │   ├── StockGeeks.jsx
     │   │   └── Trending.jsx
+    │   ├── Hero.jsx
     │   ├── HeroSection
     │   │   ├── HeroSection.css
     │   │   └── HeroSection.jsx
+    │   ├── LoginButton
+    │   │   └── LoginButton.jsx
     │   ├── Navbar
     │   │   ├── Navbar.css
     │   │   └── Navbar.jsx
+    │   ├── ProfileHeader
+    │   │   └── ProfileHeader.jsx
     │   ├── Programs
     │   │   ├── Programs.css
     │   │   └── Programs.jsx
+    │   ├── StarRating.jsx
+    │   ├── Stocks
+    │   │   ├── CompanyProfile.js
+    │   │   ├── HistogramDailyPriceChanges.js
+    │   │   ├── HistogramPredictedPrices.js
+    │   │   ├── HistoricalPriceAndPrediction.js
+    │   │   ├── Stock.js
+    │   │   ├── Stock.module.css
+    │   │   ├── YourInput.js
+    │   │   ├── get_daily_price_change_histogram.js
+    │   │   ├── get_predicted_price_histogram.js
+    │   │   └── normal_distribution.js
+    │   ├── Tabs.jsx
+    │   ├── Testimonials
+    │   │   ├── Testimonials.css
+    │   │   └── Testimonials.jsx
+    │   ├── Title
+    │   │   ├── Title.css
+    │   │   └── Title.jsx
     │   └── videos
     │       └── amex_landing_page.mp4
+    ├── context
+    │   ├── cart_context.jsx
+    │   └── course_context.jsx
     ├── data.js
     ├── firebase
     │   └── firebase.js
@@ -63,16 +157,55 @@
     │   ├── useShowToast.js
     │   └── useSignUpWithEmailAndPassword.js
     ├── images
+    │   ├── aim_img.jpeg
+    │   ├── apple-icon.png
+    │   ├── back-icon.png
+    │   ├── bg
+    │   │   ├── community-support.jpeg
+    │   │   ├── contribute.jpeg
+    │   │   ├── courses.jpeg
+    │   │   ├── econai.jpeg
+    │   │   ├── personalised-finance-help.jpeg
+    │   │   └── play-and-learn.jpeg
+    │   ├── blue_arrow.png
+    │   ├── cards.png
+    │   ├── credit-card-icon.png
     │   ├── dark-arrow.png
     │   ├── homepage-bg.jpg
+    │   ├── icons
+    │   │   ├── community-support.png
+    │   │   ├── contribute.png
+    │   │   ├── courses.png
+    │   │   ├── econ-ai.png
+    │   │   ├── personalised-finance-help.png
+    │   │   └── play-and-learn.png
+    │   ├── location-icon.png
+    │   ├── mail-icon.png
+    │   ├── mcD-logo.png
+    │   ├── msg-icon.png
+    │   ├── next-icon.png
+    │   ├── petrol-icon.png
+    │   ├── phone-icon.png
     │   ├── program-1.png
     │   ├── program-2.png
-    │   └── program-3.png
+    │   ├── program-3.png
+    │   ├── program-icon-1.png
+    │   ├── user-1.png
+    │   ├── user-2.png
+    │   ├── user-3.png
+    │   ├── user-4.png
+    │   ├── white-arrow.png
+    │   └── white_arrow.png
     ├── index.css
     ├── index.js
     ├── pages
+    │   ├── CoursesPage
+    │   │   └── CoursesPage.jsx
     │   ├── GetinTouchProfile
     │   │   └── ProfilePage.jsx
+    │   ├── SinglecoursePage
+    │   │   ├── SingleCoursePage.css
+    │   │   └── SingleCoursePage.jsx
     │   ├── authPage
     │   │   └── AuthPage.jsx
     │   ├── contribute
@@ -87,14 +220,25 @@
     │   ├── home
     │   │   ├── Home.jsx
     │   │   └── home.css
+    │   ├── index.js
+    │   ├── leaderboard
+    │   │   ├── LeaderBoard.css
+    │   │   └── LeaderBoard.jsx
     │   ├── learn
     │   │   ├── Learn.jsx
     │   │   └── learn.css
     │   └── notFound
     │       ├── NotFound.jsx
     │       └── notfound.css
+    ├── reducers
+    │   ├── cart_reducer.jsx
+    │   └── courses_reducer.jsx
     ├── store
     │   └── authStore.js
-    └── ui
+    └── utils
+        ├── constants.jsx
+        ├── data.jsx
+        ├── datacourse.jsx
+        └── images.jsx
 
-30 directories, 68 files
+49 directories, 193 files
