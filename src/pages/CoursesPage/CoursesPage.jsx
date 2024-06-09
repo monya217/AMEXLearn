@@ -2,7 +2,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from "styled-components";
-import Course from '../../components/Course'; // Corrected path
+import Course from '../../components/Course'; 
 import { useCoursesContext } from '../../context/course_context';
 
 const CoursesPage = () => {

@@ -135,9 +135,13 @@ export default Tabs; */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Course from './Course';
+import GameCard from './GameCard'; 
 import { PERSONAL, RISK, ESTATE, INSURANCE, INVESTMENT, PLAY } from '../utils/constants';
 import courses from '../utils/datacourse';
 import { Link } from 'react-router-dom';
+
+import gameImg2 from '../assets/images/gameimg_1.jpeg';
+import gameImg1 from '../assets/images/gameimg_2.jpeg';
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState(PERSONAL);
@@ -206,7 +210,15 @@ const Tabs = () => {
         </ul>
 
         <div className='tabs-body'>
-          {courses.filter(course => course.category === activeTab).map((course) => (
+          {activeTab === PLAY && (
+            <>
+              <GameCard gameName="Financia" playUrl="http://financia-ddavz562h-advikas-projects-b71feecf.vercel.app/" imageUrl={gameImg1}/>
+              <GameCard gameName="FinQuiz" playUrl="URL_TO_GAME_2" imageUrl={gameImg2}/>
+              {/* Add more GameCard components for each game */}
+            </>
+          )}
+
+          {activeTab !== PLAY && courses.filter(course => course.category === activeTab).map((course) => (
             <Course key={course.id} {...course} />
           ))}
         </div>
