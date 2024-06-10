@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Text } from "@chakra-ui/react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -17,7 +18,7 @@ const DashboardChart = () => {
     <Box w="full" bg="white" borderRadius="xl" boxShadow="md" p={6} mt={6}>
       <Box mb={6}>
         <Text fontSize="xl" fontWeight="bold">
-          Activity
+          Monthly Savings
         </Text>
         <Text fontSize="sm" color="gray.500">
           Last 7 months
@@ -41,6 +42,7 @@ const DashboardChart = () => {
             <Tooltip 
               contentStyle={{ background: '#2B6CB0', color: '#FFF', borderRadius: '4px' }}
               labelStyle={{ display: 'none' }}
+              itemStyle={{ color: '#FFF' }} // Set the text color to white
               formatter={(value) => [`$${value}`, 'Amount']}
             />
             <Line 
