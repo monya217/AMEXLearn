@@ -12,11 +12,12 @@ import HistoricalPriceAndPrediction from './HistoricalPriceAndPrediction';
 import YourInput from './YourInput';
 
 import { restClient } from '@polygon.io/client-js';
-
+import useBootstrap from './useBootstrap';  // Import the custom hook
 const rest = restClient("MWQAjpvNTxxKVKDRy9oEjwgjTbxuOom_", "https://api.polygon.io");
 const finnhub = require('finnhub');
 
 function Stock() {
+    useBootstrap();
     const [graphPriceAndPrediction, setGraphPriceAndPrediction] = useState([]);
     const [ticker, setTicker] = useState('AAPL');
     const [lastPrice, setLastPrice] = useState(0);
@@ -126,32 +127,32 @@ function Stock() {
 
             
             finnhubClient.companyProfile2({'symbol': ticker}, (error, data, response) => {
-
-                setCompanyName(data.name)
-                setCompanyLogo(data.logo)
-                setCompanyExchange(data.exchange)
-
-                let IPO_day = new Date(data.ipo)
-                let IPO_day_string = IPO_day.toUTCString().slice(5,16)
-                setCompanyIPO(IPO_day_string)
-
-                setCompanyIndustry(data.finnhubIndustry)
-                setCompanyMarketCap(data.marketCapitalization)
-                setCompanySharesOutstanding(data.shareOutstanding)
+                if (data) {
+                    setCompanyName(data.name || 'N/A');
+                    setCompanyLogo(data.logo );
+                    setCompanyExchange(data.exchange || '');
+                    let IPO_day = new Date(data.ipo);
+                    let IPO_day_string = IPO_day.toUTCString().slice(5, 16);
+                    setCompanyIPO(IPO_day_string || 'N/A');
+                    setCompanyIndustry(data.finnhubIndustry || 'N/A');
+                    setCompanyMarketCap(data.marketCapitalization || 'N/A');
+                    setCompanySharesOutstanding(data.shareOutstanding || 'N/A');
+                } else {
+                    console.error('Error fetching company profile:', error);
+                }
             });
 
             finnhubClient.companyBasicFinancials(ticker, "all", (error, data, response) => {
-                setCompanyBeta(data.metric.beta)
-                let AnnualHigh = '52WeekHigh'
-                setCompany52WeekHighPrice(data.metric[AnnualHigh])
-                let AnnualHighDate = '52WeekHighDate'
-                setCompany52WeekHighDate(data.metric[AnnualHighDate])
-                let AnnualLow = '52WeekLow'
-                setCompany52WeekLowPrice(data.metric[AnnualLow])
-                let AnnualLowDate = '52WeekLowDate'
-                setCompany52WeekLowDate(data.metric[AnnualLowDate])
-                setCompanyPERatio(data.metric.peTTM)
-
+                if (data) {
+                    setCompanyBeta(data.metric.beta || 'N/A');
+                    setCompany52WeekHighPrice(data.metric['52WeekHigh'] || 'N/A');
+                    setCompany52WeekHighDate(data.metric['52WeekHighDate'] || 'N/A');
+                    setCompany52WeekLowPrice(data.metric['52WeekLow'] || 'N/A');
+                    setCompany52WeekLowDate(data.metric['52WeekLowDate'] || 'N/A');
+                    setCompanyPERatio(data.metric.peTTM || 'N/A');
+                } else {
+                    console.error('Error fetching company financials:', error);
+                }
             });
         }
 
@@ -224,14 +225,14 @@ function Stock() {
         <div className={`d-flex justify-content-center ${styles.padding}`}>
             <div className={styles.width}>
                 <div className="text-center mb-3">
-                    <h1 className="text-primary">Monte Carlo Simulation for {companyName}</h1>
-                    {companyLogo && <img src={companyLogo} alt="logo" className={`${styles.logo} ms-3`} />}
-                </div>
-                <div className="text-center mb-3">
-                    <p className="text-primary fs-5">Stock price from Polygon.io</p>
+                    <div className="d-flex align-items-center justify-content-center">
+                        {companyLogo && <img src={companyLogo} alt="logo" className={`${styles.logo} me-3`} />}
+                        <h1 className="text-primary">Monte Carlo Simulation for {companyName}</h1>
+                    </div>
                 </div>
                 <div className="mb-5">
                     <YourInput
+                        className="custom-input"
                         ticker={ticker}
                         setTicker={setTicker}
                         needTicker={needTicker}

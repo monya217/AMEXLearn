@@ -12,10 +12,12 @@ export default function HistoricalPriceAndPrediction(
 
 
     return (
-        <div style={{width:"50%", paddingLeft:"2em"}}>
-            <h5 style= {{marginBottom:"1em"}}>Historical Price and Prediction</h5>
-            <p style= {{marginBottom:"1em"}}>
+        <div style={{ width: "50%", paddingLeft: "2em", color: "black" }}>
+            <h5 style={{ marginBottom: "1em" }}>Historical Price and Prediction</h5>
+            <p style={{ marginBottom: "1em" }}>
                 Last reported price ${lastPrice}
+          
+       
             </p>
             <LineChart
                 width={500}
@@ -32,12 +34,12 @@ export default function HistoricalPriceAndPrediction(
                 <XAxis 
                     dataKey="time" 
                     tickFormatter = {unixTime => moment(unixTime).format("MMM-YY")}
-                    style={{fill:"white"}}
+                    style={{fill:"black"}}
                 >
-                    <Label value="Time" offset={-10} position="insideBottom" fill="white"/>
+                    <Label value="Time" offset={-10} position="insideBottom" fill="grey"/>
                 </XAxis>
-                <YAxis domain={['auto', 'auto']} style={{fill:"white"}} >
-                    <Label value="Stock Price $" angle="-90" offset={12} position="insideLeft" fill="white" />
+                <YAxis domain={['auto', 'auto']} style={{fill:"black"}} >
+                    <Label value="Stock Price $" angle="-90" offset={12} position="insideLeft" fill="whigreyte" />
                 </YAxis>
                 <Tooltip />
                 <Line

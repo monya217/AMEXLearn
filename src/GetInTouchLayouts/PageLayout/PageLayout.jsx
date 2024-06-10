@@ -8,10 +8,9 @@ import Trending from '../../components/GetInTouch/Trending';
 export const PageLayout = ({ children }) => {
   return (
     <Flex>
+      <Sidebar />
       {/* Sidebar content on the left */}
-      <Box w={{ base: '70px', md: "240px" }}>
-        <Sidebar />
-      </Box>
+     
       <Box flex={1} w={{ base: "calc(100% - 70px)", md: "calc(100% - 240px)" }}>
         {children}
       </Box>

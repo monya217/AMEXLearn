@@ -23,6 +23,7 @@ import {
 } from "@chakra-ui/react";
 import { CiLink } from "react-icons/ci";
 import { Link as RouterLink } from "react-router-dom";
+import { AiOutlineStock } from "react-icons/ai";
 import { AiFillHome } from 'react-icons/ai';
 import { FaSearch, FaUser, FaImage, FaFileAlt, FaThumbsUp } from "react-icons/fa"; // Import the necessary icons
 import { BiLogOut } from "react-icons/bi";
@@ -55,28 +56,28 @@ const Sidebar = () => {
       onClick: onOpen // Open modal on click
     },
     {
-      icon: <FaUser size={20} />, // Use FaUser icon for the Profile section
-      text: "Profile",
-      link: "/:username",
-    },
-    {
-      icon: <FaUser size={20} />, // Use FaUser icon for the Profile section
+      icon: <AiOutlineStock size={30} />, // Use AiOutlineStock icon for the Stock section
       text: "Stock Geeks Corner",
       link: "/stocks",
     },
+    {
+      icon: <FaUser size={20} />, // Use FaUser icon for the Profile section
+      text: "Profile",
+      link: "/username",
+    },
   ];
 
   return (
     <Box
       height={"100vh"}
-      borderRight={"3px solid"}
+      borderRight={"1px solid"}
       borderColor={"white"}
       py={10}
       position={"sticky"}
       top={18}
       left={0}
       px={{ base: 2, md: 4 }}
-      bg={'#007bff'}
+      bg={'#1a65b5'}
       pt={20} // Add padding top to move the items down
     >
       <Flex direction={"column"} gap={10} w='full' height={"full"}>
@@ -84,27 +85,24 @@ const Sidebar = () => {
           {sidebarItems.map((item, index) => (
             <Tooltip
               key={index}
-              hasArrow
-              label={item.text}
+              label={item.text} // Display item text on hover
               placement='right'
-              ml={1}
               openDelay={500}
-              display={{ base: "block", md: "none" }}
+              display="flex"
+              alignItems="center"
+              gap={4}
+              cursor="pointer"
             >
               <Link
-                display={"flex"}
                 to={item.link || null}
                 as={RouterLink}
-                alignItems={"center"}
-                gap={4}
-                _hover={{ bg: "whiteAlpha.700" }}
+                _hover={{ bg: "WhiteAlpha.700" }}
                 borderRadius={6}
                 p={2}
                 w={{ base: 10, md: "full" }}
                 onClick={item.onClick || null}
               >
                 {item.icon}
-                <Box display={{ base: "none", md: "block" }}>{item.text}</Box>
               </Link>
             </Tooltip>
           ))}

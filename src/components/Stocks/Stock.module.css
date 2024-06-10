@@ -1,48 +1,45 @@
-/* Stock.module.css 
+.padding {
+  padding: 2em 0;
+}
 
-.body {
-    background-color: black;
-    margin: 0;
-    padding: 0;
+.width {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 56px;
+}
+
+@media (max-width: 768px) {
+  .width {
+      width: 90%;
   }
-  
-  .heading {
-    color: #3cfefe;
-    margin: 0;
-  }
-  
-  .text {
-    color: white;
-    margin: 0;
-  }
-  
-  .button {
-    background-color: #3cfefe;
-    transition-duration: 0s;
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: none;
-  }
-  
-  .button:hover {
-    background-color: #ff66fe;
-  }
-  
-  .button:active {
-    transform: scale(0.98);
-  }
-  
-  .warning {
-    color: #f38518;
-  }
-  
-  .input {
-    background-color: black;
-    color: white;
-    border: 1px solid white;
-    border-radius: 4px;
-  }
-  
-  .row {
-    height: 2em;
-  }*/
+}
+
+/* Stock.module.css */
+.hide-navbar .navbar {
+  display: none;
+}
+
+/* Define custom classes for text colors */
+.primary-text {
+  color: #007bff; /* Blue color */
+}
+
+.secondary-text {
+  color: #6c757d; /* Gray color */
+}
+
+/* Define custom classes for background colors */
+.bg-primary {
+  background-color: #007bff; /* Blue background color */
+}
+
+.bg-secondary {
+  background-color: #6c757d; /* Gray background color */
+}
+.custom-input input {
+  color: black; /* Change the text color of the input */
+  /* Add any other styles you want to apply to the input */
+}
