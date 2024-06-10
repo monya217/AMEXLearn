@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ContributeLayout } from '../../components/Contribute/ContributeLayout'; // Importing ContributeLayout
 import { Box, Container, Flex, Text, useBreakpointValue } from "@chakra-ui/react";

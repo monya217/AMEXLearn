@@ -213,8 +213,7 @@ const Tabs = () => {
           {activeTab === PLAY && (
             <>
               <GameCard gameName="Financia" playUrl="http://financia-ddavz562h-advikas-projects-b71feecf.vercel.app/" imageUrl={gameImg1}/>
-              <GameCard gameName="FinQuiz" playUrl="URL_TO_GAME_2" imageUrl={gameImg2}/>
-              {/* Add more GameCard components for each game */}
+              <GameCard gameName="FinQuiz" playUrl="https://fin-quiz.vercel.app/" imageUrl={gameImg2}/>
             </>
           )}
 
