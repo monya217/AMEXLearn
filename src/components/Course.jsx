@@ -99,13 +99,13 @@ const CourseCard = styled.div`
         margin-right: 5px;
 
         &:hover{
-          background-color: rgba(0, 0, 0, 0.9);
+          background-color: var(--primary-hue);
           color: var(--clr-white);
         }
       }
 
       &.enroll-btn {
-        background-color: black;
+        background-color: var(--primary-hue);
         color: white;
         border: 1px solid black;
         margin-right: 5px;

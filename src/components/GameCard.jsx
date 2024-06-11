@@ -28,17 +28,15 @@ const GameCardWrapper = styled.div`
       margin-top: auto;
       align-self: flex-start;
       padding: 8px 16px;
-      background-color: black;
+      background-color: var(--primary-hue);
       color: white;
-      border: none;
+      
       font-size: 16px;
       font-weight: 700;
       cursor: pointer;
       transition: background-color 0.3s ease;
 
-      &:hover {
-        background-color: #333;
-      }
+      
     }
   }
 `;

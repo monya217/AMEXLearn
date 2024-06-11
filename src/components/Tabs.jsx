@@ -156,6 +156,15 @@ const Tabs = () => {
           <li className='tabs-head-item'>
             <button
               type="button"
+              className={`tab-btn ${activeTab === PLAY ? 'active' : ''}`}
+              onClick={() => tabHandler(PLAY)}
+            >
+              Play & Learn
+            </button>
+          </li>
+          <li className='tabs-head-item'>
+            <button
+              type="button"
               className={`tab-btn ${activeTab === PERSONAL ? 'active' : ''}`}
               onClick={() => tabHandler(PERSONAL)}
             >
@@ -198,15 +207,7 @@ const Tabs = () => {
               Investment Basics
             </button>
           </li>
-          <li className='tabs-head-item'>
-            <button
-              type="button"
-              className={`tab-btn ${activeTab === PLAY ? 'active' : ''}`}
-              onClick={() => tabHandler(PLAY)}
-            >
-              Play & Learn
-            </button>
-          </li>
+          
         </ul>
 
         <div className='tabs-body'>
@@ -245,13 +246,13 @@ const TabsWrapper = styled.div`
       margin-bottom: 10px;
 
       &:hover {
-        background-color: var(--clr-black);
+        background-color: var(--primary-hue);
         color: var(--clr-white);
       }
     }
 
     .tabs-head-item button.active {
-      background-color: var(--clr-black);
+      background-color: var(--primary-hue);
       color: var(--clr-white);
     }
 
@@ -286,7 +287,7 @@ const TabsWrapper = styled.div`
     font-size: 16px;
     font-weight: 700;
     color: #ffffff;
-    background-color: #0f0202;
+    background-color: var(--primary-hue);
     border: none;
     border-radius: 5px;
     cursor: pointer;
