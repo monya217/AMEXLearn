@@ -1,4 +1,3 @@
-import React, { useRef } from 'react';
 import {
 	Box,
 	Button,
@@ -14,24 +13,19 @@ import {
 	ModalOverlay,
 	Tooltip,
 	useDisclosure,
-	Text,
-	Avatar,
-	Link,
 } from "@chakra-ui/react";
+import useSearchUser from "../../../hooks/useSearchUser";
+import { useRef } from "react";
+import SuggestedUser from "./SuggestedUser";
 import { CiSearch } from "react-icons/ci";
-import { Link as RouterLink } from "react-router-dom";
-import useGetUserProfileByUsername from "../../../hooks/useGetUserProfileByUsername";
-
 const SearchConsultants = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const searchRef = useRef(null);
-	const { isLoading, userProfile, getUserProfile } = useGetUserProfileByUsername();
+	const { user, isLoading, getUserProfile, setUser } = useSearchUser();
 
 	const handleSearchUser = (e) => {
 		e.preventDefault();
-		const searchTerm = searchRef.current.value;
-		console.log("Searching for:", searchTerm);
-		getUserProfile(searchTerm);
+		getUserProfile(searchRef.current.value);
 	};
 
 	return (
@@ -77,17 +71,7 @@ const SearchConsultants = () => {
 								</Button>
 							</Flex>
 						</form>
-
-						{userProfile && (
-							<Box mt={4}>
-								<Flex alignItems="center">
-									<Avatar src={userProfile.profilePicURL} size="md" mr={4} />
-									<Link as={RouterLink} to={`/${userProfile.username}`}>
-										<Text fontWeight="bold">{userProfile.username}</Text>
-									</Link>
-								</Flex>
-							</Box>
-						)}
+						{user && <SuggestedUser user={user} setUser={setUser} />}
 					</ModalBody>
 				</ModalContent>
 			</Modal>
@@ -96,3 +80,37 @@ const SearchConsultants = () => {
 };
 
 export default SearchConsultants;
+
+// COPY AND PASTE AS THE STARTER CODE FOR THE SEARCH COMPONENT
+// import { Box, Flex, Tooltip } from "@chakra-ui/react";
+// import { SearchLogo } from "../../assets/constants";
+
+// const Search = () => {
+// 	return (
+// 		<>
+// 			<Tooltip
+// 				hasArrow
+// 				label={"Search"}
+// 				placement='right'
+// 				ml={1}
+// 				openDelay={500}
+// 				display={{ base: "block", md: "none" }}
+// 			>
+// 				<Flex
+// 					alignItems={"center"}
+// 					gap={4}
+// 					_hover={{ bg: "whiteAlpha.400" }}
+// 					borderRadius={6}
+// 					p={2}
+// 					w={{ base: 10, md: "full" }}
+// 					justifyContent={{ base: "center", md: "flex-start" }}
+// 				>
+// 					<SearchLogo />
+// 					<Box display={{ base: "none", md: "block" }}>Search</Box>
+// 				</Flex>
+// 			</Tooltip>
+// 		</>
+// 	);
+// };
+
+// export default Search;
