@@ -1,59 +1,79 @@
-import { Box, Flex, Text, Button } from "@chakra-ui/react";
-import { FaTrash, FaEdit } from "react-icons/fa";
+import React from 'react';
+import { Box, Text, Heading, Button, Image, IconButton, Flex } from "@chakra-ui/react";
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Link } from "react-router-dom";
-import React from "react";
-import { excerpt } from "../../utility";
-import './BlogSection.css'
 
-const BlogSection = ({ blogs, user }) => {
+
+const BlogSection = ({ blogs }) => {
+  if (!blogs || blogs.length === 0) {
+    return <Text>No blogs available</Text>;
+  }
+
+  const handleEdit = (id) => {
+    console.log(`Edit blog with id: ${id}`);
+  };
+
+  const handleDelete = (id) => {
+    console.log(`Delete blog with id: ${id}`);
+  };
+
   return (
-    <Box>
-      <Text className="blog-heading" textStyle="h2" py="2" mb="4">
-        Daily Blogs
-      </Text>
-      {blogs?.map((item) => (
-        <Flex key={item.id} className="row" pb="4">
-          <Box className="col-md-5">
-            <Box className="hover-blogs-img">
-              <Box className="blogs-img">
-                <img src={item.imgUrl} alt={item.title} />
-                <div></div>
-              </Box>
-            </Box>
+    <Box p={5} display="flex" flexWrap="wrap" justifyContent="center" paddingTop="250px">
+      {blogs.map((blog) => (
+        <Box
+          key={blog.id}
+          borderWidth="1px"
+          borderRadius="lg"
+          overflow="hidden"
+          mb={4}
+          p={5}
+          boxShadow="md"
+          width="300px"
+          margin="10px"
+        >
+          <Image
+            src={blog.imgUrl}
+            alt={blog.title}
+            objectFit="cover"
+            height="200px"
+            width="100%"
+            mb={4}
+          />
+          <Box mb={2}>
+            <Text as="span" bg="blue.500" color="white" px={2} py={1} borderRadius="md">
+              {blog.category}
+            </Text>
           </Box>
-          <Box className="col-md-7">
+          <Heading as="h3" size="md" mb={2}>
+            {blog.title}
+          </Heading>
+          <Text fontSize="sm" color="gray.500" mb={2}>
+            {blog.author} - {new Date(blog.Timestamp.seconds * 1000).toLocaleDateString()}
+          </Text>
+          <Text noOfLines={3} mb={4}>
+            {blog.overview}
+          </Text>
+          <Flex justifyContent="space-between" alignItems="center">
+            <Link to={`/blog/${blog.id}`}>
+            <Button variant="outline" colorScheme="teal">
+                Read More
+              </Button>
+            </Link>
             <Box>
-              <Text className="category catg-color" fontSize="md">
-                {item.category}
-              </Text>
-              <Text className="title py-2" fontSize="2xl">
-                {item.title}
-              </Text>
-              <Flex className="meta-info">
-                <Text className="author" fontSize="sm">
-                  {item.author}
-                  {item.Timestamp.toDate().toDateString()}
-                </Text>
-                <Text>-</Text>
-                {/* Add date here */}
-              </Flex>
+              <IconButton
+                aria-label="Edit"
+                icon={<FaEdit />}
+                mr={2}
+                onClick={() => handleEdit(blog.id)}
+              />
+              <IconButton
+                aria-label="Delete"
+                icon={<FaTrash />}
+                onClick={() => handleDelete(blog.id)}
+              />
             </Box>
-            <Box className="short-description">
-              <Text>{excerpt(item.description, 120)}</Text>
-            </Box>
-            <Button className="btn-read" colorScheme="teal">
-              <Link to={`/${item.id}`}>Read More</Link>
-            </Button>
-            <Flex justify="flex-end">
-              <Box mr="15px">
-                <FaTrash style={{ cursor: "pointer" }} />
-              </Box>
-              <Box>
-                <FaEdit style={{ cursor: "pointer" }}  />
-              </Box>
-            </Flex>
-          </Box>
-        </Flex>
+          </Flex>
+        </Box>
       ))}
     </Box>
   );
