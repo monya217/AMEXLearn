@@ -32,7 +32,7 @@ const Navbar = () => {
       </ul>
       <ul className={`navbar-links ${menuOpen ? 'show' : ''}`}>
         <li onClick={() => navigate('/learn')}>Learn</li>
-        <li onClick={() => navigate('/get-in-touch')}>Get In Touch</li>
+        <li onClick={() => navigate('/get-in-touch')}>Community</li>
         <li onClick={() => navigate('/contribute')}>Contribute</li>
       </ul>
       <ul className="navbar-auth">

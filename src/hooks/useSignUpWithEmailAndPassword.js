@@ -41,7 +41,11 @@ const useSignUpWithEmailAndPassword = () => {
                     email: inputs.email,
                     username: inputs.username,
                     fullName: inputs.fullName,
+                    bio:"",
                     profilePicURL: "",
+                    followers:[],
+                    following:[],
+                    posts:[],
                     createdAt: Date.now()
                 };
                 await setDoc(doc(firestore, "users", newUser.user.uid), userDoc);

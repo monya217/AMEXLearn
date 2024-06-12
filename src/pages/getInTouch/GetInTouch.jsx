@@ -26,6 +26,7 @@ const GetInTouch = () => {
             <FeedPosts />
           </Box>
         </Flex>
+        
       </Container>
     </PageLayout>
   );

@@ -1,113 +1,82 @@
-import React, { useState } from 'react';
-import {
-  Avatar,
-  Box,
-  Button,
-  Flex,
-  Text,
-  VStack,
-  Heading,
-  HStack,
-  Divider,
-  SimpleGrid,
-  Image,
-  Center,
-} from '@chakra-ui/react';
-import { FeedPosts } from '../../components/FeedPosts/FeedPosts';
-import { StarIcon } from '@chakra-ui/icons';
-import { FeedPost } from '../../components/FeedPosts/FeedPost';
-
-import { PageLayout } from '../../GetInTouchLayouts/PageLayout/PageLayout';
-import Sidebar from '../../components/GetInTouch/Sidebar/Sidebar';
+import { Container, Flex, Link, Text, Skeleton, SkeletonCircle, VStack } from "@chakra-ui/react";
+import ProfileHeader from "./GITProfileHeader";
+import ProfileTabs from "./ProfileTabs";
+import ProfilePosts from "./ProfilePosts";
+import useGetUserProfileByUsername from "../../../hooks/useGetUserProfileByUsername";
+import { useParams } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import { useState } from 'react';
 
 const ProfilePage = () => {
+  const { username } = useParams();
+  const { isLoading, userProfile, error } = useGetUserProfileByUsername(username); // Include error handling if possible
   const [selectedTab, setSelectedTab] = useState('posts');
 
-  const achievements = [
-    { title: 'Advanced Financial Plannings', rating: 5, image: '/Certificate1.jpg' },
-    { title: 'Basics of Stock Marketing', rating: 4, image: '/Certificate2.png' },
-    { title: 'Advanced SIPs', rating: 5, image: '/Certificate3.jpg' },
-    // Add more achievements as needed
-  ];
+  if (isLoading) return <ProfileHeaderSkeleton />;
+
+  if (error) {
+    return (
+      
+      <Flex flexDir='column' textAlign={"center"} mx={"auto"}>
+        <Text fontSize={"2xl"}>Error: {error.message}</Text>
+        <Link as={RouterLink} to={"/"} color={"blue.500"} w={"max-content"} mx={"auto"}>
+          Go home
+        </Link>
+      </Flex>
+    );
+  }
+
+  const userNotFound = !userProfile;
+  if (userNotFound) return <UserNotFound />;
 
   return (
-    <Flex>
-      <Sidebar />
-      <Box flex={1} p={5} mt={0}>
-        {/* Profile Header Section */}
-        <Flex alignItems="center" mb={8}>
-          <Avatar mt={89} size="2xl" name="John Doe" src="/consultant1.png" mr={5} />
-          <VStack align="start">
-            <Heading mt={89} as="h2" size="lg">John Doe</Heading>
-            <Text fontSize="md">Organization: Tech Innovators Inc.</Text>
-            <Text fontSize="md">Profession: Software Engineer</Text>
-            <Button mt={4} colorScheme="blue">Edit Profile</Button>
-          </VStack>
-        </Flex>
-
-        {/* Tab Navigation */}
-        <HStack spacing={4} mb={8}>
-          <Button
-            colorScheme={selectedTab === 'posts' ? 'blue' : 'gray'}
-            onClick={() => setSelectedTab('posts')}
-          >
-            Your Posts
-          </Button>
-          <Button
-            colorScheme={selectedTab === 'achievements' ? 'blue' : 'gray'}
-            onClick={() => setSelectedTab('achievements')}
-          >
-            Your Achievements
-          </Button>
-        </HStack>
-
-        {/* Tab Content */}
-        {selectedTab === 'posts' ? (
-          <Box>
-            <Heading as="h3" size="md" mb={4}>Your Posts</Heading>
-            <Center>
-              <FeedPost img='/post1.jpg' username='John Doe' avatar='/img.png' />
-            </Center>
-          </Box>
-        ) : (
-          <Box>
-            <Heading as="h3" size="md" mb={4}>Your Achievements</Heading>
-            <SimpleGrid columns={[1, 2, 3]} spacing={4}>
-              {achievements.map((achievement, index) => (
-                <Box
-                  key={index}
-                  border="1px solid"
-                  borderColor="gray.200"
-                  borderRadius="md"
-                  p={4}
-                  boxShadow="md"
-                >
-                  <Image
-                    src={achievement.image}
-                    alt={achievement.title}
-                    borderRadius="md"
-                    mb={4}
-                    objectFit="cover"
-                  />
-                  <Text fontSize="lg" fontWeight="bold">{achievement.title}</Text>
-                  <HStack spacing={1} mt={2}>
-                    {Array(5)
-                      .fill('')
-                      .map((_, i) => (
-                        <StarIcon
-                          key={i}
-                          color={i < achievement.rating ? 'yellow.400' : 'gray.300'}
-                        />
-                      ))}
-                  </HStack>
-                </Box>
-              ))}
-            </SimpleGrid>
-          </Box>
-        )}
-      </Box>
-    </Flex>
+    <Container maxW='container.lg' py={5}>
+      <Flex py={10} px={4} pl={{ base: 4, md: 10 }} w={"full"} mx={"auto"} flexDirection={"column"}>
+        <ProfileHeader userProfile={userProfile} />
+      </Flex>
+      <Flex
+        px={{ base: 2, sm: 4 }}
+        maxW={"full"}
+        mx={"auto"}
+        borderTop={"1px solid"}
+        borderColor={"whiteAlpha.300"}
+        direction={"column"}
+      >
+        <ProfileTabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+        <ProfilePosts selectedTab={selectedTab} userProfile={userProfile} />
+      </Flex>
+    </Container>
   );
 };
 
 export default ProfilePage;
+
+const ProfileHeaderSkeleton = () => {
+  return (
+    <Flex
+      gap={{ base: 4, sm: 10 }}
+      py={10}
+      direction={{ base: "column", sm: "row" }}
+      justifyContent={"center"}
+      alignItems={"center"}
+    >
+      <SkeletonCircle size='24' />
+
+      <VStack alignItems={{ base: "center", sm: "flex-start" }} gap={2} mx={"auto"} flex={1}>
+        <Skeleton height='12px' width='150px' />
+        <Skeleton height='12px' width='100px' />
+      </VStack>
+    </Flex>
+  );
+};
+
+const UserNotFound = () => {
+  return (
+    <Flex flexDir='column' textAlign={"center"} mx={"auto"}>
+      <Text fontSize={"2xl"}>User Not Found</Text>
+      <Link as={RouterLink} to={"/"} color={"blue.500"} w={"max-content"} mx={"auto"}>
+        Go home
+      </Link>
+    </Flex>
+  );
+};

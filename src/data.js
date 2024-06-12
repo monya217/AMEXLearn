@@ -6,7 +6,7 @@ import SearchConsultants from './components/Consultants/SearchConsultants';
 export const links = [
     { name: 'Home', path: '/' },
     { name: 'Learn', path: '/learn' },
-    { name: 'Get In Touch', path: '/get-in-touch' },
+    { name: 'Community', path: '/get-in-touch' },
     { name: 'Contribute', path: '/contribute' },
     { name: 'Login', path: '/login' },
     { name: 'Signup', path: '/signup' },
