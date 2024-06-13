@@ -59,29 +59,34 @@ const BlogSection = ({ blogs }) => {
             boxShadow="md"
             width="300px"
             margin="10px"
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
           >
-            <Image
-              src={blog.imgUrl}
-              alt={blog.title}
-              objectFit="cover"
-              height="200px"
-              width="100%"
-              mb={4}
-            />
-            <Box mb={2}>
-              <Text as="span" bg="blue.500" color="white" px={2} py={1} borderRadius="md">
-                {blog.category}
+            <Box>
+              <Image
+                src={blog.imgUrl}
+                alt={blog.title}
+                objectFit="cover"
+                height="200px"
+                width="100%"
+                mb={4}
+              />
+              <Box mb={2}>
+                <Text as="span" bg="blue.500" color="white" px={2} py={1} borderRadius="md">
+                  {blog.category}
+                </Text>
+              </Box>
+              <Heading as="h3" size="md" mb={2}>
+                {blog.title}
+              </Heading>
+              <Text fontSize="sm" color="gray.500" mb={2}>
+                {blog.author} - {new Date(blog.Timestamp.seconds * 1000).toLocaleDateString()}
+              </Text>
+              <Text noOfLines={3} mb={4}>
+                {blog.overview}
               </Text>
             </Box>
-            <Heading as="h3" size="md" mb={2}>
-              {blog.title}
-            </Heading>
-            <Text fontSize="sm" color="gray.500" mb={2}>
-              {blog.author} - {new Date(blog.Timestamp.seconds * 1000).toLocaleDateString()}
-            </Text>
-            <Text noOfLines={3} mb={4}>
-              {blog.overview}
-            </Text>
             <Flex justifyContent="space-between" alignItems="center">
               <Link to={`/blog/${blog.id}`}>
                 <Button variant="outline" colorScheme="teal">

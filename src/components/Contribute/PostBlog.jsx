@@ -32,7 +32,6 @@ const PostBlog = () => {
         description: '',
         category: '',
         imgUrl: '',
-        trending: 'no',
         overview: ''
     });
     useEffect(() => {
@@ -54,7 +53,6 @@ const PostBlog = () => {
                         description: blogData.description,
                         category: blogData.category,
                         imgUrl: blogData.imgUrl,
-                        trending: blogData.trending ? 'yes' : 'no',
                         overview: blogData.overview
                     });
                 }
@@ -95,13 +93,9 @@ const PostBlog = () => {
         setForm((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleTrending = (value) => {
-        setForm((prev) => ({ ...prev, trending: value }));
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { title, category, description, overview, imgUrl, trending } = form;
+        const { title, category, description, overview, imgUrl } = form;
         if (!title || !category || !description || !overview || !imgUrl) {
             toast({
                 title: 'Error',
@@ -117,7 +111,6 @@ const PostBlog = () => {
             if (blogId) {
                 await updateDoc(doc(firestore, "blogs", blogId), {
                     ...form,
-                    trending: trending === 'yes',
                     Timestamp: serverTimestamp(),
                     author: authUser.fullName,
                     userId: authUser.uid
@@ -132,7 +125,6 @@ const PostBlog = () => {
             } else {
                 await addDoc(collection(firestore, "blogs"), {
                     ...form,
-                    trending: trending === 'yes',
                     Timestamp: serverTimestamp(),
                     author: authUser.fullName,
                     userId: authUser.uid
@@ -174,13 +166,6 @@ const PostBlog = () => {
                         onChange={handleChange}
                         mb={4}
                     />
-                    <Text mb={2}>Is it a trending article?</Text>
-                    <RadioGroup value={form.trending} onChange={handleTrending} mb={4}>
-                        <Stack direction="row" spacing={4}>
-                            <Radio value="yes">Yes</Radio>
-                            <Radio value="no">No</Radio>
-                        </Stack>
-                    </RadioGroup>
                     <Select
                         placeholder="Please select category"
                         value={form.category}
@@ -218,7 +203,7 @@ const PostBlog = () => {
                         mb={4}
                     />
                     <Button
-                        colorScheme="teal"
+                        colorScheme="blue"
                         variant="solid"
                         type="submit"
                         disabled={progress !== null && progress < 100}
