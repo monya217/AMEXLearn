@@ -6,7 +6,7 @@ import useGetUserProfileByUsername from "../../../hooks/useGetUserProfileByUsern
 import { useParams } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import { useState } from 'react';
-import { SkeletonCircle, VStack,Skeleton } from "@chakra-ui/react";
+import { SkeletonCircle, VStack, Skeleton } from "@chakra-ui/react";
 import Sidebar from "../Sidebar/Sidebar";
 import { PageLayout } from "../../../GetInTouchLayouts/PageLayout/PageLayout";
 
@@ -15,10 +15,12 @@ const ProfilePage = () => {
   const { isLoading, userProfile } = useGetUserProfileByUsername(username);
   const [selectedTab, setSelectedTab] = useState('posts');
 
+  console.log('isLoading:', isLoading);
+  console.log('userProfile:', userProfile);
+
   const userNotFound = !isLoading && !userProfile;
   if (userNotFound) return <UserNotFound />;
 
-   
   return (
     <Flex>
       <Sidebar />
@@ -74,4 +76,3 @@ const UserNotFound = () => {
     </Flex>
   );
 };
-

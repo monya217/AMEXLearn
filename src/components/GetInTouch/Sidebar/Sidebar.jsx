@@ -30,7 +30,28 @@ const Sidebar = () => {
                     <SidebarItems />
                 </Flex>
                 {/* LOGOUT */}
-                  
+                <Tooltip
+					hasArrow
+					label={"Logout"}
+					placement='right'
+					ml={1}
+					openDelay={500}
+					display={{ base: "block", md: "none" }}
+				>
+					<Flex
+						onClick={handleLogout}
+						alignItems={"center"}
+						gap={4}
+						_hover={{ bg: "Blue.400" }}
+						borderRadius={6}
+						p={2}
+						w={{ base: 10, md: "full" }}
+						mt={"auto"}
+						justifyContent={{ base: "center", md: "flex-start" }}
+					>
+					
+					</Flex>
+				</Tooltip>
                
             </Flex>
         </Box>
