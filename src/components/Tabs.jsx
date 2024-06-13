@@ -140,11 +140,14 @@ import { PERSONAL, RISK, ESTATE, INSURANCE, INVESTMENT, PLAY } from '../utils/co
 import courses from '../utils/datacourse';
 import { Link } from 'react-router-dom';
 
-import gameImg2 from '../assets/images/gameimg_1.jpeg';
-import gameImg1 from '../assets/images/gameimg_2.jpeg';
+import gameImg1 from '../assets/images/gameimg_1.jpeg';
+import gameImg2 from '../assets/images/gameimg_2.jpeg';
+import gameImg3 from '../assets/images/gameimg_3.jpeg';
+import gameImg4 from '../assets/images/gameimg_4.jpeg'; // Add a third image for the buy button
 
 const Tabs = () => {
-  const [activeTab, setActiveTab] = useState(PERSONAL);
+  const [activeTab, setActiveTab] = useState(PLAY); // Initialize activeTab with PLAY
+
   const tabHandler = (category) => {
     setActiveTab(category);
   };
@@ -207,14 +210,15 @@ const Tabs = () => {
               Investment Basics
             </button>
           </li>
-          
         </ul>
 
         <div className='tabs-body'>
           {activeTab === PLAY && (
             <>
-              <GameCard gameName="Financia" playUrl="http://financia-ddavz562h-advikas-projects-b71feecf.vercel.app/" imageUrl={gameImg1}/>
-              <GameCard gameName="FinQuiz" playUrl="https://fin-quiz.vercel.app/" imageUrl={gameImg2}/>
+              <GameCard gameName="Financia" playUrl="http://financia-ddavz562h-advikas-projects-b71feecf.vercel.app/" imageUrl={gameImg1} rating="4.5" price="0" />
+              <GameCard gameName="FinQuiz" playUrl="https://fin-quiz.vercel.app/" imageUrl={gameImg2} rating="4.2" price="0" />
+              <GameCard gameName="StockSim" playUrl="https://stock-sim-flax.vercel.app/" imageUrl={gameImg3} rating="4.6" price="0" />
+              <GameCard gameName="Money Master" playUrl="#" imageUrl={gameImg4} rating="4.8" price="499" isBuy />
             </>
           )}
 
@@ -303,4 +307,3 @@ const TabsWrapper = styled.div`
 `;
 
 export default Tabs;
-

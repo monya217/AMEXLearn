@@ -69,7 +69,7 @@ const courses = [
         updated_date: "5/2021",
         lang: "english",
         actual_price: 999,
-        discounted_price: 0,
+        discounted_price: 599,
         what_you_will_learn: [
             "Understand different types of debt",
             "Develop a debt repayment plan",
@@ -233,7 +233,7 @@ const courses = [
         updated_date: "5/2022",
         lang: "english",
         actual_price: 999,
-        discounted_price: 0,
+        discounted_price: 499,
         what_you_will_learn: [
             "Understand different types of insurance",
             "Evaluate insurance needs",
@@ -260,7 +260,7 @@ const courses = [
         updated_date: "7/2022",
         lang: "english",
         actual_price: 999,
-        discounted_price: 499,
+        discounted_price: 0,
         what_you_will_learn: [
             "Understand portfolio diversification",
             "Develop diversification strategies",
@@ -316,7 +316,7 @@ const courses = [
         updated_date: "11/2022",
         lang: "english",
         actual_price: 999,
-        discounted_price: 399,
+        discounted_price: 0,
         what_you_will_learn: [
             "Understand estate taxes",
             "Develop strategies to minimize estate taxes",
@@ -343,7 +343,7 @@ const courses = [
         updated_date: "1/2023",
         lang: "english",
         actual_price: 999,
-        discounted_price: 0,
+        discounted_price: 399,
         what_you_will_learn: [
             "Understand the role of wills and trusts",
             "Create and manage wills and trusts",
@@ -480,7 +480,7 @@ const courses = [
         updated_date: "11/2023",
         lang: "english",
         actual_price: 999,
-        discounted_price: 0,
+        discounted_price: 499,
         what_you_will_learn: [
             "Understand health insurance",
             "Evaluate health insurance needs",
@@ -536,7 +536,7 @@ const courses = [
         updated_date: "3/2024",
         lang: "english",
         actual_price: 999,
-        discounted_price: 0,
+        discounted_price: 499,
         what_you_will_learn: [
             "Understand mutual funds",
             "Evaluate mutual fund performance",
