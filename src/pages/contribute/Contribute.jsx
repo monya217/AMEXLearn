@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { ContributeLayout } from '../../components/Contribute/ContributeLayout'; // Importing ContributeLayout
 import { Box, Container, Flex, ListIcon, Text, useBreakpointValue } from "@chakra-ui/react";
 import { Firestore, collection, onSnapshot } from 'firebase/firestore';
 import { firestore } from '../../firebase/firebase';
 import BlogSection from '../../components/Contribute/BlogSection';
+import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
+import contribute_header from '../../images/contribute_header.png'
+import Spinner from '../../components/Contribute/Spinner';
+
 const Contribute = () => {
   const textAlign = useBreakpointValue({ base: "left", lg: "center" });
   const [loading, setLoading] = useState(true);
@@ -17,6 +20,7 @@ const Contribute = () => {
           list.push({id: doc.id, ...doc.data()});
         });
         setBlogs(list);
+        setLoading(false);
       },(error) => {
         console.log(error);
       }
@@ -26,28 +30,32 @@ const Contribute = () => {
       unsub();
     };
   },[]);
+  if(loading){
+    return <Spinner/>
+  }
 
   console.log("blogs",blogs);
   
   return (
-    <ContributeLayout>
-      <Box pt="16"> {/* Padding on the top to avoid navbar overlap */}
-        <Container maxW="container.xl" pb="4" pt="4"> {/* Added padding bottom and top */}
-          <Flex direction={{ base: "column", lg: "row" }} justifyContent={{ base: "flex-start", lg: "center" }} alignItems="flex-start" mx="auto">
-            <Box mr={{ base: "0", lg: "8" }} mb={{ base: "8", lg: "0" }}> {/* Added margin bottom for mobile and margin right for larger screens */}
-              <Text as="h2" fontSize="2xl">Trending</Text>
-            </Box>
-            <Box mr={{ base: "0", lg: "8" }}> {/* Added margin right for larger screens */}
-              <BlogSection blogs = {blogs}/>
-            </Box>
-            <Box>
-              <Text as="h2" fontSize="2xl">Tags</Text>
-              <Text as="h2" fontSize="2xl">Most Popular</Text>
-            </Box>
-          </Flex>
-        </Container>
+    <Flex>
+      <ContributeSidebar />
+      <Box flex="1">
+        <Box
+          className="bg-black"
+          backgroundImage={contribute_header}
+          backgroundPosition="center"
+          backgroundSize="cover"
+          backgroundRepeat="no-repeat"
+          paddingTop="60px"
+          marginTop="40px"
+          display="flex"
+          justifyContent="center"
+          height="250px"
+        >
+          <BlogSection blogs={blogs} />
+        </Box>
       </Box>
-    </ContributeLayout>
+    </Flex>
   );
 }
 
