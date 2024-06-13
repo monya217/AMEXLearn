@@ -13,8 +13,75 @@ nav {
     justify-content: space-between;
     z-index: 10;
     transition: background-color 0.5s;
-    background: transparent; /* Start with transparent background */
+    background: transparent;
 }
+
+.navbar-links {
+    display: flex;
+    margin-top: 0px;
+    position: relative;
+}
+
+.navbar-links li {
+    margin-right: 140px;
+    font-family: 'Actor', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+.navbar-links .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--primary-hue); /* Change background color */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 100%; /* Position the dropdown below the link */
+    left: 0;
+    border-radius: 4px; /* Add border-radius */
+    overflow: hidden;
+}
+
+.navbar-links .dropdown-content span {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.navbar-links .dropdown-content span:hover {
+    background-color: white; /* Change hover background color */
+    color: black;
+}
+
+.navbar-links .dropdown .dropbtn {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-links .dropdown .arrow {
+    margin-left: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transition: transform 0.3s ease; /* Add transition for smooth arrow rotation */
+}
+
+.navbar-links .dropdown .arrow.down {
+    transform: rotate(45deg);
+}
+
+.navbar-links .dropdown .arrow.up {
+    transform: rotate(-135deg);
+}
+
+.navbar-links .dropdown-content.show {
+    display: block;
+}
+
+
 
 nav ul {
     list-style: none;
@@ -32,17 +99,7 @@ nav ul li {
 }
 
 
-.navbar-links {
-    display: flex;
-    margin-top: 0px;
-}
 
-.navbar-links li {
-    margin-right: 140px;
-    font-family: 'Actor', sans-serif;
-    font-size: 16px;
-    cursor: pointer;
-}
 
 .navbar-links li:hover,
 .navbar-links li:active {
@@ -77,8 +134,6 @@ nav ul li {
 .menu-icon i.fa-bars {
     display: inline;
     margin-right: 10px;
-    
-    
 }
 
 .menu-icon i.fa-times {
@@ -87,7 +142,6 @@ nav ul li {
 
 .menu-icon.open i.fa-bars {
     display: none;
-
 }
 
 .menu-icon.open i.fa-times {
@@ -95,12 +149,13 @@ nav ul li {
     margin-right: 10px;
 }
 
-@media (max-width: 1100px){
+@media (max-width: 1100px) {
     .navbar-links li {
         margin-right: 100px;
     }
 }
-@media (max-width: 950px){
+
+@media (max-width: 950px) {
     .navbar-links li {
         margin-right: 80px;
     }
@@ -132,7 +187,7 @@ nav ul li {
         right: 100%;
     }
 
-    #menuList{
+    #menuList {
         transition: all 0.5s;
     }
 

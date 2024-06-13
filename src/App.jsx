@@ -18,6 +18,7 @@ import PrivateRoute from "./components/Contribute/PrivateRoute.jsx";
 import ProfilePage from "./components/GetInTouch/Profile/ProfilePage.jsx";
 import Blogpage from "./pages/contribute/Blogpage.jsx";
 import { StockGeeks } from "./components/GetInTouch/StockGeeks";
+import Podcasts from './pages/podcast/Podcasts.jsx'
 
 const App = () => {
   const [authUser] = useAuthState(auth);
@@ -62,6 +63,7 @@ const App = () => {
             </PrivateRoute>
           }
         />
+        <Route path="/podcasts" element={<Podcasts />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/auth" element={!authUser ? <AuthPage /> : <Navigate to="/" />} />
         <Route path="/:username" element={<ProfilePage />} />
