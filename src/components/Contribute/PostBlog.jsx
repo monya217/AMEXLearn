@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Flex, Stack, Input, Textarea, Button, Radio, RadioGroup, Select, Box, Heading, Text } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { firestore, storage } from '../../firebase/firebase';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import useShowToast from '../../hooks/useShowToast';
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { addDoc, updateDoc, doc, collection, serverTimestamp, getDoc } from "firebase/firestore";
 import useAuthStore from '../../store/authStore';
 import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
 
-const initialState = {
-    title: "",
-    trending: "no",
-    category: "",
-    description: "",
-    overview: ""
-};
-
-const categoryOption = [
+const categoryOptions = [
     "Debt Management",
     "Investment",
     "Financial Independence",
@@ -33,91 +25,108 @@ const categoryOption = [
 ];
 
 const PostBlog = () => {
-    const [form, setForm] = useState(initialState);
+    const location = useLocation();
+    const blogId = new URLSearchParams(location.search).get('blogId');
+    const [form, setForm] = useState({
+        title: '',
+        description: '',
+        category: '',
+        imgUrl: '',
+        trending: 'no',
+        overview: ''
+    });
     const [file, setFile] = useState(null);
     const [progress, setProgress] = useState(null);
     const navigate = useNavigate();
     const authUser = useAuthStore(state => state.user);
     const showToast = useShowToast();
 
-    const { title, category, trending, description, overview } = form;
-
     useEffect(() => {
-        const uploadFile = () => {
-            const storageRef = ref(storage, file.name);
-            const uploadTask = uploadBytesResumable(storageRef, file);
-
-            uploadTask.on(
-                "state_changed",
-                (snapshot) => {
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log("Upload is " + progress + "% done");
-                    setProgress(progress);
-                    switch (snapshot.state) {
-                        case "paused":
-                            console.log("Upload is paused");
-                            break;
-                        case "running":
-                            console.log("Upload is running");
-                            break;
-                        default:
-                            break;
-                    }
-                },
-                (error) => {
-                    console.log(error);
-                },
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
-                        setForm((prev) => ({ ...prev, imgUrl: downloadUrl }));
+        if (blogId) {
+            const fetchBlog = async () => {
+                const blogDoc = await getDoc(doc(firestore, "blogs", blogId));
+                if (blogDoc.exists()) {
+                    const blogData = blogDoc.data();
+                    setForm({
+                        title: blogData.title,
+                        description: blogData.description,
+                        category: blogData.category,
+                        imgUrl: blogData.imgUrl,
+                        trending: blogData.trending ? 'yes' : 'no',
+                        overview: blogData.overview
                     });
                 }
-            );
-        };
-        file && uploadFile();
+            };
+            fetchBlog();
+        }
+    }, [blogId]);
+
+    useEffect(() => {
+        if (file) {
+            const uploadFile = () => {
+                const storageRef = ref(storage, file.name);
+                const uploadTask = uploadBytesResumable(storageRef, file);
+
+                uploadTask.on(
+                    "state_changed",
+                    (snapshot) => {
+                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        console.log("Upload is " + progress + "% done");
+                        setProgress(progress);
+                    },
+                    (error) => {
+                        console.log(error);
+                    },
+                    () => {
+                        getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
+                            setForm((prev) => ({ ...prev, imgUrl: downloadUrl }));
+                        });
+                    }
+                );
+            };
+            uploadFile();
+        }
     }, [file]);
 
     const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
     };
 
     const handleTrending = (value) => {
-        setForm({ ...form, trending: value });
+        setForm((prev) => ({ ...prev, trending: value }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!title) {
-            showToast('Error', 'Please add title.', 'error');
-            return;
-        }
-        if (!category) {
-            showToast('Error', 'Please select a category.', 'error');
-            return;
-        }
-        if (!description) {
-            showToast('Error', 'Please fill out the description field.', 'error');
-            return;
-        }
-        if (!overview) {
-            showToast('Error', 'Please fill out the overview field.', 'error');
-            return;
-        }
-        if (!file) {
-            showToast('Error', 'Please upload an image.', 'error');
+        const { title, category, description, overview, imgUrl, trending } = form;
+        if (!title || !category || !description || !overview || (!file && !imgUrl)) {
+            showToast('Error', 'Please fill out all fields and upload an image.', 'error');
             return;
         }
         console.log("Form data:", form);
         try {
-            await addDoc(collection(firestore, "blogs"), {
-                ...form,
-                Timestamp: serverTimestamp(),
-                author: authUser.fullName,
-                userId: authUser.uid
-            });
+            if (blogId) {
+                await updateDoc(doc(firestore, "blogs", blogId), {
+                    ...form,
+                    trending: trending === 'yes',
+                    Timestamp: serverTimestamp(),
+                    author: authUser.fullName,
+                    userId: authUser.uid
+                });
+            } else {
+                await addDoc(collection(firestore, "blogs"), {
+                    ...form,
+                    trending: trending === 'yes',
+                    Timestamp: serverTimestamp(),
+                    author: authUser.fullName,
+                    userId: authUser.uid
+                });
+            }
             navigate("/contribute");
         } catch (err) {
             console.log(err);
+            showToast('Error', 'An error occurred while submitting the form.', 'error');
         }
     };
 
@@ -126,19 +135,19 @@ const PostBlog = () => {
             <ContributeSidebar />
             <Stack spacing={4} align="center" pt="60px" w="full">
                 <Heading as="h2" size="lg" textAlign="center">
-                    Create Blog
+                    {blogId ? 'Edit Blog' : 'Create Blog'}
                 </Heading>
                 <Box as="form" className="blog-form" onSubmit={handleSubmit} w="full" maxW="600px" p={4}>
                     <Input
                         type="text"
                         placeholder="Title"
                         name="title"
-                        value={title}
+                        value={form.title}
                         onChange={handleChange}
                         mb={4}
                     />
                     <Text mb={2}>Is it a trending article?</Text>
-                    <RadioGroup value={trending} onChange={handleTrending} mb={4}>
+                    <RadioGroup value={form.trending} onChange={handleTrending} mb={4}>
                         <Stack direction="row" spacing={4}>
                             <Radio value="yes">Yes</Radio>
                             <Radio value="no">No</Radio>
@@ -146,20 +155,20 @@ const PostBlog = () => {
                     </RadioGroup>
                     <Select
                         placeholder="Please select category"
-                        value={category}
+                        value={form.category}
                         onChange={handleChange}
                         name="category"
                         mb={4}
                     >
-                        {categoryOption.map((option, index) => (
-                            <option value={option || ""} key={index}>
+                        {categoryOptions.map((option, index) => (
+                            <option value={option} key={index}>
                                 {option}
                             </option>
                         ))}
                     </Select>
                     <Textarea
                         placeholder="Overview"
-                        value={overview}
+                        value={form.overview}
                         name="overview"
                         onChange={handleChange}
                         mb={4}
@@ -167,7 +176,7 @@ const PostBlog = () => {
                     />
                     <Textarea
                         placeholder="Description"
-                        value={description}
+                        value={form.description}
                         name="description"
                         onChange={handleChange}
                         mb={4}

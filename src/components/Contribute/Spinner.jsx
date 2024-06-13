@@ -1,16 +1,17 @@
 import React from "react";
-import { Spinner as ChakraSpinner } from "@chakra-ui/react";
+import { Box, Spinner as ChakraSpinner } from "@chakra-ui/react";
 
 const Spinner = () => {
   return (
-    <ChakraSpinner
-      mt="5"
-      color="primary"
-      size="xl"
-      emptyColor="gray.200"
-      thickness="4px"
-      speed="0.65s"
-    />
+    <Box display="flex" justifyContent="center" alignItems="center" pt="20">
+      <ChakraSpinner
+        color="primary"
+        size="xl"
+        emptyColor="gray.200"
+        thickness="4px"
+        speed="0.35s"
+      />
+    </Box>
   );
 };
 
