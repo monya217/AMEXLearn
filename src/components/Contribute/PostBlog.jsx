@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Flex, Stack, Input, Textarea, Button, Radio, RadioGroup, Select, Box, Heading, Text } from "@chakra-ui/react";
+import { Flex, Stack, Input, Textarea, Button, Radio, RadioGroup, Select, Box, Heading, Text, useToast } from "@chakra-ui/react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { firestore, storage } from '../../firebase/firebase';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import useShowToast from '../../hooks/useShowToast';
 import { addDoc, updateDoc, doc, collection, serverTimestamp, getDoc } from "firebase/firestore";
 import useAuthStore from '../../store/authStore';
 import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
@@ -26,6 +25,7 @@ const categoryOptions = [
 
 const PostBlog = () => {
     const location = useLocation();
+    const toast = useToast();
     const blogId = new URLSearchParams(location.search).get('blogId');
     const [form, setForm] = useState({
         title: '',
@@ -35,11 +35,13 @@ const PostBlog = () => {
         trending: 'no',
         overview: ''
     });
+    useEffect(() => {
+        window.scrollTo(0, 0); 
+    }, []);
     const [file, setFile] = useState(null);
     const [progress, setProgress] = useState(null);
     const navigate = useNavigate();
     const authUser = useAuthStore(state => state.user);
-    const showToast = useShowToast();
 
     useEffect(() => {
         if (blogId) {
@@ -100,8 +102,14 @@ const PostBlog = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { title, category, description, overview, imgUrl, trending } = form;
-        if (!title || !category || !description || !overview || (!file && !imgUrl)) {
-            showToast('Error', 'Please fill out all fields and upload an image.', 'error');
+        if (!title || !category || !description || !overview || !imgUrl) {
+            toast({
+                title: 'Error',
+                description: 'Please fill out all fields and upload an image.',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            });
             return;
         }
         console.log("Form data:", form);
@@ -114,6 +122,13 @@ const PostBlog = () => {
                     author: authUser.fullName,
                     userId: authUser.uid
                 });
+                toast({
+                    title: 'Success',
+                    description: 'Blog updated successfully.',
+                    status: 'success',
+                    duration: 5000,
+                    isClosable: true,
+                });
             } else {
                 await addDoc(collection(firestore, "blogs"), {
                     ...form,
@@ -122,11 +137,24 @@ const PostBlog = () => {
                     author: authUser.fullName,
                     userId: authUser.uid
                 });
+                toast({
+                    title: 'Success',
+                    description: 'Blog created successfully.',
+                    status: 'success',
+                    duration: 5000,
+                    isClosable: true,
+                });
             }
             navigate("/contribute");
         } catch (err) {
             console.log(err);
-            showToast('Error', 'An error occurred while submitting the form.', 'error');
+            toast({
+                title: 'Error',
+                description: 'An error occurred while submitting the form.',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            });
         }
     };
 

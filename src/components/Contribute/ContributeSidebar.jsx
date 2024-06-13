@@ -33,7 +33,7 @@ const ContributeSidebar = () => {
       borderRight={"1px solid"}
       borderColor={"gray.200"}
       py={10}
-      position={"sticky"}
+      position={"fixed"}
       top={18}
       left={0}
       px={2}
