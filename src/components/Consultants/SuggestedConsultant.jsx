@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box, Flex, Image, Text, VStack, Button, HStack, Link, Icon,
   Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
@@ -32,42 +32,44 @@ const consultants = [
 
 const ConsultantCard = ({ name, avatar, experience, rating, socialProfiles, onBook }) => (
   <Box
-    border="1px solid"
-    borderColor="gray.200"
-    borderRadius="lg"
-    p={4}
-    mb={4}
-    _hover={{ boxShadow: "md" }}
-  >
-    <Flex direction="column" align="center" mb={4}>
+  border="1px solid"
+  borderColor="blue.300" // Set the border color to a bluish tone
+  borderRadius="lg"
+  p={2}
+  mb={2}
+  bg="blue.50" // Set the background color to a light bluish tone
+  _hover={{ boxShadow: "md", bg: "blue.100" }} // Adjust hover effect to enhance the bluish tone
+>
+
+    <Flex direction="column" align="center" mb={2}>
       <Box
-        boxSize="200px"
+        boxSize="170px"
         border="1px solid"
         borderColor="gray.300"
         borderRadius="lg"
         overflow="hidden"
-        mb={4}
+        mb={2}
       >
         <Image src={avatar} alt={name} boxSize="full" objectFit="cover" />
       </Box>
       <VStack align="center" spacing={1}>
-        <Text fontWeight="bold" fontSize="xl">Consultant</Text>
-        <Text fontWeight="bold" fontSize="lg">{name}</Text>
-        <Text fontSize="md">Experience: {experience}</Text>
-        <Text fontSize="md">Rating: {rating}</Text>
-        <Text fontSize="md">Social Profiles:</Text>
-        <HStack spacing={4}>
+        <Text fontWeight="bold" fontSize="md">Consultant</Text>
+        <Text fontWeight="bold" fontSize="md">{name}</Text>
+        <Text fontSize="sm">Experience: {experience}</Text>
+        <Text fontSize="sm">Rating: {rating}</Text>
+        <Text fontSize="sm">Social Profiles:</Text>
+        <HStack spacing={2}>
           <Link href={socialProfiles.linkedin} isExternal>
-            <Icon as={FaLinkedin} w={6} h={6} color="blue.500" />
+            <Icon as={FaLinkedin} w={4} h={4} color="blue.500" />
           </Link>
           <Link href={socialProfiles.twitter} isExternal>
-            <Icon as={FaTwitter} w={6} h={6} color="blue.500" />
+            <Icon as={FaTwitter} w={4} h={4} color="blue.500" />
           </Link>
         </HStack>
       </VStack>
     </Flex>
     <Flex justify="center">
-      <Button size="md" colorScheme="blue" mt={4} onClick={onBook}>Book a Session</Button>
+      <Button size="sm" colorScheme="blue" mt={2} onClick={onBook}>Book a Session</Button>
     </Flex>
   </Box>
 );
@@ -84,6 +86,14 @@ const ConsultantCarousel = () => {
     setCurrentConsultantIndex(index);
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentConsultantIndex((prevIndex) => (prevIndex + 1) % consultants.length);
+    }, 3000); // Change consultant every 3 seconds
+
+    return () => clearInterval(interval); // Clear interval on component unmount
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission
@@ -92,18 +102,18 @@ const ConsultantCarousel = () => {
 
   return (
     <Box>
-      <Flex justify="center" align="center" mb={4}>
-        <Text fontSize="lg" fontWeight="bold" mb={4}>Suggested Consultants</Text>
+      <Flex justify="center" align="center" mb={2}>
+        <Text fontSize="md" fontWeight="bold" mb={2}>Suggested Consultants</Text>
       </Flex>
-      <Flex justify="center" align="center" mb={4}>
+      <Flex justify="center" align="center" mb={2}>
         {consultants.map((consultant, index) => (
           <Box
             key={index}
-            w="5"
-            h="5"
+            w="3"
+            h="3"
             bg={index === currentConsultantIndex ? "blue.500" : "gray.200"}
             borderRadius="full"
-            mr={2}
+            mr={1}
             cursor="pointer"
             onClick={() => goToConsultant(index)}
           />
@@ -114,48 +124,48 @@ const ConsultantCarousel = () => {
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Book a Session</ModalHeader>
+          <ModalHeader fontSize="md">Book a Session</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <form onSubmit={handleSubmit}>
-              <FormControl isRequired mb={4}>
-                <FormLabel>Name</FormLabel>
-                <Input placeholder="Your Name" />
+              <FormControl isRequired mb={2}>
+                <FormLabel fontSize="sm">Name</FormLabel>
+                <Input placeholder="Your Name" size="sm" />
               </FormControl>
-              <FormControl isRequired mb={4}>
-                <FormLabel>Email</FormLabel>
-                <Input type="email" placeholder="Your Email" />
+              <FormControl isRequired mb={2}>
+                <FormLabel fontSize="sm">Email</FormLabel>
+                <Input type="email" placeholder="Your Email" size="sm" />
               </FormControl>
-              <FormControl isRequired mb={4}>
-                <FormLabel>Session Details</FormLabel>
-                <Textarea placeholder="Describe the session details" />
+              <FormControl isRequired mb={2}>
+                <FormLabel fontSize="sm">Session Details</FormLabel>
+                <Textarea placeholder="Describe the session details" size="sm" />
               </FormControl>
-              <FormControl isReadOnly mb={4}>
-                <FormLabel>Price</FormLabel>
-                <Input value="1500 rupees" isReadOnly />
+              <FormControl isReadOnly mb={2}>
+                <FormLabel fontSize="sm">Price</FormLabel>
+                <Input value="1500 rupees" isReadOnly size="sm" />
               </FormControl>
-              <FormControl as="fieldset" mb={4}>
-                <FormLabel as="legend">Payment Method</FormLabel>
+              <FormControl as="fieldset" mb={2}>
+                <FormLabel as="legend" fontSize="sm">Payment Method</FormLabel>
                 <RadioGroup value={paymentMethod} onChange={setPaymentMethod}>
-                  <Stack spacing={5} direction="row">
-                    <Radio value="amex">Amex Card</Radio>
-                    <Radio value="upi">UPI</Radio>
+                  <Stack spacing={3} direction="row">
+                    <Radio value="amex" size="sm">Amex Card</Radio>
+                    <Radio value="upi" size="sm">UPI</Radio>
                   </Stack>
                 </RadioGroup>
               </FormControl>
               {paymentMethod === 'amex' && (
-                <FormControl isRequired mb={4}>
-                  <FormLabel>Card Number</FormLabel>
-                  <Input placeholder="Card Number" />
+                <FormControl isRequired mb={2}>
+                  <FormLabel fontSize="sm">Card Number</FormLabel>
+                  <Input placeholder="Card Number" size="sm" />
                 </FormControl>
               )}
               {paymentMethod === 'upi' && (
-                <FormControl isRequired mb={4}>
-                  <FormLabel>UPI ID</FormLabel>
-                  <Input placeholder="UPI ID" />
+                <FormControl isRequired mb={2}>
+                  <FormLabel fontSize="sm">UPI ID</FormLabel>
+                  <Input placeholder="UPI ID" size="sm" />
                 </FormControl>
               )}
-              <Button type="submit" colorScheme="blue" width="full">Order</Button>
+              <Button type="submit" colorScheme="blue" width="full" size="sm">Order</Button>
             </form>
           </ModalBody>
         </ModalContent>
