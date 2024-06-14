@@ -1,62 +1,72 @@
 import React from 'react';
-import { Flex, Box, Text, VStack, Icon } from "@chakra-ui/react";
-import { FaCalendarTimes } from "react-icons/fa";
-import DashboardCards from '../../components/Dashboard/DashboardCards';
-import DashboardChart from '../../components/Dashboard/DashboardChart';
-// import DashboardTable from '../../components/Dashboard/DashboardTable';
-import DashboardPieChart from '../../components/Dashboard/DashboardPieChart';
-import DashboardCreditScore from '../../components/Dashboard/DashboardCreditScore';
-import DashboardCourseProgress from '../../components/Dashboard/DashboardCourseProgress';
-import useAuthStore from "../../store/authStore";
+import { Box, Flex, Heading, SimpleGrid, Stat, StatLabel, StatNumber, Center } from '@chakra-ui/react';
+import ProfileHeader from '../../components/Dashboard/Learn/ProfileHeader';
+import LeaderboardChart from '../../components/Dashboard/Learn/LeaderboardChart';
+import LearningHoursChart from '../../components/Dashboard/Learn/LearningHoursChart';
+import CourseList from '../../components/Dashboard/Learn/CourseList';
+import GameList from '../../components/Dashboard/Learn/GameList';
+import Certifications from '../../components/Dashboard/Learn/Certifications';
+import DashboardSidebar from '../../components/Dashboard/DashboardSidebar'; 
 
-const Dashboard = () => {
-  const authUser = useAuthStore(state => state.user);
-  if (!authUser) return null;
-
+const ProfilePage = () => {
   return (
-    <Flex
-      as="main"
-      minHeight="100vh"
-      bg="gray.50"
-      p={8}
-      flexDirection="column"
-      alignItems="center"
-    >
-      <Box mb={8} textAlign="center">
-        <Text fontSize="3xl" fontWeight="bold" mt={10}>
-          Welcome to your Dashboard, {authUser.fullName}!
-        </Text>
+    <Flex>
+      <DashboardSidebar /> 
+      <Box p={5} mt={10} flex="1">
+        <ProfileHeader />
+
+        <Heading size="lg" mb={5}>Courses and Games</Heading>
+
+        <Center mb={5}>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
+            <Box
+              p={5}
+              shadow="md"
+              borderWidth="1px"
+              borderRadius="md"
+              bg="white"
+              textAlign="center"
+              // Center alignment added
+              mx="auto"
+            >
+              <Stat>
+                <StatLabel fontSize="lg" fontWeight="bold">Courses Completed</StatLabel>
+                <StatNumber fontSize="3xl" color={"blue.500"} fontWeight="bold">4</StatNumber>
+              </Stat>
+            </Box>
+            <Box
+              p={5}
+              shadow="md"
+              borderWidth="1px"
+              borderRadius="md"
+              bg="white"
+              textAlign="center"
+              // Center alignment added
+              mx="auto"
+            >
+              <Stat>
+                <StatLabel fontSize="lg" fontWeight="bold">Courses in Progress</StatLabel>
+                <StatNumber fontSize="3xl" color={"blue.500"} fontWeight="bold">5</StatNumber>
+              </Stat>
+            </Box>
+          </SimpleGrid>
+        </Center>
+
+        <Flex flexDirection={{ base: 'column', md: 'row' }} gap={10}>
+          <LeaderboardChart />
+          <LearningHoursChart />
+        </Flex>
+
+        <Heading size="md" mb={3} mt={10}>Courses</Heading>
+        <CourseList />
+
+        <Heading size="md" mb={3} mt={10}>Games</Heading>
+        <GameList />
+
+        <Certifications />
       </Box>
-      <Flex
-        maxW="1200px"
-        w="full"
-        gap={8}
-        flexDirection={{ base: "column", lg: "row" }}
-      >
-        <Box flex={{ lg: 3 }} display="flex" flexDirection="column" gap={6}>
-          <DashboardCards />
-          <DashboardChart />
-          <DashboardCreditScore />
-        </Box>
-        <Box flex={{ lg: 2 }} display="flex" flexDirection="column" gap={6}>
-          {/* <DashboardTable /> */}
-          <DashboardPieChart />
-          <DashboardCourseProgress />
-          <Box bg="white" borderRadius="xl" boxShadow="lg" p={6}>
-            <Text fontSize="xl" fontWeight="bold" mb={6}>
-              Sessions History
-            </Text>
-            <VStack spacing={4} alignItems="center">
-              <Icon as={FaCalendarTimes} boxSize={16} color="gray.400" />
-              <Text fontSize="lg" color="gray.600" textAlign="center">
-                No scheduled sessions found. Please schedule a new session.
-              </Text>
-            </VStack>
-          </Box>
-        </Box>
-      </Flex>
     </Flex>
   );
 };
 
-export default Dashboard;
+export default ProfilePage;

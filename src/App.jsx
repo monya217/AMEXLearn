@@ -20,7 +20,9 @@ import ProfilePage from "./components/GetInTouch/Profile/ProfilePage.jsx";
 import Blogpage from "./pages/contribute/Blogpage.jsx";
 import { StockGeeks } from "./components/GetInTouch/StockGeeks";
 import Podcasts from './pages/podcast/Podcasts.jsx';
-import { store } from "./redux/store"; // Ensure you have this import correctly
+import { store } from "./redux/store"; 
+import Sessions from "./components/Dashboard/Sessions.jsx";
+import Activity from "./components/Dashboard/Activity.jsx";
 
 const App = () => {
   const [authUser] = useAuthState(auth);
@@ -68,6 +70,22 @@ const App = () => {
           />
           <Route path="/podcasts" element={<Podcasts />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard/sessions"
+            element={
+              <PrivateRoute>
+                <Sessions />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dashboard/activity"
+            element={
+              <PrivateRoute>
+                <Activity />
+              </PrivateRoute>
+            }
+          />
           <Route path="/auth" element={!authUser ? <AuthPage /> : <Navigate to="/" />} />
           <Route path="/:username" element={<ProfilePage />} />
           <Route path="/blog/:id" element={<Blogpage user={user} />} />
