@@ -19,24 +19,32 @@ const ProfileHeader = () => {
 
   return (
     <Box mb={5}>
-      <Flex justify="space-between" align="center">
-        <Heading size="xl">{getGreeting()}, {authUser.fullName}!</Heading>
-      </Flex>
       <Box
-        position="fixed"
-        top={50}
-        right={2}
-        bg="white"
-        boxShadow="lg"
+        bg="blue.500"
+        color="white"
         borderRadius="md"
-        p={2}
+        p={5}
         display="flex"
         alignItems="center"
-        zIndex={1000}
+        justifyContent="space-between"
       >
-        <Icon as={FaCoins} boxSize="24px" color="yellow.400" mr={2} />
-        <Text fontSize="lg" fontWeight="bold" mr={2}>1,190</Text>
-        <Text fontSize="lg" fontWeight="bold">Coins</Text>
+        <Flex alignItems="center">
+          <Heading size="xl">{getGreeting()}, {authUser.fullName}!</Heading>
+        </Flex>
+        <Box
+          position="relative"
+          display="flex"
+          alignItems="center"
+          bg="white"
+          color="black"
+          boxShadow="lg"
+          borderRadius="md"
+          p={2}
+        >
+          <Icon as={FaCoins} boxSize="24px" color="yellow.400" mr={2} />
+          <Text fontSize="lg" fontWeight="bold" mr={2}>1,190</Text>
+          <Text fontSize="lg" fontWeight="bold">Coins</Text>
+        </Box>
       </Box>
     </Box>
   );

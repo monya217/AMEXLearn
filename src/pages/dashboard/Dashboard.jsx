@@ -8,7 +8,7 @@ import GameList from '../../components/Dashboard/Learn/GameList';
 import Certifications from '../../components/Dashboard/Learn/Certifications';
 import DashboardSidebar from '../../components/Dashboard/DashboardSidebar'; 
 
-const ProfilePage = () => {
+const Dashboard = () => {
   return (
     <Flex>
       <DashboardSidebar /> 
@@ -69,4 +69,5 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default Dashboard
+
