@@ -1,5 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Flex, Stack, Input, Textarea, Button, Radio, RadioGroup, Select, Box, Heading, Text, useToast } from "@chakra-ui/react";
+import {
+    Flex,
+    Stack,
+    Input,
+    Textarea,
+    Button,
+    Select,
+    Box,
+    Heading,
+    Text,
+    useToast,
+    FormControl,
+    FormLabel,
+} from "@chakra-ui/react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { firestore, storage } from '../../firebase/firebase';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
@@ -34,9 +47,11 @@ const PostBlog = () => {
         imgUrl: '',
         overview: ''
     });
+
     useEffect(() => {
-        window.scrollTo(0, 0); 
+        window.scrollTo(0, 0);
     }, []);
+
     const [file, setFile] = useState(null);
     const [progress, setProgress] = useState(null);
     const navigate = useNavigate();
@@ -99,7 +114,17 @@ const PostBlog = () => {
         if (!title || !category || !description || !overview || !imgUrl) {
             toast({
                 title: 'Error',
-                description: 'Please fill out all fields and upload an image.',
+                description: 'Please fill out all fields.',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            });
+            return;
+        }
+        if (progress !== null && progress < 100) {
+            toast({
+                title: 'Error',
+                description: 'Image upload in progress. Please wait until it is completed.',
                 status: 'error',
                 duration: 5000,
                 isClosable: true,
@@ -150,69 +175,95 @@ const PostBlog = () => {
         }
     };
 
+    const handleCancel = () => {
+        navigate("/contribute");
+    };
+
     return (
         <Flex>
             <ContributeSidebar />
-            <Stack spacing={4} align="center" pt="60px" w="full">
-                <Heading as="h2" size="lg" textAlign="center">
-                    {blogId ? 'Edit Blog' : 'Create Blog'}
-                </Heading>
-                <Box as="form" className="blog-form" onSubmit={handleSubmit} w="full" maxW="600px" p={4}>
-                    <Input
-                        type="text"
-                        placeholder="Title"
-                        name="title"
-                        value={form.title}
-                        onChange={handleChange}
-                        mb={4}
-                    />
-                    <Select
-                        placeholder="Please select category"
-                        value={form.category}
-                        onChange={handleChange}
-                        name="category"
-                        mb={4}
-                    >
-                        {categoryOptions.map((option, index) => (
-                            <option value={option} key={index}>
-                                {option}
-                            </option>
-                        ))}
-                    </Select>
-                    <Textarea
-                        placeholder="Overview"
-                        value={form.overview}
-                        name="overview"
-                        onChange={handleChange}
-                        mb={4}
-                        resize="vertical"
-                    />
-                    <Textarea
-                        placeholder="Description"
-                        value={form.description}
-                        name="description"
-                        onChange={handleChange}
-                        mb={4}
-                        rows={10} 
-                        resize="vertical"
-                    />
-                    <Text mb={2}>Insert Image</Text>
-                    <Input
-                        type="file"
-                        onChange={(e) => setFile(e.target.files[0])}
-                        mb={4}
-                    />
-                    <Button
-                        colorScheme="blue"
-                        variant="solid"
-                        type="submit"
-                        disabled={progress !== null && progress < 100}
-                        w="full"
-                    >
-                        Submit
-                    </Button>
+            <Flex direction="column" align="center" justify="center" w="full" pt="60px">
+                <Box w="full" maxW="800px" p={6} boxShadow="lg" rounded="md" bg="white">
+                    <Heading as="h2" size="xl" textAlign="center" mb={6}>
+                        {blogId ? 'Edit Blog' : 'Create Blog'}
+                    </Heading>
+                    <Box as="form" onSubmit={handleSubmit}>
+                        <FormControl mb={4}>
+                            <FormLabel>Title</FormLabel>
+                            <Input
+                                type="text"
+                                placeholder="Title"
+                                name="title"
+                                value={form.title}
+                                onChange={handleChange}
+                            />
+                        </FormControl>
+                        <FormControl mb={4}>
+                            <FormLabel>Category</FormLabel>
+                            <Select
+                                placeholder="Please select category"
+                                value={form.category}
+                                onChange={handleChange}
+                                name="category"
+                            >
+                                {categoryOptions.map((option, index) => (
+                                    <option value={option} key={index}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </Select>
+                        </FormControl>
+                        <FormControl mb={4}>
+                            <FormLabel>Overview</FormLabel>
+                            <Textarea
+                                placeholder="Overview"
+                                value={form.overview}
+                                name="overview"
+                                onChange={handleChange}
+                                resize="vertical"
+                            />
+                        </FormControl>
+                        <FormControl mb={4}>
+                            <FormLabel>Description</FormLabel>
+                            <Textarea
+                                placeholder="Description"
+                                value={form.description}
+                                name="description"
+                                onChange={handleChange}
+                                resize="vertical"
+                                rows={6}
+                            />
+                        </FormControl>
+                        <FormControl mb={4}>
+                            <FormLabel>Insert Image</FormLabel>
+                            <Input
+                                type="file"
+                                onChange={(e) => setFile(e.target.files[0])}
+                            />
+                        </FormControl>
+                        <Stack direction="row" spacing={4}>
+                            <Button
+                                colorScheme="blue"
+                                variant="solid"
+                                type="submit"
+                                isFullWidth
+                                isLoading={progress !== null && progress < 100}
+                                loadingText="Submitting"
+                            >
+                                Submit
+                            </Button>
+                            <Button
+                                colorScheme="red"
+                                variant="outline"
+                                onClick={handleCancel}
+                                isFullWidth
+                            >
+                                Cancel
+                            </Button>
+                        </Stack>
+                    </Box>
                 </Box>
-            </Stack>
+            </Flex>
         </Flex>
     );
 };

@@ -1,30 +1,21 @@
 import React from 'react';
 import { Box, Flex, Link, Tooltip } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
-import { FaSearch, FaUser, FaImage, FaFileAlt } from "react-icons/fa"; // Import the necessary icons
+import { FaPlus, FaFileAlt } from "react-icons/fa"; // Import the necessary icons
 
 const ContributeSidebar = () => {
   const sidebarItems = [
     {
-      icon: <FaUser size={25} />,
-      text: "Articles",
+      icon: <FaFileAlt size={20} />,
+      text: "Blogs",
       link: "/contribute",
     },
     {
-      icon: <FaSearch size={20} />,
+      icon: <FaPlus size={20} />,
       text: "Create Post",
       link: "/contribute/post",
     },
-    {
-      icon: <FaImage boxSize={10} />,
-      text: "Notifications",
-      link: "/contribute/notifications",
-    },
-    {
-      icon: <FaFileAlt size={20} />,
-      text: "Profile",
-      link: "/profile",
-    },
+
   ];
 
   return (
@@ -42,7 +33,8 @@ const ContributeSidebar = () => {
       overflow="hidden"
       transition="width 0.2s"
       _hover={{ width: "200px" }}
-      pt={20} // Increase padding from top
+      pt={20} 
+      zIndex = {100}
     >
       <Flex direction={"column"} gap={5} cursor={"pointer"}>
         {sidebarItems.map((item, index) => (

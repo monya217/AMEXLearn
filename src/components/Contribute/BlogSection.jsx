@@ -44,7 +44,7 @@ const BlogSection = ({ blogs }) => {
   };
 
   return (
-    <Box p={5} display="flex" flexWrap="wrap" justifyContent="center" paddingTop="250px">
+    <Box p={5} display="flex" flexWrap="wrap" justifyContent="center" >
       {loading ? (
         <Spinner />
       ) : (
