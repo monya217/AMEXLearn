@@ -11,11 +11,12 @@ const trendingTopics = [
 const TrendingCard = ({ rank, title }) => (
   <Box
     border="1px solid"
-    borderColor="gray.200"
+    borderColor="blue.300" // Set border color to a light blue tone
+    bg="blue.50" // Set background color to a light blue tone
     borderRadius="md"
     p={4}
     mb={4}
-    _hover={{ boxShadow: "md" }}
+    _hover={{ boxShadow: "md", bg: "blue.100" }} // Adjust hover effect to a slightly darker blue
   >
     <VStack align="start" spacing={1}>
       <Text fontWeight="bold" fontSize="sm">{rank}</Text>

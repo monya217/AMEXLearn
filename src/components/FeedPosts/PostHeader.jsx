@@ -55,10 +55,10 @@ const PostHeader = ({ post, creatorProfile }) => {
         </Box>
       </Flex>
 
-      {/* Image description */}
+      {/* Caption */}
       <Box mt={2}>
-        <Text fontSize={12} color={"gray.600"}>
-          Calling all Finance enthusiasts in the finance festival.
+        <Text fontSize={14} color={"gray.800"}>
+          {post.caption}
         </Text>
       </Box>
     </Flex>

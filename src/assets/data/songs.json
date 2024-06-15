@@ -1,0 +1,168 @@
+[
+    {
+      "id": 1,
+      "title": "Podcast 1",
+      "image": "https://dailymix-images.scdn.co/v2/img/ab6761610000e5eba91ecec6eabf17bf8d997d82/4/tr/default",
+      "description": "Investment",
+      "type": "playlist",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "artist": "Person 1"
+    },
+    {
+      "id": 2,
+      "title": "Podcast 2",
+      "image": "https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb23bb9081eb5614e8e8e81990/5/tr/default",
+      "description": "Investment",
+      "type": "playlist",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "artist": "Person 2"
+    },
+  
+    {
+      "id": 3,
+      "title": "Podcast 3",
+      "image": "https://misc.scdn.co/liked-songs/liked-songs-640.png",
+      "description": "Stocks",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/93/93983_43-lq.mp3",
+      "artist": "Person 3"
+    },
+  
+    {
+      "id": 4,
+      "title": "Podcast 4",
+      "image": "https://i.scdn.co/image/ab67706c0000da8475d81c595e391e416bad6c5e",
+      "description": "Stocks - Advance",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/613/613163_12946258-lq.mp3",
+      "artist": "Person 4"
+    },
+    {
+      "id": 5,
+      "title": "Podcast 5",
+      "image": "https://i.scdn.co/image/ab67706f000000022bd892108d7e276e0dd85933",
+      "description": "Money Management",
+      "type": "playlist",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "artist": "Person 5"
+    },
+    {
+      "id": 6,
+      "title": "Podcast 6",
+      "image": "https://i.scdn.co/image/ab67706f0000000297f62466ae52342aff5a3b83",
+      "description": "Credit Cards",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/613/613564_1648170-lq.mp3",
+      "artist": "Person 6"
+    },
+  
+    {
+      "id": 7,
+      "title": "Podcast 7",
+      "image": "https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb3f4709dd278aff44955c0839/3/tr/default",
+      "description": "Stocks for Beginners",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/613/613725_7037-lq.mp3",
+      "artist": "Person 7"
+    },
+    {
+      "id": 8,
+      "title": "Podcast 8",
+      "image": "https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb3f4709dd278aff44955c0839/3/tr/default",
+      "description": "Month end",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/613/613163_12946258-lq.mp3",
+      "artist": "Person 8"
+    },
+    {
+      "id": 9,
+      "title": "Podcast 9",
+      "image": "https://i.scdn.co/image/6f15af4b29b6c5a8589092a9da929697e6502419",
+      "description": "Saving",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/613/613725_7037-lq.mp3",
+      "artist": "Person 9"
+    },
+    {
+      "id": 10,
+      "title": "Podcast 10",
+      "image": "https://i.scdn.co/image/a37aac1c72bfe2fe808f9f66386ec93887ec3cdc",
+      "description": "Saving - 2",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/613/613898_5674468-lq.mp3",
+      "artist": "Person 10"
+    },
+  
+    {
+      "id": 11,
+      "title": "Podcast 11",
+      "image": "https://i.scdn.co/image/7960f21c34a9ca8d34ab403def177f62f983a0ae",
+      "description": "How to invest?",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/613/613040_12946258-lq.mp3",
+      "artist": "Person 11"
+    },
+    {
+      "id": 12,
+      "title": "Podcast 12",
+      "image": "https://i.scdn.co/image/ab67656300005f1f29fa10ab45549632ac87c331",
+      "description": "Estate Planning",
+      "type": "playlist",
+      "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "artist": "Person 12"
+    },
+    {
+      "id": 13,
+      "title": "Podcast 13",
+      "image": "https://i.scdn.co/image/01b7bec996228247d9fa1c40a1782d59f63d0c8d",
+      "description": "Understanding Credit Scores",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/613/613040_12946258-lq.mp3",
+      "artist": "Person 13"
+    },
+    {
+      "id": 14,
+      "title": "Podcast 14",
+      "image": "https://i.scdn.co/image/01b7bec996228247d9fa1c40a1782d59f63d0c8d",
+      "description": "Understanding Credit Scores",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/613/613040_12946258-lq.mp3",
+      "artist": "Person 14"
+    },
+    {
+      "id": 15,
+      "title": "Podcast 15",
+      "image": "https://i.scdn.co/image/01b7bec996228247d9fa1c40a1782d59f63d0c8d",
+      "description": "Understanding Credit Scores",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/613/613040_12946258-lq.mp3",
+      "artist": "Person 15"
+    },
+    {
+      "id": 16,
+      "title": "Podcast 16",
+      "image": "https://i.scdn.co/image/01b7bec996228247d9fa1c40a1782d59f63d0c8d",
+      "description": "Understanding Credit Scores",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/613/613040_12946258-lq.mp3",
+      "artist": "Person 16"
+    },
+    {
+      "id": 17,
+      "title": "Podcast 17",
+      "image": "https://i.scdn.co/image/01b7bec996228247d9fa1c40a1782d59f63d0c8d",
+      "description": "Understanding Credit Scores",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/613/613040_12946258-lq.mp3",
+      "artist": "Person 17"
+    },
+    {
+      "id": 18,
+      "title": "Podcast 18",
+      "image": "https://i.scdn.co/image/01b7bec996228247d9fa1c40a1782d59f63d0c8d",
+      "description": "Understanding Credit Scores",
+      "type": "playlist",
+      "src": "https://freesound.org/data/previews/613/613040_12946258-lq.mp3",
+      "artist": "Person 18"
+    }
+  ]

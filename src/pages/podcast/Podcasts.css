@@ -1,0 +1,16 @@
+/* src/pages/podcast/Podcasts.css */
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the full height of the viewport is used */
+  }
+  
+  .content-container {
+    flex: 1; /* Take up remaining space */
+    padding-bottom: 120px; /* Adjust this value according to your footer height */
+    background-color: var(-primary-hue);
+    overflow: auto; /* Make sure content is scrollable if needed */
+  }
+  
+  

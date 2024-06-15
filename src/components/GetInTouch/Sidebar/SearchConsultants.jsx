@@ -1,3 +1,4 @@
+import React from 'react';
 import {
 	Box,
 	Button,
@@ -18,6 +19,7 @@ import useSearchUser from "../../../hooks/useSearchUser";
 import { useRef } from "react";
 import SuggestedUser from "./SuggestedUser";
 import { CiSearch } from "react-icons/ci";
+
 const SearchConsultants = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const searchRef = useRef(null);
@@ -41,7 +43,7 @@ const SearchConsultants = () => {
 				<Flex
 					alignItems={"center"}
 					gap={4}
-					_hover={{ bg: "whiteAlpha.400" }}
+					_hover={{ bg: "blue.100" }} // Adjust hover effect to a light bluish tone
 					borderRadius={6}
 					p={2}
 					w={{ base: 10, md: "full" }}
@@ -55,14 +57,14 @@ const SearchConsultants = () => {
 
 			<Modal isOpen={isOpen} onClose={onClose} motionPreset='slideInLeft'>
 				<ModalOverlay />
-				<ModalContent bg={"white"} border={"1px solid gray"} maxW={"400px"}>
+				<ModalContent bg={"blue.50"} border={"1px solid blue.300"} maxW={"400px"}> {/* Set background and border color */}
 					<ModalHeader>Search user</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody pb={6}>
 						<form onSubmit={handleSearchUser}>
 							<FormControl>
 								<FormLabel>Username</FormLabel>
-								<Input placeholder='asaprogrammer' ref={searchRef} />
+								<Input placeholder='Enter username' ref={searchRef} />
 							</FormControl>
 
 							<Flex w={"full"} justifyContent={"flex-end"}>
@@ -80,37 +82,3 @@ const SearchConsultants = () => {
 };
 
 export default SearchConsultants;
-
-// COPY AND PASTE AS THE STARTER CODE FOR THE SEARCH COMPONENT
-// import { Box, Flex, Tooltip } from "@chakra-ui/react";
-// import { SearchLogo } from "../../assets/constants";
-
-// const Search = () => {
-// 	return (
-// 		<>
-// 			<Tooltip
-// 				hasArrow
-// 				label={"Search"}
-// 				placement='right'
-// 				ml={1}
-// 				openDelay={500}
-// 				display={{ base: "block", md: "none" }}
-// 			>
-// 				<Flex
-// 					alignItems={"center"}
-// 					gap={4}
-// 					_hover={{ bg: "whiteAlpha.400" }}
-// 					borderRadius={6}
-// 					p={2}
-// 					w={{ base: 10, md: "full" }}
-// 					justifyContent={{ base: "center", md: "flex-start" }}
-// 				>
-// 					<SearchLogo />
-// 					<Box display={{ base: "none", md: "block" }}>Search</Box>
-// 				</Flex>
-// 			</Tooltip>
-// 		</>
-// 	);
-// };
-
-// export default Search;
