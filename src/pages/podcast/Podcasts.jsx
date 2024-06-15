@@ -1,26 +1,21 @@
-import './Podcasts.css';
 import React from 'react';
-import styled from 'styled-components';
+
 import UpperSection from "../../components/Content/UpperSection";
 import LowerSection from "../../components/Content/LowerSection";
 import FooterPodcast from "../../components/FooterPodcast";
+import { Box } from "@chakra-ui/react"; // Import Box from Chakra UI
 
 const Podcasts = () => {
   return (
-    <div className="flex flex-col content-wrapper">
-      <div className="grid gap-6 pt-6 px-8 content-container">
-        <UpperSection title={"İyi akşamlar"} />
+    <Box mx="7" mt="10"> {/* Adjust mx for left and right margin */}
+      <Box my="7"> {/* Optional: Adjust my for top and bottom margin */}
+        <UpperSection  />
         <LowerSection />
-      </div>
+      </Box>
       <FooterPodcast />
-    </div>
+      <Box mb="20" /> {/* Increase bottom margin */}
+    </Box>
   );
 };
-
-const PodcastsWrapper = styled.div`
-  .container {
-    padding: 20px;
-  }
-`;
 
 export default Podcasts;

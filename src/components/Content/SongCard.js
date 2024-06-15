@@ -2,6 +2,15 @@ import { Icon } from "../../assets/icons/Icon";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrent } from "../../redux/player/playerSlice";
+import {
+  Box,
+  Image,
+  Grid,
+  Button,
+  Heading,
+  Text,
+  Flex,
+} from "@chakra-ui/react";
 
 const SongCard = ({ songs }) => {
   const dispatch = useDispatch();
@@ -10,13 +19,13 @@ const SongCard = ({ songs }) => {
   const imageStyle = (item) => {
     switch (item.type) {
       case "album":
-        return "rounded-xl";
+        return "xl";
       case "artist":
-        return "rounded-full";
+        return "full";
       case "playlist":
-        return "rounded-lg";
+        return "lg";
       default:
-        return "rounded";
+        return "base";
     }
   };
 
@@ -33,49 +42,72 @@ const SongCard = ({ songs }) => {
   };
 
   return (
-    <div className="grid grid-cols-6 gap-6 overflow-y-hidden w-full h-full">
+    <Grid templateColumns="repeat(6, 1fr)" gap={6} overflowY="hidden" w="full" h="full">
       {songs.map((song) => (
-        <div
+        <Box
           key={song.id}
-          className="bg-bgFooter flex-1 items-center justify-center rounded isolate p-4 relative w-full transition-all
-          cursor-pointer hover:bg-bgSettingsHover duration-300 group"
+          bg="bgFooter"
+          flex="1"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          rounded="lg"
+          p={4}
+          w="full"
+          cursor="pointer"
+          _hover={{ bg: "bgSettingsHover" }}
+          transition="background-color 0.3s"
+          position="relative"
+          className="group"
         >
-          <div className="flex items-center justify-center mb-4">
-            <div
-              className={` bg-bgShadow w-songRem h-songRem object-cover shadow-2xl relative ${imageStyle(
-                song
-              )}`}
+          <Flex alignItems="center" justifyContent="center" mb={4}>
+            <Box
+              bg="bgShadow"
+              w="songRem"
+              h="songRem"
+              objectFit="cover"
+              shadow="2xl"
+              position="relative"
+              rounded={imageStyle(song)}
             >
-              <img
-                className={`w-full h-full object-cover ${imageStyle(song)}`}
+              <Image
+                w="full"
+                h="full"
+                objectFit="cover"
                 src={song.image}
-                alt={song.title + "şarkısı"}
+                alt={`${song.title} şarkısı`}
+                rounded={imageStyle(song)}
               />
-              <button
+              <Button
                 onClick={() => updateCurrent(song)}
-                className={`${
-                  current.id === song.id ? "flex" : "hidden"
-                }  group-hover:flex bg-brandColor rounded-full p-2 transition-all absolute bottom-1 right-1`}
+                display={current.id === song.id ? "flex" : "none"}
+                _groupHover={{ display: "flex" }}
+                bg="brandColor"
+                rounded="full"
+                p={2}
+                transition="all 0.3s"
+                position="absolute"
+                bottom={1}
+                right={1}
               >
                 <Icon
-                  name={`${
-                    current.id === song.id && playing ? "pause" : "playerGreen"
-                  }`}
+                  name={current.id === song.id && playing ? "pause" : "playerGreen"}
                 />
-              </button>
-            </div>
-          </div>
-          <div className="">
-            <h3 className="font-bold tracking-normal line-clamp-1">
+              </Button>
+            </Box>
+          </Flex>
+          <Box textAlign="center">
+            <Heading as="h3" size="sm" fontWeight="bold" isTruncated>
               {song.title}
-            </h3>
-            <span className="text-bgHorizontalCard mt-1 line-clamp-2 text-sm">
+            </Heading>
+            <Text color="bgHorizontalCard" mt={1} fontSize="sm" noOfLines={2}>
               {song.description}
-            </span>
-          </div>
-        </div>
+            </Text>
+          </Box>
+        </Box>
       ))}
-    </div>
+    </Grid>
   );
 };
 

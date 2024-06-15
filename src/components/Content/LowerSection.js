@@ -2,6 +2,7 @@ import React from "react";
 import songData from "../../assets/data/songs.json";
 import LowerSectionContent from "../Content/LowerSectionContent";
 import { randomArrayShuffle } from "../../utils/utils";
+import { Box } from "@chakra-ui/react"; // Import Box from Chakra UI
 
 const LowerSection = () => {
   const [newPodcasts, setNewPodcasts] = React.useState([]);
@@ -18,13 +19,22 @@ const LowerSection = () => {
   }, []);
 
   return (
-    <div className="min-h-[300px] w-full p-4 flex flex-col items-center gap-y-4">
+    <Box
+      mt="6" // Adjust top margin here
+      minH="300px"
+      w="full"
+      p="4"
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      gap="4"
+      
+    >
       <LowerSectionContent title="New Podcasts" songs={newPodcasts} />
       <LowerSectionContent title="Most Popular" songs={mostPopular} />
       <LowerSectionContent title="Beginner Friendly" songs={beginnerFriendly} />
-    </div>
+    </Box>
   );
 };
 
 export default LowerSection;
-

@@ -1,22 +1,27 @@
 import React from "react";
+import { Box, Heading, Link, Text } from "@chakra-ui/react";
 
 const LowerSectionHeader = ({ title }) => {
   return (
-    <div className="w-full h-14 flex items-center justify-between">
-      <h2 className="text-2xl font-bold tracking-tighter hover:underline transition-all">
-        <a
+    <Box w="full" h="14" d="flex" alignItems="center" justifyContent="space-between">
+      <Heading as="h2" size="lg" fontWeight="bold" isTruncated>
+        <Link
           href="!#"
-          className="text-black inline-block w-full overflow-hidden overflow-ellipsis whitespace-nowrap"
+          color="black"
+          _hover={{ textDecoration: "underline" }}
+          transition="all 0.2s"
+          d="inline-block"
+          w="full"
         >
           {title}
-        </a>
-      </h2>
-      <a href="!#" className=" ml-2 text-bgText">
-        <span className="text-xs font-bold uppercase tracking-widest">
-          See More
-        </span>
-      </a>
-    </div>
+        </Link>
+      </Heading>
+      <Link href="!#" ml="2" color="bgText">
+        <Text as="span" fontSize="xs" fontWeight="bold" textTransform="uppercase" letterSpacing="widest">
+         
+        </Text>
+      </Link>
+    </Box>
   );
 };
 
