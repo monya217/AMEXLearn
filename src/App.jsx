@@ -78,16 +78,18 @@ const App = () => {
               </PrivateRoute>
             }
           />
-          <Route
+          <Route path="/dashboard/activity/:username" element={<Activity />} />
+
+          {/* <Route
             path="/dashboard/activity"
             element={
               <PrivateRoute>
                 <Activity />
               </PrivateRoute>
             }
-          />
+          /> */}
           <Route path="/auth" element={!authUser ? <AuthPage /> : <Navigate to="/" />} />
-          <Route path="/:username" element={<ProfilePage />} />
+          {/* <Route path="/:username" element={<ProfilePage />} /> */}
           <Route path="/blog/:id" element={<Blogpage user={user} />} />
           <Route path="/stocks" element={<StockGeeks />} />
           <Route path="*" element={<NotFound />} />

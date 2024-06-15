@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import { Box, Flex, Link, Tooltip } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { FaBook, FaChalkboardTeacher, FaUsers } from "react-icons/fa";
-
+import useUserProfileStore from '../../store/userProfileStore'; // Importing user profile store
+import useAuthStore from "../../store/authStore";
 const DashboardSidebar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const sidebarWidth = isExpanded ? '250px' : '60px';
+
+  // Assuming you have a way to get the username from user profile store or context
+  const { userProfile } = useUserProfileStore();
+  const authUser = useAuthStore((state) => state.user);
 
   const sidebarItems = [
     {
@@ -21,7 +26,7 @@ const DashboardSidebar = () => {
     {
       icon: FaUsers,
       text: "Community Activity",
-      link: "/dashboard/activity",
+      link: `/dashboard/activity/${authUser?.username}`, // Dynamically inserting username
     },
   ];
 
