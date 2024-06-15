@@ -89,7 +89,7 @@ const App = () => {
             }
           /> */}
           <Route path="/auth" element={!authUser ? <AuthPage /> : <Navigate to="/" />} />
-          {/* <Route path="/:username" element={<ProfilePage />} /> */}
+          <Route path="/:username" element={<ProfilePage />} />
           <Route path="/blog/:id" element={<Blogpage user={user} />} />
           <Route path="/stocks" element={<StockGeeks />} />
           <Route path="*" element={<NotFound />} />
