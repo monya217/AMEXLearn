@@ -1,199 +1,276 @@
 @import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap');
 
-:global {
-  /* Add any global styles that you still need */
-}
-
-.container {
-  width: 100%;
-  height: 50px;
-  color: white;
-  padding: 4px 0;
-  position: fixed;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 10;
-  transition: background-color 0.5s;
-  background: transparent;
+nav {
+    width: 100%;
+    height: 50px;
+    color: white;
+    padding: 4px 0;
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    transition: background-color 0.5s;
+    background: transparent;
 }
 
 .navbar-links {
-  display: flex;
-  margin-top: 0px;
-  position: relative;
+    display: flex;
+    margin-top: 0px;
+    position: relative;
 }
 
 .navbar-links li {
-  margin-right: 140px;
-  font-family: 'Actor', sans-serif;
-  font-size: 16px;
-  cursor: pointer;
-  position: relative;
+    margin-right: 140px;
+    font-family: 'Actor', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: var(--primary-hue); /* Change background color */
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  top: 100%; /* Position the dropdown below the link */
-  left: 0;
-  border-radius: 4px; /* Add border-radius */
-  overflow: hidden;
+.navbar-links .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--primary-hue); /* Change background color */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 100%; /* Position the dropdown below the link */
+    left: 0;
+    border-radius: 4px; /* Add border-radius */
+    overflow: hidden;
 }
 
-.dropdown-content span {
-  color: white;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+.navbar-links .dropdown-content span {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
-.dropdown-content span:hover {
-  background-color: white; /* Change hover background color */
-  color: black;
+.navbar-links .dropdown-content span:hover {
+    background-color: white; /* Change hover background color */
+    color: black;
 }
 
-.dropdown .dropbtn {
-  display: flex;
-  align-items: center;
+.navbar-links .dropdown .dropbtn {
+    display: flex;
+    align-items: center;
 }
 
-.dropdown .arrow {
-  margin-left: 8px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  display: inline-block;
-  padding: 3px;
-  transition: transform 0.3s ease; /* Add transition for smooth arrow rotation */
+.navbar-links .dropdown .arrow {
+    margin-left: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transition: transform 0.3s ease; /* Add transition for smooth arrow rotation */
 }
 
-.dropdown .arrow.down {
-  transform: rotate(45deg);
+.navbar-links .dropdown .arrow.down {
+    transform: rotate(45deg);
 }
 
-.dropdown .arrow.up {
-  transform: rotate(-135deg);
+.navbar-links .dropdown .arrow.up {
+    transform: rotate(-135deg);
 }
 
-.dropdown-content.show {
-  display: block;
+.navbar-links .dropdown-content.show {
+    display: block;
 }
 
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
+
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
-ul li {
-  display: flex;
-  align-items: center;
-  margin: 5px 20px;
-  font-size: 16px;
+nav ul li {
+    display: flex;
+    align-items: center;
+    margin: 5px 20px;
+    font-size: 16px;
 }
 
-ul li:hover,
-ul li:active {
-  text-decoration: underline;
+
+
+
+.navbar-links li:hover,
+.navbar-links li:active {
+    text-decoration: underline;
 }
 
 .navbar-brand li {
-  font-family: 'Gilda Display', serif;
-  font-size: 24px;
-  margin-left: 0px;
-  font-weight: 500;
+    font-family: 'Gilda Display', serif;
+    font-size: 24px;
+    margin-left: 0px;
+    font-weight: 500;
 }
 
 .navbar-auth {
-  margin-right: 0px;
+    margin-right: 0px;
 }
 
 .dark-nav {
-  background: var(--primary-hue); /* Change to your desired color */
-  transition: background-color 0.5s;
+    background: var(--primary-hue); /* Change to your desired color */
+    transition: background-color 0.5s;
 }
 
 .menu-icon {
-  display: none;
-  color: white;
-  font-size: 20px; /* Smaller size */
-  cursor: pointer;
-  margin-left: 0px;
+    display: none;
+    color: white;
+    font-size: 20px; /* Smaller size */
+    cursor: pointer;
+    margin-left: 0px;
+    margin-left: 0%;
 }
 
 .menu-icon i.fa-bars {
-  display: inline;
-  margin-right: 10px;
+    display: inline;
+    margin-right: 10px;
 }
 
 .menu-icon i.fa-times {
-  display: none;
+    display: none;
 }
 
 .menu-icon.open i.fa-bars {
-  display: none;
+    display: none;
 }
 
 .menu-icon.open i.fa-times {
-  display: inline;
-  margin-right: 10px;
+    display: inline;
+    margin-right: 10px;
 }
 
 @media (max-width: 1100px) {
-  .navbar-links li {
-    margin-right: 100px;
-  }
+    .navbar-links li {
+        margin-right: 100px;
+    }
 }
 
 @media (max-width: 950px) {
-  .navbar-links li {
-    margin-right: 80px;
-  }
+    .navbar-links li {
+        margin-right: 80px;
+    }
 }
 
 @media (max-width: 880px) {
-  .navbar-links {
-    display: none;
-    position: absolute;
-    top: 50px;
-    left: 70%;
-    right: 0;
-    flex-direction: column;
-    background: var(--primary-hue);
-    text-align: center;
-    gap: 0;
-    overflow: hidden;
-    width: 30%; /* Width of the side menu */
-  }
+    .navbar-links {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 70%;
+        right: 0;
+        flex-direction: column;
+        background: var(--primary-hue);
+        text-align: center;
+        gap: 0;
+        overflow: hidden;
+        width: 30; /* Width of the side menu */
+    }
 
-  .navbar-links li {
-    margin: 8px 0;
-    padding: 20px;
-    padding-top: 0;
-  }
+    .navbar-links li {
+        margin: 8px 0;
+        padding: 20px;
+        padding-top: 0;
+    }
 
-  .menu-icon {
-    display: block;
-    right: 100%;
-  }
+    .menu-icon {
+        display: block;
+        right: 100%;
+    }
 
-  #menuList {
-    transition: all 0.5s;
-  }
+    #menuList {
+        transition: all 0.5s;
+    }
 
-  .navbar-links.show {
+    .navbar-links.show {
+        display: flex;
+    }
+
+    .navbar-auth {
+        margin-left: 35%;
+    }
+}
+
+
+/*
+original
+@import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap');
+nav{
+    width: 100%;
+    height: 50px;
+    color:white;
+    padding: 4px 0;
+    position: fixed;
+    top: 0;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+nav ul li{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin: 5px 20px;
+    font-size: 16px;
+    
+}
+.navbar-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-top: 0px;
   }
+  
+.navbar-links li {
+    margin-right: 140px;
+    font-family: 'Actor', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.navbar-links li:hover,
+.navbar-links li:active {
+    text-decoration: underline;
+}
+
+.navbar-brand li {
+    font-family: 'Gilda Display', serif; 
+    font-size: 24px;
+    margin-left:0px;
+    font-weight: 500;
+}
 
   .navbar-auth {
-    margin-left: 35%;
-  }
+    margin-right: 0px; 
 }
+.dark-nav{
+    background: var(--primary-hue);
+    transition: 0.5s;
+}
+@media (max-width: 1100px){
+    .navbar-links li {
+        margin-right: 100px;
+    }
+}
+@media (max-width: 950px){
+    .navbar-links li {
+        margin-right: 80px;
+    }
+}
+@media (max-width: 880px){
+    .navbar-links li {
+        margin-right: 50px;
+    }
+}*/
