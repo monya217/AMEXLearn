@@ -10,6 +10,7 @@ import { timeAgo } from '../../utils/timeAgo';
 const PostFooter = ({ post, isProfilePage }) => {
   const { isCommenting, handlePostComment } = usePostComment();
   const [comment, setComment] = useState("");
+  const [showComments, setShowComments] = useState(false); // State to manage showing comments
   const authUser = useAuthStore((state) => state.user);
   const commentRef = useRef(null);
   const { handleLikePost, isLiked, likes } = useLikePost(post);
@@ -17,6 +18,10 @@ const PostFooter = ({ post, isProfilePage }) => {
   const handleSubmitComment = async () => {
     await handlePostComment(post.id, comment);
     setComment("");
+  };
+
+  const handleToggleComments = () => {
+    setShowComments(!showComments); // Toggle the state to show/hide comments
   };
 
   return (
@@ -27,7 +32,7 @@ const PostFooter = ({ post, isProfilePage }) => {
         </Box>
 
         <Box cursor={"pointer"} fontSize={18} onClick={() => commentRef.current.focus()}>
-          <FaRegComment size={24} />
+          <FaRegComment size={24} onClick={handleToggleComments} /> {/* Toggle comments on click */}
         </Box>
       </Flex>
       <Text fontWeight={600} fontSize={"sm"}>
@@ -41,9 +46,20 @@ const PostFooter = ({ post, isProfilePage }) => {
       )}
 
       {post.comments.length > 0 && (
-        <Text fontSize='sm' color={"gray"} cursor={"pointer"}>
+        <Text fontSize='sm' color={"gray"} cursor={"pointer"} onClick={handleToggleComments}>
           View all {post.comments.length} comments
         </Text>
+      )}
+
+      {showComments && (
+        <Box mt={4}>
+          {post.comments.map((comment, index) => (
+            <Flex key={index} alignItems={"center"} mt={2}>
+              <Text fontSize={"sm"} fontWeight={"bold"}>{comment.username}</Text>
+              <Text ml={2} fontSize={"sm"}>{comment.comment}</Text>
+            </Flex>
+          ))}
+        </Box>
       )}
 
       {authUser && (
