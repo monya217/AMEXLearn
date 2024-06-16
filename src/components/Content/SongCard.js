@@ -1,4 +1,4 @@
-import { Icon } from "../../assets/icons/Icon";
+// SongCard.js
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrent } from "../../redux/player/playerSlice";
@@ -11,6 +11,7 @@ import {
   Text,
   Flex,
 } from "@chakra-ui/react";
+import { Icon } from "../../assets/icons/Icon";
 
 const SongCard = ({ songs }) => {
   const dispatch = useDispatch();
@@ -81,7 +82,7 @@ const SongCard = ({ songs }) => {
               />
               <Button
                 onClick={() => updateCurrent(song)}
-                display={current.id === song.id ? "flex" : "none"}
+                display={current && current.id === song.id ? "flex" : "none"}
                 _groupHover={{ display: "flex" }}
                 bg="brandColor"
                 rounded="full"
@@ -92,7 +93,7 @@ const SongCard = ({ songs }) => {
                 right={1}
               >
                 <Icon
-                  name={current.id === song.id && playing ? "pause" : "playerGreen"}
+                  name={current && current.id === song.id && playing ? "pause" : "playerGreen"}
                 />
               </Button>
             </Box>
