@@ -51,22 +51,25 @@ const ActivityPost = ({ post }) => {
   const handleDeletePost = async () => {
     if (!window.confirm('Are you sure you want to delete this post?')) return;
     if (isDeleting) return;
-
+  
     setIsDeleting(true);
-
+  
     try {
-      const imageRef = ref(storage, `posts/${post.id}`);
-      await deleteObject(imageRef);
-
+      // Check if there's an image URL before attempting to delete it
+      if (post.imageURL) {
+        const imageRef = ref(storage, `posts/${post.id}`);
+        await deleteObject(imageRef);
+      }
+  
       const userRef = doc(firestore, 'users', authUser.uid);
       await deleteDoc(doc(firestore, 'posts', post.id));
       await updateDoc(userRef, {
         posts: arrayRemove(post.id),
       });
-
+  
       deletePost(post.id);
       decrementPostsCount(post.id);
-
+  
       showToast('Success', 'Post deleted successfully', 'success');
     } catch (error) {
       console.error('Error deleting post:', error);
@@ -75,7 +78,7 @@ const ActivityPost = ({ post }) => {
       setIsDeleting(false);
     }
   };
-
+  
   const handleSubmitComment = async () => {
     try {
       await handlePostComment(post.id, commentText);
