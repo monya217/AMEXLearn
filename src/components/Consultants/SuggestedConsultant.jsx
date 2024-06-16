@@ -76,9 +76,10 @@ const consultants = [
 const ConsultantCard = ({ name, avatar, experience, rating, socialProfiles, onBook }) => (
   <Box
     borderRadius="2xl"
+    border={"1px solid"}
+    borderColor="gray.200"
     p={2}
     mb={2}
-    boxShadow="md" // Subtle box shadow
   >
     <Flex direction="column" align="center" mb={2}>
       <Box
@@ -86,6 +87,7 @@ const ConsultantCard = ({ name, avatar, experience, rating, socialProfiles, onBo
         borderRadius="lg"
         overflow="hidden"
         mb={2}
+        mt={4}
       >
         <Image src={avatar} alt={name} boxSize="full" objectFit="cover" />
       </Box>
@@ -109,7 +111,7 @@ const ConsultantCard = ({ name, avatar, experience, rating, socialProfiles, onBo
       </VStack>
     </Flex>
     <Flex justify="center">
-      <Button size="sm" colorScheme="blue" mt={2} onClick={onBook}>Book a Session</Button>
+      <Button size="sm" colorScheme="blue" mt={2} mb={4} onClick={onBook}>Book a Session</Button>
     </Flex>
   </Box>
 );
@@ -169,8 +171,8 @@ const ConsultantCarousel = () => {
 
   return (
     <Box>
-      <Flex justify="center" align="center" mb={2}>
         <Text fontSize="lg" fontWeight="bold" mb={2}>Available Consultants</Text>
+      <Flex justify="center" align="center" mb={2}>
       </Flex>
       <Slider {...settings}>
         {consultants.map((consultant, index) => (
