@@ -54,27 +54,29 @@ const PostHeader = ({ post, creatorProfile }) => {
         <Flex alignItems="center">
           {/* Render Follow/Unfollow button only if it's not the current user's post */}
           {!isCurrentUser && (
-            <Button
-              size="xs"
-              bg="transparent"
-              fontSize={12}
-              color="blue.500"
-              fontWeight="bold"
-              _hover={{ color: 'blue.700' }}
-              transition="0.2s ease-in-out"
-              onClick={handleFollowUser}
-              isLoading={isUpdating}
-            >
-              {isFollowing ? 'Unfollow' : 'Follow'}
-            </Button>
+            <>
+              <Button
+                size="xs"
+                bg="transparent"
+                fontSize={12}
+                color="blue.500"
+                fontWeight="bold"
+                _hover={{ color: 'blue.700' }}
+                transition="0.2s ease-in-out"
+                onClick={handleFollowUser}
+                isLoading={isUpdating}
+              >
+                {isFollowing ? 'Unfollow' : 'Follow'}
+              </Button>
+              <Menu>
+                <MenuButton as={IconButton} icon={<FaEllipsisH />} variant="ghost" size="sm" ml={2} />
+                <MenuList>
+                  <MenuItem icon={<FaRegFrown color='orange' />} onClick={handleReport}>Not interested</MenuItem>
+                  <MenuItem icon={<FaExclamationTriangle color='red' />} onClick={handleMarkAsSpam}>Harmful or Spam</MenuItem>
+                </MenuList>
+              </Menu>
+            </>
           )}
-          <Menu>
-            <MenuButton as={IconButton} icon={<FaEllipsisH />} variant="ghost" size="sm" ml={2} />
-            <MenuList>
-              <MenuItem icon={<FaRegFrown color='orange' />} onClick={handleReport}>Not interested</MenuItem>
-              <MenuItem icon={<FaExclamationTriangle color='red' />} onClick={handleMarkAsSpam}>Harmful or Spam</MenuItem>
-            </MenuList>
-          </Menu>
         </Flex>
       </Flex>
 
