@@ -21,11 +21,7 @@ const Sidebar = () => {
     const navigate = useNavigate();
 
     const sidebarItems = [
-        {
-            icon: FaRegListAlt,
-            text: "Feed",
-            component: <Feed />,
-        },
+        
         {
             icon: FaSearch,
             text: "Search",
