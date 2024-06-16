@@ -1,0 +1,35 @@
+/* Carousel.css */
+.slick-dots {
+    position: absolute;
+    bottom: -30px;
+    display: flex !important;
+    width: 100%;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .slick-dots li {
+    margin: 0; /* Reduced distance between dots */
+  }
+  
+  .slick-dots li button {
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+  
+  .slick-dots li button:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    display: block;
+    background: #a0d2eb; /* Light blue color for inactive dots */
+    border-radius: 50%;
+  }
+  
+  .slick-dots li.slick-active button:before {
+    background: #3182ce; /* Blue color for active dot */
+  }
+  

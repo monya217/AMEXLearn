@@ -12,13 +12,12 @@ const Sidebar = () => {
         <Box
             height="100vh"
             borderRight="1px solid"
-            borderColor="blue.300" // Set the border color to a bluish tone
+            borderColor="black" // Set the border color to a bluish tone
             py={8}
             position="sticky"
             top={0}
             left={0}
             px={{ base: 2, md: 4 }}
-            bg="blue.50" // Set the background color to a light bluish tone
         >
             <Flex direction="column" gap={10} w="full" height="full">
                 <Link to="/" as={RouterLink} pl={2} cursor="pointer">
