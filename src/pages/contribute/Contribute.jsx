@@ -80,7 +80,7 @@ const Contribute = () => {
           marginTop="40px"
           display="flex"
           justifyContent="center"
-          height="350px"
+          height="400px"
         />
         <Box px="100px" width="100%" paddingTop="20px" flex="1" ml={{ base: 10, md: 14 }} p={4}>
           <Search search={search} handleChange={handleChange} />
