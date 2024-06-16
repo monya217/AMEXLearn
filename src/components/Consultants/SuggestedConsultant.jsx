@@ -78,6 +78,7 @@ const ConsultantCard = ({ name, avatar, experience, rating, socialProfiles, onBo
     borderRadius="2xl"
     border={"1px solid"}
     borderColor="gray.200"
+    bg={"white"}
     p={2}
     mb={2}
   >

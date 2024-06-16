@@ -28,7 +28,7 @@ const Sidebar = () => {
         },
         {
             icon: FaSearch,
-            text: "Search",
+            text: "Search Profile",
             action: () => searchConsultantsRef.current.openModal(),
         },
         {
@@ -112,7 +112,7 @@ const Sidebar = () => {
             </Box>
 
             {/* Render selected component */}
-            <Flex direction="column" flex={1} ml={sidebarWidth} mt={20} p={4}>
+            <Flex direction="column" flex={1} ml={10} mt={20} p={4}>
                 {selectedComponent}
             </Flex>
 

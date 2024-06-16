@@ -82,7 +82,7 @@ const PostFooter = ({ post, isProfilePage }) => {
                 color={"blue.500"}
                 fontWeight={600}
                 cursor={"pointer"}
-                _hover={{ color: "white" }}
+                _hover={{ color: "blue.700" }}
                 bg={"transparent"}
                 onClick={handleSubmitComment}
                 isLoading={isCommenting}

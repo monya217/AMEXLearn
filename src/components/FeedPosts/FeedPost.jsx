@@ -11,12 +11,12 @@ const FeedPost = ({ post }) => {
     return (
       <Box 
         border="1px solid" 
-        borderColor="blue.300" // Set the border color to a bluish tone
+        borderColor="gray.200"
         borderRadius="md" 
         overflow="hidden" 
+        bg={"white"}
         mb={5} 
         p={4} 
-        bg="blue.50" // Set the background color to a light bluish tone
       >
         <Skeleton height="40px" mb={4} />
         <SkeletonText mt="4" noOfLines={4} spacing="4" />
@@ -32,13 +32,13 @@ const FeedPost = ({ post }) => {
   return (
     <Box 
       border="1px solid" 
-      borderColor="blue.300" // Set the border color to a bluish tone
+      borderColor="gray.200"
       borderRadius="md" 
       overflow="hidden" 
       mb={5} 
       p={4}
-      bg="blue.50" // Set the background color to a light bluish tone
-      _hover={{ bg: "blue.100" }} // Adjust hover effect to a light bluish tone
+      bg={"white"}
+      _hover={{ bg: "gray.100" }} // Adjust hover effect to a light bluish tone
     >
       <PostHeader post={post} creatorProfile={userProfile} />
       {post.imageURL && ( // Render Image component only if imageURL exists

@@ -35,12 +35,14 @@ const handleMarkAsSpam = (title) => {
 const TrendingCard = ({ category, title, posts }) => (
   <Box
     p={4}
-    mb={2}
-    borderRadius="md"
+    borderBottom="1px solid"
+    borderColor="gray.200"
+    borderRadius={"6"}
     display="flex"
     justifyContent="space-between"
     alignItems="center"
     _hover={{ bg: 'gray.100' }}
+    _last={{ borderBottom: 'none' }} // Ensures the last item does not have a bottom border
   >
     <VStack align="start" spacing={1}>
       <Text fontSize="xs" color="gray.500">
@@ -68,7 +70,7 @@ const Trending = () => (
     <Text fontSize="lg" fontWeight="bold" mb={4}>
       What's Trending
     </Text>
-    <Box p={4} border="1px solid" borderColor="gray.200" borderRadius="lg">
+    <Box p={4} border="1px solid" borderColor="gray.200" borderRadius="lg" bg={"white"}>
       {trendingTopics.map((topic, index) => (
         <TrendingCard key={index} {...topic} />
       ))}
