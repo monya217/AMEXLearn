@@ -1,20 +1,21 @@
-import { Box, Flex, Text, Button } from "@chakra-ui/react";
+import React from 'react';
+import { Box, Flex, Text, Button } from '@chakra-ui/react';
 
 const ProfileTabs = ({ selectedTab, setSelectedTab }) => {
   return (
     <Flex
-      w={"full"}
-      justifyContent={"center"}
+      w={'full'}
+      justifyContent={'center'}
       gap={{ base: 4, sm: 10 }}
-      textTransform={"uppercase"}
-      fontWeight={"bold"}
+      textTransform={'uppercase'}
+      fontWeight={'bold'}
     >
       <Button
         variant={selectedTab === 'posts' ? 'solid' : 'outline'}
         colorScheme="blue"
         onClick={() => setSelectedTab('posts')}
       >
-        <Text fontSize={12} display={{ base: "block", sm: "block" }}>
+        <Text fontSize={12} display={{ base: 'block', sm: 'block' }}>
           My Posts
         </Text>
       </Button>
@@ -24,7 +25,7 @@ const ProfileTabs = ({ selectedTab, setSelectedTab }) => {
         colorScheme="blue"
         onClick={() => setSelectedTab('blogs')}
       >
-        <Text fontSize={12} display={{ base: "block", sm: "block" }}>
+        <Text fontSize={12} display={{ base: 'block', sm: 'block' }}>
           My Blogs
         </Text>
       </Button>

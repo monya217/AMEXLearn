@@ -12,6 +12,7 @@ import {
 import ActivityHeader from "./Activity/ActivityHeader";
 import ActivityProfileTabs from "./Activity/ActivityProfileTabs";
 import ActivityProfilePosts from "./Activity/ActivityProfilePosts";
+import ActivityProfileBlogs from "./Activity/ActivityProfileBlogs"; // Import the new component
 import useGetUserProfileByUsername from "../../hooks/useGetUserProfileByUsername";
 import { useParams } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
@@ -72,10 +73,11 @@ const Activity = () => {
               selectedTab={selectedTab}
               setSelectedTab={setSelectedTab}
             />
-            <ActivityProfilePosts
-              selectedTab={selectedTab}
-              userProfile={userProfile}
-            />
+            {selectedTab === "posts" ? (
+              <ActivityProfilePosts userProfile={userProfile} />
+            ) : (
+              <ActivityProfileBlogs userProfile={userProfile} />
+            )}
           </Flex>
         </Container>
       </Box>
