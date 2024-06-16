@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Flex, Icon, Text, useBreakpointValue } from "@chakra-ui/react";
-import { collection, onSnapshot, query, orderBy, limit, where, getDocs } from "firebase/firestore";
+import { collection, onSnapshot, query, where, getDocs } from "firebase/firestore";
 import { firestore } from '../../firebase/firebase';
 import BlogSection from '../../components/Contribute/BlogSection';
 import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
@@ -52,12 +52,18 @@ const Contribute = () => {
     }
 
     const blogRef = collection(firestore, "blogs");
-    const searchQuery = query(blogRef, where("title", ">=", value), where("title", "<=", value + "\uf8ff"));
-    const docSnapshot = await getDocs(searchQuery);
+    const docSnapshot = await getDocs(blogRef);
 
-    const results = docSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    setSearchResults(results);
-    console.log("Search Results: ", results);  // Logging search results for debugging
+    const results = docSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    const filteredResults = results.filter(doc =>
+      doc.title.toLowerCase().includes(value.toLowerCase())
+    );
+
+    setSearchResults(filteredResults);
   };
 
   return (

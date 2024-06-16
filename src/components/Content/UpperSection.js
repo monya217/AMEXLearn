@@ -5,6 +5,7 @@ import { randomArrayShuffle } from "../../utils/utils";
 import Title from "../Title";
 import { Box } from "@chakra-ui/react";
 
+
 const UpperSection = ({ title }) => {
   const [items, setItems] = React.useState([]);
 
