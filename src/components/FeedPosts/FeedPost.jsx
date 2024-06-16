@@ -1,11 +1,22 @@
 import React from 'react';
-import { Box, Image, Skeleton, SkeletonText } from '@chakra-ui/react';
+import { Box, Image, Skeleton, SkeletonText, Menu, MenuButton, MenuList, MenuItem, IconButton } from '@chakra-ui/react';
+import { FaEllipsisH, FaRegFrown, FaExclamationTriangle } from 'react-icons/fa'; // Import necessary icons
 import PostFooter from './PostFooter';
 import PostHeader from './PostHeader';
 import useGetUserProfileById from '../../hooks/useGetUserProfileById'; // Adjust the import as per your project structure
 
 const FeedPost = ({ post }) => {
   const { userProfile, isLoading } = useGetUserProfileById(post.createdBy);
+
+  const handleReport = () => {
+    console.log(`Reporting post: ${post.id}`);
+    // Implement your report functionality here
+  };
+
+  const handleMarkAsSpam = () => {
+    console.log(`Marking post as spam: ${post.id}`);
+    // Implement your mark as spam functionality here
+  };
 
   if (isLoading) {
     return (
@@ -47,6 +58,15 @@ const FeedPost = ({ post }) => {
         </Box>
       )}
       <PostFooter post={post} />
+
+      {/* Menu for additional actions */}
+      <Menu>
+        <MenuButton as={IconButton} icon={<FaEllipsisH />} variant="ghost" size="sm" aria-label="Options" />
+        <MenuList>
+          <MenuItem icon={<FaRegFrown color='orange' />} onClick={handleReport}>Not interested</MenuItem>
+          <MenuItem icon={<FaExclamationTriangle color='red' />} onClick={handleMarkAsSpam}>Harmful or Spam</MenuItem>
+        </MenuList>
+      </Menu>
     </Box>
   );
 };
