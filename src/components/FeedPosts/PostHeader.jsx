@@ -1,6 +1,7 @@
 import React from 'react';
-import { Avatar, Box, Button, Flex, Text } from '@chakra-ui/react';
+import { Avatar, Box, Button, Flex, Text, IconButton, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { FaEllipsisH, FaRegFrown, FaExclamationTriangle } from 'react-icons/fa';
 import useFollowUser from '../../hooks/useFollowUser'; // Adjust the import as per your project structure
 import { timeAgo } from '../../utils/timeAgo';
 import useAuthStore from '../../store/authStore'; // Import your auth store or hook
@@ -15,6 +16,16 @@ const PostHeader = ({ post, creatorProfile }) => {
 
   // Check if the creatorProfile is the current user's profile
   const isCurrentUser = currentUser && creatorProfile && currentUser.uid === creatorProfile.uid;
+
+  const handleReport = () => {
+    console.log(`Reporting post: ${post.id}`);
+    // Implement your report functionality here
+  };
+
+  const handleMarkAsSpam = () => {
+    console.log(`Marking post as spam: ${post.id}`);
+    // Implement your mark as spam functionality here
+  };
 
   return (
     <Flex flexDirection="column" w="full">
@@ -40,9 +51,9 @@ const PostHeader = ({ post, creatorProfile }) => {
           </Flex>
         </Flex>
 
-        {/* Render Follow/Unfollow button only if it's not the current user's post */}
-        {!isCurrentUser && (
-          <Box cursor="pointer">
+        <Flex alignItems="center">
+          {/* Render Follow/Unfollow button only if it's not the current user's post */}
+          {!isCurrentUser && (
             <Button
               size="xs"
               bg="transparent"
@@ -56,8 +67,15 @@ const PostHeader = ({ post, creatorProfile }) => {
             >
               {isFollowing ? 'Unfollow' : 'Follow'}
             </Button>
-          </Box>
-        )}
+          )}
+          <Menu>
+            <MenuButton as={IconButton} icon={<FaEllipsisH />} variant="ghost" size="sm" ml={2} />
+            <MenuList>
+              <MenuItem icon={<FaRegFrown color='orange' />} onClick={handleReport}>Not interested</MenuItem>
+              <MenuItem icon={<FaExclamationTriangle color='red' />} onClick={handleMarkAsSpam}>Harmful or Spam</MenuItem>
+            </MenuList>
+          </Menu>
+        </Flex>
       </Flex>
 
       {/* Caption */}
