@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Box, Flex, Text, InputGroup, Input, InputRightElement, Button } from '@chakra-ui/react';
+import { Box, Flex, Text, InputGroup, Input, InputRightElement, Button, Avatar } from '@chakra-ui/react';
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import usePostComment from '../../hooks/usePostComment';
@@ -55,8 +55,11 @@ const PostFooter = ({ post, isProfilePage }) => {
         <Box mt={4}>
           {post.comments.map((comment, index) => (
             <Flex key={index} alignItems={"center"} mt={2}>
-              <Text fontSize={"sm"} fontWeight={"bold"}>{comment.username}</Text>
-              <Text ml={2} fontSize={"sm"}>{comment.comment}</Text>
+              <Avatar src={comment.avatar} size="sm" />
+              <Box ml={2}>
+                <Text fontSize={"sm"} fontWeight={"bold"}>{comment.username}</Text>
+                <Text fontSize={"sm"}>{comment.comment}</Text>
+              </Box>
             </Flex>
           ))}
         </Box>
