@@ -24,6 +24,7 @@ const UpperSection = ({ title }) => {
   return (
     <Box w="full" p={0}> {/* Ensure padding is set to 0 */}
       <Title title={title} size="xl" />
+      
       <HorizontalCard items={items} />
     </Box>
   );

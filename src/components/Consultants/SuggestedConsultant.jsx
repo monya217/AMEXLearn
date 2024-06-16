@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Box, Flex, Image, Text, VStack, Button, HStack, Link, Icon,
   Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
   FormControl, FormLabel, Input, Textarea, RadioGroup, Radio, Stack
 } from '@chakra-ui/react';
-import { FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaLinkedin, FaTwitter, FaStar } from 'react-icons/fa';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import "./Carousel.css"; // Import your custom CSS file
 
 const consultants = [
   {
@@ -27,28 +31,64 @@ const consultants = [
       twitter: "https://www.twitter.com"
     }
   },
-  // Add more consultants as needed
+  {
+    name: "Michael Johnson",
+    avatar: "/consultant3.jpeg",
+    experience: "6 Years",
+    rating: "4.8",
+    socialProfiles: {
+      linkedin: "https://www.linkedin.com",
+      twitter: "https://www.twitter.com"
+    }
+  },
+  {
+    name: "Emily Davis",
+    avatar: "/consultant4.jpeg",
+    experience: "2 Years",
+    rating: "4.2",
+    socialProfiles: {
+      linkedin: "https://www.linkedin.com",
+      twitter: "https://www.twitter.com"
+    }
+  },
+  {
+    name: "Jordan Reed",
+    avatar: "/consultant5.jpeg",
+    experience: "8 Years",
+    rating: "4.4",
+    socialProfiles: {
+      linkedin: "https://www.linkedin.com",
+      twitter: "https://www.twitter.com"
+    }
+  },
+  {
+    name: "Alexandra Mitchell",
+    avatar: "/consultant6.jpeg",
+    experience: "3 Years",
+    rating: "4.7",
+    socialProfiles: {
+      linkedin: "https://www.linkedin.com",
+      twitter: "https://www.twitter.com"
+    }
+  },
 ];
 
 const ConsultantCard = ({ name, avatar, experience, rating, socialProfiles, onBook }) => (
   <Box
-  border="1px solid"
-  borderColor="blue.300" // Set the border color to a bluish tone
-  borderRadius="lg"
-  p={2}
-  mb={2}
-  bg="blue.50" // Set the background color to a light bluish tone
-  _hover={{ boxShadow: "md", bg: "blue.100" }} // Adjust hover effect to enhance the bluish tone
->
-
+    borderRadius="2xl"
+    border={"1px solid"}
+    borderColor="gray.200"
+    bg={"white"}
+    p={2}
+    mb={2}
+  >
     <Flex direction="column" align="center" mb={2}>
       <Box
         boxSize="170px"
-        border="1px solid"
-        borderColor="gray.300"
         borderRadius="lg"
         overflow="hidden"
         mb={2}
+        mt={4}
       >
         <Image src={avatar} alt={name} boxSize="full" objectFit="cover" />
       </Box>
@@ -56,7 +96,10 @@ const ConsultantCard = ({ name, avatar, experience, rating, socialProfiles, onBo
         <Text fontWeight="bold" fontSize="md">Consultant</Text>
         <Text fontWeight="bold" fontSize="md">{name}</Text>
         <Text fontSize="sm">Experience: {experience}</Text>
-        <Text fontSize="sm">Rating: {rating}</Text>
+        <HStack spacing={1}>
+          <Text fontSize="sm">Rating: {rating}</Text>
+          <Icon as={FaStar} color="yellow.400" />
+        </HStack>
         <Text fontSize="sm">Social Profiles:</Text>
         <HStack spacing={2}>
           <Link href={socialProfiles.linkedin} isExternal>
@@ -69,30 +112,57 @@ const ConsultantCard = ({ name, avatar, experience, rating, socialProfiles, onBo
       </VStack>
     </Flex>
     <Flex justify="center">
-      <Button size="sm" colorScheme="blue" mt={2} onClick={onBook}>Book a Session</Button>
+      <Button size="sm" colorScheme="blue" mt={2} mb={4} onClick={onBook}>Book a Session</Button>
     </Flex>
   </Box>
 );
 
 const ConsultantCarousel = () => {
-  const [currentConsultantIndex, setCurrentConsultantIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('amex');
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const activeDotStyle = {
+    width: '10px',
+    height: '10px',
+    background: '#3182ce',
+    borderRadius: '50%',
+    display: 'inline-block',
+    margin: '0 4px', // Reduced distance between dots
+  };
+
+  const inactiveDotStyle = {
+    width: '8px',
+    height: '8px',
+    background: '#a0d2eb',
+    borderRadius: '50%',
+    display: 'inline-block',
+    margin: '0 4px', // Reduced distance between dots
+  };
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const goToConsultant = (index) => {
-    setCurrentConsultantIndex(index);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    appendDots: dots => (
+      <div style={{ position: 'relative', top: '0' }}>
+        <ul style={{ display: 'flex', justifyContent: 'center', padding: 0 }}> {dots} </ul>
+      </div>
+    ),
+    customPaging: i => (
+      <div
+        style={i === currentSlide ? activeDotStyle : inactiveDotStyle}
+      ></div>
+    ),
+    beforeChange: (current, next) => setCurrentSlide(next),
   };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentConsultantIndex((prevIndex) => (prevIndex + 1) % consultants.length);
-    }, 3000); // Change consultant every 3 seconds
-
-    return () => clearInterval(interval); // Clear interval on component unmount
-  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -102,24 +172,14 @@ const ConsultantCarousel = () => {
 
   return (
     <Box>
+        <Text fontSize="lg" fontWeight="bold" mb={2}>Available Consultants</Text>
       <Flex justify="center" align="center" mb={2}>
-        <Text fontSize="md" fontWeight="bold" mb={2}>Suggested Consultants</Text>
       </Flex>
-      <Flex justify="center" align="center" mb={2}>
+      <Slider {...settings}>
         {consultants.map((consultant, index) => (
-          <Box
-            key={index}
-            w="3"
-            h="3"
-            bg={index === currentConsultantIndex ? "blue.500" : "gray.200"}
-            borderRadius="full"
-            mr={1}
-            cursor="pointer"
-            onClick={() => goToConsultant(index)}
-          />
+          <ConsultantCard key={index} {...consultant} onBook={openModal} />
         ))}
-      </Flex>
-      <ConsultantCard {...consultants[currentConsultantIndex]} onBook={openModal} />
+      </Slider>
       
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <ModalOverlay />

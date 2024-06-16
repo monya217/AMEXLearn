@@ -1,27 +1,27 @@
+// playerSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  current: false,
-  controls: false,
+  current: null,
   playing: false,
+  controls: null,
 };
 
-export const playerSlice = createSlice({
+const playerSlice = createSlice({
   name: "player",
   initialState,
   reducers: {
     setCurrent: (state, action) => {
       state.current = action.payload;
     },
-    setControls: (state, action) => {
-      state.controls = action.payload;
-    },
     setPlaying: (state, action) => {
       state.playing = action.payload;
+    },
+    setControls: (state, action) => {
+      state.controls = action.payload;
     },
   },
 });
 
-export const { setCurrent, setControls, setPlaying } = playerSlice.actions;
-
+export const { setCurrent, setPlaying, setControls } = playerSlice.actions;
 export default playerSlice.reducer;

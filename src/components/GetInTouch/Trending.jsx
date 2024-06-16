@@ -1,38 +1,84 @@
 import React from 'react';
-import { Box, Text, VStack, HStack, Link } from '@chakra-ui/react';
+import {
+  Box,
+  Text,
+  VStack,
+  HStack,
+  Link,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  IconButton,
+} from '@chakra-ui/react';
+import { FaEllipsisH } from 'react-icons/fa';
+import { FaRegFrown, FaExclamationTriangle } from 'react-icons/fa';
 
 const trendingTopics = [
-  { rank: "#1 on Trending", title: "Sensex Rises by 734 points" },
-  { rank: "#2 on Trending", title: "#MoneyMatters" },
-  { rank: "#3 on Trending", title: "#Investing101" },
-  // Add more trending topics as needed
+  { category: 'Finance · Trending', title: 'Investment Tips', posts: '15.3K posts' },
+  { category: 'Finance · Trending', title: '#Budget2024', posts: '8,923 posts' },
+  { category: 'Economy · Trending', title: 'Stock Market Insights', posts: '12.4K posts' },
+  { category: 'Personal Finance · Trending', title: '#SavingHacks', posts: '6,714 posts' },
+  { category: 'Cryptocurrency · Trending', title: 'Bitcoin Breaks $40K', posts: '22.1K posts' },
 ];
 
-const TrendingCard = ({ rank, title }) => (
+const handleReport = (title) => {
+  console.log(`Reporting trend: ${title}`);
+  // Implement your report functionality here
+};
+
+const handleMarkAsSpam = (title) => {
+  console.log(`Marking as spam: ${title}`);
+  // Implement your mark as spam functionality here
+};
+
+const TrendingCard = ({ category, title, posts }) => (
   <Box
-    border="1px solid"
-    borderColor="blue.300" // Set border color to a light blue tone
-    bg="blue.50" // Set background color to a light blue tone
-    borderRadius="md"
     p={4}
-    mb={4}
-    _hover={{ boxShadow: "md", bg: "blue.100" }} // Adjust hover effect to a slightly darker blue
+    borderBottom="1px solid"
+    borderColor="gray.200"
+    borderRadius={"6"}
+    display="flex"
+    justifyContent="space-between"
+    alignItems="center"
+    _hover={{ bg: 'gray.100' }}
+    _last={{ borderBottom: 'none' }} // Ensures the last item does not have a bottom border
   >
     <VStack align="start" spacing={1}>
-      <Text fontWeight="bold" fontSize="sm">{rank}</Text>
-      <Text fontSize="md">{title}</Text>
+      <Text fontSize="xs" color="gray.500">
+        {category}
+      </Text>
+      <Text fontWeight="bold" fontSize="sm">
+        {title}
+      </Text>
+      <Text fontSize="xs" color="gray.500">
+        {posts}
+      </Text>
     </VStack>
+    <Menu>
+      <MenuButton as={IconButton} icon={<FaEllipsisH />} variant="ghost" size="sm" />
+      <MenuList>
+        <MenuItem icon={<FaRegFrown color='orange' />} onClick={() => handleReport(title)}>Not interested</MenuItem>
+        <MenuItem icon={<FaExclamationTriangle color='red' />} onClick={() => handleMarkAsSpam(title)}>Harmful or Spam</MenuItem>
+      </MenuList>
+    </Menu>
   </Box>
 );
 
 const Trending = () => (
-  <Box p={4}>
-    <Text fontSize="lg" fontWeight="bold" mb={4}>What’s Trending</Text>
-    {trendingTopics.map((topic, index) => (
-      <TrendingCard key={index} {...topic} />
-    ))}
+  <Box mt={10}>
+    <Text fontSize="lg" fontWeight="bold" mb={4}>
+      What's Trending
+    </Text>
+    <Box p={4} border="1px solid" borderColor="gray.200" borderRadius="lg" bg={"white"}>
+      {trendingTopics.map((topic, index) => (
+        <TrendingCard key={index} {...topic} />
+      ))}
+    </Box>
     <HStack justify="center" mt={4}>
-      <Link href="#" fontWeight="bold" color="blue.500">View More</Link>
+      <Link href="#" fontWeight="bold" color="blue.500">
+        View more
+      </Link>
     </HStack>
   </Box>
 );

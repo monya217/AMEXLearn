@@ -5,37 +5,50 @@ import { firestore } from "../firebase/firebase";
 import useUserProfileStore from "../store/userProfileStore";
 
 const useGetUserProfileByUsername = (username) => {
-	const [isLoading, setIsLoading] = useState(true);
-	const showToast = useShowToast();
-	const { userProfile, setUserProfile } = useUserProfileStore();
+  const [isLoading, setIsLoading] = useState(true);
+  const showToast = useShowToast();
+  const { userProfile, setUserProfile } = useUserProfileStore();
 
-	useEffect(() => {
-		const getUserProfile = async () => {
-			setIsLoading(true);
-			try {
-				const q = query(collection(firestore, "users"), where("username", "==", username));
-				const querySnapshot = await getDocs(q);
+  useEffect(() => {
+    if (!username) {
+      console.warn("Username is undefined, cannot fetch user profile.");
+      setIsLoading(false);
+      setUserProfile(null);
+      return;
+    }
 
-				if (querySnapshot.empty) return setUserProfile(null);
+    const getUserProfile = async () => {
+      setIsLoading(true);
+      try {
+        console.log("Fetching user profile for username:", username);
+        const q = query(collection(firestore, "users"), where("username", "==", username));
+        const querySnapshot = await getDocs(q);
 
-				let userDoc;
-				querySnapshot.forEach((doc) => {
-					userDoc = doc.data();
-				});
+        if (querySnapshot.empty) {
+          console.log("No user profile found for username:", username);
+          setUserProfile(null);
+        } else {
+          let userDoc;
+          querySnapshot.forEach((doc) => {
+            userDoc = doc.data();
+          });
 
-				setUserProfile(userDoc);
-				console.log(userDoc);
-			} catch (error) {
-				showToast("Error", error.message, "error");
-			} finally {
-				setIsLoading(false);
-			}
-		};
+          console.log("User profile found:", userDoc);
+          setUserProfile(userDoc);
+        }
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+        showToast("Error", error.message, "error");
+        setUserProfile(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-		getUserProfile();
-	}, [setUserProfile, username, showToast]);
+    getUserProfile();
+  }, [username, setUserProfile, showToast]);
 
-	return { isLoading, userProfile };
+  return { isLoading, userProfile };
 };
 
 export default useGetUserProfileByUsername;
