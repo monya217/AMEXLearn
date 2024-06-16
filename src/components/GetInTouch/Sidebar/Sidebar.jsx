@@ -4,7 +4,6 @@ import { Box, Flex, Link } from "@chakra-ui/react";
 import { FaPen, FaRegListAlt, FaBell, FaUser, FaSearch } from 'react-icons/fa';
 import Feed from './Feed';
 import SearchConsultants from './SearchConsultants';
-import Notifications from './Notifications';
 import CreatePost from './CreatePost';
 import Activity from '../../Dashboard/Activity';
 import useUserProfileStore from '../../../store/userProfileStore';
@@ -31,11 +30,6 @@ const Sidebar = () => {
             icon: FaSearch,
             text: "Search",
             action: () => searchConsultantsRef.current.openModal(),
-        },
-        {
-            icon: FaBell,
-            text: "Notifications",
-            component: <Notifications />,
         },
         {
             icon: FaPen,
