@@ -5,6 +5,7 @@ import ProfileHeader from './Learn/ProfileHeader';
 import UpcomingSessions from './Sessions/UpcomingSessions';
 import Information from './Sessions/Information';
 import SessionsHistory from './Sessions/SessionsHistory';
+import CoinsWidget from './CoinsWidget';
 
 
 const SessionsSection = () => {
@@ -13,7 +14,7 @@ const SessionsSection = () => {
       <DashboardSidebar />
       <Box p={5} mt={10} flex="1">
         <ProfileHeader />
-        <Heading size="lg" mb={5}>
+        <Heading size="lg" mb={5} ml={5}>
           Sessions
         </Heading>
 
@@ -29,6 +30,7 @@ const SessionsSection = () => {
           <SessionsHistory />
         </Box>
       </Box>
+      <CoinsWidget />
     </Flex>
   );
 };

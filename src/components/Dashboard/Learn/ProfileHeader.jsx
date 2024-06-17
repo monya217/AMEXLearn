@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Flex, Heading, Text, Icon } from "@chakra-ui/react";
 import { FaCoins } from 'react-icons/fa';
 import useAuthStore from "../../../store/authStore";
+import './ProfileHeader.css'; // Import CSS for animations
 
 const getGreeting = () => {
   const hour = new Date().getHours();
@@ -20,31 +21,23 @@ const ProfileHeader = () => {
   return (
     <Box mb={5}>
       <Box
-        bg="blue.500"
-        color="white"
         borderRadius="md"
         p={5}
         display="flex"
         alignItems="center"
         justifyContent="space-between"
+        className="profile-header-container" // Add custom class for styling
       >
-        <Flex alignItems="center">
-          <Heading size="xl">{getGreeting()}, {authUser.fullName}!</Heading>
+        <Flex flexDirection="column">
+          <Box className="dashboard-title">
+            <Text fontSize="md" className="dashboard-text">WELCOME TO YOUR DASHBOARD!</Text>
+          </Box>
+          <Heading as="h1" size="2xl" fontFamily="Gafata" className="greeting-text">
+            {getGreeting()}, {authUser.fullName}!
+          </Heading>
         </Flex>
-        <Box
-          position="relative"
-          display="flex"
-          alignItems="center"
-          bg="white"
-          color="black"
-          boxShadow="lg"
-          borderRadius="md"
-          p={2}
-        >
-          <Icon as={FaCoins} boxSize="24px" color="yellow.400" mr={2} />
-          <Text fontSize="lg" fontWeight="bold" mr={2}>1,190</Text>
-          <Text fontSize="lg" fontWeight="bold">Coins</Text>
-        </Box>
+
+        
       </Box>
     </Box>
   );

@@ -19,6 +19,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { useState } from "react";
 import DashboardSidebar from "./DashboardSidebar";
 import ProfileHeader from "./Learn/ProfileHeader";
+import CoinsWidget from "./CoinsWidget";
 
 const Activity = () => {
   const { username } = useParams();
@@ -57,8 +58,7 @@ const Activity = () => {
         {" "}
         {/* Adjusted margin-left to 0 */}
         <ProfileHeader />
-        <Heading size="lg">Your Activity</Heading>
-        <Container maxW="100%" px={0} ml={0}>
+        <Container maxW="100%" px={0} ml={0} mt={-10}>
           <Flex py={10} px={4} w="full" flexDirection="column">
             <ActivityHeader userProfile={userProfile} />
           </Flex>
@@ -81,6 +81,7 @@ const Activity = () => {
           </Flex>
         </Container>
       </Box>
+      <CoinsWidget />
     </Flex>
   );
 };
