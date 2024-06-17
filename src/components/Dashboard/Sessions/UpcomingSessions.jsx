@@ -5,7 +5,7 @@ import { FaClock, FaCalendarAlt, FaBookmark, FaStar } from 'react-icons/fa';
 const UpcomingSessions = () => {
   // Sample data for upcoming session
   const upcomingSession = {
-    consultantName: 'Matthew E. McNatt',
+    consultantName: 'Michael Johnson',
     sessionDate: '2024-06-20',
     sessionTime: '10:00 AM',
     bookedOn: '2024-06-15',
@@ -19,10 +19,11 @@ const UpcomingSessions = () => {
       {/* Consultant image */}
       <Flex alignItems="center" mb={4}>
         <Image
-          src="/consultant1.png"
+          src="/consultant3.jpeg"
           borderRadius="10"
           boxSize="90px"
           mr={4}
+          w={"18%"}
         />
         {/* Consultant name and company */}
         <Box>
@@ -30,10 +31,10 @@ const UpcomingSessions = () => {
           <Text>AMEX</Text>
           <Flex alignItems="center" mt={2}>
             <Text mr={1}>
-              Rating: 4.5
+              Rating: 4.8
             </Text>
             <FaStar color="gold" />
-            <Text ml={4}>Experience: 5 years</Text>
+            <Text ml={4}>Experience: 6 years</Text>
           </Flex>
         </Box>
       </Flex>

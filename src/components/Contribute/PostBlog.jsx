@@ -147,8 +147,9 @@ const PostBlog = () => {
           duration: 5000,
           isClosable: true,
         });
+        navigate(`/blog/${blogId}`);
       } else {
-        await addDoc(collection(firestore, "blogs"), {
+        const docRef = await addDoc(collection(firestore, "blogs"), {
           ...form,
           Timestamp: serverTimestamp(),
           author: authUser.fullName,
@@ -161,8 +162,8 @@ const PostBlog = () => {
           duration: 5000,
           isClosable: true,
         });
+        navigate(`/blog/${docRef.id}`);
       }
-      navigate("/contribute");
     } catch (err) {
       console.log(err);
       toast({

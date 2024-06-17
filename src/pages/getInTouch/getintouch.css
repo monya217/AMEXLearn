@@ -4,3 +4,12 @@ body {
     background-color: #F9FAFC !important;
 }
 
+.community-heading{
+    font-family: 'Gafata', sans-serif;
+    font-weight: bold;
+}
+
+.community-subheading{
+    font-family: 'Gafata', sans-serif;
+}
+

@@ -22,7 +22,7 @@ import usePreviewImg from "../../../hooks/usePreviewImg";
 import useShowToast from "../../../hooks/useShowToast";
 import useCreatePost from "../../../hooks/useCreatePost";
 
-const CreatePost = forwardRef((props, ref) => {
+const CreatePost = forwardRef(({ onClose: handleSidebarClose }, ref) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [caption, setCaption] = useState("");
     const imageRef = useRef(null);
@@ -38,6 +38,7 @@ const CreatePost = forwardRef((props, ref) => {
         try {
             await handleCreatePost(selectedFile, caption);
             onClose();
+            handleSidebarClose();
             setCaption("");
             setSelectedFile(null);
         } catch (error) {
@@ -45,9 +46,14 @@ const CreatePost = forwardRef((props, ref) => {
         }
     };
 
+    const handleClose = () => {
+        onClose();
+        handleSidebarClose();
+    };
+
     return (
         <>
-            <Modal isOpen={isOpen} onClose={onClose} size='xl'>
+            <Modal isOpen={isOpen} onClose={handleClose} size='xl'>
                 <ModalOverlay />
                 <ModalContent bg={"blue.50"} border={"1px solid"} borderColor={"blue.300"}>
                     <ModalHeader>Create Post</ModalHeader>
@@ -80,7 +86,7 @@ const CreatePost = forwardRef((props, ref) => {
                         <Button colorScheme="blue" mr={3} onClick={handlePostCreation} isLoading={isLoading}>
                             Post
                         </Button>
-                        <Button variant='ghost' onClick={onClose}>Cancel</Button>
+                        <Button variant='ghost' onClick={handleClose}>Cancel</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

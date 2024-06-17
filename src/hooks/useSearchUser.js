@@ -13,13 +13,21 @@ const useSearchUser = () => {
 		setUser(null);
 		try {
 			const q = query(collection(firestore, "users"), where("username", "==", username));
+            const querySnapshot = await getDocs(q);
+            if (querySnapshot.empty) {
+                showToast("Error", "User not found", "error");
+                return;
+            }
 
-			const querySnapshot = await getDocs(q);
-			if (querySnapshot.empty) return showToast("Error", "User not found", "error");
+            const userData = querySnapshot.docs[0].data();
+            const userId = querySnapshot.docs[0].id;
 
-			querySnapshot.forEach((doc) => {
-				setUser(doc.data());
-			});
+            // Fetch user blogs
+            const blogsQuery = query(collection(firestore, "blogs"), where("userId", "==", userId));
+            const blogsSnapshot = await getDocs(blogsQuery);
+            const blogs = blogsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+            setUser({ ...userData, blogs });
 		} catch (error) {
 			showToast("Error", error.message, "error");
 			setUser(null);

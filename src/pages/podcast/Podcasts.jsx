@@ -6,6 +6,7 @@ import FooterPodcast from "../../components/FooterPodcast";
 import { Box } from "@chakra-ui/react"; // Import Box from Chakra UI
 import AddPodcastForm from '../GetinTouchProfile/addpodcast';
 
+
 const Podcasts = () => {
   return (
     <Box mx="7" mt="10"> {/* Adjust mx for left and right margin */}
@@ -14,8 +15,9 @@ const Podcasts = () => {
         <UpperSection  />
         <LowerSection />
       </Box>
-      {/* <FooterPodcast /> */}
-      <Box mb="20" /> {/* Increase bottom margin */}
+      {/* <Footer/> */}
+      <FooterPodcast />
+      <Box mb="8" /> {/* Increase bottom margin */}
     </Box>
   );
 };
