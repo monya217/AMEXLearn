@@ -1,59 +1,78 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Box, Flex, Image, Button, HStack, Text, Slider, SliderTrack, SliderFilledTrack, SliderThumb } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { useAudio } from "react-use";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrent, setPlaying } from "../redux/player/playerSlice";
 import { Icon } from "../assets/icons/Icon";
-import { useAudioPlayer } from "../components/Content/audioPlayerService";
+import { secondToTime } from "../utils/utils";
+import CustomRange from "./Footer/Player/CustomRange";
+import {
+  Box,
+  Flex,
+  Image,
+  Button,
+  Text,
+  HStack,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+} from "@chakra-ui/react";
 
 const FooterPodcast = () => {
-  const { current, playing, playSong, pauseSong, togglePlayPause } = useAudioPlayer();
+  const dispatch = useDispatch();
+  const { current, playing } = useSelector((state) => state.player);
   const [heartIcon, setHeartIcon] = useState("heart");
-  const [volume, setVolume] = useState(1);
-  const [muted, setMuted] = useState(false);
-  const audioRef = useRef();
+
+  const [audioElement, state, controls, ref] = useAudio({
+    src: current?.src,
+    autoPlay: false,
+  });
 
   useEffect(() => {
     if (current) {
-      if (playing) {
-        audioRef.current.play();
-      } else {
-        audioRef.current.pause();
-      }
+      controls.play();
+      setHeartIcon("heart");
     }
-  }, [current, playing]);
+  }, [current]);
 
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = muted ? 0 : volume;
-    }
-  }, [volume, muted]);
+    dispatch(setPlaying(state.playing));
+  }, [state.playing]);
 
   const handleHeartClick = () => {
     setHeartIcon(heartIcon === "heart" ? "heartFilled" : "heart");
   };
 
-  const handleVolumeClick = () => {
-    setMuted(!muted);
+  const handleClick = () => {
+    if (state.playing) {
+      controls.pause();
+    } else {
+      controls.play();
+    }
   };
 
-  const handleSeek = (value) => {
-    const newPosition = (value * audioRef.current.duration) / 100;
-    audioRef.current.currentTime = newPosition;
+  const handleVolumeClick = () => {
+    if (state.muted) {
+      controls.unmute();
+    } else {
+      controls.mute();
+    }
   };
 
   const volumeIcon = React.useMemo(() => {
-    if (muted || volume === 0) {
+    if (state.volume === 0 || state.muted) {
       return "volumeMuted";
-    } else if (volume > 0 && volume < 0.33) {
+    } else if (state.volume > 0 && state.volume < 0.33) {
       return "volumeLow";
-    } else if (volume >= 0.33 && volume < 0.66) {
+    } else if (state.volume >= 0.33 && state.volume < 0.66) {
       return "volumeNormal";
     }
     return "volumeFull";
-  }, [volume, muted]);
+  }, [state.volume, state.muted]);
 
-  const secondToTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+  const handleSeek = (value) => {
+    const newPosition = (value * state.duration) / 100;
+    controls.seek(newPosition);
   };
 
   return (
@@ -126,16 +145,17 @@ const FooterPodcast = () => {
                 <Button size="sm" variant="ghost">
                   <Icon name="playerPrev" size={20} />
                 </Button>
+                {audioElement}
                 <Button
-                  onClick={() => togglePlayPause(current)}
+                  onClick={handleClick}
                   size="sm"
                   variant="solid"
                   bg="white"
                   _hover={{ bg: "gray.100" }}
                   borderRadius="full"
-                  title={playing ? "Pause" : "Play"}
+                  title={state.playing ? "Pause" : "Play"}
                 >
-                  <Icon name={playing ? "pause" : "play"} size={20} />
+                  <Icon name={state.playing ? "pause" : "play"} size={20} />
                 </Button>
                 <Button size="sm" variant="ghost">
                   <Icon name="playerNext" size={20} />
@@ -148,7 +168,7 @@ const FooterPodcast = () => {
               {/* Progress Slider */}
               <Slider
                 aria-label="audio progress"
-                value={(audioRef.current?.currentTime / audioRef.current?.duration) * 100 || 0}
+                value={(state.time / state.duration) * 100}
                 onChange={handleSeek}
                 min={0}
                 max={100}
@@ -162,24 +182,19 @@ const FooterPodcast = () => {
               {/* Lower Controls */}
               <Flex w="full" alignItems="center" justifyContent="space-between" px="4">
                 <Text fontSize="xs" minW="40px" textAlign="right">
-                  {secondToTime(audioRef.current?.currentTime || 0)}
+                  {secondToTime(state.time)}
                 </Text>
                 <Box flex="1" mx="4">
-                  <Slider
+                  <CustomRange
                     step={0.1}
                     min={0}
-                    max={audioRef.current?.duration || 1}
-                    value={audioRef.current?.currentTime || 0}
-                    onChange={(value) => (audioRef.current.currentTime = value)}
-                  >
-                    <SliderTrack bg="gray.200">
-                      <SliderFilledTrack bg="blue.400" />
-                    </SliderTrack>
-                    <SliderThumb boxSize={4} />
-                  </Slider>
+                    max={state?.duration || 1}
+                    value={state?.time}
+                    onChange={(value) => controls.seek(value)}
+                  />
                 </Box>
                 <Text fontSize="xs" minW="40px" textAlign="left">
-                  {secondToTime(audioRef.current?.duration || 0)}
+                  {secondToTime(state?.duration)}
                 </Text>
               </Flex>
               {/* Lower Controls */}
@@ -203,18 +218,13 @@ const FooterPodcast = () => {
                 <Icon name={volumeIcon} size={20} />
               </Button>
               <Box w="24" ml="2">
-                <Slider
+                <CustomRange
                   step={0.1}
                   min={0}
                   max={1}
-                  value={muted ? 0 : volume}
-                  onChange={(value) => setVolume(value)}
-                >
-                  <SliderTrack bg="gray.200">
-                    <SliderFilledTrack bg="blue.400" />
-                  </SliderTrack>
-                  <SliderThumb boxSize={4} />
-                </Slider>
+                  value={state.muted ? 0 : state?.volume}
+                  onChange={(value) => controls.volume(value)}
+                />
               </Box>
             </Flex>
             <Button size="sm" variant="ghost">
@@ -224,9 +234,9 @@ const FooterPodcast = () => {
           {/* Right Section */}
         </Flex>
       </Flex>
-      <audio ref={audioRef} />
     </Box>
   );
 };
 
 export default FooterPodcast;
+
