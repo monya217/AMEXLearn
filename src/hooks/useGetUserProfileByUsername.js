@@ -23,19 +23,22 @@ const useGetUserProfileByUsername = (username) => {
         console.log("Fetching user profile for username:", username);
         const q = query(collection(firestore, "users"), where("username", "==", username));
         const querySnapshot = await getDocs(q);
+            if (querySnapshot.empty) {
+                showToast("Error", "User not found", "error");
+                return;
+            }
 
-        if (querySnapshot.empty) {
-          console.log("No user profile found for username:", username);
-          setUserProfile(null);
-        } else {
-          let userDoc;
-          querySnapshot.forEach((doc) => {
-            userDoc = doc.data();
-          });
+            const userData = querySnapshot.docs[0].data();
+            const userId = querySnapshot.docs[0].id;
 
-          console.log("User profile found:", userDoc);
-          setUserProfile(userDoc);
-        }
+            // Fetch user blogs
+            const blogsQuery = query(collection(firestore, "blogs"), where("userId", "==", userId));
+            const blogsSnapshot = await getDocs(blogsQuery);
+            const blogs = blogsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+            setUserProfile({ ...userData, blogs });
+        
+        
       } catch (error) {
         console.error("Error fetching user profile:", error);
         showToast("Error", error.message, "error");

@@ -15,14 +15,16 @@ import {
     Tooltip,
     useDisclosure,
 } from "@chakra-ui/react";
+import { useNavigate } from 'react-router-dom';
 import useSearchUser from "../../../hooks/useSearchUser";
 import SuggestedUser from "./SuggestedUser";
-import { CiSearch } from "react-icons/ci";
 
 const SearchUser = forwardRef((props, ref) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const searchRef = useRef(null);
     const { user, isLoading, getUserProfile, setUser } = useSearchUser();
+    const navigate = useNavigate();
+    console.log(user)
 
     useImperativeHandle(ref, () => ({
         openModal: onOpen
@@ -33,11 +35,16 @@ const SearchUser = forwardRef((props, ref) => {
         getUserProfile(searchRef.current.value);
     };
 
+    const handleUserClick = () => {
+        navigate(`/${user.username}`, { state: { user } });
+        onClose();
+    };
+
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose} motionPreset='slideInLeft'>
                 <ModalOverlay />
-                <ModalContent bg={"blue.50"} border={"1px solid blue.300"} maxW={"400px"}> {/* Set background and border color */}
+                <ModalContent bg={"blue.50"} border={"1px solid blue.300"} maxW={"400px"}>
                     <ModalHeader>Search user</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody pb={6}>
@@ -53,7 +60,7 @@ const SearchUser = forwardRef((props, ref) => {
                                 </Button>
                             </Flex>
                         </form>
-                        {user && <SuggestedUser user={user} setUser={setUser} />}
+                        {user && <Box onClick={handleUserClick} cursor="pointer"><SuggestedUser user={user} setUser={setUser} /></Box>}
                     </ModalBody>
                 </ModalContent>
             </Modal>
