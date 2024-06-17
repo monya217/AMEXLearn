@@ -6,16 +6,17 @@ import LearningHoursChart from '../../components/Dashboard/Learn/LearningHoursCh
 import CourseList from '../../components/Dashboard/Learn/CourseList';
 import GameList from '../../components/Dashboard/Learn/GameList';
 import Certifications from '../../components/Dashboard/Learn/Certifications';
-import DashboardSidebar from '../../components/Dashboard/DashboardSidebar'; 
+import DashboardSidebar from '../../components/Dashboard/DashboardSidebar';
+import CoinsWidget from '../../components/Dashboard/CoinsWidget'; // Import CoinsWidget component
 
 const Dashboard = () => {
   return (
     <Flex>
-      <DashboardSidebar /> 
+      <DashboardSidebar />
       <Box p={5} mt={10} flex="1">
         <ProfileHeader />
 
-        <Heading size="lg" mb={5}>Courses and Games</Heading>
+        <Heading size="lg" ml={5} mb={5}>Courses and Games</Heading>
 
         <Center mb={5}>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
@@ -26,7 +27,6 @@ const Dashboard = () => {
               borderRadius="md"
               bg="white"
               textAlign="center"
-              // Center alignment added
               mx="auto"
             >
               <Stat>
@@ -41,7 +41,6 @@ const Dashboard = () => {
               borderRadius="md"
               bg="white"
               textAlign="center"
-              // Center alignment added
               mx="auto"
             >
               <Stat>
@@ -65,9 +64,11 @@ const Dashboard = () => {
 
         <Certifications />
       </Box>
+
+      {/* Fixed position CoinsWidget */}
+      <CoinsWidget />
     </Flex>
   );
 };
 
-export default Dashboard
-
+export default Dashboard;

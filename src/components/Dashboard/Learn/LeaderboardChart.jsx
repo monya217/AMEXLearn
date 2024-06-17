@@ -34,7 +34,7 @@ const LeaderboardChart = ({ userPercentage = 22.86 }) => {
   };
 
   return (
-    <Box bg="white" p={5} borderRadius="md" width="48%">
+    <Box p={5} borderRadius="md" width="48%">
       <Heading size="md" color="black" mb={3}>Leaderboard</Heading>
       <Flex mb={3} alignItems="center" color="black">
         <Text fontSize="2xl" mr={2}>Top {userPercentage}%</Text>
