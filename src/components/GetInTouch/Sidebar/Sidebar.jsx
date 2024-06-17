@@ -1,11 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Box, Flex, Link } from "@chakra-ui/react";
-import { FaPen, FaRegListAlt, FaBell, FaUser, FaSearch } from 'react-icons/fa';
+import { FaPen, FaRegListAlt, FaSearch, FaUser } from 'react-icons/fa';
 import Feed from './Feed';
 import SearchUser from './SearchUser';
 import CreatePost from './CreatePost';
-import Activity from '../../Dashboard/Activity';
 import useUserProfileStore from '../../../store/userProfileStore';
 import useAuthStore from '../../../store/authStore';
 
@@ -24,7 +23,11 @@ const Sidebar = () => {
         {
             icon: FaRegListAlt,
             text: "Feed",
-            action: () => navigate('/get-in-touch'),
+            action: () => {
+                navigate('/get-in-touch');
+                setSelectedIndex(0);
+                setSelectedComponent(<Feed />);
+            },
         },
         {
             icon: FaSearch,
@@ -50,6 +53,11 @@ const Sidebar = () => {
         } else {
             setSelectedComponent(sidebarItems[index].component);
         }
+    };
+
+    const handleModalClose = () => {
+        setSelectedIndex(0);
+        setSelectedComponent(<Feed />);
     };
 
     const handleMouseEnter = () => {
@@ -117,13 +125,12 @@ const Sidebar = () => {
             </Flex>
 
             {/* CreatePost Component */}
-            <CreatePost ref={createPostRef} />
+            <CreatePost ref={createPostRef} onClose={handleModalClose} />
 
             {/* SearchConsultants Component */}
-            <SearchUser ref={searchUserRef} />
+            <SearchUser ref={searchUserRef} onClose={handleModalClose} />
         </Flex>
     );
 };
 
 export default Sidebar;
-
