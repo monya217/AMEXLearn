@@ -4,17 +4,18 @@ import ProfileTabs from "./ProfileTabs";
 import ProfilePosts from "./ProfilePosts";
 import ProfileBlogs from "./ProfileBlogs";
 import useGetUserProfileByUsername from "../../../hooks/useGetUserProfileByUsername";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation  } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import { useState } from 'react';
 import { SkeletonCircle, VStack, Skeleton } from "@chakra-ui/react";
 import Sidebar from "../Sidebar/Sidebar";
-import { PageLayout } from "../../../GetInTouchLayouts/PageLayout/PageLayout";
 
 const ProfilePage = () => {
   const { username } = useParams();
   const { isLoading, userProfile, error } = useGetUserProfileByUsername(username);
   const [selectedTab, setSelectedTab] = useState('posts');
+  const location = useLocation();
+  console.log(location.state?.from === 'contribute')
 
   if (isLoading) return <ProfileHeaderSkeleton />;
 
