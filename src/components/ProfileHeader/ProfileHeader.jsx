@@ -27,16 +27,7 @@ const ProfileHeader = () => {
         </Link>
       </Flex>
       <Flex alignItems="center" gap={0.01} ml={4} cursor={"pointer"} onClick={handleLogoutAndNavigate}>
-        <BiLogOut size={25} color="blue" />
-        <Button
-          display={{ base: "none", md: "block" }}
-          color={"white"}
-          variant={"ghost"}
-          _hover={{ bg: "transparent" }}
-          isLoading={isLoggingOut}
-        >
-          Logout
-        </Button>
+        <BiLogOut size={25} color="white" />
       </Flex>
     </Flex>
   );
