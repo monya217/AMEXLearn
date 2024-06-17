@@ -14,7 +14,7 @@ const Podcasts = () => {
         <UpperSection  />
         <LowerSection />
       </Box>
-      <FooterPodcast />
+      {/* <FooterPodcast /> */}
       <Box mb="20" /> {/* Increase bottom margin */}
     </Box>
   );
