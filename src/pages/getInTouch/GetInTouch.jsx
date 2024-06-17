@@ -14,10 +14,10 @@ const GetInTouch = () => {
       <Chatbot />
       <Container maxW={"container.lg"} py={10} mt={12}>
         <Flex direction="column" align={textAlign === "center" ? "center" : "flex-start"}>
-          <Text fontSize="4xl" fontWeight="bold" mb={4} textAlign={textAlign}>
+          <Text fontSize="4xl" mb={4} textAlign={textAlign} className="community-heading">
             Stay Informed and Share Your Experiences
           </Text>
-          <Text fontSize="lg" color="gray.600" textAlign={textAlign}>
+          <Text fontSize="lg" color="gray.600" textAlign={textAlign} className="community-subheading">
             Explore, engage, and discover a world of knowledge and inspiration in our feed.
           </Text>
         </Flex>
