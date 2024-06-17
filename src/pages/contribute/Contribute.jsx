@@ -110,7 +110,7 @@ const Contribute = () => {
           ) : (
             <Flex align="center" justify="center" direction="column" mt="20px">
               <Icon as={WarningIcon} w={10} h={10} color="red.500" />
-              <Text fontSize="xl" color="gray.500" mt="10px">
+              <Text fontSize="xl" color="gray.500" mt="10px" mb="50px">
                 No blogs available
               </Text>
             </Flex>
