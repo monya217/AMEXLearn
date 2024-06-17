@@ -1,81 +1,82 @@
-import React from 'react';
-import { Box, Flex, Link, Tooltip } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
-import { FaPlus, FaFileAlt } from "react-icons/fa"; // Import the necessary icons
+import React, { useState } from 'react';
+import { Box, Flex, Link } from "@chakra-ui/react";
+import { Link as RouterLink, useLocation } from "react-router-dom";
+import { FaPlus, FaFileAlt } from "react-icons/fa";
 
 const ContributeSidebar = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const sidebarWidth = isExpanded ? '250px' : '75px';
+  const location = useLocation();
+
   const sidebarItems = [
     {
-      icon: <FaFileAlt size={20} />,
+      icon: FaFileAlt,
       text: "Blogs",
       link: "/contribute",
     },
     {
-      icon: <FaPlus size={20} />,
+      icon: FaPlus,
       text: "Create Post",
       link: "/contribute/post",
     },
-
   ];
+
+  const handleMouseEnter = () => {
+    setIsExpanded(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsExpanded(false);
+  };
 
   return (
     <Box
-      height={"100vh"}
-      borderRight={"1px solid"}
-      borderColor={"gray.200"}
+      height={'100vh'}
+      borderRight={'1px solid'}
+      borderColor={'gray.200'}
       py={10}
-      position={"fixed"}
+      position={'sticky'}
       top={18}
-      left={0}
-      px={2}
+      px={4}
       bg={'white'}
-      width={{ base: 10, md: 14 }}
-      overflow="hidden"
-      transition="width 0.2s"
-      _hover={{ width: "200px" }}
-      pt={20} 
-      zIndex = {100}
+      width={sidebarWidth}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      transition={'width 0.2s'}
+      pt={20}
+      zIndex={100}
     >
-      <Flex direction={"column"} gap={5} cursor={"pointer"}>
-        {sidebarItems.map((item, index) => (
-          <Tooltip
-            key={index}
-            hasArrow
-            label={item.text}
-            placement='right'
-            openDelay={500}
-            display={{ base: "block", md: "none" }}
-          >
+      <Flex direction={'column'} gap={10} cursor={'pointer'}>
+        {sidebarItems.map((item, index) => {
+          const isSelected = location.pathname === item.link;
+          return (
             <Link
-              display={"flex"}
-              to={item.link || null}
+              key={index}
+              display={'flex'}
+              to={item.link}
               as={RouterLink}
-              alignItems={"center"}
+              alignItems={'center'}
               gap={4}
-              _hover={{ bg: "gray.100" }}
+              _hover={{ bg: 'gray.100' }}
               borderRadius={6}
               p={2}
-              w={"full"}
-              position="relative"
-              role="group"
+              w={'full'}
+              bg={isSelected ? "blue.100" : "transparent"}
             >
-              {item.icon}
+              <Box boxSize="25px" color={isSelected ? "blue.500" : "black"}>
+                <item.icon size={25} />
+              </Box>
               <Box
-                display={{ base: "none", md: "block" }}
-                position="absolute"
-                left="50px"
-                top="50%"
-                transform="translateY(-50%)"
-                opacity={0}
-                transition="opacity 0.2s"
-                _groupHover={{ opacity: 1 }}
+                display={isExpanded ? 'block' : 'none'}
+                ml={2}
                 whiteSpace="nowrap"
+                color={isSelected ? "blue.500" : "black"}
               >
                 {item.text}
               </Box>
             </Link>
-          </Tooltip>
-        ))}
+          );
+        })}
       </Flex>
     </Box>
   );

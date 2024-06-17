@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Flex, Icon, Text, useBreakpointValue } from "@chakra-ui/react";
-import { collection, onSnapshot, query, where, getDocs } from "firebase/firestore";
+import { collection, onSnapshot, getDocs } from "firebase/firestore";
 import { firestore } from '../../firebase/firebase';
 import BlogSection from '../../components/Contribute/BlogSection';
 import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
@@ -69,7 +69,11 @@ const Contribute = () => {
   return (
     <Flex>
       <ContributeSidebar />
-      <Box flex="1">
+      <Box
+        flex="1"
+        ml={0} // Adjust margin-left as per the sidebar width
+        transition="margin-left 0.2s"
+      >
         <Box
           className="bg-black"
           backgroundImage={contribute_header}
@@ -82,10 +86,10 @@ const Contribute = () => {
           justifyContent="center"
           height="450px"
         />
-        <Box px="100px" width="100%" paddingTop="20px" flex="1" ml={{ base: 10, md: 14 }} p={4}>
+        <Box px={{ base: 4, md: 6, lg: 8, xl: 10 }} paddingTop="20px" flex="1">
           <Search search={search} handleChange={handleChange} />
         </Box>
-        <Box width="100%" px="20px">
+        <Box width="100%" px={{ base: 4, md: 6, lg: 8, xl: 10 }}>
           {search ? (
             searchResults.length > 0 ? (
               <BlogSection blogs={searchResults} />
