@@ -52,15 +52,14 @@ const Blogpage = () => {
                     width="100%"
                     padding="4"
                     textAlign="center"
-                    pl={{ base: "5%", md: "5%" }} 
                 >
                     <Heading as="h1" size="2xl">{blog?.title}</Heading>
                 </Flex>
             </Box>
-            <Container maxW="container.lg" py="6">
+            <Container maxW="container.xl" py="6"  pl={{ base: "15", md: "10" }}> {/* Adjusted max width to container.xl */}
                 <Grid templateColumns="repeat(12, 1fr)" gap={6}>
                     <GridItem colSpan={{ base: 12, md: 8 }}>
-                        <Flex direction="column" align="start">
+                        <Flex direction="column" align="start" pl={{ base: "15", md: "10" }}> {/* Added padding-left */}
                             <Flex align="center" mb="6">
                                 <Avatar name={blog?.author} size="md" mr="4" />
                                 <Box>
@@ -70,7 +69,7 @@ const Blogpage = () => {
                                     </Text>
                                 </Box>
                             </Flex>
-                            <Text fontSize="lg" lineHeight="tall">
+                            <Text fontSize="lg" lineHeight="tall" whiteSpace="pre-wrap"> {/* Ensuring line breaks are maintained */}
                                 {blog?.description}
                             </Text>
                         </Flex>
