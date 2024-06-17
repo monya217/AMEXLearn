@@ -9,8 +9,8 @@ const ProfileHeader = () => {
   const navigate = useNavigate();
 
   const handleLogoutAndNavigate = async () => {
-    await handleLogout();
     navigate('/');
+    await handleLogout();
   };
 
   const authUser = useAuthStore(state => state.user);

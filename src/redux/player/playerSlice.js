@@ -1,24 +1,23 @@
-// playerSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   current: null,
   playing: false,
-  controls: null,
+  controls: null, // This should be where your controls are stored
 };
 
 const playerSlice = createSlice({
   name: "player",
   initialState,
   reducers: {
-    setCurrent: (state, action) => {
+    setCurrent(state, action) {
       state.current = action.payload;
     },
-    setPlaying: (state, action) => {
+    setPlaying(state, action) {
       state.playing = action.payload;
     },
-    setControls: (state, action) => {
-      state.controls = action.payload;
+    setControls(state, action) {
+      state.controls = action.payload; // Set controls here
     },
   },
 });

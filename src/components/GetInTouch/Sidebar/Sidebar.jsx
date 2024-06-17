@@ -14,8 +14,8 @@ const Sidebar = () => {
     const authUser = useAuthStore((state) => state.user);
     const [selectedComponent, setSelectedComponent] = useState(<Feed />);
     const [isExpanded, setIsExpanded] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(0);
     const sidebarWidth = isExpanded ? '250px' : '75px';
+    const [selectedIndex, setSelectedIndex] = useState(0);
     const createPostRef = useRef(null);
     const searchUserRef = useRef(null);
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Sidebar = () => {
         {
             icon: FaRegListAlt,
             text: "Feed",
-            component: <Feed />,
+            action: () => navigate('/get-in-touch'),
         },
         {
             icon: FaSearch,
@@ -126,3 +126,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
