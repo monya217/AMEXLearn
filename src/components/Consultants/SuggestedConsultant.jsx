@@ -172,8 +172,8 @@ const ConsultantCarousel = () => {
 
   return (
     <Box>
-        <Text fontSize="lg" fontWeight="bold" mb={2}>Available Consultants</Text>
       <Flex justify="center" align="center" mb={2}>
+        <Text fontSize="lg" fontWeight="bold" mb={2}>Available Consultants</Text>
       </Flex>
       <Slider {...settings}>
         {consultants.map((consultant, index) => (

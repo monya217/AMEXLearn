@@ -67,7 +67,7 @@ const TrendingCard = ({ category, title, posts }) => (
 
 const Trending = () => (
   <Box mt={10}>
-    <Text fontSize="lg" fontWeight="bold" mb={4}>
+    <Text fontSize="lg" fontWeight="bold" mb={4} textAlign={"center"}>
       What's Trending
     </Text>
     <Box p={4} border="1px solid" borderColor="gray.200" borderRadius="lg" bg={"white"}>
