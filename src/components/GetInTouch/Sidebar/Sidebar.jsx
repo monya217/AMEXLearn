@@ -3,7 +3,7 @@ import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { Box, Flex, Link } from "@chakra-ui/react";
 import { FaPen, FaRegListAlt, FaBell, FaUser, FaSearch } from 'react-icons/fa';
 import Feed from './Feed';
-import SearchConsultants from './SearchConsultants';
+import SearchUser from './SearchUser';
 import CreatePost from './CreatePost';
 import Activity from '../../Dashboard/Activity';
 import useUserProfileStore from '../../../store/userProfileStore';
@@ -17,7 +17,7 @@ const Sidebar = () => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const sidebarWidth = isExpanded ? '250px' : '75px';
     const createPostRef = useRef(null);
-    const searchConsultantsRef = useRef(null);
+    const searchUserRef = useRef(null);
     const navigate = useNavigate();
 
     const sidebarItems = [
@@ -29,7 +29,7 @@ const Sidebar = () => {
         {
             icon: FaSearch,
             text: "Search Profile",
-            action: () => searchConsultantsRef.current.openModal(),
+            action: () => searchUserRef.current.openModal(),
         },
         {
             icon: FaPen,
@@ -120,7 +120,7 @@ const Sidebar = () => {
             <CreatePost ref={createPostRef} />
 
             {/* SearchConsultants Component */}
-            <SearchConsultants ref={searchConsultantsRef} />
+            <SearchUser ref={searchUserRef} />
         </Flex>
     );
 };

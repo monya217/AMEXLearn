@@ -1,9 +1,11 @@
+// ActivityProfileBlogs.jsx
+import React from 'react';
 import { Box, Flex, Skeleton, Text, VStack } from "@chakra-ui/react";
-import ProfilePost from "./ProfilePost";
-import useGetUserPosts from "../../../hooks/useGetUserPosts";
+import ProfileBlog from "./ProfileBlog";
+import useGetUserBlogs from "../../../hooks/useGetUserBlogs";
 
-const ProfilePosts = () => {
-  const { isLoading, posts } = useGetUserPosts();
+const ActivityProfileBlogs = () => {
+  const { isLoading, blogs } = useGetUserBlogs();
 
   if (isLoading) {
     return (
@@ -19,10 +21,10 @@ const ProfilePosts = () => {
     );
   }
 
-  if (posts.length === 0) {
+  if (blogs.length === 0) {
     return (
       <Flex flexDir="column" textAlign="center" mx="auto" mt={10}>
-        <Text fontSize="2xl">No Posts Found🤔</Text>
+        <Text fontSize="2xl">No Blogs Found🤔</Text>
       </Flex>
     );
   }
@@ -30,12 +32,12 @@ const ProfilePosts = () => {
   return (
     <Box w="full">
       <VStack align="stretch" spacing={12} py={4} w="full">
-        {posts.map((post) => (
-          <ProfilePost key={post.id} post={post} />
+        {blogs.map((blog) => (
+          <ProfileBlog key={blog.id} blog={blog} />
         ))}
       </VStack>
     </Box>
   );
 };
 
-export default ProfilePosts;
+export default ActivityProfileBlogs;

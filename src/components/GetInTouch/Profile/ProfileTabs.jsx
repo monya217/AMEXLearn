@@ -15,7 +15,7 @@ const ProfileTabs = ({ selectedTab, setSelectedTab }) => {
         onClick={() => setSelectedTab('posts')}
       >
         <Text fontSize={12} display={{ base: "block", sm: "block" }}>
-          Posts
+          My Posts
         </Text>
       </Button>
 
@@ -25,7 +25,7 @@ const ProfileTabs = ({ selectedTab, setSelectedTab }) => {
         onClick={() => setSelectedTab('achievements')}
       >
         <Text fontSize={12} display={{ base: "block", sm: "block" }}>
-          Achievements
+          My Blogs
         </Text>
       </Button>
     </Flex>
