@@ -1,51 +1,40 @@
 import React from 'react';
-import styled from "styled-components";
+import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { other_images } from '../utils/images';
 
 const Hero = () => {
   return (
-    <HeroWrapper className = "bg-black">
-      <div className='container h-100 flex'>
-        <div className='hero-content'>
-          <h1>Empower Your Financial Future</h1>
-          <p>Unlock a world of financial knowledge with our curated courses. Explore topics from personal finance management to investment strategies.</p>
-        </div>
-      </div>
-    </HeroWrapper>
-  )
-}
+    <Box
+      bgImage={`url(${other_images.hero_img7})`}
+      bgPos="center"
+      bgSize="120% auto" // Adjust background-size to cover more horizontally
+      bgRepeat="no-repeat"
+      height="350px"
+      position="relative"
+      className="bg-black"
+    >
+      <Flex className="container" height="100%" alignItems="center" justifyContent="center">
+        <Box
+          bg="white"
+          color="black"
+          fontFamily="'Gafata', sans-serif"
+          maxWidth="550px"
+          width="100%"
+          padding="20px"
+          textAlign="center"
+        >
+          <Heading as="h1" fontSize="32px" marginBottom="5px" whiteSpace="nowrap">
+            Empower Your Financial Future
+          </Heading>
+          <Text fontSize="16px">
+            Unlock a world of financial knowledge with our curated courses. Explore topics from personal finance management to investment strategies.
+          </Text>
+        </Box>
+      </Flex>
+    </Box>
+  );
+};
 
-const HeroWrapper = styled.div`
-  background: url(${other_images.hero_img7}) center/cover no-repeat;
-  height: 350px;
-  
+export default Hero;
 
-  .container{
-    padding-top: 60px;
-    margin-top: 40px;
 
-    
-    .hero-content{
-      background-color: var(--clr-white);
-      color: black;
-      font-family: 'Gafata', sans-serif;
-      max-width: 550px;
-      width: 100%;
-      margin-left:0;
-      padding: 20px;
-      margin-top: 0px;
-      
-
-      h1{
-        font-size: 32px;
-        margin-bottom: 5px;
-        white-space: nowrap;
-      }
-      p{
-        font-size: 16px;
-      }
-    }
-  }
-`;
-
-export default Hero

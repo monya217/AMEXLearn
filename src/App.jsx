@@ -23,6 +23,8 @@ import Podcasts from './pages/podcast/Podcasts.jsx';
 import { store } from "./redux/store"; 
 import Sessions from "./components/Dashboard/Sessions.jsx";
 import Activity from "./components/Dashboard/Activity.jsx";
+import PlayandLearn from "./pages/learn/playandlearn.jsx"; // Import playandlearn page
+import Livesessions from "./pages/learn/livesession.jsx"; // Import livesession page
 
 const App = () => {
   const [authUser] = useAuthState(auth);
@@ -58,6 +60,8 @@ const App = () => {
               </CoursesProvider>
             }
           />
+          <Route path="/playandlearn" element={<PlayandLearn />} /> {/* Route for playandlearn */}
+          <Route path="/livesession" element={<Livesessions />} /> {/* Route for livesession */}
           <Route path="/get-in-touch" element={<GetInTouch />} />
           <Route path="/contribute" element={<Contribute />} />
           <Route
@@ -100,6 +104,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 
