@@ -1,41 +1,26 @@
-import React from 'react'
+import React from 'react';
+import { Link } from "react-router-dom";
+import { Box, Image, Text, VStack } from '@chakra-ui/react';
 
-import styled from "styled-components";
-import {Link} from "react-router-dom";
-
-const Category = ({image, category}) => {
+const Category = ({ image, category }) => {
   return (
     <Link to={`/category/${category}`}>
-      <CategoryItemWrapper className='flex flex-column bg-alice-blue'>
-        <div className='category-item-img'>
-          <img src = {image} alt = {category} />
-        </div>
-        <div className='category-item-name'>
-          <h6>{category}</h6>
-        </div>
-      </CategoryItemWrapper>
+      <VStack
+        bg="aliceblue"
+        p="20px"
+        border="1px solid transparent"
+        transition="all 0.3s"
+        _hover={{ borderColor: "purple.500" }}
+      >
+        <Box className="category-item-img">
+          <Image src={image} alt={category} maxW="110px" />
+        </Box>
+        <Box className="category-item-name" mt="24px">
+          <Text as="h6" fontSize="15px">{category}</Text>
+        </Box>
+      </VStack>
     </Link>
-  )
+  );
 }
 
-const CategoryItemWrapper = styled.div`
-  padding: 20px;
-  border: 1px solid transparent;
-  transition: var(--transition);
-  .category-item-img{
-    img{
-      max-width: 110px;
-    }
-  }
-  .category-item-name{
-    margin-top: 24px;
-    h6{
-      font-size: 15px;
-    }
-  }
-  &:hover{
-    border: 1px solid var(--clr-purple);
-  }
-`;
-
-export default Category
+export default Category;

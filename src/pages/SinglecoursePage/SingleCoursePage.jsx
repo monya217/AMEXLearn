@@ -1,15 +1,23 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import styled from "styled-components";
+import { useParams } from 'react-router-dom';
+import {
+  Box,
+  Flex,
+  Image,
+  Text,
+  Grid,
+  GridItem,
+  Badge,
+  Icon,
+} from '@chakra-ui/react';
+import { MdInfo } from 'react-icons/md';
+import { TbWorld } from 'react-icons/tb';
+import { RiClosedCaptioningFill } from 'react-icons/ri';
+import { BiCheck } from 'react-icons/bi';
+import StarRating from '../../components/StarRating'; // Assuming StarRating component is properly defined
 import { useCoursesContext } from '../../context/course_context';
-import StarRating from '../../components/StarRating';
-import { MdInfo } from "react-icons/md";
-import { TbWorld } from "react-icons/tb";
-import { FaShoppingCart } from "react-icons/fa";
-import { RiClosedCaptioningFill } from "react-icons/ri";
-import { BiCheck } from "react-icons/bi";
 import { useCartContext } from '../../context/cart_context';
-
+import LearnSidebar from '../../components/LearnSidebar'; // Import LearnSidebar component
 
 const SingleCoursePage = () => {
   const { id } = useParams();
@@ -25,7 +33,6 @@ const SingleCoursePage = () => {
   }
 
   const {
-    id: courseID,
     category,
     image,
     course_name,
@@ -43,261 +50,124 @@ const SingleCoursePage = () => {
   } = single_course;
 
   return (
-    <SingleCourseWrapper className="learn-holder">
-      <div className='course-intro mx-auto grid'>
-        <div className='course-img'>
-          <img src={image} alt={course_name} />
-        </div>
-        <div className='course-details'>
-          <div className='course-category bg-white text-dark text-capitalize fw-6 fs-12 d-inline-block'>{category}</div>
-          <div className='course-head'>
-            <h5>{course_name}</h5>
-          </div>
-          <div className='course-body'>
-            <p className='course-para fs-18'>{description}</p>
-            <div className='course-rating flex'>
-              <span className='rating-star-val fw-8 fs-16'>{rating_star}</span>
-              <StarRating rating_star={rating_star} />
-              <span className='rating-count fw-5 fs-14'>({rating_count} Ratings)</span>
-              <span className='students-count fs-14'>{students} Students</span>
-            </div>
+    <Flex>
+      <LearnSidebar /> {/* Include LearnSidebar component */}
+      
+      <Box flex="1" bg="var(--clr-dark)" color="var(--clr-white)">
+        <Grid
+          templateColumns={{ base: '1fr', md: '1fr 1fr' }}
+          columnGap={{ md: '170px' }}
+          maxW="1700px"
+          mx="auto"
+          py="60px"
+          px="200px"
+          bg="black" // Set background color for the upper banner
+          alignItems="center" // Center content vertically in the banner
+        >
+          <GridItem>
+            <Box>
+              <Badge
+                bg="blue.500" // Blue background color for category badge
+                color="white" // White text color for category badge
+                textTransform="uppercase"
+                borderRadius="6px"
+                px="8px"
+                mb="8px"
+              >
+                {category}
+              </Badge>
+              <Text fontSize="38px" lineHeight="1.2" fontWeight="bold" mt="12px" color="white">
+                {course_name}
+              </Text>
+              <Text fontSize="18px" mt="12px" color="white">
+                {description}
+              </Text>
+              <Flex alignItems="center" mt="12px">
+                <Text fontWeight="800" fontSize="16px" color="orange" mr="7px" pb="5px">
+                  {rating_star}  {/* Assuming StarRating component is used here */}
+                </Text>
+                <Text fontSize="12.5px" opacity="0.8" mr="6px" color="white">
+                  ({rating_count} Ratings)
+                </Text>
+                <Text fontSize="14px" opacity="0.8" mr="6px" color="white">
+                  {students} Students
+                </Text>
+              </Flex>
+              <Box mt="12px">
+                <Text fontSize="14px" color="white">
+                  Created by <Text as="span" fontWeight="bold" color="white">{creator}</Text>
+                </Text>
+                <Flex alignItems="center">
+                  <Icon as={MdInfo} color="white" />
+                  <Text fontSize="14px" ml="8px" mb="4px" textTransform="capitalize" color="white">
+                    Last updated {updated_date}
+                  </Text>
+                </Flex>
+                <Flex alignItems="center">
+                  <Icon as={TbWorld} color="white" />
+                  <Text fontSize="14px" ml="8px" color="white">
+                    {lang}
+                  </Text>
+                </Flex>
+                <Flex alignItems="center">
+                  <Icon as={RiClosedCaptioningFill} color="white"/>
+                  <Text fontSize="14px" ml="8px" color="white">
+                    {lang} [Auto]
+                  </Text>
+                </Flex>
+              </Box>
+              <Flex alignItems="center" mt="12px">
+                <Text fontSize="26px" fontWeight="800" color="white">
+                  ₹{discounted_price}
+                </Text>
+                <Text fontSize="26px" fontWeight="600" ml="10px" color="#eceb98" textDecoration="line-through">
+                  ₹{actual_price}
+                </Text>
+              </Flex>
+            </Box>
+          </GridItem>
+          <GridItem>
+            <Box textAlign="center">
+              <Image src={image} alt={course_name} maxW="80%" mx="auto" mt="20px" borderRadius="8px" boxShadow="lg" />
+            </Box>
+          </GridItem>
+        </Grid>
 
-            <ul className='course-info'>
-              <li>
-                <span className='fs-14'>Created by <span className='fw-6 opacity-08'>{creator}</span></span>
-              </li>
-              <li className='flex'>
-                <span><MdInfo /></span>
-                <span className='fs-14 course-info-txt fw-5'>Last updated {updated_date}</span>
-              </li>
-              <li className='flex'>
-                <span><TbWorld /></span>
-                <span className='fs-14 course-info-txt fw-5'>{lang}</span>
-              </li>
-              <li className='flex'>
-                <span><RiClosedCaptioningFill /></span>
-                <span className='fs-14 course-info-txt fw-5'>{lang} [Auto]</span>
-              </li>
-            </ul>
-          </div>
+        <Box className="course-full" bg="var(--clr-white)" color="var(--clr-dark)" py="40px" px="16px" mt="40px">
+          <Box className="course-learn" mx="auto" maxW="992px" borderWidth="1px" borderColor="rgba(0, 0, 0, 0.2)" p="12px 28px 22px 28px">
+            <Text className="course-sc-title" fontSize="22px" fontWeight="700" mb="12px">
+              What you'll learn
+            </Text>
+            <Grid className="course-learn-list" templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }} gap="20px">
+              {learnItems &&
+                learnItems.map((learnItem, idx) => (
+                  <Box key={idx} display="flex" alignItems="center">
+                    <Icon as={BiCheck} />
+                    <Text className="fs-14 fw-5 opacity-09" ml="8px">
+                      {learnItem}
+                    </Text>
+                  </Box>
+                ))}
+            </Grid>
+          </Box>
 
-          <div className='course-foot'>
-            <div className='course-price'>
-              <span className='new-price fs-26 fw-8'>₹{discounted_price}</span>
-              <span className='old-price fs-26 fw-6'>₹{actual_price}</span>
-            </div>
-          </div>
-
-          <div className='course-btn'>
-            <Link
-              to="/cart"
-              className='add-to-cart-btn d-inline-block fw-7 bg-purple'
-              onClick={() => addToCart(courseID, image, course_name, creator, discounted_price, category)}
-              style={{ background: 'var(--primary-hue)', color: '#fff', padding: '10px 20px', borderRadius: '5px' }}
-            >
-              
-              Enroll Now
-              
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      <div className='course-full bg-white text-dark'>
-        <div className='course-learn mx-auto'>
-          <div className='course-sc-title'>What you'll learn</div>
-          <ul className='course-learn-list grid'>
-            {learnItems && learnItems.map((learnItem, idx) => (
-              <li key={idx}>
-                <span><BiCheck /></span>
-                <span className='fs-14 fw-5 opacity-09'>{learnItem}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className='course-content mx-auto'>
-          <div className='course-sc-title'>Course content</div>
-          <ul className='course-content-list'>
-            {content && content.map((contentItem, idx) => (
-              <li key={idx}>
-                <span>{contentItem}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </SingleCourseWrapper>
+          <Box className="course-content" mx="auto" maxW="992px" mt="30px" borderWidth="1px" borderColor="rgba(0, 0, 0, 0.2)" p="12px 28px 22px 28px">
+            <Text className="course-sc-title" fontSize="22px" fontWeight="700" mb="12px">
+              Course content
+            </Text>
+            <Grid className="course-content-list">
+              {content &&
+                content.map((contentItem, idx) => (
+                  <Box key={idx} bg="#f7f9fa" p="12px 18px" borderWidth="1px" borderColor="rgba(0, 0, 0, 0.2)" mb="10px" fontWeight="800" fontSize="15px">
+                    <Text>{contentItem}</Text>
+                  </Box>
+                ))}
+            </Grid>
+          </Box>
+        </Box>
+      </Box>
+    </Flex>
   );
 };
 
-const SingleCourseWrapper = styled.div`
-  background: var(--clr-dark);
-  color: var(--clr-white);
-  
-  
-  .course-intro {
-    padding: 40px 16px;
-    max-width: 992px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 20px;
-    margin-top: 40px; /* Add top margin */
-
-    @media screen and (min-width: 880px) {
-      grid-template-columns: 1fr 1fr;
-      column-gap: 40px;
-      .course-img {
-        order: 2;
-      }
-    }
-
-    .course-img img {
-      width: 100%;
-      height: auto;
-      margin-top: 70px;
-      margin-left: 80px;
-    }
-
-    .course-details {
-      padding-top: 20px;
-    }
-
-    .course-category {
-      padding: 4px 8px;
-      border-radius: 6px;
-      background: var(--clr-white);
-      color: var(--clr-dark);
-      display: inline-block;
-      margin-bottom: 8px;
-    }
-
-    .course-head {
-      font-size: 38px;
-      line-height: 1.2;
-      padding: 12px 0 0 0;
-      font-family: 'Actor', sans-serif; 
-    }
-
-    .course-para {
-      padding: 12px 0;
-      font-family: 'Gafata', sans-serif; 
-    }
-
-    .rating-star-val {
-      margin-right: 7px;
-      padding-bottom: 5px;
-      color: var(--clr-orange);
-    }
-
-    .students-count {
-      margin-left: 8px;
-    }
-
-    .rating-count{
-      font-size: 12.5px;
-      margin-left: 3px;
-      font-weight: 500;
-      opacity: 0.8;
-    }
-
-    .course-info {
-      li {
-        margin-bottom: 2px;
-        &:nth-child(2) {
-          margin-top: 10px;
-        }
-        font-family: 'Actor', sans-serif; 
-      }
-
-      .course-info-txt {
-        text-transform: capitalize;
-        margin-left: 8px;
-        margin-bottom: 4px;
-      }
-    }
-
-    .course-price {
-      margin-top: 12px;
-
-      .new-price {
-        color: #ffffff;
-      }
-
-      .old-price {
-        color: #eceb98;
-        text-decoration: line-through;
-        margin-left: 10px;
-      }
-    }
-
-    .course-btn {
-      margin-top: 16px;
-      
-
-      .add-to-cart-btn {
-        padding: 10px 20px;
-        font-family: 'Actor', sans-serif; 
-
-        span {
-          margin-left: auto;
-        }
-      }
-    }
-  }
-
-  .course-full {
-    padding: 40px 16px;
-
-    .course-sc-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin: 12px 0;
-    }
-
-    .course-learn {
-      max-width: 992px;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      padding: 12px 28px 22px 28px;
-
-      .course-learn-list {
-        li {
-          margin: 5px 0;
-          display: flex;
-          span {
-            &:nth-child(1) {
-              opacity: 0.95;
-              margin-right: 12px;
-            }
-          }
-        }
-
-        @media screen and (min-width: 992px) {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-    }
-
-    .course-content {
-      max-width: 992px;
-      margin-top: 30px;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      padding: 12px 28px 22px 28px;
-
-      .course-content-list {
-        li {
-          background-color: #f7f9fa;
-          padding: 12px 18px;
-          border: 1px solid rgba(0, 0, 0, 0.2);
-          margin-bottom: 10px;
-          font-weight: 800;
-          font-size: 15px;
-        }
-      }
-    }
-  }
-`;
-
-
 export default SingleCoursePage;
-
