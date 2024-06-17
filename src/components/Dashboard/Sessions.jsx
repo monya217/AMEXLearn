@@ -24,7 +24,7 @@ const SessionsSection = () => {
         </Flex>
 
         <Box mt={10}>
-          <Heading size="md" mb={5}>
+          <Heading size="md" mb={5} ml={5}>
             Sessions History
           </Heading>
           <SessionsHistory />
