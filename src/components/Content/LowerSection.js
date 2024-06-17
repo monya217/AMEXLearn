@@ -1,10 +1,12 @@
 // LowerSection.js
+import { Flex } from "@chakra-ui/react";
 import React from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "../../firebase/firebase";
 import LowerSectionContent from "../Content/LowerSectionContent";
 import { randomArrayShuffle } from "../../utils/utils";
 import { Box } from "@chakra-ui/react";
+import LearnSidebar from "../LearnSidebar";
 
 const LowerSection = () => {
   const [newPodcasts, setNewPodcasts] = React.useState([]);
@@ -27,6 +29,8 @@ const LowerSection = () => {
   }, []);
 
   return (
+    <Flex>
+          <LearnSidebar /> 
     <Box
       mt="6"
       minH="300px"
@@ -41,6 +45,7 @@ const LowerSection = () => {
       <LowerSectionContent title="Most Popular" songs={mostPopular} />
       <LowerSectionContent title="Beginner Friendly" songs={beginnerFriendly} />
     </Box>
+    </Flex>
   );
 };
 
