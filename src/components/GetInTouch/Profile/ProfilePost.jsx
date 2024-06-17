@@ -1,199 +1,250 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  Avatar,
-  Button,
+  Box,
+  VStack,
+  GridItem,
   Divider,
   Flex,
-  GridItem,
-  Image,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalOverlay,
   Text,
-  VStack,
+  Avatar,
+  Image,
+  InputGroup,
+  Input,
+  InputRightElement,
+  Button,
   useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
 } from '@chakra-ui/react';
-import { AiFillHeart } from 'react-icons/ai';
+import { AiOutlineLike } from 'react-icons/ai';
 import { FaComment } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import { deleteObject, ref } from 'firebase/storage';
-import { deleteDoc, doc, updateDoc, arrayRemove } from 'firebase/firestore';
+import { deleteDoc, doc, updateDoc, arrayRemove, getDoc } from 'firebase/firestore';
 import { firestore, storage } from '../../../firebase/firebase';
 import usePostStore from '../../../store/postStore';
 import useUserProfileStore from '../../../store/userProfileStore';
 import useAuthStore from '../../../store/authStore';
 import useShowToast from '../../../hooks/useShowToast';
-import Caption from '../Comment/Caption';
-import Comment from '../Comment/Comment';
-import PostFooter from '../../FeedPosts/PostFooter';
+import usePostComment from '../../../hooks/usePostComment';
+import useLikePost from '../../../hooks/useLikePost';
 
 const ProfilePost = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const userProfile = useUserProfileStore((state) => state.userProfile);
-  const authUser = useAuthStore((state) => state.user);
   const showToast = useShowToast();
   const [isDeleting, setIsDeleting] = useState(false);
   const deletePost = usePostStore((state) => state.deletePost);
   const decrementPostsCount = useUserProfileStore((state) => state.decrementPostsCount);
 
+  const userProfile = useUserProfileStore((state) => state.userProfile);
+  const authUser = useAuthStore((state) => state.user);
+
+  const { isCommenting, handlePostComment } = usePostComment();
+  const { handleLikePost, isLiked, likes } = useLikePost(post);
+
+  const [commentText, setCommentText] = useState('');
+  const [likesCount, setLikesCount] = useState(post.likes.length);
+  const [comments, setComments] = useState([]);
+
   const handleDeletePost = async () => {
     if (!window.confirm('Are you sure you want to delete this post?')) return;
     if (isDeleting) return;
 
+    setIsDeleting(true);
+
     try {
-      setIsDeleting(true);
-
-      // Delete post image from storage
-      const imageRef = ref(storage, `posts/${post.id}`);
-      await deleteObject(imageRef);
-
-      // Delete post document from firestore
-      await deleteDoc(doc(firestore, 'posts', post.id));
-
-      // Update user's posts array
+      // Check if there's an image URL before attempting to delete it
+      if (post.imageURL) {
+        const imageRef = ref(storage, `posts/${post.id}`);
+        await deleteObject(imageRef);
+      }
+  
       const userRef = doc(firestore, 'users', authUser.uid);
+      await deleteDoc(doc(firestore, 'posts', post.id));
       await updateDoc(userRef, {
         posts: arrayRemove(post.id),
       });
-
-      // Update local state and show success toast
+  
       deletePost(post.id);
-      decrementPostsCount();
+      decrementPostsCount(post.id);
+  
       showToast('Success', 'Post deleted successfully', 'success');
+
     } catch (error) {
+      console.error('Error deleting post:', error);
       showToast('Error', error.message, 'error');
     } finally {
       setIsDeleting(false);
-      onClose();
     }
   };
 
+  const handleSubmitComment = async () => {
+    try {
+      await handlePostComment(post.id, commentText);
+      setCommentText('');
+      showToast('Success', 'Comment added successfully', 'success');
+    } catch (error) {
+      console.error('Error adding comment:', error);
+      showToast('Error', error.message, 'error');
+    }
+  };
+
+  useEffect(() => {
+    setLikesCount(post.likes.length);
+  }, [post.likes]);
+
+  const fetchComments = async () => {
+    try {
+      const postDocRef = doc(firestore, 'posts', post.id);
+      const postDocSnap = await getDoc(postDocRef);
+      if (postDocSnap.exists()) {
+        const postData = postDocSnap.data();
+        if (postData.comments) {
+          setComments(postData.comments);
+        } else {
+          setComments([]);
+        }
+      } else {
+        setComments([]);
+      }
+    } catch (error) {
+      console.error('Error fetching comments:', error);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      fetchComments();
+    }
+  }, [isOpen]);
+
   return (
-    <>
-      {/* GridItem for displaying the post preview */}
-      <GridItem
-        cursor="pointer"
-        borderRadius={4}
-        overflow="hidden"
-        border="1px solid"
-        borderColor="whiteAlpha.300"
-        position="relative"
-        aspectRatio={1 / 1}
-        onClick={onOpen}
-      >
-        {/* Overlay to show on hover */}
+    <Box w="full" borderRadius={4} overflow="hidden" border="1px solid" borderColor="whiteAlpha.300">
+      <Flex w="full" gap={4} p={4}>
+        {/* Image section */}
         <Flex
-          opacity={0}
-          _hover={{ opacity: 1 }}
-          position="absolute"
-          top={0}
-          left={0}
-          right={0}
-          bottom={0}
-          bg="blackAlpha.700"
-          transition="all 0.3s ease"
-          zIndex={1}
+          borderRadius={4}
+          overflow="hidden"
+          border="1px solid"
+          borderColor="whiteAlpha.300"
+          flex={1.5}
           justifyContent="center"
+          alignItems="center"
         >
-          <Flex alignItems="center" justifyContent="center" gap={50}>
+          {post.imageURL && <Image src={post.imageURL} alt="profile post" />}
+        </Flex>
+
+        {/* Post content section */}
+        <Flex flex={1} flexDir="column" px={4}>
+          {/* Header with profile picture and username */}
+          <Flex alignItems="center" gap={2}>
+            <Avatar src={userProfile.profilePicURL} size="sm" name={userProfile.username} />
+            <Text fontWeight="bold" fontSize={12}>
+              {userProfile.username}
+            </Text>
+          </Flex>
+
+          {/* Caption */}
+          <Box mt={2} maxH="120px" overflow="auto">
+            <Text>{post.caption}</Text>
+          </Box>
+
+          {/* Divider */}
+          <Divider my={4} bg="gray.500" />
+
+          {/* Post footer */}
+          <Flex alignItems="center" gap={4}>
             {/* Likes */}
-            <Flex>
-              <AiFillHeart size={20} />
+            <Flex alignItems="center" cursor="pointer" onClick={handleLikePost}>
+              <AiOutlineLike size={20} color={isLiked ? 'blue' : 'gray'} />
               <Text fontWeight="bold" ml={2}>
-                {post.likes.length}
+                {likes}
               </Text>
             </Flex>
 
             {/* Comments */}
-            <Flex>
+            <Flex alignItems="center" cursor="pointer" onClick={onOpen}>
               <FaComment size={20} />
               <Text fontWeight="bold" ml={2}>
                 {post.comments.length}
               </Text>
             </Flex>
+
+            {/* Post Date */}
+            <Text ml={4} fontSize={12} color="gray.500">
+              {new Date(post.createdAt).toLocaleDateString(undefined, {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </Text>
+
+            {authUser?.uid === userProfile.uid && (
+              <Button
+                size={'sm'}
+                bg={'transparent'}
+                _hover={{ bg: 'whiteAlpha.300', color: 'red.600' }}
+                borderRadius={4}
+                p={1}
+                onClick={handleDeletePost}
+                isLoading={isDeleting}
+              >
+                <MdDelete size={20} cursor="pointer" />
+              </Button>
+            )}
           </Flex>
+
+          {/* Add Comment */}
+          <InputGroup mt={4}>
+            <Input
+              variant="flushed"
+              placeholder="Add a comment..."
+              value={commentText}
+              onChange={(e) => setCommentText(e.target.value)}
+            />
+            <InputRightElement width="auto">
+              <Button
+                colorScheme="blue"
+                variant="outline"
+                size="sm"
+                isLoading={isCommenting}
+                onClick={handleSubmitComment}
+              >
+                Post
+              </Button>
+            </InputRightElement>
+          </InputGroup>
         </Flex>
+      </Flex>
 
-        {/* Image of the post */}
-        {post.imageURL && (
-          <Image src={post.imageURL} alt="profile post" w="100%" h="100%" objectFit="cover" />
-        )}
-
-        {/* You can add a placeholder or skip if no imageURL */}
-      </GridItem>
-
-      {/* Modal for full post view */}
-      <Modal isOpen={isOpen} onClose={onClose} isCentered={true} size={{ base: '3xl', md: '5xl' }}>
+      {/* Modal for displaying comments */}
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
+          <ModalHeader>Comments</ModalHeader>
           <ModalCloseButton />
-          <ModalBody bg="black" pb={5}>
-            {/* Post details */}
-            <Flex gap="4" w={{ base: '90%', sm: '70%', md: 'full' }} mx="auto" maxH="90vh" minH="50vh">
-              {/* Image section */}
-              <Flex
-                borderRadius={4}
-                overflow="hidden"
-                border="1px solid"
-                borderColor="whiteAlpha.300"
-                flex={1.5}
-                justifyContent="center"
-                alignItems="center"
-              >
-                {post.imageURL && <Image src={post.imageURL} alt="profile post" />}
-              </Flex>
-
-              {/* Post content section */}
-              <Flex flex={1} flexDir="column" px={10} display={{ base: 'none', md: 'flex' }}>
-                {/* Header with profile picture and username */}
-                <Flex alignItems="center" justifyContent="space-between">
-                  <Flex alignItems="center" gap={4}>
-                    <Avatar src={userProfile.profilePicURL} size="sm" name={userProfile.username} />
-                    <Text fontWeight="bold" fontSize={12}>
-                      {userProfile.username}
-                    </Text>
-                  </Flex>
-
-                  {/* Delete button (visible only to post owner) */}
-                  {authUser?.uid === userProfile.uid && (
-                    <Button
-                      size="sm"
-                      bg="transparent"
-                      _hover={{ bg: 'whiteAlpha.300', color: 'red.600' }}
-                      borderRadius={4}
-                      p={1}
-                      onClick={handleDeletePost}
-                      isLoading={isDeleting}
-                    >
-                      <MdDelete size={20} cursor="pointer" />
-                    </Button>
-                  )}
+          <ModalBody>
+            {comments.length > 0 ? (
+              comments.map((comment, index) => (
+                <Flex key={index} alignItems="center" my={2}>
+                  <Avatar src={comment.profilePicURL} size="sm" name={comment.username} />
+                  <Text ml={2} fontWeight="bold">
+                    {comment.username}
+                  </Text>
+                  <Text ml={2}>{comment.comment}</Text>
                 </Flex>
-
-                {/* Divider */}
-                <Divider my={4} bg="gray.500" />
-
-                {/* Caption and comments */}
-                <VStack w="full" alignItems="start" maxH="350px" overflowY="auto">
-                  {post.caption && <Caption post={post} />}
-                  {post.comments.map((comment) => (
-                    <Comment key={comment.id} comment={comment} />
-                  ))}
-                </VStack>
-
-                {/* Divider */}
-                <Divider my={4} bg="gray.8000" />
-
-                {/* Post footer */}
-                <PostFooter isProfilePage={true} post={post} />
-              </Flex>
-            </Flex>
+              ))
+            ) : (
+              <Text>No comments yet</Text>
+            )}
           </ModalBody>
         </ModalContent>
       </Modal>
-    </>
+    </Box>
   );
 };
 

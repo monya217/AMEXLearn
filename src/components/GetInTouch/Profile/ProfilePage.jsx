@@ -1,7 +1,8 @@
-import { Container, Flex, Link, Text } from "@chakra-ui/react";
+import { Box, Container, Flex, Link, Text } from "@chakra-ui/react";
 import ProfileHeader from "./GITProfileHeader";
 import ProfileTabs from "./ProfileTabs";
 import ProfilePosts from "./ProfilePosts";
+import ProfileBlogs from "./ProfileBlogs";
 import useGetUserProfileByUsername from "../../../hooks/useGetUserProfileByUsername";
 import { useParams } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
@@ -12,11 +13,29 @@ import { PageLayout } from "../../../GetInTouchLayouts/PageLayout/PageLayout";
 
 const ProfilePage = () => {
   const { username } = useParams();
-  const { isLoading, userProfile } = useGetUserProfileByUsername(username);
+  const { isLoading, userProfile, error } = useGetUserProfileByUsername(username);
   const [selectedTab, setSelectedTab] = useState('posts');
 
-  console.log('isLoading:', isLoading);
-  console.log('userProfile:', userProfile);
+  if (isLoading) return <ProfileHeaderSkeleton />;
+
+  if (error) {
+    return (
+      <Flex flexDir="column" textAlign={"center"} mx={"auto"}>
+        <Sidebar />
+        <Text fontSize={"2xl"}>Error: {error.message}</Text>
+        <Link
+          as={RouterLink}
+          to={"/"}
+          color={"blue.500"}
+          w={"max-content"}
+          mx={"auto"}
+          mt={10}
+        >
+          Go home
+        </Link>
+      </Flex>
+    );
+  }
 
   const userNotFound = !isLoading && !userProfile;
   if (userNotFound) return <UserNotFound />;
@@ -24,23 +43,30 @@ const ProfilePage = () => {
   return (
     <Flex>
       <Sidebar />
-      <Container maxW='container.lg' py={5} flex="1">
-        <Flex py={10} px={4} pl={{ base: 4, md: 10 }} w={"full"} mx={"auto"} flexDirection={"column"}>
-          {!isLoading && userProfile && <ProfileHeader userProfile={userProfile} />}
-          {isLoading && <ProfileHeaderSkeleton />}
-        </Flex>
-        <Flex
-          px={{ base: 2, sm: 4 }}
-          maxW={"full"}
-          mx={"auto"}
-          borderTop={"1px solid"}
-          borderColor={"whiteAlpha.300"}
-          direction={"column"}
-        >
-          <ProfileTabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-          <ProfilePosts selectedTab={selectedTab} userProfile={userProfile} />
-        </Flex>
-      </Container>
+      <Box p={5} mt={10} flex="1" ml={0}>
+      <Container maxW="100%" px={0} ml={0} mt={-10}>
+          <Flex py={10} px={4} w="full" flexDirection="column">
+            <ProfileHeader userProfile={userProfile} />
+          </Flex>
+          <Flex
+            px={{ base: 2, sm: 4 }}
+            w="full"
+            borderTop="1px solid"
+            borderColor="whiteAlpha.300"
+            flexDirection="column"
+          >
+            <ProfileTabs
+              selectedTab={selectedTab}
+              setSelectedTab={setSelectedTab}
+            />
+            {selectedTab === "posts" ? (
+              <ProfilePosts userProfile={userProfile} />
+            ) : (
+              <ProfileBlogs userProfile={userProfile} />
+            )}
+          </Flex>
+        </Container>
+        </Box>
     </Flex>
   );
 };

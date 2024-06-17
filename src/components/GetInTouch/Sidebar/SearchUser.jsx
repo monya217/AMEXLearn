@@ -19,7 +19,7 @@ import useSearchUser from "../../../hooks/useSearchUser";
 import SuggestedUser from "./SuggestedUser";
 import { CiSearch } from "react-icons/ci";
 
-const SearchConsultants = forwardRef((props, ref) => {
+const SearchUser = forwardRef((props, ref) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const searchRef = useRef(null);
     const { user, isLoading, getUserProfile, setUser } = useSearchUser();
@@ -61,4 +61,4 @@ const SearchConsultants = forwardRef((props, ref) => {
     );
 });
 
-export default SearchConsultants;
+export default SearchUser;
