@@ -1,19 +1,11 @@
-import React, { useState, useEffect } from "react";
+// src/components/Content/SongCard.js
+import React from "react";
 import { Box, Image, Button, Heading, Text, Flex } from "@chakra-ui/react";
 import { Icon } from "../../assets/icons/Icon";
 
-const SongCard = ({ song, togglePlayPause, isPlayingGlobal, currentSongId }) => {
-  const [isPlaying, setIsPlaying] = useState(song.isPlaying);
-
-  useEffect(() => {
-    if (currentSongId !== song.id) {
-      setIsPlaying(false);
-    }
-  }, [currentSongId, song.id]);
-
+const SongCard = ({ song, togglePlayPause }) => {
   const handlePlayPause = () => {
     togglePlayPause(song);
-    setIsPlaying(!isPlaying);
   };
 
   const imageStyle = () => {
@@ -66,7 +58,7 @@ const SongCard = ({ song, togglePlayPause, isPlayingGlobal, currentSongId }) => 
           />
           <Button
             onClick={handlePlayPause}
-            display={isPlaying ? "flex" : "none"}
+            display={song.isPlaying ? "flex" : "none"}
             _groupHover={{ display: "flex" }}
             bg="brandColor"
             rounded="full"
@@ -76,7 +68,7 @@ const SongCard = ({ song, togglePlayPause, isPlayingGlobal, currentSongId }) => 
             bottom={1}
             right={1}
           >
-            <Icon name={isPlaying ? "pause" : "playerGreen"} />
+            <Icon name={song.isPlaying ? "pause" : "playerGreen"} />
           </Button>
         </Box>
       </Flex>
