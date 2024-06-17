@@ -119,7 +119,7 @@ const Blogpage = () => {
                                         </Flex>
                                     )}
                                 </Flex>
-                                <Text fontSize="lg" lineHeight="tall" whiteSpace="pre-wrap" textAlign="left" width="100%" >
+                                <Text fontSize="lg" lineHeight="tall" whiteSpace="pre-wrap" textAlign="left" width="100%" mb = "50px">
                                     {blog?.description}
                                 </Text>
                             </Stack>

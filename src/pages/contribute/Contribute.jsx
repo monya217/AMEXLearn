@@ -80,7 +80,7 @@ const Contribute = () => {
           marginTop="40px"
           display="flex"
           justifyContent="center"
-          height="450px"
+          height="300px"
         />
         <Box width="100%" px={{ base: 4, md: 6, lg: 8, xl: 10 }}>
           <Flex wrap="wrap" mb="10px"  mt="20px">
