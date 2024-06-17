@@ -23,7 +23,7 @@ const Blogpage = () => {
     };
 
     return (
-        <Flex minH="100vh">
+        <Flex minH="100vh" width="100%">
             <ContributeSidebar />
             <Box flex="1" pl={0} pt="50px">
                 <Box position="relative" mb="4" height="400px" overflow="hidden">
@@ -58,25 +58,27 @@ const Blogpage = () => {
                         <Heading as="h1" size="2xl">{blog?.title}</Heading>
                     </Flex>
                 </Box>
-                <Container maxW="container.xl" py="6">
-                    <Grid templateColumns="repeat(12, 1fr)" gap={6}>
-                        <GridItem colSpan={{ base: 12, md: 8 }}>
-                            <Flex direction="column" align="start">
-                                <Flex align="center" mb="6">
-                                    <Avatar name={blog?.author} size="md" mr="4" />
-                                    <Box>
-                                        <Text fontWeight="bold" fontSize="lg">{blog?.author}</Text>
-                                        <Text color="gray.600">
-                                            {blog?.Timestamp?.toDate().toDateString()}
-                                        </Text>
-                                    </Box>
-                                </Flex>
-                                <Text fontSize="lg" lineHeight="tall" whiteSpace="pre-wrap"> {/* Ensuring line breaks are maintained */}
-                                    {blog?.description}
-                                </Text>
-                            </Flex>
-                        </GridItem>
-                    </Grid>
+                <Container maxW="100%" py="6">
+                    <Flex minH="calc(100vh - 400px)" direction="column" align="center" justify="center" width="100%">
+                        <Grid templateColumns="repeat(12, 1fr)" gap={6} width="100%">
+                            <GridItem colSpan={{ base: 12, md: 12 }} mx="auto">
+                                <Box width="100%" maxW="1000px" mx="auto" textAlign="left">
+                                    <Flex align="center" mb="6">
+                                        <Avatar name={blog?.author} size="md" mr="4" />
+                                        <Box>
+                                            <Text fontWeight="bold" fontSize="lg">{blog?.author}</Text>
+                                            <Text color="gray.600">
+                                                {blog?.Timestamp?.toDate().toDateString()}
+                                            </Text>
+                                        </Box>
+                                    </Flex>
+                                    <Text fontSize="lg" lineHeight="tall" whiteSpace="pre-wrap" textAlign="left" width="100%" >
+                                        {blog?.description}
+                                    </Text>
+                                </Box>
+                            </GridItem>
+                        </Grid>
+                    </Flex>
                 </Container>
             </Box>
         </Flex>

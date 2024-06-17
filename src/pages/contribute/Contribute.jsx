@@ -1,21 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Flex, Icon, Text, useBreakpointValue } from "@chakra-ui/react";
-import { collection, onSnapshot, getDocs } from "firebase/firestore";
+import { Box, Flex, Button, Icon, Text, useColorModeValue,useBreakpointValue } from "@chakra-ui/react";
+import { collection, onSnapshot } from "firebase/firestore";
 import { firestore } from '../../firebase/firebase';
 import BlogSection from '../../components/Contribute/BlogSection';
 import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
 import contribute_header from '../../../src/assets/images/contribute_header.png';
 import Spinner from '../../components/Contribute/Spinner';
-import Search from '../../components/Contribute/Search';
-import { isEmpty } from "lodash";
 import { WarningIcon } from '@chakra-ui/icons';
+
+const categories = [
+  "All",
+  "Debt Management",
+  "Investment",
+  "Financial Independence",
+  "Real Estate",
+  "Side Hustles",
+  "Budgeting",
+  "Retirement",
+  "Personal Finance",
+  "Credit",
+  "Smart Spending",
+  "Financial Education",
+  "Wealth Building",
+  "Entrepreneurship"
+];
 
 const Contribute = () => {
   const textAlign = useBreakpointValue({ base: "left", lg: "center" });
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
-  const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const primaryHue = useColorModeValue('blue.500', 'blue.200');
+  const white = useColorModeValue('white', 'gray.800');
 
   useEffect(() => {
     const unsub = onSnapshot(
@@ -42,29 +58,9 @@ const Contribute = () => {
     return <Spinner />;
   }
 
-  const handleChange = async (e) => {
-    const { value } = e.target;
-    setSearch(value);
-
-    if (isEmpty(value)) {
-      setSearchResults([]);
-      return;
-    }
-
-    const blogRef = collection(firestore, "blogs");
-    const docSnapshot = await getDocs(blogRef);
-
-    const results = docSnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-
-    const filteredResults = results.filter(doc =>
-      doc.title.toLowerCase().includes(value.toLowerCase())
-    );
-
-    setSearchResults(filteredResults);
-  };
+  const filteredBlogs = selectedCategory === "All" 
+    ? blogs 
+    : blogs.filter(blog => blog.category === selectedCategory);
 
   return (
     <Flex>
@@ -86,23 +82,38 @@ const Contribute = () => {
           justifyContent="center"
           height="450px"
         />
-        <Box px={{ base: 4, md: 6, lg: 8, xl: 10 }} paddingTop="20px" flex="1">
-          <Search search={search} handleChange={handleChange} />
-        </Box>
         <Box width="100%" px={{ base: 4, md: 6, lg: 8, xl: 10 }}>
-          {search ? (
-            searchResults.length > 0 ? (
-              <BlogSection blogs={searchResults} />
-            ) : (
-              <Flex align="center" justify="center" direction="column" mt="20px">
-                <Icon as={WarningIcon} w={10} h={10} color="red.500" />
-                <Text fontSize="xl" color="gray.500" mt="10px">
-                  No search results found
-                </Text>
-              </Flex>
-            )
+          <Flex wrap="wrap" mb="10px"  mt="20px">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                mr="6px"
+                mb="10px"
+                border="1px solid rgba(0, 0, 0, 0.7)"
+                p="10px 13px"
+                fontWeight="500"
+                fontSize="15px"
+                bg={selectedCategory === category ? primaryHue : 'transparent'}
+                color={selectedCategory === category ? white : 'inherit'}
+                _hover={{
+                  backgroundColor: primaryHue,
+                  color: white,
+                }}
+              >
+                {category}
+              </Button>
+            ))}
+          </Flex>
+          {filteredBlogs.length > 0 ? (
+            <BlogSection blogs={filteredBlogs} />
           ) : (
-            <BlogSection blogs={blogs} />
+            <Flex align="center" justify="center" direction="column" mt="20px">
+              <Icon as={WarningIcon} w={10} h={10} color="red.500" />
+              <Text fontSize="xl" color="gray.500" mt="10px">
+                No blogs available
+              </Text>
+            </Flex>
           )}
         </Box>
       </Box>
