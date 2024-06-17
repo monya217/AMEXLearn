@@ -4,7 +4,7 @@ import {
   Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
   FormControl, FormLabel, Input, Textarea, RadioGroup, Radio, Stack
 } from '@chakra-ui/react';
-import { FaLinkedin, FaTwitter, FaStar } from 'react-icons/fa';
+import { FaLinkedin, FaTwitter, FaStar, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -143,6 +143,36 @@ const ConsultantCarousel = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  const PrevArrow = ({ onClick }) => (
+    <Icon
+      as={FaChevronLeft}
+      boxSize={6}
+      color="blue.500"
+      cursor="pointer"
+      onClick={onClick}
+      position="absolute"
+      left="-6"
+      top="50%"
+      transform="translateY(-50%)"
+      zIndex={1}
+    />
+  );
+
+  const NextArrow = ({ onClick }) => (
+    <Icon
+      as={FaChevronRight}
+      boxSize={6}
+      color="blue.500"
+      cursor="pointer"
+      onClick={onClick}
+      position="absolute"
+      right="-6"
+      top="50%"
+      transform="translateY(-50%)"
+      zIndex={1}
+    />
+  );
+
   const settings = {
     dots: true,
     infinite: true,
@@ -161,6 +191,8 @@ const ConsultantCarousel = () => {
         style={i === currentSlide ? activeDotStyle : inactiveDotStyle}
       ></div>
     ),
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
     beforeChange: (current, next) => setCurrentSlide(next),
   };
 
