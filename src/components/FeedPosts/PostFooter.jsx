@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Box, Flex, Text, InputGroup, Input, InputRightElement, Button, Avatar } from '@chakra-ui/react';
+import { Box, Flex, Text, InputGroup, Input, InputRightElement, Button, Avatar, useToast } from '@chakra-ui/react';
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import usePostComment from '../../hooks/usePostComment';
@@ -14,8 +14,19 @@ const PostFooter = ({ post, isProfilePage }) => {
   const authUser = useAuthStore((state) => state.user);
   const commentRef = useRef(null);
   const { handleLikePost, isLiked, likes } = useLikePost(post);
+  const toast = useToast();
 
   const handleSubmitComment = async () => {
+    if (comment.trim() === "") {
+      toast({
+        title: "Comment cannot be empty",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+      return;
+    }
     await handlePostComment(post.id, comment);
     setComment("");
   };

@@ -17,6 +17,7 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
+  useToast
 } from '@chakra-ui/react';
 import { AiOutlineLike } from 'react-icons/ai';
 import { FaComment } from 'react-icons/fa';
@@ -34,6 +35,7 @@ import useShowToast from '../../../hooks/useShowToast';
 const ActivityPost = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const showToast = useShowToast();
+  const toast = useToast();
   const [isDeleting, setIsDeleting] = useState(false);
   const deletePost = usePostStore((state) => state.deletePost);
   const decrementPostsCount = useUserProfileStore((state) => state.deletePost);
@@ -78,8 +80,19 @@ const ActivityPost = ({ post }) => {
       setIsDeleting(false);
     }
   };
-  
+
   const handleSubmitComment = async () => {
+    if (commentText.trim() === '') {
+      toast({
+        title: "Comment cannot be empty",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+      return;
+    }
+
     try {
       await handlePostComment(post.id, commentText);
       setCommentText('');

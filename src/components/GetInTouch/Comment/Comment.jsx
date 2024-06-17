@@ -1,4 +1,5 @@
-import { Avatar, Flex, Skeleton, SkeletonCircle, Text } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Avatar, Flex, Skeleton, SkeletonCircle, Text, Input, Button, FormControl, FormErrorMessage } from "@chakra-ui/react";
 import useGetUserProfileById from "../../../hooks/useGetUserProfileById";
 import { Link } from "react-router-dom";
 import { timeAgo } from "../../../utils/timeAgo";
@@ -42,3 +43,37 @@ const CommentSkeleton = () => {
 		</Flex>
 	);
 };
+
+const CommentForm = ({ onSubmit }) => {
+	const [comment, setComment] = useState("");
+	const [error, setError] = useState("");
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (comment.trim() === "") {
+			setError("Comment cannot be empty");
+			return;
+		}
+		setError("");
+		onSubmit(comment);
+		setComment("");
+	};
+
+	return (
+		<form onSubmit={handleSubmit}>
+			<FormControl isInvalid={error}>
+				<Input
+					value={comment}
+					onChange={(e) => setComment(e.target.value)}
+					placeholder="Write a comment..."
+				/>
+				<FormErrorMessage>{error}</FormErrorMessage>
+			</FormControl>
+			<Button type="submit" mt={2} colorScheme="blue">
+				Submit
+			</Button>
+		</form>
+	);
+};
+
+export { CommentForm };
