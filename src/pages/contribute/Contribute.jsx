@@ -86,9 +86,6 @@ const Contribute = () => {
           justifyContent="center"
           height="450px"
         />
-        <Box px={{ base: 4, md: 6, lg: 8, xl: 10 }} paddingTop="20px" flex="1">
-          <Search search={search} handleChange={handleChange} />
-        </Box>
         <Box width="100%" px={{ base: 4, md: 6, lg: 8, xl: 10 }}>
           {search ? (
             searchResults.length > 0 ? (
