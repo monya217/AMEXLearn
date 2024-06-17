@@ -18,7 +18,7 @@ const Chatbot = () => {
         "themeName": "eggplant",
         "botName": "Econ-AI",
         "avatarUrl": "https://img.freepik.com/premium-photo/simple-creative-material-wallpaper-background-light-art-design-texture-banner-color_1041572-190842.jpg?w=360",
-        "stylesheet": "https://webchat-styler-css.botpress.app/prod/51ab7cea-aa13-4b9a-a96b-06df8e18859d/v35780/style.css",
+        "stylesheet": "https://webchat-styler-css.botpress.app/prod/code/51ab7cea-aa13-4b9a-a96b-06df8e18859d/v83814/style.css",
         "frontendVersion": "v1",
         "useSessionStorage": true,
         "enableConversationDeletion": true,
