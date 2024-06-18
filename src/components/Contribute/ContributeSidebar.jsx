@@ -10,14 +10,12 @@ const ContributeSidebar = () => {
     const location = useLocation();
     const searchUserRef = useRef(null);
 
-
-
-
     const sidebarItems = [
         {
             icon: FaFileAlt,
             text: "Blogs",
             link: "/contribute",
+            additionalPaths: ["/blog/"], // Array of paths that should also highlight this item
         },
         {
             icon: FaPlus,
@@ -28,6 +26,7 @@ const ContributeSidebar = () => {
             icon: FaSearch,
             text: "Search Profile",
             action: () => searchUserRef.current.openModal(),
+            additionalPaths: ["/contribute/"], // Array of paths that should also highlight this item
         },
     ];
 
@@ -38,9 +37,11 @@ const ContributeSidebar = () => {
     const handleMouseLeave = () => {
         setIsExpanded(false);
     };
-    const handleModalClose = () => {
 
+    const handleModalClose = () => {
+        // Close modal handler
     };
+
     return (
         <Box
             height={'100vh'}
@@ -60,7 +61,10 @@ const ContributeSidebar = () => {
         >
             <Flex direction={'column'} gap={10} cursor={'pointer'}>
                 {sidebarItems.map((item, index) => {
-                    const isSelected = location.pathname === item.link;
+                    const isSelected = item.link === location.pathname || 
+                        (item.additionalPaths && item.additionalPaths.some(path => location.pathname.startsWith(path) && path !== "/contribute/")) ||
+                        (item.additionalPaths && item.additionalPaths.some(path => path === "/contribute/" && location.pathname.startsWith(path) && location.pathname !== "/contribute" && location.pathname !== "/contribute/post"));
+
                     return item.link ? (
                         <Link
                             key={index}
