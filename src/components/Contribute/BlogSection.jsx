@@ -89,7 +89,7 @@ const BlogSection = ({ blogs }) => {
             </Box>
             <Flex justifyContent="space-between" alignItems="center">
               <Link to={`/blog/${blog.id}`}>
-                <Button variant="outline" colorScheme="teal">
+                <Button variant="outline" colorScheme="blue">
                   Read More
                 </Button>
               </Link>
