@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Container, Heading, Text, VStack, Image, Flex } from '@chakra-ui/react';
-import GameCard from "../../components/GameCard"; // Import the GameCard component
-import LearnSidebar from "../../components/LearnSidebar"; // Import the sidebar component
+import { Box, Container, Heading, Text, VStack, Flex } from '@chakra-ui/react';
+import GameCard from "../../components/GameCard";
+import LearnSidebar from "../../components/LearnSidebar";
 import gameImg1 from '../../assets/images/gameimg_1.jpeg';
 import gameImg2 from '../../assets/images/gameimg_2.jpeg';
 import gameImg3 from '../../assets/images/gameimg_3.jpeg';
@@ -15,13 +15,11 @@ import gameImg10 from '../../assets/images/gameimg_10.jpeg';
 import playhero from '../../assets/images/hero_img9.jpeg';
 import { FaCoins } from 'react-icons/fa';
 
-
-
 const PlayAndLearn = () => {
   return (
     <Flex width="100%">
       <LearnSidebar />
-      <Flex direction="column" width="100%">
+      <Flex direction="column" flex="1" overflowX="hidden">
         <Box
           bgImage={`url(${playhero})`}
           bgPos="center"
@@ -52,7 +50,6 @@ const PlayAndLearn = () => {
           </Flex>
         </Box>
 
-        {/* Course List-like Section */}
         <Box py="40px">
           <Container maxW="container.xl">
             <VStack spacing="1" align="start">
@@ -66,8 +63,7 @@ const PlayAndLearn = () => {
               </Text>
             </VStack>
 
-            <Box mt="8" display="grid" gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap="20px" maxW="1200px">
-              {/* Game Cards */}
+            <Box mt="8" display="grid" gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap="20px">
               <GameCard
                 gameName="Financia"
                 playUrl="http://financia-ddavz562h-advikas-projects-b71feecf.vercel.app/"
@@ -145,7 +141,6 @@ const PlayAndLearn = () => {
                 price="699"
                 isBuy
               />
-              {/* Add more GameCard components as needed */}
             </Box>
           </Container>
         </Box>
