@@ -45,7 +45,7 @@ const DashboardSidebar = () => {
       borderColor={'gray.200'}
       py={10}
       position={'sticky'}
-      top={18}
+      top={10}
       left={0}
       px={4}
       bg={'white'}

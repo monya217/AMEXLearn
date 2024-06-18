@@ -49,14 +49,14 @@ const ContributeSidebar = () => {
             borderColor={'gray.200'}
             py={10}
             position={'sticky'}
-            top={10} /* Adjust top to match communitySidebar */
+            top={18}
             px={4}
             bg={'white'}
             width={sidebarWidth}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             transition={'width 0.2s'}
-            pt={20} /* Adjust pt to match communitySidebar */
+            pt={20}
             zIndex={100}
         >
             <Flex direction={'column'} gap={10} cursor={'pointer'}>

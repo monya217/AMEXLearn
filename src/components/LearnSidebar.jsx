@@ -46,7 +46,7 @@ const LearnSidebar = () => {
       borderColor={'gray.200'}
       py={10}
       position={'sticky'}
-      top={18}
+      top={10}
       px={4}
       bg={'white'}
       width={sidebarWidth}

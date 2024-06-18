@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Box, Flex, Link } from "@chakra-ui/react";
 import { FaPen, FaRegListAlt, FaSearch, FaUser } from 'react-icons/fa';
@@ -77,7 +77,7 @@ const Sidebar = () => {
                 borderColor="gray.200"
                 py={10}
                 position="sticky"
-                top={0}
+                top={10} /* Adjust top to match contributeSidebar */
                 left={0}
                 px={4}
                 bg="white"
@@ -85,7 +85,7 @@ const Sidebar = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 transition="width 0.2s"
-                pt={20}
+                pt={20} /* Adjust pt to match contributeSidebar */
             >
                 <Flex direction="column" gap={10} cursor="pointer">
                     {sidebarItems.map((item, index) => (
