@@ -7,6 +7,7 @@ import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
 import contribute_header from '../../../src/assets/images/contribute_header.png';
 import Spinner from '../../components/Contribute/Spinner';
 import { WarningIcon } from '@chakra-ui/icons';
+import bannerImg from '../../assets/images/hero_img10.jpg';
 
 const categories = [
   "All",
@@ -63,26 +64,26 @@ const Contribute = () => {
     : blogs.filter(blog => blog.category === selectedCategory);
 
   return (
-    <Flex>
+    <Flex width="100%">
       <ContributeSidebar />
+      <Flex direction="column" width="100%">
+      <Box
+          bgImage={`url(${bannerImg})`}
+          bgPos="center"
+          bgSize="cover"
+          bgRepeat="no-repeat"
+          height="350px"
+          width="100%"
+          position="relative"
+          top={10}
+        >
+        </Box>
       <Box
         flex="1"
         ml={0} // Adjust margin-left as per the sidebar width
         transition="margin-left 0.2s"
       >
-        <Box
-          className="bg-black"
-          backgroundImage={contribute_header}
-          backgroundPosition="center"
-          backgroundSize="cover"
-          backgroundRepeat="no-repeat"
-          paddingTop="60px"
-          marginTop="40px"
-          display="flex"
-          justifyContent="center"
-          height="300px"
-        />
-        <Box width="100%" px={{ base: 4, md: 6, lg: 8, xl: 10 }}>
+        <Box width="100%" px={{ base: 4, md: 6, lg: 8, xl: 10 }} mt={20}>
           <Flex wrap="wrap" mb="10px"  mt="20px">
             {categories.map((category) => (
               <Button
@@ -117,6 +118,7 @@ const Contribute = () => {
           )}
         </Box>
       </Box>
+    </Flex>
     </Flex>
   );
 }
