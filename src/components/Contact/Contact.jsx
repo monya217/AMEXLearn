@@ -43,7 +43,7 @@ const Contact = () => {
             </p>
             <ul>
                 <li> <img src = {mail_icon}/>amexlearnotc@gmail.com</li>
-                <li> <img src = {phone_icon}/>+91 9999999999</li>
+                <li> <img src = {phone_icon}/>+91 XXXXXXXXXX</li>
                 <li> <img src = {location_icon}/>IGDTUW, Kashmere Gate, Delhi</li>
             </ul>
         </div>
