@@ -14,7 +14,7 @@ const ContributeProfilePage = () => {
     console.log('here')
   const { username } = useParams();
   const { isLoading, userProfile, error } = useGetUserProfileByUsername(username);
-  const [selectedTab, setSelectedTab] = useState('posts');
+  const [selectedTab, setSelectedTab] = useState('blogs');
   const location = useLocation();
   console.log('here')
   
@@ -62,10 +62,11 @@ const ContributeProfilePage = () => {
               selectedTab={selectedTab}
               setSelectedTab={setSelectedTab}
             />
-            {selectedTab === "posts" ? (
-              <ProfilePosts userProfile={userProfile} />
+            {selectedTab === "blogs" ? (
+             <ProfileBlogs userProfile={userProfile} />
             ) : (
-              <ProfileBlogs userProfile={userProfile} />
+              
+              <ProfilePosts userProfile={userProfile} />
             )}
           </Flex>
         </Container>

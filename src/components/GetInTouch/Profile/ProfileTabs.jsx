@@ -20,9 +20,9 @@ const ProfileTabs = ({ selectedTab, setSelectedTab }) => {
       </Button>
 
       <Button
-        variant={selectedTab === 'achievements' ? 'solid' : 'outline'}
+        variant={selectedTab === 'blogs' ? 'solid' : 'outline'}
         colorScheme="blue"
-        onClick={() => setSelectedTab('achievements')}
+        onClick={() => setSelectedTab('blogs')}
       >
         <Text fontSize={12} display={{ base: "block", sm: "block" }}>
           My Blogs
