@@ -7,13 +7,14 @@ const Hero = () => {
     <Box
       bgImage={`url(${other_images.hero_img7})`}
       bgPos="center"
-      bgSize="120% auto" // Adjust background-size to cover more horizontally
+      bgSize="cover"
       bgRepeat="no-repeat"
       height="350px"
+      width="100%"
       position="relative"
-      className="bg-black"
+      top={10}
     >
-      <Flex className="container" height="100%" alignItems="center" justifyContent="center">
+      <Flex height="100%" alignItems="center" justifyContent="center">
         <Box
           bg="white"
           color="black"
@@ -24,7 +25,7 @@ const Hero = () => {
           textAlign="center"
         >
           <Heading as="h1" fontSize="32px" marginBottom="5px" whiteSpace="nowrap">
-            Empower Your Financial Future
+            Advance Your Financial Literacy
           </Heading>
           <Text fontSize="16px">
             Unlock a world of financial knowledge with our curated courses. Explore topics from personal finance management to investment strategies.
@@ -36,5 +37,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-

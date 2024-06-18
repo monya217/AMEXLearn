@@ -1,6 +1,5 @@
-// src/pages/LiveSession.jsx
 import React from 'react';
-import { Box, Container, Heading, VStack, Text } from '@chakra-ui/react';
+import { Box, Container, Heading, Text, VStack, Flex } from '@chakra-ui/react';
 import LearnSidebar from '../../components/LearnSidebar';
 import LiveSessionCard from '../../components/LiveSessionCard';
 import ongoingImage1 from '../../assets/images/per_2.jpeg';
@@ -15,6 +14,7 @@ import upcomingImage1 from '../../assets/images/risk_2.jpeg';
 import upcomingImage2 from '../../assets/images/risk_3.jpeg';
 import upcomingImage3 from '../../assets/images/risk_4.jpeg';
 import upcomingImage4 from '../../assets/images/risk_5.jpeg';
+import bannerImg from '../../assets/images/hero_img8.jpeg';
 
 const LiveSession = () => {
   const sessions = [
@@ -144,58 +144,88 @@ const LiveSession = () => {
   ];
 
   return (
-    <Box fontFamily="body" color="black" fontSize="1.6rem" lineHeight="1.6">
-      <Container maxW="1700px" p={{ base: '1.8rem', md: '3.4rem', xl: '1rem' }}>
-        <Box display="flex">
-          <LearnSidebar />
-          <Box flex="1" ml={4}>
-            <Box py="40px">
-              <Container maxW="container.xl">
-                <VStack spacing="1" align="start">
-        
-                  <Text fontSize="1.8rem">
-                  Explore dynamic sessions that elevate your financial literacy and unlock valuable financial insights
-                    <Box as="span" display="inline-flex" alignItems="center">
-                      {/* Ensure GiCoins component is included here */}
-                    </Box>
-                  </Text>
-                </VStack>
+    <Flex width="100%">
+      <LearnSidebar />
+      <Flex direction="column" width="100%">
+        <Box
+          bgImage={`url(${bannerImg})`}
+          bgPos="center"
+          bgSize="cover"
+          bgRepeat="no-repeat"
+          height="350px"
+          width="100%"
+          position="relative"
+          top={10}
+        >
+          <Flex height="100%" alignItems="center" justifyContent="center">
+            <Box
+              bg="white"
+              color="black"
+              fontFamily="'Gafata', sans-serif"
+              maxWidth="550px"
+              width="100%"
+              padding="20px"
+              textAlign="center"
+            >
+              <Heading as="h1" fontSize="32px" marginBottom="5px" whiteSpace="nowrap">
+                Live Sessions
+              </Heading>
+              <Text fontSize="16px">
+                Enhance your financial acumen with expert-led sessions featuring renowned speakers in the finance world.
+              </Text>
+            </Box>
+          </Flex>
+        </Box>
+        <Box fontFamily="body" color="black" fontSize="1.6rem" lineHeight="1.6">
+          <Container maxW="1700px" p={{ base: '1.8rem', md: '3.4rem', xl: '1rem' }}>
+            <Box display="flex">
+              <Box flex="1" ml={4}>
+
 
                 {/* Displaying sessions */}
-                <Box mt="8">
-                  <Heading as="h3" size="1.4rem" mb="4">Ongoing Sessions</Heading>
-                  <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap="20px">
-                    {sessions.filter(session => session.isLive).slice(0, 4).map(session => (
-                      <LiveSessionCard key={session.title} {...session} />
-                    ))}
-                  </Box>
-                </Box>
+                <Box py="40px">
+                  <Container maxW="container.xl">
+                    <VStack spacing="1" align="start">
+                      <Heading as="h2" size={{ base: 'md', md: 'lg' }} mt={5}>Financial Insight and Expertise</Heading>
+                      <Text fontSize={{ base: 'md', md: 'xl' }}>
+                        Experience engaging sessions with top financial experts to boost your financial literacy and money management prowess.
+                      </Text>
+                    </VStack>
+                    <Box mt="8">
+                      <Heading as="h3" size="1.4rem" mb="4">Ongoing Sessions</Heading>
+                      <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap="20px">
+                        {sessions.filter(session => session.isLive).slice(0, 4).map(session => (
+                          <LiveSessionCard key={session.title} {...session} />
+                        ))}
+                      </Box>
+                    </Box>
 
-                <Box mt="8">
-                  <Heading as="h3" size="1.4rem" mb="4">Past Sessions</Heading>
-                  <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap="20px">
-                    {sessions.filter(session => session.isPast).slice(0, 4).map(session => (
-                      <LiveSessionCard key={session.title} {...session} />
-                    ))}
-                  </Box>
-                </Box>
+                    <Box mt="8">
+                      <Heading as="h3" size="1.4rem" mb="4">Past Sessions</Heading>
+                      <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap="20px">
+                        {sessions.filter(session => session.isPast).slice(0, 4).map(session => (
+                          <LiveSessionCard key={session.title} {...session} />
+                        ))}
+                      </Box>
+                    </Box>
 
-                <Box mt="8">
-                  <Heading as="h3" size="1.4rem" mb="4">Upcoming Sessions</Heading>
-                  <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap="20px">
-                    {sessions.filter(session => session.isUpcoming).slice(0, 4).map(session => (
-                      <LiveSessionCard key={session.title} {...session} />
-                    ))}
-                  </Box>
+                    <Box mt="8">
+                      <Heading as="h3" size="1.4rem" mb="4">Upcoming Sessions</Heading>
+                      <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap="20px">
+                        {sessions.filter(session => session.isUpcoming).slice(0, 4).map(session => (
+                          <LiveSessionCard key={session.title} {...session} />
+                        ))}
+                      </Box>
+                    </Box>
+                  </Container>
                 </Box>
-              </Container>
+              </Box>
             </Box>
-          </Box>
+          </Container>
         </Box>
-      </Container>
-    </Box>
+      </Flex>
+    </Flex>
   );
 };
 
 export default LiveSession;
-

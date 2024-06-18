@@ -23,9 +23,10 @@ const Course = (props) => {
       boxShadow="rgba(149, 157, 165, 0.1) 0px 8px 24px"
       display="flex"
       flexDirection="column"
+      width="100%"
     >
       <Box className="item-img">
-        <Image src={image} alt={course_name} />
+        <Image src={image} alt={course_name} width="100%" />
       </Box>
       <Box className="item-body" mt="14px" mb="14px" px="18px">
         <Text className="item-name" fontSize="15px" lineHeight="1.4" fontWeight="900">
@@ -52,41 +53,39 @@ const Course = (props) => {
           </Text>
         </Flex>
       </Box>
-      <Flex className="item-btns" alignSelf="flex-start" px="22px" pb="10px" mt="auto">
+      <Flex className="item-btns" justifyContent="space-between" px="18px" pb="10px" mt="auto">
         <Button
           as={Link}
           to={`/learn/courses/${id}`}
-          className="item-btn see-details-btn"
-          fontSize="16px"
-          display="inline-block"
-          px="16px"
-          py="6px"
+          fontSize={{ base: '14px', md: '12px', lg: '16px'}} // Responsive font size
+          flex="1" // Ensures button takes available space
+          mx="2px" // Margin between buttons
+          py={{ base: '4px', md: '6px' }} // Responsive padding
           fontWeight="700"
           transition="all 300ms linear"
           whiteSpace="nowrap"
           bg="transparent"
           border="1px solid black"
-          mr="5px"
           _hover={{ bg: 'var(--primary-hue)', color: 'white' }}
+          textAlign="center" // Ensure text is centered
         >
           See details
         </Button>
         <Button
           as={Link}
           to={`/learn/courses/${id}`}
-          className="item-btn enroll-btn"
-          fontSize="16px"
-          display="inline-block"
-          px="16px"
-          py="6px"
+          fontSize={{ base: '14px', md: '12px', lg: '16px'}} // Responsive font size
+          flex="1" // Ensures button takes available space
+          mx="2px" // Margin between buttons
+          py={{ base: '4px', md: '6px' }} // Responsive padding
           fontWeight="700"
           transition="all 300ms linear"
           whiteSpace="nowrap"
           bg="var(--primary-hue)"
           color="white"
           border="1px solid black"
-          mr="5px"
           _hover={{ bg: 'white', color: 'black' }}
+          textAlign="center" // Ensure text is centered
         >
           Enroll Now
         </Button>
