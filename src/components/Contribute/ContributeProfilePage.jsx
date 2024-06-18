@@ -1,19 +1,23 @@
 import { Box, Container, Flex, Link, Text } from "@chakra-ui/react";
-import ProfileHeader from "./GITProfileHeader";
-import ProfileTabs from "./ProfileTabs";
-import ProfilePosts from "./ProfilePosts";
-import ProfileBlogs from "./ProfileBlogs";
-import useGetUserProfileByUsername from "../../../hooks/useGetUserProfileByUsername";
-import { useParams } from "react-router-dom";
+import ProfileHeader from "../GetInTouch/Profile/GITProfileHeader";
+import ProfileTabs from "../GetInTouch/Profile/ProfileTabs";
+import ProfilePosts from "../GetInTouch/Profile/ProfilePosts";
+import ProfileBlogs from "../GetInTouch/Profile/ProfileBlogs";
+import useGetUserProfileByUsername from "../../hooks/useGetUserProfileByUsername";
+import { useParams, useLocation  } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import { useState } from 'react';
 import { SkeletonCircle, VStack, Skeleton } from "@chakra-ui/react";
-import Sidebar from "../Sidebar/Sidebar";
+import Sidebar from "./ContributeSidebar";
 
-const ProfilePage = () => {
+const ContributeProfilePage = () => {
+    console.log('here')
   const { username } = useParams();
   const { isLoading, userProfile, error } = useGetUserProfileByUsername(username);
   const [selectedTab, setSelectedTab] = useState('posts');
+  const location = useLocation();
+  console.log('here')
+  
 
   if (isLoading) return <ProfileHeaderSkeleton />;
 
@@ -70,7 +74,7 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default ContributeProfilePage;
 
 const ProfileHeaderSkeleton = () => {
   return (

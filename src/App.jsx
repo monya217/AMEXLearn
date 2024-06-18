@@ -26,6 +26,7 @@ import Activity from "./components/Dashboard/Activity.jsx";
 import PlayandLearn from "./pages/learn/playandlearn.jsx"; // Import playandlearn page
 import Livesessions from "./pages/learn/livesession.jsx"; // Import livesession page
 import Chatbot from "./components/Chatbot.jsx";
+import ContributeProfilePage from './components/Contribute/ContributeProfilePage.jsx'
 
 const App = () => {
   const [authUser] = useAuthState(auth);
@@ -65,6 +66,7 @@ const App = () => {
           <Route path="/livesession" element={<Livesessions />} /> {/* Route for livesession */}
           <Route path="/get-in-touch" element={<GetInTouch />} />
           <Route path="/contribute" element={<Contribute />} />
+          <Route path="/contribute/:username" element={<ContributeProfilePage />} />
           <Route
             path="/contribute/post"
             element={
