@@ -7,7 +7,7 @@ import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
 import contribute_header from '../../../src/assets/images/contribute_header.png';
 import Spinner from '../../components/Contribute/Spinner';
 import { WarningIcon } from '@chakra-ui/icons';
-import bannerImg from '../../assets/images/hero_img10.jpg';
+import bannerImg from '../../assets/images/hero_img10.png';
 
 const categories = [
   "All",
