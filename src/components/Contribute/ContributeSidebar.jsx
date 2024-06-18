@@ -10,6 +10,9 @@ const ContributeSidebar = () => {
     const location = useLocation();
     const searchUserRef = useRef(null);
 
+
+
+
     const sidebarItems = [
         {
             icon: FaFileAlt,
@@ -35,7 +38,9 @@ const ContributeSidebar = () => {
     const handleMouseLeave = () => {
         setIsExpanded(false);
     };
+    const handleModalClose = () => {
 
+    };
     return (
         <Box
             height={'100vh'}
@@ -109,7 +114,7 @@ const ContributeSidebar = () => {
                         </Box>
                     );
                 })}
-                <SearchUser ref={searchUserRef} />
+                <SearchUser ref={searchUserRef} onClose={handleModalClose} />
             </Flex>
         </Box>
     );
