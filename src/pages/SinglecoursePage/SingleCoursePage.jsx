@@ -70,7 +70,7 @@ const SingleCoursePage = () => {
           bgRepeat="no-repeat"
           py={{ base: '40px', md: '65px' }}
           px={{ base: '16px', md: '180px' }}
-          height={{ base: '300px', md: '500px' }}
+          height={{ base: '300px', md: '550px' }}
         >
           <Grid
             templateColumns={{ base: '1fr', md: '1fr 1fr' }}

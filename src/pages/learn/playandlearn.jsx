@@ -12,7 +12,7 @@ import gameImg7 from '../../assets/images/gameimg_7.jpeg';
 import gameImg8 from '../../assets/images/gameimg_8.jpeg';
 import gameImg9 from '../../assets/images/gameimg_9.jpeg';
 import gameImg10 from '../../assets/images/gameimg_10.jpeg';
-import playhero from '../../assets/images/hero_img9.jpeg';
+import playhero from '../../assets/images/hero_img12.jpg';
 import { FaCoins } from 'react-icons/fa';
 
 const PlayAndLearn = () => {
