@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Flex, Heading, Text, VStack, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Container, Flex, Heading, Text, VStack } from '@chakra-ui/react';
 import LearnSidebar from '../../components/LearnSidebar';
 import LiveSessionCard from '../../components/LiveSessionCard';
 import Slider from 'react-slick';
@@ -164,7 +164,7 @@ const LiveSession = () => {
     },
   ];
 
-  const settings = {
+  const sliderSettings = {
     dots: true,
     infinite: false,
     speed: 500,
@@ -197,19 +197,9 @@ const LiveSession = () => {
   };
 
   const renderSessions = (filteredSessions) => {
-    if (filteredSessions.length < 4) {
+    if (filteredSessions.length > 4) {
       return (
-        <Flex wrap="wrap">
-          {filteredSessions.map(session => (
-            <Box key={session.title} width={{ base: '100%', md: '50%', lg: '25%' }} px={2} mb={4}>
-              <LiveSessionCard {...session} />
-            </Box>
-          ))}
-        </Flex>
-      );
-    } else {
-      return (
-        <Slider {...settings}>
+        <Slider {...sliderSettings}>
           {filteredSessions.map(session => (
             <Box key={session.title} px={2}>
               <LiveSessionCard {...session} />
@@ -217,13 +207,23 @@ const LiveSession = () => {
           ))}
         </Slider>
       );
+    } else {
+      return (
+        <Flex wrap="wrap">
+          {filteredSessions.map(session => (
+            <Box key={session.title} width={{ base: '100%', sm: '50%', md: '33.33%', lg: '25%' }} p={2}>
+              <LiveSessionCard {...session} />
+            </Box>
+          ))}
+        </Flex>
+      );
     }
   };
 
   return (
     <Flex width="100%">
       <LearnSidebar />
-      <Flex direction="column" width="100%">
+      <Flex direction="column" flex="1" overflowX="hidden">
         <Box
           bgImage={`url(${bannerImg})`}
           bgPos="center"
@@ -254,35 +254,25 @@ const LiveSession = () => {
           </Flex>
         </Box>
         <Box fontFamily="body" color="black" fontSize="1.6rem" lineHeight="1.6">
-          <Container maxW="1700px" p={{ base: '1.8rem', md: '3.4rem', xl: '1rem' }}>
-            <Box display="flex">
-              <Box flex="1" ml={4}>
-
-
-                
-                {/* Displaying sessions */}
-                <Box py="40px">
-                  <Container maxW="container.xl">
-                    <VStack spacing="1" align="start">
-                      <Heading as="h2" size={{ base: 'md', md: 'lg' }} mt={5}>Financial Insight and Expertise</Heading>
-                      <Text fontSize={{ base: 'md', md: 'xl' }}>
-                        Experience engaging sessions with top financial experts to boost your financial literacy and money management prowess.
-                      </Text>
-                    </VStack>
-                    <Box mt="8">
-                      <Heading as="h3" size="1.4rem" mb="4">Ongoing Sessions</Heading>
-                      {renderSessions(sessions.filter(session => session.isLive))}
-                    </Box>
-                    <Box mt="8">
-                      <Heading as="h3" size="1.4rem" mb="4">Past Sessions</Heading>
-                      {renderSessions(sessions.filter(session => session.isPast))}
-                    </Box>
-                    <Box mt="8">
-                      <Heading as="h3" size="1.4rem" mb="4">Upcoming Sessions</Heading>
-                      {renderSessions(sessions.filter(session => session.isUpcoming))}
-                    </Box>
-                  </Container>
-                </Box>
+          <Container maxW="container.xl" p={{ base: '1.8rem', md: '3.4rem', xl: '1rem' }}>
+            <Box py="40px">
+              <VStack spacing="1" align="start">
+                <Heading as="h2" size={{ base: 'md', md: 'lg' }} mt={5}>Financial Insight and Expertise</Heading>
+                <Text fontSize={{ base: 'md', md: 'xl' }}>
+                  Experience engaging sessions with top financial experts to boost your financial literacy and money management prowess.
+                </Text>
+              </VStack>
+              <Box mt="8">
+                <Heading as="h3" size="lg" mb="4">Ongoing Sessions</Heading>
+                {renderSessions(sessions.filter(session => session.isLive))}
+              </Box>
+              <Box mt="8">
+                <Heading as="h3" size="lg" mb="4">Past Sessions</Heading>
+                {renderSessions(sessions.filter(session => session.isPast))}
+              </Box>
+              <Box mt="8">
+                <Heading as="h3" size="lg" mb="4">Upcoming Sessions</Heading>
+                {renderSessions(sessions.filter(session => session.isUpcoming))}
               </Box>
             </Box>
           </Container>
@@ -293,8 +283,3 @@ const LiveSession = () => {
 };
 
 export default LiveSession;
-
-
-
-
-
