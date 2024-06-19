@@ -125,7 +125,7 @@ const ConsultantCarousel = () => {
   const [discountApplied, setDiscountApplied] = useState(false); // State to track if discount is applied
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
-  const [price, setPrice] = useState('$600'); // State to manage the price
+  const [price, setPrice] = useState('₹2000'); // State to manage the price
   const toast = useToast();
 
   const activeDotStyle = {
@@ -207,9 +207,9 @@ const ConsultantCarousel = () => {
   const handleRedeemCoins = () => {
     // Simulate redeeming coins and applying discount
     setRedeemCoins(true);
-    const originalPrice = 600;
+    const originalPrice = 2000;
     const discountedPrice = originalPrice * 0.8; // 20% discount
-    setPrice(`$${discountedPrice}`);
+    setPrice(`₹${discountedPrice}`);
     setDiscountApplied(true);
   };
 
@@ -284,7 +284,7 @@ const ConsultantCarousel = () => {
                    
                   </Button>
                   <Text fontSize="xs" color="gray.500" mt={1}>
-                  {discountApplied ? null : "* You can use your 500 coins to get 20% discount."}
+                  {discountApplied ? null : "*Unlock a 20% discount by using your 500 coins."}
                     </Text>
                     {discountApplied && <Text fontSize="sm" color="green.500">20% discount applied! 🎉</Text>
                   }
