@@ -5,26 +5,18 @@ import { randomArrayShuffle } from "../../utils/utils";
 import Title from "../Title";
 import { Box } from "@chakra-ui/react";
 
-
 const UpperSection = ({ title }) => {
   const [items, setItems] = React.useState([]);
 
   React.useEffect(() => {
-    setItems(randomArrayShuffle(songsData, true));
-  }, []);
-
-  React.useLayoutEffect(() => {
-    // Reset body and html margins and paddings
-    document.body.style.margin = "0";
-    document.body.style.padding = "0";
-    document.documentElement.style.margin = "0";
-    document.documentElement.style.padding = "0";
+    const shuffledItems = randomArrayShuffle(songsData, true);
+    console.log("Shuffled items in UpperSection:", shuffledItems);
+    setItems(shuffledItems);
   }, []);
 
   return (
-    <Box w="full" p={0}> {/* Ensure padding is set to 0 */}
+    <Box w="full" p={0}>
       <Title title={title} size="xl" />
-      
       <HorizontalCard items={items} />
     </Box>
   );

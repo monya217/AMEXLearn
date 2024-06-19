@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import LowerSectionHeader from "../Content/LowerSectionHeader";
-import SongCard from "../Content/SongCard";
+import SongCard from "./SongCard";
 import { Box } from "@chakra-ui/react";
 import { useAudioPlayer } from "./audioPlayerService";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const LowerSectionContent = ({ songs, title }) => {
-  console.log(`Rendering LowerSectionContent for title: ${title}`);
-  console.log("Songs received:", songs);
+const LowerSectionContent = ({ songs }) => {
+  console.log(`Rendering LowerSectionContent`, songs);
 
   const { togglePlayPause, current, playing } = useAudioPlayer();
   const [currentSongId, setCurrentSongId] = useState(null);
@@ -55,7 +53,6 @@ const LowerSectionContent = ({ songs, title }) => {
 
   return (
     <Box w="full">
-      <LowerSectionHeader title={title} />
       <Slider {...settings}>
         {songs.map((song) => (
           <Box key={song.id} p={2}>

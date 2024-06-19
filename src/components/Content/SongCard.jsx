@@ -16,19 +16,6 @@ const SongCard = ({ song, togglePlayPause, isPlayingGlobal, currentSongId }) => 
     setIsPlaying(!isPlaying);
   };
 
-  const imageStyle = () => {
-    switch (song.type) {
-      case "album":
-        return "xl";
-      case "artist":
-        return "full";
-      case "playlist":
-        return "lg";
-      default:
-        return "base";
-    }
-  };
-
   return (
     <Box
       bg="bgFooter"
@@ -49,20 +36,20 @@ const SongCard = ({ song, togglePlayPause, isPlayingGlobal, currentSongId }) => 
       <Flex alignItems="center" justifyContent="center" mb={4}>
         <Box
           bg="bgShadow"
-          w="songRem"
-          h="songRem"
+          w="250px" // Set fixed width
+          h="250px" // Set fixed height
           objectFit="cover"
           shadow="2xl"
           position="relative"
-          rounded={imageStyle()}
+          rounded="lg"
         >
           <Image
             w="full"
             h="full"
             objectFit="cover"
             src={song.image}
-            alt={`${song.title} şarkısı`}
-            rounded={imageStyle()}
+            alt={`${song.title}`}
+            rounded="lg"
           />
           <Button
             onClick={handlePlayPause}
