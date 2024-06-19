@@ -42,7 +42,7 @@ const SearchBar = () => {
     };
 
     return (
-        <Box position="relative" width={['100%', '100%', '100%', '300px']} maxWidth="100%" >
+        <Box  width={['100%', '100%', '100%', '300px']} maxWidth="100%" >
             <form 
                 onSubmit={handleSearchUser} 
                 className="searchBar" 
@@ -66,7 +66,7 @@ const SearchBar = () => {
                         boxShadow: isFocused ? '0 0 5px rgba(0, 0, 255, 0.5)' : 'none',
                         width: '100%',
                         borderRadius:'7px',
-                        backgroundColor: '#F2F5F9'
+                        backgroundColor: '#EEF3F9'
 
                     }}
                 />

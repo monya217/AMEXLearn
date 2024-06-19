@@ -4,7 +4,7 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { firestore } from '../../firebase/firebase';
 import BlogSection from '../../components/Contribute/BlogSection';
 import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
-import contribute_header from '../../../src/assets/images/contribute_header.png';
+import contribute_header from '../../../src/images/contribute_banner.webp';
 import Spinner from '../../components/Contribute/Spinner';
 import { WarningIcon } from '@chakra-ui/icons';
 import bannerImg from '../../assets/images/hero_img10.png';
@@ -68,7 +68,7 @@ const Contribute = () => {
       <ContributeSidebar />
       <Flex direction="column" width="100%">
       <Box
-          bgImage={`url(${bannerImg})`}
+          bgImage={contribute_header}
           bgPos="center"
           bgSize="cover"
           bgRepeat="no-repeat"
