@@ -10,7 +10,7 @@ const AuthForm = () => {
 
   return (
     <>
-        <Box border={"1px solid gray"} borderRadius={4} padding={5}>
+        <Box border={"1px solid gray"} borderRadius={4} padding={5} mt = {14}>
             <VStack spacing={4}>
                 <Text fontSize={25}>
                     {isLogin ? "Login to AMEXLearn" : "Create Account on AMEXLearn"}

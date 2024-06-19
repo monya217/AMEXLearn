@@ -66,7 +66,7 @@ const PlayAndLearn = () => {
             <Box mt="8" display="grid" gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap="20px">
               <GameCard
                 gameName="Financia"
-                playUrl="http://financia-ddavz562h-advikas-projects-b71feecf.vercel.app/"
+                playUrl="https://financia-roan.vercel.app/"
                 imageUrl={gameImg2}
                 rating="4.5"
                 price="0"
