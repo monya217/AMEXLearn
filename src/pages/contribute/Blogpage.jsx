@@ -8,6 +8,7 @@ import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
 import Spinner from '../../components/Contribute/Spinner';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
+
 const Blogpage = () => {
     const { id } = useParams();
     const [blog, setBlog] = useState(null);
@@ -15,6 +16,8 @@ const Blogpage = () => {
     const toast = useToast();
     const [user] = useAuthState(auth); // Assuming 'auth' is your Firebase authentication instance
     const navigate = useNavigate();
+    const [authorUsername, setAuthorUsername] = useState("");
+
 
     useEffect(() => {
         if (id) {
@@ -27,7 +30,17 @@ const Blogpage = () => {
         const docRef = doc(firestore, 'blogs', id);
         const blogDetail = await getDoc(docRef);
         setBlog(blogDetail.data());
+        if (blogDetail.exists()) {
+            await getAuthorUsername(blogDetail.data().userId);
+        }
         setLoading(false);
+    };
+    const getAuthorUsername = async (userId) => {
+        const userDocRef = doc(firestore, 'users', userId);
+        const userDetail = await getDoc(userDocRef);
+        if (userDetail.exists()) {
+            setAuthorUsername(userDetail.data().username);
+        }
     };
 
     const handleDelete = async () => {
@@ -102,9 +115,13 @@ const Blogpage = () => {
                             <Stack spacing="4">
                                 <Flex align="center" justify="space-between">
                                     <Flex align="center">
-                                        <Avatar name={blog?.author} size="md" mr="2" />
+                                        <Link to={`/${authorUsername}`}>
+                                            <Avatar name={blog?.author} size="md" mr="2" />
+                                        </Link>
                                         <Stack spacing="1">
-                                            <Text fontSize="md" color="gray.600">{blog?.author}</Text>
+                                            <Link to={`/${authorUsername}`}>
+                                                <Text fontSize="md" color="gray.600">{blog?.author}</Text>
+                                            </Link>
                                             <Text fontSize="sm" color="gray.600">{new Date(blog?.Timestamp?.seconds * 1000).toLocaleDateString()}</Text>
                                         </Stack>
                                     </Flex>
