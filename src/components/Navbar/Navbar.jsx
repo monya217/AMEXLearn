@@ -4,6 +4,7 @@ import './Navbar.css';
 import useAuthStore from '../../store/authStore';
 import ProfileHeader from '../ProfileHeader/ProfileHeader';
 import LoginButton from '../LoginButton/LoginButton';
+import SearchBar from './SearchBar'; // Import the new SearchBar component
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -25,7 +26,6 @@ const Navbar = () => {
     setMenuOpen(!menuOpen);
   };
 
-  // Adjust the isLearnPage condition to check for paths starting with "/learn" or "/courses/"
   const isLearnPage = ['/learn', '/playandlearn', '/livesession', '/podcasts'].some(path => location.pathname.startsWith(path)) || location.pathname.startsWith('/courses/');
 
   return (
@@ -46,6 +46,7 @@ const Navbar = () => {
           Contribute
         </li>
       </ul>
+      <SearchBar /> {/* Add the SearchBar component here */}
       <ul className="navbar-auth">
         <li>{user ? <ProfileHeader /> : <LoginButton />}</li>
       </ul>
@@ -58,4 +59,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
