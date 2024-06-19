@@ -245,64 +245,73 @@ const ConsultantCarousel = () => {
           <ModalCloseButton />
           <ModalBody>
             <form onSubmit={handleSubmit}>
-              <FormControl isRequired mb={2}>
-                <FormLabel fontSize="sm">Name</FormLabel>
-                <Input placeholder="Your Name" size="sm" />
-              </FormControl>
-              <FormControl isRequired mb={2}>
-                <FormLabel fontSize="sm">Email</FormLabel>
-                <Input type="email" placeholder="Your Email" size="sm" />
-              </FormControl>
-              <FormControl isRequired mb={2}>
-                <FormLabel fontSize="sm">Session Details</FormLabel>
-                <Textarea placeholder="Describe the session details" size="sm" />
-              </FormControl>
-              <FormControl isRequired mb={2}>
-                <FormLabel fontSize="sm">Select Date</FormLabel>
-                <Input type="date" value={selectedDate} onChange={handleDateChange} size="sm" />
-              </FormControl>
-              <FormControl isRequired mb={2}>
-                <FormLabel fontSize="sm">Select Time</FormLabel>
-                <Select placeholder="Select time" value={selectedTime} onChange={handleTimeChange} size="sm">
-                  <option value="1pm">1 PM</option>
-                  <option value="4pm">4 PM</option>
-                  <option value="6pm">6 PM</option>
-                </Select>
-              </FormControl>
-              <FormControl isReadOnly mb={2}>
-                <FormLabel fontSize="sm">Price</FormLabel>
-                <Input value={price} isReadOnly size="sm" />
-              </FormControl>
-              <FormControl mb={4} mt={2}> {/* Increased margin top to add padding */}
-                <HStack>
+              <Flex direction="column">
+                <HStack mb={2}>
+                  <FormControl isRequired flex="1" mr={2}>
+                    <FormLabel fontSize="sm">Email</FormLabel>
+                    <Input type="email" placeholder="Your Email" size="sm" />
+                  </FormControl>
+                  <FormControl isRequired flex="1">
+                    <FormLabel fontSize="sm">Phone Number</FormLabel>
+                    <Input type="tel" placeholder="Your Phone Number" size="sm" />
+                  </FormControl>
+                </HStack>
+                <FormControl isRequired mb={2}>
+                  <FormLabel fontSize="sm">Session Details</FormLabel>
+                  <Textarea placeholder="Describe the session details" size="sm" />
+                </FormControl>
+                <HStack mb={2}>
+                  <FormControl isRequired flex="1" mr={2}>
+                    <FormLabel fontSize="sm">Select Date</FormLabel>
+                    <Input type="date" value={selectedDate} onChange={handleDateChange} size="sm" />
+                  </FormControl>
+                  <FormControl isRequired flex="1">
+                    <FormLabel fontSize="sm">Select Time</FormLabel>
+                    <Select placeholder="Select time" value={selectedTime} onChange={handleTimeChange} size="sm">
+                      <option value="1pm">1 PM</option>
+                      <option value="4pm">4 PM</option>
+                      <option value="6pm">6 PM</option>
+                    </Select>
+                  </FormControl>
+                </HStack>
+                <FormControl isReadOnly mb={2}>
+                  <FormLabel fontSize="sm">Price</FormLabel>
+                  <Input value={price} isReadOnly size="sm" />
+                </FormControl>
+                <FormControl mb={2}>
                   <Button size="sm" colorScheme="green" onClick={handleRedeemCoins} disabled={redeemCoins}>
                     Redeem Coins
+                   
                   </Button>
-                  {discountApplied && <Text fontSize="sm" color="green.500">20% discount applied! 🎉</Text>}
-                </HStack>
-              </FormControl>
-              <FormControl as="fieldset" mb={2}>
-                <FormLabel as="legend" fontSize="sm">Payment Method</FormLabel>
-                <RadioGroup value={paymentMethod} onChange={setPaymentMethod}>
-                  <Stack spacing={3} direction="row">
-                    <Radio value="amex" size="sm">Amex Card</Radio>
-                    <Radio value="upi" size="sm">UPI</Radio>
-                  </Stack>
-                </RadioGroup>
-              </FormControl>
-              {paymentMethod === 'amex' && (
-                <FormControl isRequired mb={2}>
-                  <FormLabel fontSize="sm">Card Number</FormLabel>
-                  <Input placeholder="Card Number" size="sm" />
+                  <Text fontSize="xs" color="gray.500" mt={1}>
+                  {discountApplied ? null : "* You can use your 500 coins to get 20% discount."}
+                    </Text>
+                    {discountApplied && <Text fontSize="sm" color="green.500">20% discount applied! 🎉</Text>
+                  }
                 </FormControl>
-              )}
-              {paymentMethod === 'upi' && (
-                <FormControl isRequired mb={2}>
-                  <FormLabel fontSize="sm">UPI ID</FormLabel>
-                  <Input placeholder="UPI ID" size="sm" />
+                <FormControl as="fieldset" mb={2}>
+                  <FormLabel as="legend" fontSize="sm">Payment Method</FormLabel>
+                  <RadioGroup value={paymentMethod} onChange={setPaymentMethod}>
+                    <Stack spacing={3} direction="row">
+                      <Radio value="amex" size="sm">Amex Card</Radio>
+                      <Radio value="upi" size="sm">UPI</Radio>
+                    </Stack>
+                  </RadioGroup>
                 </FormControl>
-              )}
-              <Button mt={6}  type="submit" colorScheme="blue" width="full" size="sm">Order</Button>
+                {paymentMethod === 'amex' && (
+                  <FormControl isRequired mb={2}>
+                    <FormLabel fontSize="sm">Card Number</FormLabel>
+                    <Input placeholder="Card Number" size="sm" />
+                  </FormControl>
+                )}
+                {paymentMethod === 'upi' && (
+                  <FormControl isRequired mb={2}>
+                    <FormLabel fontSize="sm">UPI ID</FormLabel>
+                    <Input placeholder="UPI ID" size="sm" />
+                  </FormControl>
+                )}
+                <Button mt={4} type="submit" colorScheme="blue" width="full" size="sm">Order</Button>
+              </Flex>
             </form>
           </ModalBody>
         </ModalContent>
