@@ -79,17 +79,17 @@ const LowerSection = () => {
                   </VStack>
 
                   <Box mt="8">
-                    <Heading as="h3" size="1.4rem" mb="4">New Podcasts</Heading>
+                    <Heading as="h3" size="1.4rem" mb="0.5">New Podcasts</Heading>
                     <LowerSectionContent songs={newPodcasts} />
                   </Box>
 
                   <Box mt="8">
-                    <Heading as="h3" size="1.4rem" mb="4">Most Popular</Heading>
+                    <Heading as="h3" size="1.4rem" mb="0.5">Most Popular</Heading>
                     <LowerSectionContent songs={mostPopular} />
                   </Box>
 
                   <Box mt="8">
-                    <Heading as="h3" size="1.4rem" mb="4">Beginner Friendly</Heading>
+                    <Heading as="h3" size="1.4rem" mb="0.5">Beginner Friendly</Heading>
                     <LowerSectionContent songs={beginnerFriendly} />
                   </Box>
                 </Container>

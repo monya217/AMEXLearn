@@ -25,12 +25,14 @@ export const FeedPosts = () => {
 
       {!isLoading && posts.length > 0 && posts.map((post) => <FeedPost key={post.id} post={post} />)}
       {!isLoading && posts.length === 0 && (
-        <>
-          <Text fontSize={"md"} color={"blue.400"}>
-            It looks like you don't have any friends yet. 😊
+        <Flex alignItems="center" justifyContent="center" direction="column">
+          <Text fontSize={"xl"} color={"blue.400"} textAlign={"center"}>
+            It looks like you haven't added any friends yet. 😊
           </Text>
-          <Text color={"blue.400"}>Take a break and connect with new people! 🌟</Text>
-        </>
+          <Text color={"blue.400"} fontSize={"xl"} textAlign={"center"}>
+            Take a break and connect with new people! 🌟
+          </Text>
+        </Flex>
 
       )}
     </Container>

@@ -100,6 +100,7 @@ nav ul li {
 .navbar-links li:active,
 .navbar-links li.active {
     text-decoration: underline;
+    text-underline-offset: 5px; /* Adjust this value to lower the underline */
 }
 
 .navbar-brand li {
