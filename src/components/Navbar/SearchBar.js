@@ -10,15 +10,14 @@ const SearchBar = () => {
     const { user, isLoading, getUserProfile, setUser } = useSearchUser();
     const navigate = useNavigate();
     const [showResults, setShowResults] = useState(false);
-    const [isFocused, setIsFocused] = useState(false); // Track focus state
+    const [isFocused, setIsFocused] = useState(false);
 
-    // Close results box when clicking outside
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (resultsRef.current && !resultsRef.current.contains(event.target) && !searchRef.current.contains(event.target)) {
                 setShowResults(false);
-                setUser(null); // Clear the search results
-                setIsFocused(false); // Remove focus state when clicking outside
+                setUser(null);
+                setIsFocused(false);
             }
         };
 
@@ -38,12 +37,12 @@ const SearchBar = () => {
     const handleUserClick = (user) => {
         navigate(`/${user.username}`, { state: { user } });
         setShowResults(false);
-        setUser(null); // Clear the search results
-        setIsFocused(false); // Remove focus state when navigating
+        setUser(null);
+        setIsFocused(false);
     };
 
     return (
-        <Box position="relative" width="100%" maxWidth="300px">
+        <Box position="relative" width={['100%', '100%', '100%', '300px']} maxWidth="100%" >
             <form 
                 onSubmit={handleSearchUser} 
                 className="searchBar" 
@@ -55,17 +54,20 @@ const SearchBar = () => {
                     placeholder="Search"
                     ref={searchRef}
                     className="searchInput"
-                    onFocus={() => setIsFocused(true)} // Set focus state
-                    onBlur={() => setIsFocused(false)} // Remove focus state
-                    onChange={() => setShowResults(false)} // Hide results when typing
+                    onFocus={() => setIsFocused(true)}
+                    onBlur={() => setIsFocused(false)}
+                    onChange={() => setShowResults(false)}
                     style={{ 
                         color: 'black', 
                         caretColor: 'black',
-                        height: '2rem', // Adjust the height of the input
-                        padding: '0 1rem', // Adjust padding for the input
-                        fontSize: '0.875rem', // Adjust the font size
-                        border: isFocused ? '1px solid blue' : '1px solid lightgray', // Conditional border color
-                        boxShadow: isFocused ? '0 0 5px rgba(0, 0, 255, 0.5)' : 'none' // Conditional box shadow
+                        height: '2rem',
+                        padding: '0 1rem',
+                        fontSize: '0.875rem',
+                        boxShadow: isFocused ? '0 0 5px rgba(0, 0, 255, 0.5)' : 'none',
+                        width: '100%',
+                        borderRadius:'7px',
+                        backgroundColor: '#F2F5F9'
+
                     }}
                 />
                 <Button
@@ -74,15 +76,16 @@ const SearchBar = () => {
                     isLoading={isLoading}
                     className="searchButton"
                     style={{ 
-                        height: '2rem', // Match the height of the input
-                        width: '2rem', // Make the button square
-                        minWidth: '2rem', // Ensure the button remains square
-                        padding: '0', // Remove extra padding
-                        marginLeft: '-2rem', // Overlap the button with the input
+                        height: '2rem',
+                        width: '2rem',
+                        minWidth: '2rem',
+                        padding: '0',
+                        marginLeft: '-2rem',
                         backgroundColor: 'transparent',
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        borderRadius:'25px'
                     }}
                 >
                     <svg style={{ width: "16px", height: "16px" }} viewBox="0 0 24 24">
@@ -96,13 +99,13 @@ const SearchBar = () => {
                     position="absolute"
                     top="100%"
                     width="100%"
-                    maxWidth="300px" // Reduced width for suggested user box
+                    maxWidth="100%"
                     bg="white"
-                    boxShadow={isFocused ? '0 0 5px rgba(0, 0, 255, 0.5)' : 'md'} // Conditional box shadow
+                    boxShadow={'md'}
                     borderRadius="md"
                     zIndex="1"
-                    p={2}
-                    border={isFocused ? '1px solid blue' : '1px solid lightgray'} // Conditional border color
+                    marginTop={0.5}
+                    paddingTop={2}
                 >
                     <Box onClick={() => handleUserClick(user)} cursor="pointer">
                         <SuggestedUser user={user} setUser={setUser} />

@@ -26,7 +26,6 @@ const SuggestedUser = ({ user, setUser }) => {
             px={2}
             bg="gray.100"
             borderRadius="md"
-            mb={1}
             _hover={{ bg: "gray.200" }}
         >
             <Flex alignItems="center" flex="1">

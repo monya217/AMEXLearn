@@ -37,8 +37,6 @@
 
 .suggested-user {
     background: #fff;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
     border-radius: 0.5rem;
     margin-top: 0.5rem;
 }
@@ -55,7 +53,6 @@
 }
 
 .suggested-user .user-info {
-    margin-left: 1rem;
 }
 
 .suggested-user .user-info .username {

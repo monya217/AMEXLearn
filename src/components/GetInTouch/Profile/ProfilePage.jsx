@@ -41,7 +41,7 @@ const ProfilePage = () => {
 
   return (
     <Flex>
-
+    
       <Box p={5} mt={10} flex="1" ml={0}>
       <Container maxW="100%" px={0} ml={0} mt={-10}>
           <Flex py={10} px={4} w="full" flexDirection="column">
