@@ -35,13 +35,6 @@ const initialTestimonials = [
     name: 'Mike T.',
     role: 'Retired Engineer',
     text: 'Even in retirement, managing finances is important. AMEXLearn has been a fantastic resource for learning about investments, retirement planning, and managing expenses. The app is straightforward and provides practical tips that are easy to implement. It\'s never too late to improve your financial literacy, and AMEXLearn makes it possible.'
-  },
-  {
-    id: 5,
-    img: user_2,
-    name: 'Emma',
-    role: 'Teacher',
-    text: 'Managing finances is important. It has been a fantastic platform for learning about investments and managing expenses. The app is straightforward and provides practical tips that are easy to implement.'
   }
 ];
 

@@ -19,6 +19,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { addDoc, updateDoc, doc, collection, serverTimestamp, getDoc } from "firebase/firestore";
 import useAuthStore from '../../store/authStore';
 import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
+import bannerImg2 from '../../assets/images/contri6.png';  // Adjust the path as necessary
 
 const categoryOptions = [
   "Debt Management",
@@ -184,92 +185,105 @@ const PostBlog = () => {
   const formHeight = useBreakpointValue({ base: "100vh", md: "auto" });
 
   return (
-    <Flex direction={{ base: "column", md: "row" }} h="100vh">
+    <Flex direction="row" width="100%" h="100vh">
       <ContributeSidebar />
-      <Flex direction="column" align="center" justify="center" w="full" pt="60px" px={4} overflowY="auto">
-        <Box w={formWidth} h={formHeight} p={6} boxShadow="lg" rounded="md" bg="white" overflowY="auto">
-          <Heading as="h2" size="xl" textAlign="center" mb={6}>
-            {blogId ? 'Edit Blog' : 'Create Blog'}
-          </Heading>
-          <Box as="form" onSubmit={handleSubmit}>
-            <FormControl mb={4}>
-              <FormLabel>Title</FormLabel>
-              <Input
-                type="text"
-                placeholder="Title"
-                name="title"
-                value={form.title}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl mb={4}>
-              <FormLabel>Category</FormLabel>
-              <Select
-                placeholder="Please select category"
-                value={form.category}
-                onChange={handleChange}
-                name="category"
-              >
-                {categoryOptions.map((option, index) => (
-                  <option value={option} key={index}>
-                    {option}
-                  </option>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl mb={4}>
-              <FormLabel>Overview</FormLabel>
-              <Textarea
-                placeholder="Overview"
-                value={form.overview}
-                name="overview"
-                onChange={handleChange}
-                resize="vertical"
-              />
-            </FormControl>
-            <FormControl mb={4}>
-              <FormLabel>Description</FormLabel>
-              <Textarea
-                placeholder="Description"
-                value={form.description}
-                name="description"
-                onChange={handleChange}
-                resize="vertical"
-                rows={6}
-              />
-            </FormControl>
-            <FormControl mb={4}>
-              <FormLabel>Insert Image</FormLabel>
-              <Input
-                type="file"
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-            </FormControl>
-            <Stack direction={{ base: "column", md: "row" }} spacing={4}>
-              <Button
-                colorScheme="blue"
-                variant="solid"
-                type="submit"
-                isFullWidth
-                isLoading={progress !== null && progress < 100}
-                loadingText="Submitting"
-              >
-                Submit
-              </Button>
-              <Button
-                colorScheme="red"
-                variant="outline"
-                onClick={handleCancel}
-                isFullWidth
-              >
-                Cancel
-              </Button>
-            </Stack>
+      <Flex direction="column" width="100%">
+        <Box
+          bgImage={`url(${bannerImg2})`}
+          bgPos="center"
+          bgSize="cover"
+          bgRepeat="no-repeat"
+          height="700px"
+          width="100%"
+          position="relative"
+        />
+        <Flex direction="column" align="center" justify="center" w="full" pt="60px" px={4} overflowY="auto">
+          <Box w={formWidth} h={formHeight} p={6} boxShadow="lg" rounded="md" bg="white" overflowY="auto">
+            <Heading as="h2" size="xl" textAlign="center" mb={6}>
+              {blogId ? 'Edit Blog' : 'Create Blog'}
+            </Heading>
+            <Box as="form" onSubmit={handleSubmit}>
+              <FormControl mb={4}>
+                <FormLabel>Title</FormLabel>
+                <Input
+                  type="text"
+                  placeholder="Title"
+                  name="title"
+                  value={form.title}
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl mb={4}>
+                <FormLabel>Category</FormLabel>
+                <Select
+                  placeholder="Please select category"
+                  value={form.category}
+                  onChange={handleChange}
+                  name="category"
+                >
+                  {categoryOptions.map((option, index) => (
+                    <option value={option} key={index}>
+                      {option}
+                    </option>
+                  ))}
+                </Select>
+              </FormControl>
+              <FormControl mb={4}>
+                <FormLabel>Overview</FormLabel>
+                <Textarea
+                  placeholder="Overview"
+                  value={form.overview}
+                  name="overview"
+                  onChange={handleChange}
+                  resize="vertical"
+                />
+              </FormControl>
+              <FormControl mb={4}>
+                <FormLabel>Description</FormLabel>
+                <Textarea
+                  placeholder="Description"
+                  value={form.description}
+                  name="description"
+                  onChange={handleChange}
+                  resize="vertical"
+                  rows={6}
+                />
+              </FormControl>
+              <FormControl mb={4}>
+                <FormLabel>Insert Image</FormLabel>
+                <Input
+                  type="file"
+                  onChange={(e) => setFile(e.target.files[0])}
+                />
+              </FormControl>
+              <Stack direction={{ base: "column", md: "row" }} spacing={4}>
+                <Button
+                  colorScheme="blue"
+                  variant="solid"
+                  type="submit"
+                  isFullWidth
+                  isLoading={progress !== null && progress < 100}
+                  loadingText="Submitting"
+                >
+                  Submit
+                </Button>
+                <Button
+                  colorScheme="red"
+                  variant="outline"
+                  onClick={handleCancel}
+                  isFullWidth
+                >
+                  Cancel
+                </Button>
+              </Stack>
+            </Box>
           </Box>
-        </Box>
+        </Flex>
       </Flex>
     </Flex>
   );
 };
 
 export default PostBlog;
+
+
