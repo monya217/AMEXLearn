@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Box, Text, Heading, Button, Image, IconButton, Flex, useToast } from "@chakra-ui/react";
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { doc, deleteDoc } from 'firebase/firestore';
+import { doc, deleteDoc, getDoc  } from 'firebase/firestore';
 import { firestore, auth } from '../../firebase/firebase';
 import Spinner from '../../components/Contribute/Spinner';
 
@@ -11,6 +11,25 @@ const BlogSection = ({ blogs }) => {
   const [user] = useAuthState(auth);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
+  const [authors, setAuthors] = useState({});
+  useEffect(() => {
+    if (blogs && blogs.length > 0) {
+      fetchAuthors();
+    }
+  }, [blogs]);
+
+  const fetchAuthors = async () => {
+    const newAuthors = {};
+    for (const blog of blogs) {
+      if (!authors[blog.userId]) {
+        const userDoc = await getDoc(doc(firestore, 'users', blog.userId));
+        if (userDoc.exists()) {
+          newAuthors[blog.userId] = userDoc.data().username;
+        }
+      }
+    }
+    setAuthors(newAuthors);
+  };
 
   if (!blogs || blogs.length === 0) {
     return <Text>No blogs available</Text>;
@@ -81,7 +100,9 @@ const BlogSection = ({ blogs }) => {
                 {blog.title}
               </Heading>
               <Text fontSize="sm" color="gray.500" mb={2}>
-                {blog.author} - {new Date(blog.Timestamp.seconds * 1000).toLocaleDateString()}
+              <Link to={`/${authors[blog.userId]}`}>
+                  {blog.author || "Loading..."}
+                </Link>  - {new Date(blog.Timestamp.seconds * 1000).toLocaleDateString()}
               </Text>
               <Text noOfLines={3} mb={4}>
                 {blog.overview}
