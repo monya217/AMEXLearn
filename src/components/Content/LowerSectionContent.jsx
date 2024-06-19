@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import Slider from "react-slick";
 import SongCard from "./SongCard";
-import { Box } from "@chakra-ui/react";
+import { Box, SimpleGrid } from "@chakra-ui/react";
 import { useAudioPlayer } from "./audioPlayerService";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const LowerSectionContent = ({ songs }) => {
   console.log(`Rendering LowerSectionContent`, songs);
@@ -17,43 +14,13 @@ const LowerSectionContent = ({ songs }) => {
     setCurrentSongId(song.id);
   };
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
-
   return (
     <Box w="full">
-      <Slider {...settings}>
+      <SimpleGrid 
+        columns={{ base: 1, sm: 2, md: 3, lg: 4 }} 
+        spacing={4} 
+        minChildWidth="300px" // Ensures wrapping at smaller sizes
+      >
         {songs.map((song) => (
           <Box key={song.id} p={2}>
             <SongCard
@@ -67,7 +34,7 @@ const LowerSectionContent = ({ songs }) => {
             />
           </Box>
         ))}
-      </Slider>
+      </SimpleGrid>
     </Box>
   );
 };

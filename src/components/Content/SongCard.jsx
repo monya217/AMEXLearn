@@ -36,8 +36,8 @@ const SongCard = ({ song, togglePlayPause, isPlayingGlobal, currentSongId }) => 
       <Flex alignItems="center" justifyContent="center" mb={4}>
         <Box
           bg="bgShadow"
-          w="250px" // Set fixed width
-          h="250px" // Set fixed height
+          w={["150px", "200px", "250px"]} // Responsive width
+          h={["150px", "200px", "250px"]} // Responsive height
           objectFit="cover"
           shadow="2xl"
           position="relative"
@@ -71,7 +71,12 @@ const SongCard = ({ song, togglePlayPause, isPlayingGlobal, currentSongId }) => 
         <Heading as="h3" size="sm" fontWeight="bold" isTruncated>
           {song.title}
         </Heading>
-        <Text color="bgHorizontalCard" mt={1} fontSize="sm" noOfLines={2}>
+        <Text 
+          color="bgHorizontalCard" 
+          mt={1} 
+          fontSize={["xs", "sm", "md"]} // Responsive font sizes
+          noOfLines={2}
+        >
           {song.description}
         </Text>
       </Box>

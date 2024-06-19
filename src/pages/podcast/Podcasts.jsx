@@ -1,20 +1,15 @@
 import React from 'react';
-import LowerSection from "../../components/Content/LowerSection";
-import FooterPodcast from "../../components/FooterPodcast";
-import { Box, Flex } from "@chakra-ui/react"; // Import Box from Chakra UI
+import LowerSection from '../../components/Content/LowerSection';
+import FooterPodcast from '../../components/FooterPodcast';
+import { Box, Flex } from '@chakra-ui/react';
 
 const Podcasts = () => {
   return (
-    <Box flex="1" flexDirection="column" minH="100vh">
-        <Box flex="1">
-          <LowerSection />
-        </Box>
-        <Box mx="7" mt="10">
-          <FooterPodcast />
-          <Box mb="8" />
-        </Box>
+    <Flex direction="column" minH="100vh">
+      <Box flex="1">
+        <LowerSection />
       </Box>
-    
+    </Flex>
   );
 };
 

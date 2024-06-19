@@ -3,14 +3,14 @@ import { Box, Heading, Link, Text } from "@chakra-ui/react";
 
 const LowerSectionHeader = ({ title }) => {
   return (
-    <Box w="full" h="14" d="flex" alignItems="center" justifyContent="space-between">
+    <Box w="full" h="14" display="flex" alignItems="center" justifyContent="space-between">
       <Heading as="h2" size="lg" fontWeight="bold" isTruncated>
         <Link
           href="!#"
           color="black"
           _hover={{ textDecoration: "underline" }}
           transition="all 0.2s"
-          d="inline-block"
+          display="inline-block"
           w="full"
         >
           {title}
@@ -18,7 +18,7 @@ const LowerSectionHeader = ({ title }) => {
       </Heading>
       <Link href="!#" ml="2" color="bgText">
         <Text as="span" fontSize="xs" fontWeight="bold" textTransform="uppercase" letterSpacing="widest">
-         
+          See More
         </Text>
       </Link>
     </Box>

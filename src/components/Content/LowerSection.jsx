@@ -37,7 +37,7 @@ const LowerSection = () => {
           bgPos="center"
           bgSize="cover"
           bgRepeat="no-repeat"
-          height="350px"
+          height={['200px', '300px', '350px']} // Responsive heights
           width="100%"
           position="relative"
           top={10}
@@ -48,14 +48,19 @@ const LowerSection = () => {
               color="black"
               fontFamily="'Gafata', sans-serif"
               maxWidth="550px"
-              width="100%"
-              padding="20px"
+              width="90%" // Adjusted width for responsiveness
+              padding={['10px', '15px', '20px']} // Responsive padding
               textAlign="center"
             >
-              <Heading as="h1" fontSize="32px" marginBottom="5px" whiteSpace="nowrap">
+              <Heading
+                as="h1"
+                fontSize={['20px', '28px', '32px']} // Responsive font sizes
+                marginBottom="5px"
+                whiteSpace="normal" // Allow text wrapping
+              >
                 Podcasts
               </Heading>
-              <Text fontSize="16px">
+              <Text fontSize={['12px', '14px', '16px']}>
                 Elevate your financial literacy with our insightful podcasts featuring industry experts and renowned thought leaders.
               </Text>
             </Box>
@@ -63,34 +68,31 @@ const LowerSection = () => {
         </Box>
         <Box fontFamily="body" color="black" fontSize="1.6rem" lineHeight="1.6">
           <Container maxW="1700px" p={{ base: '1.8rem', md: '3.4rem', xl: '1rem' }}>
-            <Box display="flex">
-              <Box flex="1" ml={4}>
-                <Box py="40px">
-                  <Container maxW="container.xl">
-                    <VStack spacing="1" align="start">
-                      <Heading as="h2" size={{ base: 'md', md: 'lg' }} mt={5}>Tune In for Financial Mastery</Heading>
-                      <Text fontSize={{ base: 'md', md: 'xl' }}>
+            <Box display="flex" flexDirection="column" alignItems="flex-start">
+              <Box flex="1" width="100%" py="40px">
+                <Container maxW="container.xl">
+                  <VStack spacing="1" align="start">
+                    <Heading as="h2" size={{ base: 'md', md: 'lg' }} mt={5}>Tune In for Financial Mastery</Heading>
+                    <Text fontSize={{ base: 'md', md: 'xl' }}>
                       Dive into our captivating and insightful financial literacy podcasts, designed to educate and empower you with the knowledge needed to make informed financial decisions.
-                      </Text>
-                    </VStack>
+                    </Text>
+                  </VStack>
 
-                    <Box mt="8">
-                      <Heading as="h3" size="1.4rem" mb="4">New Podcasts</Heading>
-                      <LowerSectionContent songs={newPodcasts} />
-                    </Box>
+                  <Box mt="8">
+                    <Heading as="h3" size="1.4rem" mb="4">New Podcasts</Heading>
+                    <LowerSectionContent songs={newPodcasts} />
+                  </Box>
 
-                    <Box mt="8">
-                      <Heading as="h3" size="1.4rem" mb="4">Most Popular</Heading>
-                      <LowerSectionContent songs={mostPopular} />
-                    </Box>
+                  <Box mt="8">
+                    <Heading as="h3" size="1.4rem" mb="4">Most Popular</Heading>
+                    <LowerSectionContent songs={mostPopular} />
+                  </Box>
 
-                    <Box mt="8">
-                      <Heading as="h3" size="1.4rem" mb="4">Beginner Friendly</Heading>
-                      <LowerSectionContent songs={beginnerFriendly} />
-                    </Box>
-                    
-                  </Container>
-                </Box>
+                  <Box mt="8">
+                    <Heading as="h3" size="1.4rem" mb="4">Beginner Friendly</Heading>
+                    <LowerSectionContent songs={beginnerFriendly} />
+                  </Box>
+                </Container>
               </Box>
             </Box>
           </Container>
