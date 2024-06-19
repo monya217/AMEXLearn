@@ -9,6 +9,7 @@ import {
   GridItem,
   Badge,
   Icon,
+  Button,
 } from '@chakra-ui/react';
 import { MdInfo } from 'react-icons/md';
 import { TbWorld } from 'react-icons/tb';
@@ -18,6 +19,9 @@ import StarRating from '../../components/StarRating'; // Assuming StarRating com
 import { useCoursesContext } from '../../context/course_context';
 import { useCartContext } from '../../context/cart_context';
 import LearnSidebar from '../../components/LearnSidebar'; // Import LearnSidebar component
+import courseHero1 from '../../assets/images/hero_img7.jpeg';
+import courseHero2 from '../../assets/images/hero_img8.jpeg'; 
+import courseHero3 from '../../assets/images/hero_img9.jpeg'; // Correct image path
 
 const SingleCoursePage = () => {
   const { id } = useParams();
@@ -49,94 +53,128 @@ const SingleCoursePage = () => {
     content,
   } = single_course;
 
+  const handleEnroll = () => {
+    // Implement your enroll logic here
+    addToCart(id); // Example: Add course to cart or any other enrollment logic
+    // You can redirect user to the checkout page or perform other actions
+  };
+
   return (
     <Flex>
       <LearnSidebar /> {/* Include LearnSidebar component */}
-      
       <Box flex="1" bg="var(--clr-dark)" color="var(--clr-white)">
-        <Grid
-          templateColumns={{ base: '1fr', md: '1fr 1fr' }}
-          columnGap={{ md: '170px' }}
-          maxW="1700px"
-          mx="auto"
-          py="60px"
-          px="200px"
-          bg="black" // Set background color for the upper banner
-          alignItems="center" // Center content vertically in the banner
+      <Box
+          bgImage={`url(${courseHero3})`}
+          bgPosition="center"
+          bgSize="cover"
+          bgRepeat="no-repeat"
+          py={{ base: '40px', md: '65px' }}
+          px={{ base: '16px', md: '180px' }}
+          height={{ base: '300px', md: '500px' }}
         >
-          <GridItem>
-            <Box>
-              <Badge
-                bg="blue.500" // Blue background color for category badge
-                color="white" // White text color for category badge
-                textTransform="uppercase"
-                borderRadius="6px"
-                px="8px"
-                mb="8px"
-              >
-                {category}
-              </Badge>
-              <Text fontSize="38px" lineHeight="1.2" fontWeight="bold" mt="12px" color="white">
-                {course_name}
-              </Text>
-              <Text fontSize="18px" mt="12px" color="white">
-                {description}
-              </Text>
-              <Flex alignItems="center" mt="12px">
-                <Text fontWeight="800" fontSize="16px" color="orange" mr="7px" pb="5px">
-                  {rating_star}  {/* Assuming StarRating component is used here */}
+          <Grid
+            templateColumns={{ base: '1fr', md: '1fr 1fr' }}
+            columnGap={{ md: '70px' }}
+            maxW="1500px"
+            mx="auto"
+            alignItems="center"
+          >
+            <GridItem>
+              <Box>
+                <Badge
+                  bg="var(--primary-hue)"
+                  color="white"
+                  textTransform="uppercase"
+                  borderRadius="4px"
+                  px="8px"
+                  mb="8px"
+                >
+                  {category}
+                </Badge>
+                <Text
+                  fontSize={{ base: '28px', md: '38px' }}
+                  lineHeight="1.2"
+                  fontWeight="bold"
+                  mt="12px"
+                  color="white"
+                >
+                  {course_name}
                 </Text>
-                <Text fontSize="12.5px" opacity="0.8" mr="6px" color="white">
-                  ({rating_count} Ratings)
+                <Text fontSize={{ base: '16px', md: '18px' }} mt="12px" color="white">
+                  {description}
                 </Text>
-                <Text fontSize="14px" opacity="0.8" mr="6px" color="white">
-                  {students} Students
-                </Text>
-              </Flex>
-              <Box mt="12px">
-                <Text fontSize="14px" color="white">
-                  Created by <Text as="span" fontWeight="bold" color="white">{creator}</Text>
-                </Text>
-                <Flex alignItems="center">
-                  <Icon as={MdInfo} color="white" />
-                  <Text fontSize="14px" ml="8px" mb="4px" textTransform="capitalize" color="white">
-                    Last updated {updated_date}
+                <Flex alignItems="center" mt="12px">
+                  <Text fontWeight="800" fontSize="16px" color="orange" mr="7px" pb="5px">
+                    {rating_star} {/* Assuming StarRating component is used here */}
+                  </Text>
+                  <StarRating rating_star={rating_star} />
+                  <Text fontSize="12.5px" opacity="0.8" mr="6px" color="white">
+                    ({rating_count} Ratings)
+                  </Text>
+                  <Text fontSize="14px" opacity="0.8" mr="6px" color="white">
+                    {students} Students
                   </Text>
                 </Flex>
-                <Flex alignItems="center">
-                  <Icon as={TbWorld} color="white" />
-                  <Text fontSize="14px" ml="8px" color="white">
-                    {lang}
+                <Box mt="12px">
+                  <Text fontSize="14px" color="white">
+                    Created by <Text as="span" fontWeight="bold" color="white">{creator}</Text>
+                  </Text>
+                  <Flex alignItems="center">
+                    <Icon as={MdInfo} color="white" />
+                    <Text fontSize="14px" ml="8px" mb="4px" textTransform="capitalize" color="white">
+                      Last updated {updated_date}
+                    </Text>
+                  </Flex>
+                  <Flex alignItems="center">
+                    <Icon as={TbWorld} color="white" />
+                    <Text fontSize="14px" ml="8px" color="white">
+                      {lang}
+                    </Text>
+                  </Flex>
+                  <Flex alignItems="center">
+                    <Icon as={RiClosedCaptioningFill} color="white" />
+                    <Text fontSize="14px" ml="8px" color="white">
+                      {lang} [Auto]
+                    </Text>
+                  </Flex>
+                </Box>
+                <Flex alignItems="center" mt="12px">
+                  <Text fontSize="26px" fontWeight="800" color="white">
+                    ₹{discounted_price}
+                  </Text>
+                  <Text fontSize="26px" fontWeight="600" ml="10px" color="#eceb98" textDecoration="line-through">
+                    ₹{actual_price}
                   </Text>
                 </Flex>
-                <Flex alignItems="center">
-                  <Icon as={RiClosedCaptioningFill} color="white"/>
-                  <Text fontSize="14px" ml="8px" color="white">
-                    {lang} [Auto]
-                  </Text>
-                </Flex>
+                <Button
+                  onClick={handleEnroll}
+                  fontSize="20px"
+                  fontWeight="700"
+                  mt="20px"
+                  bg="var(--primary-hue)"
+                  color="white"
+                  border="none"
+                  px="30px"
+                  py="20px"
+                  _hover={{ bg: 'white', color: 'black' }}
+                  _focus={{ outline: 'none' }}
+                >
+                  Enroll Now
+                </Button>
               </Box>
-              <Flex alignItems="center" mt="12px">
-                <Text fontSize="26px" fontWeight="800" color="white">
-                  ₹{discounted_price}
-                </Text>
-                <Text fontSize="26px" fontWeight="600" ml="10px" color="#eceb98" textDecoration="line-through">
-                  ₹{actual_price}
-                </Text>
-              </Flex>
-            </Box>
-          </GridItem>
-          <GridItem>
-            <Box textAlign="center">
-              <Image src={image} alt={course_name} maxW="80%" mx="auto" mt="20px" borderRadius="8px" boxShadow="lg" />
-            </Box>
-          </GridItem>
-        </Grid>
-
+            </GridItem>
+            <GridItem>
+              <Box textAlign="center">
+                <Image src={image} alt={course_name} maxW="80%" mx="auto" mt={{ base: '20px', md: '0' }} borderRadius="8px" boxShadow="lg" />
+              </Box>
+            </GridItem>
+          </Grid>
+        </Box>
+        
         <Box className="course-full" bg="var(--clr-white)" color="var(--clr-dark)" py="40px" px="16px" mt="40px">
           <Box className="course-learn" mx="auto" maxW="992px" borderWidth="1px" borderColor="rgba(0, 0, 0, 0.2)" p="12px 28px 22px 28px">
             <Text className="course-sc-title" fontSize="22px" fontWeight="700" mb="12px">
-              What you'll learn
+              What you'll get
             </Text>
             <Grid className="course-learn-list" templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }} gap="20px">
               {learnItems &&
@@ -150,7 +188,7 @@ const SingleCoursePage = () => {
                 ))}
             </Grid>
           </Box>
-
+  
           <Box className="course-content" mx="auto" maxW="992px" mt="30px" borderWidth="1px" borderColor="rgba(0, 0, 0, 0.2)" p="12px 28px 22px 28px">
             <Text className="course-sc-title" fontSize="22px" fontWeight="700" mb="12px">
               Course content
@@ -171,3 +209,6 @@ const SingleCoursePage = () => {
 };
 
 export default SingleCoursePage;
+
+
+

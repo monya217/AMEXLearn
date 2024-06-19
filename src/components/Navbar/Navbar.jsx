@@ -99,13 +99,16 @@ const Navbar = () => {
     setMenuOpen(!menuOpen);
   };
 
+  // Adjust the isLearnPage condition to check for paths starting with "/learn" or "/courses/"
+  const isLearnPage = ['/learn', '/playandlearn', '/livesession', '/podcasts'].some(path => location.pathname.startsWith(path)) || location.pathname.startsWith('/courses/');
+
   return (
     <nav className={`container ${isHomePage && !sticky ? '' : 'dark-nav'}`}>
       <ul className="navbar-brand">
         <li onClick={() => navigate('/')}>AMEXLearn</li>
       </ul>
       <ul className={`navbar-links ${menuOpen ? 'show' : ''}`}>
-        <li className={location.pathname.startsWith('/learn') ? 'active' : ''}>
+        <li className={isLearnPage ? 'active' : ''}>
           <span onClick={() => navigate('/learn')}>
             Learn
           </span>
@@ -113,7 +116,7 @@ const Navbar = () => {
         <li className={location.pathname === '/get-in-touch' ? 'active' : ''} onClick={() => navigate('/get-in-touch')}>
           Community
         </li>
-        <li className={location.pathname.startsWith('/contribute') || location.pathname.startsWith('/blog') ? 'active' : ''} onClick={() => navigate('/contribute')}>
+        <li className={(location.pathname.startsWith('/contribute') || location.pathname.startsWith('/blog')) ? 'active' : ''} onClick={() => navigate('/contribute')}>
           Contribute
         </li>
       </ul>
@@ -129,3 +132,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

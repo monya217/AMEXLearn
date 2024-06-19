@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Flex, Link } from "@chakra-ui/react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import { FaBook, FaGamepad, FaMicrophoneAlt,FaChalkboardTeacher } from "react-icons/fa";
+import { FaBook, FaGamepad, FaMicrophoneAlt, FaChalkboardTeacher } from "react-icons/fa";
 
 const LearnSidebar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -46,7 +46,7 @@ const LearnSidebar = () => {
       borderColor={'gray.200'}
       py={10}
       position={'sticky'}
-      top={10}
+      top={18}
       px={4}
       bg={'white'}
       width={sidebarWidth}
@@ -58,7 +58,7 @@ const LearnSidebar = () => {
     >
       <Flex direction={'column'} gap={10} cursor={'pointer'}>
         {sidebarItems.map((item, index) => {
-          const isSelected = location.pathname === item.link;
+          const isSelected = location.pathname.startsWith(item.link); // Change this line
           return (
             <Link
               key={index}
@@ -94,4 +94,5 @@ const LearnSidebar = () => {
 };
 
 export default LearnSidebar;
+
 

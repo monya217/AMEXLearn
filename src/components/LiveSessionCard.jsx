@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Image, Text, Button, Flex } from '@chakra-ui/react';
-import { FaPlay, FaRegCalendarAlt, FaBroadcastTower } from 'react-icons/fa'; // Import necessary icons
+import { FaPlay, FaRegCalendarAlt, FaBroadcastTower } from 'react-icons/fa';
 
 const LiveSessionCard = ({ imageUrl, title, person, date, time, isLive, isPast, isUpcoming }) => {
   return (
@@ -11,11 +11,12 @@ const LiveSessionCard = ({ imageUrl, title, person, date, time, isLive, isPast, 
       display="flex"
       flexDirection="column"
       width="100%"
+      height="390px" // Set a fixed height for the card
     >
-      <Box className="item-img" position="relative">
-        <Image src={imageUrl} alt={title} className="session-image" width="100%" />
+      <Box className="item-img" position="relative" height="200px"> {/* Set a fixed height for the image container */}
+        <Image src={imageUrl} alt={title} className="session-image" width="100%" height="100%" objectFit="cover" /> {/* Ensure the image fits the container */}
         {isPast && (
-          <Box position="absolute" top="0" right="0" bg="blackAlpha.600" color="white" p="2px 8px" fontSize="12px">
+          <Box position="absolute" bottom="0" right="0" bg="blackAlpha.800" color="white" p="2px 8px" fontSize="12px">
             {time}
           </Box>
         )}
@@ -40,10 +41,10 @@ const LiveSessionCard = ({ imageUrl, title, person, date, time, isLive, isPast, 
         {isLive && (
           <Button
             className="item-btn view-btn"
-            fontSize={{ base: '14px', md: '16px' }} // Responsive font size
-            flex="1" // Ensures button takes available space
-            mx="2px" // Margin between buttons
-            py={{ base: '4px', md: '6px' }} // Responsive padding
+            fontSize={{ base: '14px', md: '16px' }}
+            flex="1"
+            mx="2px"
+            py={{ base: '4px', md: '6px' }}
             fontWeight="700"
             transition="all 300ms linear"
             whiteSpace="nowrap"
@@ -51,7 +52,7 @@ const LiveSessionCard = ({ imageUrl, title, person, date, time, isLive, isPast, 
             color="white"
             border="1px solid black"
             _hover={{ bg: 'white', color: 'black' }}
-            textAlign="center" // Ensure text is centered
+            textAlign="center"
           >
             Join
           </Button>
@@ -59,10 +60,10 @@ const LiveSessionCard = ({ imageUrl, title, person, date, time, isLive, isPast, 
         {isPast && (
           <Button
             className="item-btn play-btn"
-            fontSize={{ base: '14px', md: '16px' }} // Responsive font size
-            flex="1" // Ensures button takes available space
-            mx="2px" // Margin between buttons
-            py={{ base: '4px', md: '6px' }} // Responsive padding
+            fontSize={{ base: '14px', md: '16px' }}
+            flex="1"
+            mx="2px"
+            py={{ base: '4px', md: '6px' }}
             fontWeight="700"
             transition="all 300ms linear"
             whiteSpace="nowrap"
@@ -70,7 +71,7 @@ const LiveSessionCard = ({ imageUrl, title, person, date, time, isLive, isPast, 
             color="white"
             border="1px solid black"
             _hover={{ bg: 'white', color: 'black' }}
-            textAlign="center" // Ensure text is centered
+            textAlign="center"
           >
             View
           </Button>
@@ -78,10 +79,10 @@ const LiveSessionCard = ({ imageUrl, title, person, date, time, isLive, isPast, 
         {isUpcoming && (
           <Button
             className="item-btn schedule-btn"
-            fontSize={{ base: '14px', md: '16px' }} // Responsive font size
-            flex="1" // Ensures button takes available space
-            mx="2px" // Margin between buttons
-            py={{ base: '4px', md: '6px' }} // Responsive padding
+            fontSize={{ base: '14px', md: '16px' }}
+            flex="1"
+            mx="2px"
+            py={{ base: '4px', md: '6px' }}
             fontWeight="700"
             transition="all 300ms linear"
             whiteSpace="nowrap"
@@ -89,7 +90,7 @@ const LiveSessionCard = ({ imageUrl, title, person, date, time, isLive, isPast, 
             color="white"
             border="1px solid black"
             _hover={{ bg: 'white', color: 'black' }}
-            textAlign="center" // Ensure text is centered
+            textAlign="center"
           >
             Schedule
           </Button>
@@ -100,3 +101,5 @@ const LiveSessionCard = ({ imageUrl, title, person, date, time, isLive, isPast, 
 };
 
 export default LiveSessionCard;
+
+

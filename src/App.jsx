@@ -27,6 +27,7 @@ import PlayandLearn from "./pages/learn/playandlearn.jsx"; // Import playandlear
 import Livesessions from "./pages/learn/livesession.jsx"; // Import livesession page
 import Chatbot from "./components/Chatbot.jsx";
 import ContributeProfilePage from './components/Contribute/ContributeProfilePage.jsx'
+import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
   const [authUser] = useAuthState(auth);
@@ -49,6 +50,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
+      <ScrollToTop/>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

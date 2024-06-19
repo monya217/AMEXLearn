@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Image, Text, Flex, Button } from '@chakra-ui/react';
+import { Box, Image, Text, Flex, Button, Badge } from '@chakra-ui/react';
 import StarRating from '../components/StarRating';
 
 const Course = (props) => {
@@ -24,12 +24,24 @@ const Course = (props) => {
       display="flex"
       flexDirection="column"
       width="100%"
+      minHeight="422px" // Ensure minimum height for consistent size
     >
-      <Box className="item-img">
-        <Image src={image} alt={course_name} width="100%" />
+      <Box className="item-img" height="200px" overflow="hidden"> {/* Fixed height for image */}
+        <Image src={image} alt={course_name} width="100%" height="100%" objectFit="cover" />
       </Box>
-      <Box className="item-body" mt="14px" mb="14px" px="18px">
-        <Text className="item-name" fontSize="15px" lineHeight="1.4" fontWeight="900">
+      <Box className="item-body" mt="1px" mb="14px" px="18px" flex="1">
+        <Badge
+          bg="blue.500" // Blue background color for category badge
+          color="white" // White text color for category badge
+          textTransform="capitalize"
+          borderRadius="4px"
+          fontSize="13.3px"
+          px="8px"
+          mb="4px" // Reduce margin bottom here if necessary
+        >
+          {category}
+        </Badge>
+        <Text className="item-name" fontSize="18px" lineHeight="1.4" fontWeight="900">
           {course_name}
         </Text>
         <Text className="item-creator" fontSize="12.5px" fontWeight="500" color="rgba(0, 0, 0, 0.6)">
@@ -45,15 +57,15 @@ const Course = (props) => {
           </Text>
         </Flex>
         <Flex className="item-price" mt="4px" alignItems="center">
-          <Text className="item-price-new" fontWeight="700" fontSize="15px">
+          <Text className="item-price-new" fontWeight="700" fontSize="17px">
             ₹{discounted_price}
           </Text>
-          <Text className="item-price-old" opacity="0.8" fontWeight="500" textDecoration="line-through" fontSize="15px" ml="8px">
+          <Text className="item-price-old" opacity="0.8" fontWeight="500" textDecoration="line-through" fontSize="17px" ml="8px">
             ₹{actual_price}
           </Text>
         </Flex>
       </Box>
-      <Flex className="item-btns" justifyContent="space-between" px="18px" pb="10px" mt="auto">
+      <Flex className="item-btns" justifyContent="space-between" px="18px" pb="10px">
         <Button
           as={Link}
           to={`/learn/courses/${id}`}
@@ -95,3 +107,5 @@ const Course = (props) => {
 };
 
 export default Course;
+
+

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Box, Container, Heading, Text, VStack, Flex } from '@chakra-ui/react';
+import { Box, Container, Flex, Heading, Text, VStack, useBreakpointValue } from '@chakra-ui/react';
 import LearnSidebar from '../../components/LearnSidebar';
 import LiveSessionCard from '../../components/LiveSessionCard';
+import Slider from 'react-slick';
 import ongoingImage1 from '../../assets/images/per_2.jpeg';
 import ongoingImage2 from '../../assets/images/per_3.jpeg';
-import ongoingImage3 from '../../assets/images/risk_4.jpeg';
-import ongoingImage4 from '../../assets/images/risk_3.jpeg';
+import ongoingImage3 from '../../assets/images/gameimg_4.jpeg';
+import ongoingImage4 from '../../assets/images/per_5.jpeg';
 import pastImage1 from '../../assets/images/gameimg_3.jpeg';
 import pastImage2 from '../../assets/images/gameimg_10.jpeg';
 import pastImage3 from '../../assets/images/gameimg_6.jpeg';
@@ -35,26 +36,6 @@ const LiveSession = () => {
       person: 'Jane Smith',
       date: '2023-06-14',
       time: '11:00 AM',
-      isLive: true,
-      isPast: false,
-      isUpcoming: false,
-    },
-    {
-      imageUrl: ongoingImage3,
-      title: 'Introduction to Stock Market',
-      person: 'Alice Johnson',
-      date: '2023-06-14',
-      time: '12:00 PM',
-      isLive: true,
-      isPast: false,
-      isUpcoming: false,
-    },
-    {
-      imageUrl: ongoingImage4,
-      title: 'Cryptocurrency Fundamentals',
-      person: 'Bob Lee',
-      date: '2023-06-14',
-      time: '1:00 PM',
       isLive: true,
       isPast: false,
       isUpcoming: false,
@@ -94,6 +75,26 @@ const LiveSession = () => {
       imageUrl: pastImage4,
       title: 'Credit Score Management',
       person: 'Fiona Black',
+      date: '2023-06-07',
+      time: '35 mins',
+      isLive: false,
+      isPast: true,
+      isUpcoming: false,
+    },
+    {
+      imageUrl: ongoingImage3,
+      title: 'Introduction to Stock Market',
+      person: 'Alice Johnson',
+      date: '2023-06-07',
+      time: '35 mins',
+      isLive: false,
+      isPast: true,
+      isUpcoming: false,
+    },
+    {
+      imageUrl: ongoingImage4,
+      title: 'Introduction to Financial Management',
+      person: 'Alice Johnson',
       date: '2023-06-07',
       time: '35 mins',
       isLive: false,
@@ -141,7 +142,83 @@ const LiveSession = () => {
       isPast: false,
       isUpcoming: true,
     },
+    {
+      imageUrl: ongoingImage1,
+      title: 'Understanding Mutual Funds',
+      person: 'Charlie Brown',
+      date: '2023-06-10',
+      time: '5:00 PM',
+      isLive: false,
+      isPast: false,
+      isUpcoming: true,
+    },
+    {
+      imageUrl: ongoingImage2,
+      title: 'Retirement Planning Workshop',
+      person: 'Daisy White',
+      date: '2023-06-26',
+      time: '5:00 PM',
+      isLive: false,
+      isPast: false,
+      isUpcoming: true,
+    },
   ];
+
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+  const renderSessions = (filteredSessions) => {
+    if (filteredSessions.length < 4) {
+      return (
+        <Flex wrap="wrap">
+          {filteredSessions.map(session => (
+            <Box key={session.title} width={{ base: '100%', md: '50%', lg: '25%' }} px={2} mb={4}>
+              <LiveSessionCard {...session} />
+            </Box>
+          ))}
+        </Flex>
+      );
+    } else {
+      return (
+        <Slider {...settings}>
+          {filteredSessions.map(session => (
+            <Box key={session.title} px={2}>
+              <LiveSessionCard {...session} />
+            </Box>
+          ))}
+        </Slider>
+      );
+    }
+  };
 
   return (
     <Flex width="100%">
@@ -182,6 +259,7 @@ const LiveSession = () => {
               <Box flex="1" ml={4}>
 
 
+                
                 {/* Displaying sessions */}
                 <Box py="40px">
                   <Container maxW="container.xl">
@@ -193,29 +271,15 @@ const LiveSession = () => {
                     </VStack>
                     <Box mt="8">
                       <Heading as="h3" size="1.4rem" mb="4">Ongoing Sessions</Heading>
-                      <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap="20px">
-                        {sessions.filter(session => session.isLive).slice(0, 4).map(session => (
-                          <LiveSessionCard key={session.title} {...session} />
-                        ))}
-                      </Box>
+                      {renderSessions(sessions.filter(session => session.isLive))}
                     </Box>
-
                     <Box mt="8">
                       <Heading as="h3" size="1.4rem" mb="4">Past Sessions</Heading>
-                      <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap="20px">
-                        {sessions.filter(session => session.isPast).slice(0, 4).map(session => (
-                          <LiveSessionCard key={session.title} {...session} />
-                        ))}
-                      </Box>
+                      {renderSessions(sessions.filter(session => session.isPast))}
                     </Box>
-
                     <Box mt="8">
                       <Heading as="h3" size="1.4rem" mb="4">Upcoming Sessions</Heading>
-                      <Box display="grid" gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap="20px">
-                        {sessions.filter(session => session.isUpcoming).slice(0, 4).map(session => (
-                          <LiveSessionCard key={session.title} {...session} />
-                        ))}
-                      </Box>
+                      {renderSessions(sessions.filter(session => session.isUpcoming))}
                     </Box>
                   </Container>
                 </Box>
@@ -229,3 +293,8 @@ const LiveSession = () => {
 };
 
 export default LiveSession;
+
+
+
+
+

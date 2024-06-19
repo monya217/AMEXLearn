@@ -68,9 +68,10 @@ const courses = [
         creator: "Michael Johnson",
         updated_date: "5/2021",
         lang: "english",
-        actual_price: 999,
-        discounted_price: 599,
+        actual_price: 4999,
+        discounted_price: 2599,
         what_you_will_learn: [
+            "Level up your career with a professional certificate",
             "Understand different types of debt",
             "Develop a debt repayment plan",
             "Utilize debt management tools"
@@ -98,6 +99,7 @@ const courses = [
         actual_price: 999,
         discounted_price: 0,
         what_you_will_learn: [
+            
             "Set financial goals",
             "Create a financial plan",
             "Monitor and adjust your plan as needed"
@@ -122,9 +124,10 @@ const courses = [
         creator: "David Wilson",
         updated_date: "9/2021",
         lang: "english",
-        actual_price: 999,
-        discounted_price: 499,
+        actual_price: 4999,
+        discounted_price: 2499,
         what_you_will_learn: [
+            "Level up your career with a professional certificate",
             "Develop saving strategies",
             "Understand investment options",
             "Build an investment portfolio"
@@ -205,9 +208,10 @@ const courses = [
         creator: "Anna Brown",
         updated_date: "3/2022",
         lang: "english",
-        actual_price: 999,
-        discounted_price: 499,
+        actual_price: 4999,
+        discounted_price: 3499,
         what_you_will_learn: [
+            "Level up your career with a professional certificate",
             "Understand hedging concepts",
             "Develop hedging strategies",
             "Implement hedging techniques"
@@ -232,9 +236,10 @@ const courses = [
         creator: "James White",
         updated_date: "5/2022",
         lang: "english",
-        actual_price: 999,
-        discounted_price: 499,
+        actual_price: 4999,
+        discounted_price: 2499,
         what_you_will_learn: [
+            "Level up your career with a professional certificate",
             "Understand different types of insurance",
             "Evaluate insurance needs",
             "Implement insurance as a risk mitigation tool"
@@ -342,9 +347,10 @@ const courses = [
         creator: "Sophia Anderson",
         updated_date: "1/2023",
         lang: "english",
-        actual_price: 999,
-        discounted_price: 399,
+        actual_price: 3999,
+        discounted_price: 2399,
         what_you_will_learn: [
+            "Level up your career with a professional certificate",
             "Understand the role of wills and trusts",
             "Create and manage wills and trusts",
             "Implement wills and trusts in estate planning"
@@ -369,9 +375,10 @@ const courses = [
         creator: "William Harris",
         updated_date: "3/2023",
         lang: "english",
-        actual_price: 999,
-        discounted_price: 499,
+        actual_price: 3999,
+        discounted_price: 2499,
         what_you_will_learn: [
+            "Level up your career with a professional certificate",
             "Understand the benefits of charitable giving",
             "Incorporate charitable giving into your estate plan",
             "Utilize charitable trusts and foundations"
@@ -396,9 +403,10 @@ const courses = [
         creator: "Benjamin Martinez",
         updated_date: "5/2023",
         lang: "english",
-        actual_price: 999,
-        discounted_price: 599,
+        actual_price: 3999,
+        discounted_price: 2599,
         what_you_will_learn: [
+            "Level up your career with a professional certificate",
             "Understand estate administration",
             "Navigate the probate process",
             "Implement estate administration strategies"
@@ -479,9 +487,10 @@ const courses = [
         creator: "Daniel Lee",
         updated_date: "11/2023",
         lang: "english",
-        actual_price: 999,
-        discounted_price: 499,
+        actual_price: 3999,
+        discounted_price: 2499,
         what_you_will_learn: [
+            "Level up your career with a professional certificate",
             "Understand health insurance",
             "Evaluate health insurance needs",
             "Choose the right health insurance plan"
@@ -535,63 +544,10 @@ const courses = [
         creator: "Matthew Brown",
         updated_date: "3/2024",
         lang: "english",
-        actual_price: 999,
-        discounted_price: 499,
+        actual_price: 4999,
+        discounted_price: 3999,
         what_you_will_learn: [
-            "Understand mutual funds",
-            "Evaluate mutual fund performance",
-            "Develop mutual fund investment strategies"
-        ],
-        content: [
-            "Introduction to Mutual Funds",
-            "Types of Mutual Funds",
-            "Evaluating Mutual Fund Performance",
-            "Developing Mutual Fund Strategies",
-            "Case Studies"
-        ]
-    },
-    {
-        id: "PL1",
-        category: "play & learn",
-        image: course_images.inv_1,
-        course_name: "Financia",
-        description: "Learn the basics of investing in stocks and bonds.",
-        rating_count: 1350,
-        rating_star: 4.6,
-        students: 10000,
-        creator: "Karen Johnson",
-        updated_date: "1/2024",
-        lang: "english",
-        actual_price: 99.99,
-        discounted_price: 9.99,
-        what_you_will_learn: [
-            "Understand stocks and bonds",
-            "Evaluate investment opportunities",
-            "Develop investment strategies"
-        ],
-        content: [
-            "Introduction to Stocks",
-            "Introduction to Bonds",
-            "Evaluating Investment Opportunities",
-            "Developing Investment Strategies",
-            "Case Studies"
-        ]
-    },
-    {
-        id: "PL2",
-        category: "play & learn",
-        image: course_images.inv_2,
-        course_name: "GAME2",
-        description: "Learn the fundamentals of investing in mutual funds.",
-        rating_count: 1250,
-        rating_star: 4.5,
-        students: 8500,
-        creator: "Matthew Brown",
-        updated_date: "3/2024",
-        lang: "english",
-        actual_price: 109.99,
-        discounted_price: 9.99,
-        what_you_will_learn: [
+            "Level up your career with a professional certificate",
             "Understand mutual funds",
             "Evaluate mutual fund performance",
             "Develop mutual fund investment strategies"
@@ -604,6 +560,7 @@ const courses = [
             "Case Studies"
         ]
     }
+    
 ];
 
 export default courses;
