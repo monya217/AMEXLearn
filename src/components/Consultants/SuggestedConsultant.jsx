@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   Box, Flex, Image, Text, VStack, Button, HStack, Link, Icon,
   Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
-  FormControl, FormLabel, Input, Textarea, RadioGroup, Radio, Stack
+  FormControl, FormLabel, Input, Textarea, RadioGroup, Radio, Stack, Select, useToast
 } from '@chakra-ui/react';
 import { FaLinkedin, FaTwitter, FaStar, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import Slider from "react-slick";
@@ -121,6 +121,12 @@ const ConsultantCarousel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('amex');
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [redeemCoins, setRedeemCoins] = useState(false);
+  const [discountApplied, setDiscountApplied] = useState(false); // State to track if discount is applied
+  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
+  const [price, setPrice] = useState('₹2000'); // State to manage the price
+  const toast = useToast();
 
   const activeDotStyle = {
     width: '10px',
@@ -142,6 +148,8 @@ const ConsultantCarousel = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  const handleDateChange = (event) => setSelectedDate(event.target.value);
+  const handleTimeChange = (event) => setSelectedTime(event.target.value);
 
   const PrevArrow = ({ onClick }) => (
     <Icon
@@ -196,10 +204,27 @@ const ConsultantCarousel = () => {
     beforeChange: (current, next) => setCurrentSlide(next),
   };
 
+  const handleRedeemCoins = () => {
+    // Simulate redeeming coins and applying discount
+    setRedeemCoins(true);
+    const originalPrice = 2000;
+    const discountedPrice = originalPrice * 0.8; // 20% discount
+    setPrice(`₹${discountedPrice}`);
+    setDiscountApplied(true);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission
     closeModal();
+    // Show session booked toast
+    toast({
+      title: "Session booked!",
+      description: "Thank you for booking a session.",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
   };
 
   return (
@@ -220,44 +245,73 @@ const ConsultantCarousel = () => {
           <ModalCloseButton />
           <ModalBody>
             <form onSubmit={handleSubmit}>
-              <FormControl isRequired mb={2}>
-                <FormLabel fontSize="sm">Name</FormLabel>
-                <Input placeholder="Your Name" size="sm" />
-              </FormControl>
-              <FormControl isRequired mb={2}>
-                <FormLabel fontSize="sm">Email</FormLabel>
-                <Input type="email" placeholder="Your Email" size="sm" />
-              </FormControl>
-              <FormControl isRequired mb={2}>
-                <FormLabel fontSize="sm">Session Details</FormLabel>
-                <Textarea placeholder="Describe the session details" size="sm" />
-              </FormControl>
-              <FormControl isReadOnly mb={2}>
-                <FormLabel fontSize="sm">Price</FormLabel>
-                <Input value="1500 rupees" isReadOnly size="sm" />
-              </FormControl>
-              <FormControl as="fieldset" mb={2}>
-                <FormLabel as="legend" fontSize="sm">Payment Method</FormLabel>
-                <RadioGroup value={paymentMethod} onChange={setPaymentMethod}>
-                  <Stack spacing={3} direction="row">
-                    <Radio value="amex" size="sm">Amex Card</Radio>
-                    <Radio value="upi" size="sm">UPI</Radio>
-                  </Stack>
-                </RadioGroup>
-              </FormControl>
-              {paymentMethod === 'amex' && (
+              <Flex direction="column">
+                <HStack mb={2}>
+                  <FormControl isRequired flex="1" mr={2}>
+                    <FormLabel fontSize="sm">Email</FormLabel>
+                    <Input type="email" placeholder="Your Email" size="sm" />
+                  </FormControl>
+                  <FormControl isRequired flex="1">
+                    <FormLabel fontSize="sm">Phone Number</FormLabel>
+                    <Input type="tel" placeholder="Your Phone Number" size="sm" />
+                  </FormControl>
+                </HStack>
                 <FormControl isRequired mb={2}>
-                  <FormLabel fontSize="sm">Card Number</FormLabel>
-                  <Input placeholder="Card Number" size="sm" />
+                  <FormLabel fontSize="sm">Session Details</FormLabel>
+                  <Textarea placeholder="Describe the session details" size="sm" />
                 </FormControl>
-              )}
-              {paymentMethod === 'upi' && (
-                <FormControl isRequired mb={2}>
-                  <FormLabel fontSize="sm">UPI ID</FormLabel>
-                  <Input placeholder="UPI ID" size="sm" />
+                <HStack mb={2}>
+                  <FormControl isRequired flex="1" mr={2}>
+                    <FormLabel fontSize="sm">Select Date</FormLabel>
+                    <Input type="date" value={selectedDate} onChange={handleDateChange} size="sm" />
+                  </FormControl>
+                  <FormControl isRequired flex="1">
+                    <FormLabel fontSize="sm">Select Time</FormLabel>
+                    <Select placeholder="Select time" value={selectedTime} onChange={handleTimeChange} size="sm">
+                      <option value="1pm">1 PM</option>
+                      <option value="4pm">4 PM</option>
+                      <option value="6pm">6 PM</option>
+                    </Select>
+                  </FormControl>
+                </HStack>
+                <FormControl isReadOnly mb={2}>
+                  <FormLabel fontSize="sm">Price</FormLabel>
+                  <Input value={price} isReadOnly size="sm" />
                 </FormControl>
-              )}
-              <Button type="submit" colorScheme="blue" width="full" size="sm">Order</Button>
+                <FormControl mb={2}>
+                  <Button size="sm" colorScheme="green" onClick={handleRedeemCoins} disabled={redeemCoins}>
+                    Redeem Coins
+                   
+                  </Button>
+                  <Text fontSize="xs" color="gray.500" mt={1}>
+                  {discountApplied ? null : "*Unlock a 20% discount by using your 500 coins."}
+                    </Text>
+                    {discountApplied && <Text fontSize="sm" color="green.500">20% discount applied! 🎉</Text>
+                  }
+                </FormControl>
+                <FormControl as="fieldset" mb={2}>
+                  <FormLabel as="legend" fontSize="sm">Payment Method</FormLabel>
+                  <RadioGroup value={paymentMethod} onChange={setPaymentMethod}>
+                    <Stack spacing={3} direction="row">
+                      <Radio value="amex" size="sm">Amex Card</Radio>
+                      <Radio value="upi" size="sm">UPI</Radio>
+                    </Stack>
+                  </RadioGroup>
+                </FormControl>
+                {paymentMethod === 'amex' && (
+                  <FormControl isRequired mb={2}>
+                    <FormLabel fontSize="sm">Card Number</FormLabel>
+                    <Input placeholder="Card Number" size="sm" />
+                  </FormControl>
+                )}
+                {paymentMethod === 'upi' && (
+                  <FormControl isRequired mb={2}>
+                    <FormLabel fontSize="sm">UPI ID</FormLabel>
+                    <Input placeholder="UPI ID" size="sm" />
+                  </FormControl>
+                )}
+                <Button mt={4} type="submit" colorScheme="blue" width="full" size="sm">Order</Button>
+              </Flex>
             </form>
           </ModalBody>
         </ModalContent>
