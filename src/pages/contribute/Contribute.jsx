@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Flex, Button, Icon, Text, useColorModeValue,useBreakpointValue } from "@chakra-ui/react";
+import { Box, Flex, Button, Icon, Text, useColorModeValue,useBreakpointValue, Heading,VStack,Container} from "@chakra-ui/react";
 import { collection, onSnapshot } from "firebase/firestore";
 import { firestore } from '../../firebase/firebase';
 import BlogSection from '../../components/Contribute/BlogSection';
@@ -67,23 +67,51 @@ const Contribute = () => {
     <Flex width="100%">
       <ContributeSidebar />
       <Flex direction="column" width="100%">
-      <Box
-          bgImage={contribute_header}
-          bgPos="center"
-          bgSize="cover"
-          bgRepeat="no-repeat"
-          height="350px"
+        
+        <Box
+      bgImage={contribute_header}
+      bgPos="center"
+      bgSize="cover"
+      bgRepeat="no-repeat"
+      height="350px"
+      width="100%"
+      position="relative"
+      top={10}
+    >
+      <Flex height="100%" alignItems="center" justifyContent="center">
+        <Box
+          bg="white"
+          color="black"
+          fontFamily="'Gafata', sans-serif"
+          maxWidth="550px"
           width="100%"
-          position="relative"
-          top={10}
+          padding="20px"
+          textAlign="center"
         >
+          <Heading as="h1" fontSize="32px" marginBottom="5px" whiteSpace="nowrap">
+          Real Stories, Real Finance
+          </Heading>
+          <Text fontSize="16px">
+          Learn from the experiences and advice of fellow users on topics ranging from personal finance to investment strategies.
+          </Text>
         </Box>
+      </Flex>
+    </Box>
+    <Box paddingTop="50px" marginLeft="15px">
+      <Container maxW="container.xl">
+        <VStack spacing="1" align="start">
+          <Heading as="h2" size={{ base: 'md', md: 'lg' }} mt={5}>Your Community Finance Resource</Heading>
+          <Text fontSize={{ base: 'md', md: 'xl' }}>Dive into a diverse collection of user-submitted blogs on money management and investment strategies.</Text>
+        </VStack>
+      </Container>
+      </Box>
+      
       <Box
         flex="1"
         ml={0} // Adjust margin-left as per the sidebar width
         transition="margin-left 0.2s"
       >
-        <Box width="100%" px={{ base: 4, md: 6, lg: 8, xl: 10 }} mt={20}>
+        <Box width="100%" px={{ base: 4, md: 6, lg: 8, xl: 10 }} >
           <Flex wrap="wrap" mb="10px"  mt="20px">
             {categories.map((category) => (
               <Button
