@@ -7,6 +7,7 @@ import SearchUser from './SearchUser';
 import CreatePost from './CreatePost';
 import useUserProfileStore from '../../../store/userProfileStore';
 import useAuthStore from '../../../store/authStore';
+import { MdNotifications } from 'react-icons/md';
 
 const Sidebar = () => {
     const { userProfile } = useUserProfileStore();
@@ -30,19 +31,13 @@ const Sidebar = () => {
             },
         },
         {
-            icon: FaSearch,
-            text: "Search Profile",
-            action: () => searchUserRef.current.openModal(),
-        },
-        {
             icon: FaPen,
             text: "Create Post",
             action: () => createPostRef.current.openModal(),
         },
         {
-            icon: FaUser,
-            text: "Profile",
-            action: () => navigate(`/dashboard/activity/${authUser?.username}`),
+            icon: MdNotifications ,
+            text: "Notifications",
         },
     ];
 
