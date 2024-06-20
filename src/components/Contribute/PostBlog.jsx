@@ -19,7 +19,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { addDoc, updateDoc, doc, collection, serverTimestamp, getDoc } from "firebase/firestore";
 import useAuthStore from '../../store/authStore';
 import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
-import bannerImg2 from '../../assets/images/contri6.png';  // Adjust the path as necessary
+import bannerImg2 from '../../assets/images/contri6.png';
 
 const categoryOptions = [
   "Debt Management",
@@ -186,23 +186,23 @@ const PostBlog = () => {
   return (
     <Flex direction="row" width="100%" height="100vh" overflow="hidden">
       <ContributeSidebar />
-      <Flex direction="column" width="100%" overflowY="auto">
-        <Flex direction="column" align="center" justify="center" w="full" >
-        <Box
-          bgImage={`url(${bannerImg2})`}
-          bgPos="center"
-          bgSize="cover"
-          bgRepeat="no-repeat"
-          height="350px"
-          width="100%"
-        />
-          <Box w={formWidth} p={6} mt="20px">
-            <Heading as="h2" size="xl" textAlign="center" mb={6}>
+      <Flex direction="column" width="100%" overflowY="auto" p={4}>
+        <Flex direction="column" align="center" justify="center" w="full">
+          <Box
+            bgImage={`url(${bannerImg2})`}
+            bgPos="center"
+            bgSize="cover"
+            bgRepeat="no-repeat"
+            height="350px"
+            width="100%"
+          />
+          <Box w={formWidth} p={6} mt="20px" bg="white" boxShadow="lg" borderRadius="md">
+            <Heading as="h2" size="xl" textAlign="center" mb={6} >
               {blogId ? 'Edit Blog' : 'Create Blog'}
             </Heading>
             <Box as="form" onSubmit={handleSubmit}>
               <FormControl mb={4}>
-                <FormLabel>Title</FormLabel>
+                <FormLabel fontWeight="bold" >Title</FormLabel>
                 <Input
                   type="text"
                   placeholder="Title"
@@ -212,7 +212,7 @@ const PostBlog = () => {
                 />
               </FormControl>
               <FormControl mb={4}>
-                <FormLabel>Category</FormLabel>
+                <FormLabel fontWeight="bold" >Category</FormLabel>
                 <Select
                   placeholder="Please select category"
                   value={form.category}
@@ -227,17 +227,18 @@ const PostBlog = () => {
                 </Select>
               </FormControl>
               <FormControl mb={4}>
-                <FormLabel>Overview</FormLabel>
+                <FormLabel fontWeight="bold" >Overview</FormLabel>
                 <Textarea
                   placeholder="Overview"
                   value={form.overview}
                   name="overview"
                   onChange={handleChange}
                   resize="vertical"
+                 
                 />
               </FormControl>
               <FormControl mb={4}>
-                <FormLabel>Description</FormLabel>
+                <FormLabel fontWeight="bold" >Description</FormLabel>
                 <Textarea
                   placeholder="Description"
                   value={form.description}
@@ -245,13 +246,15 @@ const PostBlog = () => {
                   onChange={handleChange}
                   resize="vertical"
                   rows={6}
+                  
                 />
               </FormControl>
               <FormControl mb={4}>
-                <FormLabel>Insert Image</FormLabel>
+                <FormLabel fontWeight="bold" >Insert Image</FormLabel>
                 <Input
                   type="file"
                   onChange={(e) => setFile(e.target.files[0])}
+                  
                 />
               </FormControl>
               <Stack direction={{ base: "column", md: "row" }} spacing={4}>
@@ -262,6 +265,7 @@ const PostBlog = () => {
                   isFullWidth
                   isLoading={progress !== null && progress < 100}
                   loadingText="Submitting"
+                  
                 >
                   Submit
                 </Button>
@@ -270,12 +274,15 @@ const PostBlog = () => {
                   variant="outline"
                   onClick={handleCancel}
                   isFullWidth
+                  
                 >
                   Cancel
                 </Button>
               </Stack>
             </Box>
           </Box>
+
+
         </Flex>
       </Flex>
     </Flex>
