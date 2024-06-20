@@ -12,6 +12,8 @@ import {
   FormControl,
   FormLabel,
   useBreakpointValue,
+  Image,
+  Text
 } from "@chakra-ui/react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { firestore, storage } from '../../firebase/firebase';
@@ -19,7 +21,8 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { addDoc, updateDoc, doc, collection, serverTimestamp, getDoc } from "firebase/firestore";
 import useAuthStore from '../../store/authStore';
 import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
-import bannerImg2 from '../../assets/images/contri6.png';
+import headerBg from '../../assets/images/hero_img9.jpeg'; // Adjust the path to your background image
+import roadmap from '../../assets/images/roadmap.png'; 
 
 const categoryOptions = [
   "Debt Management",
@@ -181,28 +184,43 @@ const PostBlog = () => {
     navigate("/blogs");
   };
 
-  const formWidth = useBreakpointValue({ base: "90%", md: "80%", lg: "70%", xl: "60%" });
+  const formWidth = useBreakpointValue({ base: "95%", md: "90%", lg: "85%", xl: "80%" });
 
   return (
     <Flex direction="row" width="100%" height="100vh" overflow="hidden">
       <ContributeSidebar />
       <Flex direction="column" width="100%" overflowY="auto">
-        <Flex direction="column" align="center" justify="center" w="full">
-          <Box
-            bgImage={`url(${bannerImg2})`}
-            bgPos="center"
-            bgSize="cover"
-            bgRepeat="no-repeat"
-            height="350px"
-            width="100%"
-          />
-          <Box w={formWidth} p={6} mt="20px" bg="white" boxShadow="lg" borderRadius="md">
-            <Heading as="h2" size="xl" textAlign="center" mb={6} >
+        <Flex direction="column" align="center" justify="center" w="full" >
+        <Box
+      bgImage={`url(${headerBg})`}
+      bgPos="center"
+      bgSize="cover"
+      bgRepeat="no-repeat"
+      width="100%"
+      height= "300px"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      flexDirection="column"
+      textAlign="center"
+      color="white"
+      p={4}
+    >
+      <Text fontSize={{ base: 'md', md: 'lg', lg: 'xl' }} fontWeight="bold" mb = "4"  mt = "10">
+        Inspired by Our Articles? Write Your Own!
+        </Text>
+      <Image src={roadmap} alt="Roadmap" width={{  base: '60%', md: '50%', lg: '40%' }} mb={4} />
+      <Text fontSize={{ base: 'md', md: 'lg', lg: 'xl' }} fontWeight="bold">
+        Enhance Your Writing Journey and Elevate Financial Knowledge!
+      </Text>
+    </Box>
+          <Box w={formWidth} p={6} mt="20px">
+            <Heading as="h2" size="xl" textAlign="center" mb={6}>
               {blogId ? 'Edit Blog' : 'Create Blog'}
             </Heading>
             <Box as="form" onSubmit={handleSubmit}>
               <FormControl mb={4}>
-                <FormLabel fontWeight="bold" >Title</FormLabel>
+                <FormLabel>Title</FormLabel>
                 <Input
                   type="text"
                   placeholder="Title"
@@ -212,7 +230,7 @@ const PostBlog = () => {
                 />
               </FormControl>
               <FormControl mb={4}>
-                <FormLabel fontWeight="bold" >Category</FormLabel>
+                <FormLabel>Category</FormLabel>
                 <Select
                   placeholder="Please select category"
                   value={form.category}
@@ -227,18 +245,17 @@ const PostBlog = () => {
                 </Select>
               </FormControl>
               <FormControl mb={4}>
-                <FormLabel fontWeight="bold" >Overview</FormLabel>
+                <FormLabel>Overview</FormLabel>
                 <Textarea
                   placeholder="Overview"
                   value={form.overview}
                   name="overview"
                   onChange={handleChange}
                   resize="vertical"
-                 
                 />
               </FormControl>
               <FormControl mb={4}>
-                <FormLabel fontWeight="bold" >Description</FormLabel>
+                <FormLabel>Description</FormLabel>
                 <Textarea
                   placeholder="Description"
                   value={form.description}
@@ -246,15 +263,13 @@ const PostBlog = () => {
                   onChange={handleChange}
                   resize="vertical"
                   rows={6}
-                  
                 />
               </FormControl>
               <FormControl mb={4}>
-                <FormLabel fontWeight="bold" >Insert Image</FormLabel>
+                <FormLabel>Insert Image</FormLabel>
                 <Input
                   type="file"
                   onChange={(e) => setFile(e.target.files[0])}
-                  
                 />
               </FormControl>
               <Stack direction={{ base: "column", md: "row" }} spacing={4}>
@@ -265,7 +280,6 @@ const PostBlog = () => {
                   isFullWidth
                   isLoading={progress !== null && progress < 100}
                   loadingText="Submitting"
-                  
                 >
                   Submit
                 </Button>
@@ -274,15 +288,12 @@ const PostBlog = () => {
                   variant="outline"
                   onClick={handleCancel}
                   isFullWidth
-                  
                 >
                   Cancel
                 </Button>
               </Stack>
             </Box>
           </Box>
-
-
         </Flex>
       </Flex>
     </Flex>
