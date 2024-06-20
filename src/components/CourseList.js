@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Container, Heading, Text, VStack } from '@chakra-ui/react';
 import { useCoursesContext } from '../context/course_context';
-import Tabs from './Tabs'; // Import Tabs component
+import Tabs from './Tabs'; 
 
 const CourseList = () => {
   const { courses } = useCoursesContext();

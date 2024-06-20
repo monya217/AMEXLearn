@@ -72,7 +72,7 @@ const LearnSidebar = () => {
               p={2}
               w={'full'}
               bg={isSelected ? "blue.100" : "transparent"}
-              fontSize="15px" // Adjusting font size to smaller
+              fontSize="15px" 
             >
               <Box boxSize="25px" color={isSelected ? "blue.500" : "black"}>
                 <item.icon size={23} />

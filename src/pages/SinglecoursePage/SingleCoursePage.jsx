@@ -15,13 +15,11 @@ import { MdInfo } from 'react-icons/md';
 import { TbWorld } from 'react-icons/tb';
 import { RiClosedCaptioningFill } from 'react-icons/ri';
 import { BiCheck } from 'react-icons/bi';
-import StarRating from '../../components/StarRating'; // Assuming StarRating component is properly defined
+import StarRating from '../../components/StarRating'; 
 import { useCoursesContext } from '../../context/course_context';
 import { useCartContext } from '../../context/cart_context';
-import LearnSidebar from '../../components/LearnSidebar'; // Import LearnSidebar component
-import courseHero1 from '../../assets/images/hero_img7.jpeg';
-import courseHero2 from '../../assets/images/hero_img8.jpeg'; 
-import courseHero3 from '../../assets/images/hero_img9.jpeg'; // Correct image path
+import LearnSidebar from '../../components/LearnSidebar'; 
+import courseHero3 from '../../assets/images/hero_img9.jpeg'; 
 import CoinsWidget from '../../components/Dashboard/CoinsWidget';
 
 const SingleCoursePage = () => {
@@ -34,7 +32,7 @@ const SingleCoursePage = () => {
   }, [id, fetchSingleCourse]);
 
   if (!single_course) {
-    return <div>Loading...</div>; // Add loading state
+    return <div>Loading...</div>;
   }
 
   const {
@@ -55,14 +53,15 @@ const SingleCoursePage = () => {
   } = single_course;
 
   const handleEnroll = () => {
-    // Implement your enroll logic here
-    addToCart(id); // Example: Add course to cart or any other enrollment logic
-    // You can redirect user to the checkout page or perform other actions
+    addToCart(id); 
   };
 
   return (
     <Flex>
-      <LearnSidebar /> {/* Include LearnSidebar component */}
+      <Box mt = {10}>
+        <LearnSidebar />
+      </Box>
+      
       <Box flex="1" bg="var(--clr-dark)" color="var(--clr-white)">
       <Box
           bgImage={`url(${courseHero3})`}
@@ -106,7 +105,7 @@ const SingleCoursePage = () => {
                 </Text>
                 <Flex alignItems="center" mt="12px">
                   <Text fontWeight="800" fontSize="16px" color="orange" mr="7px" pb="5px">
-                    {rating_star} {/* Assuming StarRating component is used here */}
+                    {rating_star} 
                   </Text>
                   <StarRating rating_star={rating_star} />
                   <Text fontSize="12.5px" opacity="0.8" mr="6px" color="white">

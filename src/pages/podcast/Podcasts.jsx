@@ -1,6 +1,5 @@
 import React from 'react';
 import LowerSection from '../../components/Content/LowerSection';
-import FooterPodcast from '../../components/FooterPodcast';
 import { Box, Flex } from '@chakra-ui/react';
 import CoinsWidget from '../../components/Dashboard/CoinsWidget';
 

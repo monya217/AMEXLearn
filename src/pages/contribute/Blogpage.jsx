@@ -15,7 +15,7 @@ const Blogpage = () => {
     const [blog, setBlog] = useState(null);
     const [loading, setLoading] = useState(true);
     const toast = useToast();
-    const [user] = useAuthState(auth); // Assuming 'auth' is your Firebase authentication instance
+    const [user] = useAuthState(auth);
     const navigate = useNavigate();
     const [authorUsername, setAuthorUsername] = useState("");
 

@@ -11,10 +11,10 @@ const LiveSessionCard = ({ imageUrl, title, person, date, time, isLive, isPast, 
       display="flex"
       flexDirection="column"
       width="100%"
-      height="390px" // Set a fixed height for the card
+      height="390px" 
     >
-      <Box className="item-img" position="relative" height="200px"> {/* Set a fixed height for the image container */}
-        <Image src={imageUrl} alt={title} className="session-image" width="100%" height="100%" objectFit="cover" /> {/* Ensure the image fits the container */}
+      <Box className="item-img" position="relative" height="200px"> 
+        <Image src={imageUrl} alt={title} className="session-image" width="100%" height="100%" objectFit="cover" /> 
         {isPast && (
           <Box position="absolute" bottom="0" right="0" bg="blackAlpha.800" color="white" p="2px 8px" fontSize="12px">
             {time}

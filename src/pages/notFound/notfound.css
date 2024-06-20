@@ -1,0 +1,40 @@
+/* notfound.css */
+
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--primary-hue), #ff9a9e);
+    color: #fff;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+  }
+  
+  .not-found-title {
+    font-size: 10rem;
+    margin: 0;
+  }
+  
+  .not-found-message {
+    font-size: 1.5rem;
+    margin: 20px 0;
+  }
+  
+  .not-found-link {
+    background-color: #fff;
+    color: var(--primary-hue);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .not-found-link:hover {
+    background-color: var(--primary-hue);
+    color: #fff;
+  }
+  

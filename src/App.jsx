@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Provider } from "react-redux";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Home from "./pages/home/Home";
-import Learn from "./pages/learn/Learn";
 import Contribute from "./pages/contribute/Contribute";
 import GetInTouch from "./pages/getInTouch/GetInTouch";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -26,9 +25,8 @@ import Activity from "./components/Dashboard/Activity.jsx";
 import PlayandLearn from "./pages/learn/playandlearn.jsx"; 
 import Livesessions from "./pages/learn/livesession.jsx"; 
 import Chatbot from "./components/Chatbot.jsx";
-import ContributeProfilePage from './components/Contribute/ContributeProfilePage.jsx';
 import ScrollToTop from './components/ScrollToTop';
-import { CoinsProvider } from './context/CoinsContext';  // Import CoinsProvider
+import { CoinsProvider } from './context/CoinsContext';  
 import CoinsWidget from "./components/Dashboard/CoinsWidget.jsx";
 import { useLocation } from "react-router-dom";
 
@@ -72,7 +70,6 @@ const App = () => {
             <Route path="/livesession" element={<Livesessions />} />
             <Route path="/get-in-touch" element={<GetInTouch />} />
             <Route path="/blogs" element={<Contribute />} />
-            <Route path="/contribute/:username" element={<ContributeProfilePage />} />
             <Route
               path="/blogs/create"
               element={
@@ -109,7 +106,6 @@ const App = () => {
 const LocationListener = () => {
   const location = useLocation();
 
-  // Render CoinsWidget except on "/" (home) and "/auth" routes
   if (location.pathname !== "/" && location.pathname !== "/auth") {
     return <CoinsWidget />;
   }

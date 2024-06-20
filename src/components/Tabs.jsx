@@ -4,7 +4,7 @@ import Course from './Course';
 import { PERSONAL, RISK, ESTATE, INSURANCE, INVESTMENT } from '../utils/constants';
 
 const Tabs = ({ courses }) => {
-  const [activeTab, setActiveTab] = useState('ALL'); // Initialize activeTab with ALL
+  const [activeTab, setActiveTab] = useState('ALL'); 
   const primaryHue = useColorModeValue('blue.500', 'blue.200');
   const white = useColorModeValue('white', 'gray.800');
 

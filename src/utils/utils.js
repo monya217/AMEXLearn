@@ -1,5 +1,3 @@
-/* List Fetching Random Music */
-
 function randomArrayShuffle(array, seed = false, compareArray = false) {
     var currentIndex = array.length,
       temporaryValue,
@@ -32,17 +30,3 @@ function randomArrayShuffle(array, seed = false, compareArray = false) {
   
   export { randomArrayShuffle, secondToTime };
 
-
-  /*export const randomArrayShuffle = (array) => {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-};
-
-export const secondToTime = (seconds) => {
-  return new Date(seconds * 1000).toISOString().substr(14, 5);
-};
- */

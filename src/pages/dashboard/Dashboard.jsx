@@ -7,7 +7,7 @@ import CourseList from '../../components/Dashboard/Learn/CourseList';
 import GameList from '../../components/Dashboard/Learn/GameList';
 import Certifications from '../../components/Dashboard/Learn/Certifications';
 import DashboardSidebar from '../../components/Dashboard/DashboardSidebar';
-import CoinsWidget from '../../components/Dashboard/CoinsWidget'; // Import CoinsWidget component
+import CoinsWidget from '../../components/Dashboard/CoinsWidget';
 
 const Dashboard = () => {
   return (
@@ -65,7 +65,6 @@ const Dashboard = () => {
         <Certifications />
       </Box>
 
-      {/* Fixed position CoinsWidget */}
       <CoinsWidget />
     </Flex>
   );

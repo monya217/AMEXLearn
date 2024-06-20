@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { Box, Flex, Link } from "@chakra-ui/react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import { FaPlus, FaFileAlt, FaBookmark  } from "react-icons/fa";
-import SearchUser from './ContributeSearchUser.jsx';
 
 const ContributeSidebar = () => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -116,7 +115,6 @@ const ContributeSidebar = () => {
                         </Box>
                     );
                 })}
-                <SearchUser ref={searchUserRef} onClose={handleModalClose} />
             </Flex>
         </Box>
     );

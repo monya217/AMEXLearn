@@ -24,20 +24,20 @@ const Course = (props) => {
       display="flex"
       flexDirection="column"
       width="100%"
-      minHeight="422px" // Ensure minimum height for consistent size
+      minHeight="422px" 
     >
-      <Box className="item-img" height="200px" overflow="hidden"> {/* Fixed height for image */}
+      <Box className="item-img" height="200px" overflow="hidden"> 
         <Image src={image} alt={course_name} width="100%" height="100%" objectFit="cover" />
       </Box>
       <Box className="item-body" mt="1px" mb="14px" px="18px" flex="1">
         <Badge
-          bg="blue.500" // Blue background color for category badge
-          color="white" // White text color for category badge
+          bg="blue.500" 
+          color="white" 
           textTransform="capitalize"
           borderRadius="4px"
           fontSize="13.3px"
           px="8px"
-          mb="4px" // Reduce margin bottom here if necessary
+          mb="4px" 
         >
           {category}
         </Badge>
@@ -69,27 +69,27 @@ const Course = (props) => {
         <Button
           as={Link}
           to={`/learn/courses/${id}`}
-          fontSize={{ base: '14px', md: '12px', lg: '16px'}} // Responsive font size
-          flex="1" // Ensures button takes available space
-          mx="2px" // Margin between buttons
-          py={{ base: '4px', md: '6px' }} // Responsive padding
+          fontSize={{ base: '14px', md: '12px', lg: '16px'}} 
+          flex="1" 
+          mx="2px" 
+          py={{ base: '4px', md: '6px' }} 
           fontWeight="700"
           transition="all 300ms linear"
           whiteSpace="nowrap"
           bg="transparent"
           border="1px solid black"
           _hover={{ bg: 'var(--primary-hue)', color: 'white' }}
-          textAlign="center" // Ensure text is centered
+          textAlign="center" 
         >
           See details
         </Button>
         <Button
           as={Link}
           to={`/learn/courses/${id}`}
-          fontSize={{ base: '14px', md: '12px', lg: '16px'}} // Responsive font size
-          flex="1" // Ensures button takes available space
-          mx="2px" // Margin between buttons
-          py={{ base: '4px', md: '6px' }} // Responsive padding
+          fontSize={{ base: '14px', md: '12px', lg: '16px'}}
+          flex="1"
+          mx="2px"
+          py={{ base: '4px', md: '6px' }} 
           fontWeight="700"
           transition="all 300ms linear"
           whiteSpace="nowrap"
@@ -97,7 +97,7 @@ const Course = (props) => {
           color="white"
           border="1px solid black"
           _hover={{ bg: 'white', color: 'black' }}
-          textAlign="center" // Ensure text is centered
+          textAlign="center" 
         >
           Enroll Now
         </Button>

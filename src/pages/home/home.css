@@ -1,16 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Gafata&display=swap');
-
-.bg-image-section {
-    background-image: url('../../images/homepage-bg.jpg'); 
-    background-size: cover;
-    background-position: center;
-    height: 100vh; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    color: black;
-  }
   
   .overlay-text {
     position: absolute;
