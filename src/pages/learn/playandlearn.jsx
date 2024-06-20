@@ -14,6 +14,7 @@ import gameImg9 from '../../assets/images/gameimg_9.jpeg';
 import gameImg10 from '../../assets/images/gameimg_10.jpeg';
 import playhero from '../../assets/images/hero_img12.jpg';
 import { FaCoins } from 'react-icons/fa';
+import CoinsWidget from '../../components/Dashboard/CoinsWidget';
 
 const PlayAndLearn = () => {
   return (
@@ -145,6 +146,7 @@ const PlayAndLearn = () => {
           </Container>
         </Box>
       </Flex>
+      <CoinsWidget />
     </Flex>
   );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import LowerSection from '../../components/Content/LowerSection';
 import FooterPodcast from '../../components/FooterPodcast';
 import { Box, Flex } from '@chakra-ui/react';
+import CoinsWidget from '../../components/Dashboard/CoinsWidget';
 
 const Podcasts = () => {
   return (
@@ -9,6 +10,7 @@ const Podcasts = () => {
       <Box flex="1">
         <LowerSection />
       </Box>
+      <CoinsWidget />
     </Flex>
   );
 };

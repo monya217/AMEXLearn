@@ -3,6 +3,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import Hero from "../../components/Hero";
 import CoursesList from "../../components/CourseList";
 import LearnSidebar from "../../components/LearnSidebar";
+import CoinsWidget from '../../components/Dashboard/CoinsWidget';
 
 const Learn = () => {
   return (
@@ -24,6 +25,7 @@ const Learn = () => {
           </Box>
         </Flex>
       </Flex>
+      <CoinsWidget />
     </Flex>
   );
 };

@@ -22,6 +22,7 @@ import LearnSidebar from '../../components/LearnSidebar'; // Import LearnSidebar
 import courseHero1 from '../../assets/images/hero_img7.jpeg';
 import courseHero2 from '../../assets/images/hero_img8.jpeg'; 
 import courseHero3 from '../../assets/images/hero_img9.jpeg'; // Correct image path
+import CoinsWidget from '../../components/Dashboard/CoinsWidget';
 
 const SingleCoursePage = () => {
   const { id } = useParams();
@@ -204,6 +205,7 @@ const SingleCoursePage = () => {
           </Box>
         </Box>
       </Box>
+      <CoinsWidget />
     </Flex>
   );
 };

@@ -7,6 +7,8 @@ import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
 import contribute_header from '../../../src/images/contribute_banner.webp';
 import Spinner from '../../components/Contribute/Spinner';
 import { WarningIcon } from '@chakra-ui/icons';
+import CoinsWidget from '../../components/Dashboard/CoinsWidget';
+import ConsultantCarousel from '../../components/Consultants/SuggestedConsultant';
 
 const categories = [
   "All",
@@ -144,6 +146,7 @@ const Contribute = () => {
           </Box>
         </Box>
       </Flex>
+    <CoinsWidget />
     </Flex>
   );
 }

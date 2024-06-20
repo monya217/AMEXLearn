@@ -23,11 +23,14 @@ import Podcasts from './pages/podcast/Podcasts.jsx';
 import { store } from "./redux/store"; 
 import Sessions from "./components/Dashboard/Sessions.jsx";
 import Activity from "./components/Dashboard/Activity.jsx";
-import PlayandLearn from "./pages/learn/playandlearn.jsx"; // Import playandlearn page
-import Livesessions from "./pages/learn/livesession.jsx"; // Import livesession page
+import PlayandLearn from "./pages/learn/playandlearn.jsx"; 
+import Livesessions from "./pages/learn/livesession.jsx"; 
 import Chatbot from "./components/Chatbot.jsx";
-import ContributeProfilePage from './components/Contribute/ContributeProfilePage.jsx'
+import ContributeProfilePage from './components/Contribute/ContributeProfilePage.jsx';
 import ScrollToTop from './components/ScrollToTop';
+import { CoinsProvider } from './context/CoinsContext';  // Import CoinsProvider
+import CoinsWidget from "./components/Dashboard/CoinsWidget.jsx";
+import { useLocation } from "react-router-dom";
 
 const App = () => {
   const [authUser] = useAuthState(auth);
@@ -50,63 +53,68 @@ const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-      <ScrollToTop/>
+        <ScrollToTop />
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/learn/*"
-            element={
-              <CoursesProvider>
-                <CartProvider>
-                  <LearnRoutes />
-                </CartProvider>
-              </CoursesProvider>
-            }
-          />
-          <Route path="/playandlearn" element={<PlayandLearn />} /> {/* Route for playandlearn */}
-          <Route path="/livesession" element={<Livesessions />} /> {/* Route for livesession */}
-          <Route path="/get-in-touch" element={<GetInTouch />} />
-          <Route path="/blogs" element={<Contribute />} />
-          <Route path="/contribute/:username" element={<ContributeProfilePage />} />
-          <Route
-            path="/blogs/create"
-            element={
-              <PrivateRoute>
-                <PostBlog />
-              </PrivateRoute>
-            }
-          />
-          <Route path="/podcasts" element={<Podcasts />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route
-            path="/dashboard/sessions"
-            element={
-              <PrivateRoute>
-                <Sessions />
-              </PrivateRoute>
-            }
-          />
-          <Route path="/dashboard/activity/:username" element={<Activity />} />
-
-          {/* <Route
-            path="/dashboard/activity"
-            element={
-              <PrivateRoute>
-                <Activity />
-              </PrivateRoute>
-            }
-          /> */}
-          <Route path="/auth" element={!authUser ? <AuthPage /> : <Navigate to="/" />} />
-          <Route path="/:username" element={<ProfilePage />} />
-          <Route path="/blog/:id" element={<Blogpage user={user} />} />
-          <Route path="/stocks" element={<StockGeeks />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Chatbot />
+        <CoinsProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/learn/*"
+              element={
+                <CoursesProvider>
+                  <CartProvider>
+                    <LearnRoutes />
+                  </CartProvider>
+                </CoursesProvider>
+              }
+            />
+            <Route path="/playandlearn" element={<PlayandLearn />} />
+            <Route path="/livesession" element={<Livesessions />} />
+            <Route path="/get-in-touch" element={<GetInTouch />} />
+            <Route path="/blogs" element={<Contribute />} />
+            <Route path="/contribute/:username" element={<ContributeProfilePage />} />
+            <Route
+              path="/blogs/create"
+              element={
+                <PrivateRoute>
+                  <PostBlog />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/podcasts" element={<Podcasts />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route
+              path="/dashboard/sessions"
+              element={
+                <PrivateRoute>
+                  <Sessions />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/dashboard/activity/:username" element={<Activity />} />
+            <Route path="/auth" element={!authUser ? <AuthPage /> : <Navigate to="/" />} />
+            <Route path="/:username" element={<ProfilePage />} />
+            <Route path="/blog/:id" element={<Blogpage user={user} />} />
+            <Route path="/stocks" element={<StockGeeks />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Chatbot />
+          <LocationListener />
+        </CoinsProvider>
       </BrowserRouter>
     </Provider>
   );
+};
+
+const LocationListener = () => {
+  const location = useLocation();
+
+  // Render CoinsWidget except on "/" (home) and "/auth" routes
+  if (location.pathname !== "/" && location.pathname !== "/auth") {
+    return <CoinsWidget />;
+  }
+
+  return null;
 };
 
 export default App;

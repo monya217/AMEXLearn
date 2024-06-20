@@ -7,6 +7,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
 import Spinner from '../../components/Contribute/Spinner';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import CoinsWidget from '../../components/Dashboard/CoinsWidget';
 
 
 const Blogpage = () => {
@@ -144,6 +145,7 @@ const Blogpage = () => {
                     </Box>
                 )}
             </Box>
+            <CoinsWidget />
         </Flex>
     );
 };

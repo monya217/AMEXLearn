@@ -16,6 +16,7 @@ import upcomingImage2 from '../../assets/images/risk_3.jpeg';
 import upcomingImage3 from '../../assets/images/risk_4.jpeg';
 import upcomingImage4 from '../../assets/images/risk_5.jpeg';
 import bannerImg from '../../assets/images/hero_img8.jpeg';
+import CoinsWidget from '../../components/Dashboard/CoinsWidget';
 
 const LiveSession = () => {
   const sessions = [
@@ -278,6 +279,7 @@ const LiveSession = () => {
           </Container>
         </Box>
       </Flex>
+      <CoinsWidget />
     </Flex>
   );
 };

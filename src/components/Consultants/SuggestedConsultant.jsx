@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Box, Flex, Image, Text, VStack, Button, HStack, Link, Icon,
   Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import "./Carousel.css"; // Import your custom CSS file
+import { CoinsContext } from '../../context/CoinsContext';
 
 const consultants = [
   {
@@ -118,6 +119,7 @@ const ConsultantCard = ({ name, avatar, experience, rating, socialProfiles, onBo
 );
 
 const ConsultantCarousel = () => {
+  const { deductCoins } = useContext(CoinsContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('amex');
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -215,6 +217,8 @@ const ConsultantCarousel = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    // Deduct coins
+    deductCoins(500);
     // Handle form submission
     closeModal();
     // Show session booked toast
