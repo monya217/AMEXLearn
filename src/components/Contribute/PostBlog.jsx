@@ -178,27 +178,25 @@ const PostBlog = () => {
   };
 
   const handleCancel = () => {
-    navigate("/contribute");
+    navigate("/blogs");
   };
 
   const formWidth = useBreakpointValue({ base: "90%", md: "80%", lg: "70%", xl: "60%" });
-  const formHeight = useBreakpointValue({ base: "100vh", md: "auto" });
 
   return (
-    <Flex direction="row" width="100%" h="100vh">
+    <Flex direction="row" width="100%" height="100vh" overflow="hidden">
       <ContributeSidebar />
-      <Flex direction="column" width="100%">
+      <Flex direction="column" width="100%" overflowY="auto">
+        <Flex direction="column" align="center" justify="center" w="full" >
         <Box
           bgImage={`url(${bannerImg2})`}
           bgPos="center"
           bgSize="cover"
           bgRepeat="no-repeat"
-          height="700px"
+          height="350px"
           width="100%"
-          position="relative"
         />
-        <Flex direction="column" align="center" justify="center" w="full" pt="60px" px={4} overflowY="auto">
-          <Box w={formWidth} h={formHeight} p={6} boxShadow="lg" rounded="md" bg="white" overflowY="auto">
+          <Box w={formWidth} p={6} mt="20px">
             <Heading as="h2" size="xl" textAlign="center" mb={6}>
               {blogId ? 'Edit Blog' : 'Create Blog'}
             </Heading>
@@ -285,5 +283,3 @@ const PostBlog = () => {
 };
 
 export default PostBlog;
-
-

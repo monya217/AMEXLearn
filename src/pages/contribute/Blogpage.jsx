@@ -56,7 +56,7 @@ const Blogpage = () => {
                     isClosable: true,
                 });
                 setLoading(false);
-                navigate('/contribute'); 
+                navigate('/blogs'); 
             } catch (err) {
                 console.error(err);
                 toast({
@@ -127,7 +127,7 @@ const Blogpage = () => {
                                     </Flex>
                                     {(user && blog && user.uid === blog.userId) && (
                                         <Flex alignItems="center">
-                                            <Link to={`/contribute/post?blogId=${id}`}>
+                                            <Link to={`/blogs/create?blogId=${id}`}>
                                                 <IconButton aria-label="Edit" icon={<FaEdit />} size="md" />
                                             </Link>
                                             <Box ml="2">

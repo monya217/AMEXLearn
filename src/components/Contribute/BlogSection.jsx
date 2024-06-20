@@ -116,7 +116,7 @@ const BlogSection = ({ blogs }) => {
               </Link>
               {user && user.uid === blog.userId && (
                 <Box>
-                  <Link to={`/contribute/post?blogId=${blog.id}`}>
+                  <Link to={`/blogs/create?blogId=${blog.id}`}>
                     <IconButton
                       aria-label="Edit"
                       icon={<FaEdit />}

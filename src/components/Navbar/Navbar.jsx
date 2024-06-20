@@ -39,11 +39,11 @@ const Navbar = () => {
             Learn
           </span>
         </li>
-        <li className={location.pathname === '/get-in-touch' ? 'active' : ''} onClick={() => navigate('/get-in-touch')}>
-          Community
-        </li>
         <li className={(location.pathname.startsWith('/blogs') || location.pathname.startsWith('/blog')) ? 'active' : ''} onClick={() => navigate('/blogs')}>
           Blogs
+        </li>
+        <li className={location.pathname === '/get-in-touch' ? 'active' : ''} onClick={() => navigate('/get-in-touch')}>
+          Community
         </li>
       </ul>
       <SearchBar /> {/* Add the SearchBar component here */}
