@@ -43,7 +43,7 @@ const ProfileHeader = () => {
       >
         <AlertDialogOverlay />
         <AlertDialogContent
-          width="350px"
+          width= "400px"
           boxShadow="0px 8px 24px rgba(0, 0, 0, 0.3)" // Adjust shadow as needed
         >
           <AlertDialogHeader fontSize="2xl" fontWeight="bold" mb="-2">
@@ -67,7 +67,7 @@ const ProfileHeader = () => {
             </Button>
             <Button
               onClick={handleLogoutAndNavigate}
-              ml={3}
+              ml={7}
               isLoading={isLoggingOut}
               boxShadow="lg"
               width={"160px"}
