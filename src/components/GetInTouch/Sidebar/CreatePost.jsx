@@ -53,56 +53,52 @@ const CreatePost = forwardRef(({ onClose: handleSidebarClose }, ref) => {
 
     return (
         <>
-            {/* Wrapping the Modal in a Box with margin-top */}
-            <Box mt={20}>
-                <Modal isOpen={isOpen} onClose={handleClose} size='xl'>
-                    <ModalOverlay />
-                    <ModalContent
-                        // Applying custom styles for animation
-                        bg={"#EEF3F9"}
-                        border={"1px solid"}
-                        borderColor={"blue.300"}
-                        // Initial position outside the viewport
-                        transform={`translateY(${isOpen ? "0%" : "-100%"})`}
-                        transition="transform 0.3s ease-in-out"
-                    >
-                        <ModalHeader>Create Post</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody pb={6}>
-                            <Textarea
-                                placeholder='Share Your Thoughts...'
-                                value={caption}
-                                onChange={(e) => setCaption(e.target.value)}
-                                bg="white"
-                                _placeholder={{ color: "gray.500" }}
+            <Modal isOpen={isOpen} onClose={handleClose} size='xl'>
+                <ModalOverlay />
+                <ModalContent
+                    // Applying custom styles for positioning
+                    bg={"#EEF3F9"}
+                    border={"1px solid"}
+                    borderColor={"blue.300"}
+                    mt={60} // Adjust this value as needed
+                >
+                    <ModalHeader>Create Post</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody pb={6}>
+                        <Textarea
+                            placeholder='Share Your Thoughts...'
+                            value={caption}
+                            onChange={(e) => setCaption(e.target.value)}
+                            bg="white"
+                            _placeholder={{ color: "gray.500" }}
+                        />
+                        <Flex mt={4} alignItems="center">
+                            <BsFillImageFill
+                                onClick={() => imageRef.current.click()}
+                                style={{ cursor: "pointer" }}
+                                size={20}
+                                color="blue.400"
                             />
-                            <Flex mt={4} alignItems="center">
-                                <BsFillImageFill
-                                    onClick={() => imageRef.current.click()}
-                                    style={{ cursor: "pointer" }}
-                                    size={20}
-                                    color="blue.400"
-                                />
-                                <Input type='file' hidden ref={imageRef} onChange={handleImageChange} />
+                            <Input type='file' hidden ref={imageRef} onChange={handleImageChange} />
+                        </Flex>
+                        {selectedFile && (
+                            <Flex mt={4} w={"full"} position={"relative"} justifyContent={"center"}>
+                                <Image src={selectedFile} alt='Selected img' borderRadius="md" />
+                                <CloseButton position={"absolute"} top={2} right={2} onClick={() => setSelectedFile(null)} />
                             </Flex>
-                            {selectedFile && (
-                                <Flex mt={4} w={"full"} position={"relative"} justifyContent={"center"}>
-                                    <Image src={selectedFile} alt='Selected img' borderRadius="md" />
-                                    <CloseButton position={"absolute"} top={2} right={2} onClick={() => setSelectedFile(null)} />
-                                </Flex>
-                            )}
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button colorScheme="blue" mr={3} onClick={handlePostCreation} isLoading={isLoading}>
-                                Post
-                            </Button>
-                            <Button variant='ghost' onClick={handleClose}>Cancel</Button>
-                        </ModalFooter>
-                    </ModalContent>
-                </Modal>
-            </Box>
+                        )}
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button colorScheme="blue" mr={3} onClick={handlePostCreation} isLoading={isLoading}>
+                            Post
+                        </Button>
+                        <Button variant='ghost' onClick={handleClose}>Cancel</Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
         </>
     );
 });
 
 export default CreatePost;
+
