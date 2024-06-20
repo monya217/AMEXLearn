@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button } from '@chakra-ui/react'; // Replace with appropriate imports as per your UI library
+import { Box, Button, useToast } from '@chakra-ui/react'; // Replace with appropriate imports as per your UI library
 import './Navbar.css';
 import useAuthStore from '../../store/authStore';
 import ProfileHeader from '../ProfileHeader/ProfileHeader';
@@ -14,6 +14,7 @@ const Navbar = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const { user } = useAuthStore();
+  const toast = useToast();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +30,20 @@ const Navbar = () => {
 
   const isLearnPage = ['/learn', '/playandlearn', '/livesession', '/podcasts'].some(path => location.pathname.startsWith(path)) || location.pathname.startsWith('/courses/');
 
+  const handleNavigation = (path) => {
+    if (!user && (path === '/learn' || path === '/get-in-touch' || path.startsWith('/blogs'))) {
+      toast({
+        title: "Login Required",
+        description: "Please log in or sign up to access this feature.",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+      });
+    } else {
+      navigate(path);
+    }
+  };
+
   return (
     <nav className={`container ${isHomePage && !sticky ? '' : 'dark-nav'}`}>
       <ul className="navbar-brand">
@@ -36,18 +51,18 @@ const Navbar = () => {
       </ul>
       <ul className={`navbar-links ${menuOpen ? 'show' : ''}`}>
         <li className={isLearnPage ? 'active' : ''}>
-          <span onClick={() => navigate('/learn')}>
+          <span onClick={() => handleNavigation('/learn')}>
             Learn
           </span>
         </li>
-        <li className={(location.pathname.startsWith('/blogs') || location.pathname.startsWith('/blog')) ? 'active' : ''} onClick={() => navigate('/blogs')}>
+        <li className={(location.pathname.startsWith('/blogs') || location.pathname.startsWith('/blog')) ? 'active' : ''} onClick={() => handleNavigation('/blogs')}>
           Blogs
         </li>
-        <li className={location.pathname === '/get-in-touch' ? 'active' : ''} onClick={() => navigate('/get-in-touch')}>
+        <li className={location.pathname === '/get-in-touch' ? 'active' : ''} onClick={() => handleNavigation('/get-in-touch')}>
           Community
         </li>
       </ul>
-      <SearchBar /> {/* Add the SearchBar component here */}
+      <SearchBar />
       <ul className={`navbar-auth ${menuOpen ? 'show' : ''}`}>
         <li>{user ? <ProfileHeader /> : <LoginButton />}</li>
       </ul>

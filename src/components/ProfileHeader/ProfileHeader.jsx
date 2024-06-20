@@ -67,11 +67,10 @@ const ProfileHeader = () => {
             </Button>
             <Button
               onClick={handleLogoutAndNavigate}
-              ml={3}
+              ml={7}
               isLoading={isLoggingOut}
               boxShadow="lg"
               width={"160px"}
-              ml={7}
             >
               Catch You Later
             </Button>

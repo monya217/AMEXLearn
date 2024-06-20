@@ -1,8 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Box, Button, Input } from '@chakra-ui/react';
+import { Box, Button, Input, useToast } from '@chakra-ui/react';
 import useSearchUser from '../../hooks/useSearchUser';
 import SuggestedUser from '../GetInTouch/Sidebar/SuggestedUser';
 import { useNavigate } from 'react-router-dom';
+import useAuthStore from '../../store/authStore';
 
 const SearchBar = () => {
     const searchRef = useRef(null);
@@ -11,6 +12,8 @@ const SearchBar = () => {
     const navigate = useNavigate();
     const [showResults, setShowResults] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
+    const toast = useToast();
+    const { user: loggedInUser } = useAuthStore();
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -30,6 +33,16 @@ const SearchBar = () => {
 
     const handleSearchUser = (e) => {
         e.preventDefault();
+        if (!loggedInUser) {
+            toast({
+                title: "Login Required",
+                description: "Please log in or sign up to use the search feature.",
+                status: "warning",
+                duration: 3000,
+                isClosable: true,
+            });
+            return;
+        }
         getUserProfile(searchRef.current.value);
         setShowResults(true);
     };
@@ -91,7 +104,7 @@ const SearchBar = () => {
                     </svg>
                 </Button>
             </form>
-            {showResults && user && (
+            {showResults && user && loggedInUser && (
                 <Box
                     ref={resultsRef}
                     position="absolute"
