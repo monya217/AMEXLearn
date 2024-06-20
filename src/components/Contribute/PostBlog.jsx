@@ -22,7 +22,7 @@ import { addDoc, updateDoc, doc, collection, serverTimestamp, getDoc } from "fir
 import useAuthStore from '../../store/authStore';
 import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
 import headerBg from '../../assets/images/hero_img9.jpeg'; // Adjust the path to your background image
-import roadmap from '../../assets/images/roadmap.png'; 
+import roadmap from '../../assets/images/roadmap2.png'; 
 
 const categoryOptions = [
   "Debt Management",
@@ -197,7 +197,7 @@ const PostBlog = () => {
       bgSize="cover"
       bgRepeat="no-repeat"
       width="100%"
-      height= "300px"
+      height="350px"  // Increase the height to provide more vertical space
       display="flex"
       alignItems="center"
       justifyContent="center"
@@ -206,13 +206,7 @@ const PostBlog = () => {
       color="white"
       p={4}
     >
-      <Text fontSize={{ base: 'md', md: 'lg', lg: 'xl' }} fontWeight="bold" mb = "4"  mt = "10">
-        Inspired by Our Articles? Write Your Own!
-        </Text>
-      <Image src={roadmap} alt="Roadmap" width={{  base: '60%', md: '50%', lg: '40%' }} mb={4} />
-      <Text fontSize={{ base: 'md', md: 'lg', lg: 'xl' }} fontWeight="bold">
-        Enhance Your Writing Journey and Elevate Financial Knowledge!
-      </Text>
+      <Image src={roadmap} alt="Roadmap" width={{ base: '80%', md: '70%', lg: '60%' }} mb={4} mt = {20} />
     </Box>
           <Box w={formWidth} p={6} mt="20px">
             <Heading as="h2" size="xl" textAlign="center" mb={6}>
