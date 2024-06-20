@@ -44,6 +44,7 @@ video{
     font-size: 2rem;
     font-family: 'Gafata', sans-serif;
     margin-bottom: 3rem; 
+    margin-top: -1rem;
 }
 
 @media (max-width: 850px){
