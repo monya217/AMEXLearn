@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap');
-
+/* Navbar Styles */
 nav {
     width: 100%;
     height: 50px;
@@ -33,13 +31,13 @@ nav {
 .navbar-links .dropdown-content {
     display: none;
     position: absolute;
-    background-color: var(--primary-hue); /* Change background color */
+    background-color: var(--primary-hue);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    top: 100%; /* Position the dropdown below the link */
+    top: 100%;
     left: 0;
-    border-radius: 4px; /* Add border-radius */
+    border-radius: 4px;
     overflow: hidden;
 }
 
@@ -51,7 +49,7 @@ nav {
 }
 
 .navbar-links .dropdown-content span:hover {
-    background-color: white; /* Change hover background color */
+    background-color: white;
     color: black;
 }
 
@@ -66,7 +64,7 @@ nav {
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 3px;
-    transition: transform 0.3s ease; /* Add transition for smooth arrow rotation */
+    transition: transform 0.3s ease;
 }
 
 .navbar-links .dropdown .arrow.down {
@@ -100,31 +98,70 @@ nav ul li {
 .navbar-links li:active,
 .navbar-links li.active {
     text-decoration: underline;
-    text-underline-offset: 5px; /* Adjust this value to lower the underline */
+    text-underline-offset: 5px;
 }
 
 .navbar-brand li {
     font-family: 'Gilda Display', serif;
     font-size: 24px;
-    margin-left: 0px;
+    margin-left: 2px;
     font-weight: 500;
+    margin-right: 80px;
 }
 
+/* Existing styles */
+
 .navbar-auth {
-    margin-right: 0px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+/* New styles for the icon */
+.btn .user-icon {
+    display: none;
+}
+
+@media (max-width: 880px) {
+    .btn .user-icon {
+        display: inline;
+    }
+
+    .btn span {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-icon {
+        right: 5px;
+    }
+
+    .navbar-auth {
+        margin-right: 5px;
+    }
+
+    .btn {
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+
+    .btn .user-icon {
+        font-size: 24px;
+    }
 }
 
 .dark-nav {
-    background: var(--primary-hue); /* Change to your desired color */
+    background: var(--primary-hue);
     transition: background-color 0.5s;
 }
 
 .menu-icon {
     display: none;
     color: white;
-    font-size: 20px; /* Smaller size */
+    font-size: 20px;
     cursor: pointer;
-    margin-left: 0px;
     margin-left: 0%;
 }
 
@@ -146,11 +183,6 @@ nav ul li {
     margin-right: 10px;
 }
 
-.search_bar{
-    
-}
-  
-
 @media (max-width: 1200px) {
     .navbar-links {
         display: none;
@@ -163,7 +195,7 @@ nav ul li {
         text-align: center;
         gap: 0;
         overflow: hidden;
-        width: 30; /* Width of the side menu */
+        width: 30%;
     }
 
     .navbar-links li {
@@ -187,5 +219,85 @@ nav ul li {
 
     .navbar-auth {
         margin-left: 35%;
+    }
+}
+
+@media (max-width: 790px) {
+    .navbar-links {
+        margin-right: 0;
+        position: relative;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: var(--primary-hue);
+        display: none;
+        gap: 0;
+        overflow: hidden;
+        left: 0;
+    }
+
+    .navbar-links.show {
+        display: flex;
+    }
+
+    .navbar-links li {
+        margin: 8px 0;
+        padding: 20px;
+    }
+
+    .menu-icon {
+        display: block;
+        position: absolute;
+        right: 10px;
+    }
+
+    .navbar-auth {
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .dark-nav {
+        background: var(--primary-hue);
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    nav .navbar-auth li {
+        margin: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-icon {
+        right: 5px;
+    }
+
+    .navbar-auth {
+        margin-right: 5px;
+    }
+
+    .btn {
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+
+    .menu-icon {
+        right: 10px; /* Adjusted position for the menu icon */
+    }
+
+    .navbar-auth {
+        margin-right: 15px; /* Adjusted position for the auth section */
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
+    .btn .user-icon {
+        font-size: 18px;
     }
 }

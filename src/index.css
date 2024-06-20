@@ -49,68 +49,74 @@ body {
 }
 
 .btn {
-    background: var(--primary-hue);
-    color: white;
-    padding: 10px 25px;
-    font-size: 16px;
-    border-radius: 10px;
-    cursor: pointer;
-    border: 0;
-    outline: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Gafata', sans-serif;
-    font-weight: 400;
-    transition: var(--transition);
-  }
-  
-  .btn img {
-    width: 20px;
-    margin-left: 10px;
-  }
-  
-  .btn:hover {
-    outline: 2px solid var(--primary-hue);
-    background-color: #fff;
-    color: var(--primary-hue);
-  }
-  
-  /* Media queries for responsiveness */
-  @media (max-width: 1200px) {
-    .btn {
+  background: var(--primary-hue);
+  color: white;
+  padding: 10px 25px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Gafata', sans-serif;
+  font-weight: 400;
+  transition: var(--transition);
+  margin-left: auto; /* Ensures it pushes itself to the far right */
+}
+
+.btn img {
+  width: 20px;
+  margin-left: 10px;
+}
+
+.btn:hover {
+  outline: 2px solid var(--primary-hue);
+  background-color: #fff;
+  color: var(--primary-hue);
+}
+
+@media (max-width: 1375px) {
+  .btn {
       font-size: 14px;
-      padding: 8px 20px;
-    }
+      padding: 10px 25px;
   }
-  
-  @media (max-width: 992px) {
-    .btn {
+}
+
+@media (max-width: 1150px) {
+  .btn {
       font-size: 13px;
-      padding: 7px 18px;
-    }
+      padding: 10px 25px;
   }
-  
-  @media (max-width: 768px) {
-    .btn {
+}
+
+@media (max-width: 992px) {
+  .btn {
+      font-size: 13px;
+      padding: 8px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn {
       font-size: 12px;
       padding: 6px 15px;
-    }
   }
+}
 
-  @media (max-width: 750px) {
-    .btn {
+@media (max-width: 750px) {
+  .btn {
       font-size: 11px;
       padding: 6px 15px;
-    }
   }
-  
-  /* Add this to your global CSS file */
-.searchBar {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .btn {
+      font-size: 10px;
+      padding: 5px 10px;
+  }
 }
 
 #searchQueryInput {

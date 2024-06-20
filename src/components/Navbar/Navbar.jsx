@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Box, Button } from '@chakra-ui/react'; // Replace with appropriate imports as per your UI library
 import './Navbar.css';
 import useAuthStore from '../../store/authStore';
 import ProfileHeader from '../ProfileHeader/ProfileHeader';
 import LoginButton from '../LoginButton/LoginButton';
 import SearchBar from './SearchBar'; // Import the new SearchBar component
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ const Navbar = () => {
         </li>
       </ul>
       <SearchBar /> {/* Add the SearchBar component here */}
-      <ul className="navbar-auth">
+      <ul className={`navbar-auth ${menuOpen ? 'show' : ''}`}>
         <li>{user ? <ProfileHeader /> : <LoginButton />}</li>
       </ul>
       <div className={`menu-icon ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>

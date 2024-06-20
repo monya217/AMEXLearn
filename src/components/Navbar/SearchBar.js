@@ -42,7 +42,7 @@ const SearchBar = () => {
     };
 
     return (
-        <Box  width={['100%', '100%', '100%', '300px']} maxWidth="100%" >
+        <Box width="100%" maxWidth="300px" minWidth="160px" position="relative">
             <form 
                 onSubmit={handleSearchUser} 
                 className="searchBar" 
@@ -63,11 +63,9 @@ const SearchBar = () => {
                         height: '2rem',
                         padding: '0 1rem',
                         fontSize: '0.875rem',
-                        boxShadow: isFocused ? '0 0 5px rgba(0, 0, 255, 0.5)' : 'none',
                         width: '100%',
-                        borderRadius:'7px',
+                        borderRadius: '7px',
                         backgroundColor: '#EEF3F9'
-
                     }}
                 />
                 <Button
@@ -85,7 +83,7 @@ const SearchBar = () => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        borderRadius:'25px'
+                        borderRadius: '25px'
                     }}
                 >
                     <svg style={{ width: "16px", height: "16px" }} viewBox="0 0 24 24">
@@ -98,10 +96,9 @@ const SearchBar = () => {
                     ref={resultsRef}
                     position="absolute"
                     top="100%"
-                    width="100%"
-                    maxWidth="100%"
+                    width="100%" // Make the results box the same width as the search box
                     bg="white"
-                    boxShadow={'md'}
+                    boxShadow="md"
                     borderRadius="md"
                     zIndex="1"
                     marginTop={0.5}
