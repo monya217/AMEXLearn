@@ -67,10 +67,10 @@ const App = () => {
           <Route path="/playandlearn" element={<PlayandLearn />} /> {/* Route for playandlearn */}
           <Route path="/livesession" element={<Livesessions />} /> {/* Route for livesession */}
           <Route path="/get-in-touch" element={<GetInTouch />} />
-          <Route path="/contribute" element={<Contribute />} />
+          <Route path="/blogs" element={<Contribute />} />
           <Route path="/contribute/:username" element={<ContributeProfilePage />} />
           <Route
-            path="/contribute/post"
+            path="/blogs/create"
             element={
               <PrivateRoute>
                 <PostBlog />

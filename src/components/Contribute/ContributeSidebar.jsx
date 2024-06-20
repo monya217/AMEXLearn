@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Box, Flex, Link } from "@chakra-ui/react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import { FaPlus, FaFileAlt, FaSearch } from "react-icons/fa";
+import { FaPlus, FaFileAlt, FaBookmark  } from "react-icons/fa";
 import SearchUser from './ContributeSearchUser.jsx';
 
 const ContributeSidebar = () => {
@@ -14,19 +14,17 @@ const ContributeSidebar = () => {
         {
             icon: FaFileAlt,
             text: "Blogs",
-            link: "/contribute",
+            link: "/blogs",
             additionalPaths: ["/blog/"], // Array of paths that should also highlight this item
         },
         {
             icon: FaPlus,
-            text: "Create Post",
-            link: "/contribute/post",
+            text: "Create Blog",
+            link: "/blogs/create",
         },
         {
-            icon: FaSearch,
-            text: "Search Profile",
-            action: () => searchUserRef.current.openModal(),
-            additionalPaths: ["/contribute/"], // Array of paths that should also highlight this item
+            icon: FaBookmark ,
+            text: "Bookmarks",
         },
     ];
 

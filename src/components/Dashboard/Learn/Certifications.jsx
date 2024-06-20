@@ -18,7 +18,7 @@ const Certifications = () => {
       </Heading>
       <Flex wrap="wrap" gap={6} justifyContent="space-between">
         <Box p={5} shadow="md" borderWidth="1px" width={{ base: "100%", md: "48%" }}>
-          <Heading fontSize="xl">Chartered Financial Innovator(CFI)</Heading>
+          <Heading fontSize="xl">Chartered Financial Innovator (CFI)</Heading>
           <Text mb={4}>AMEXLearn</Text>
           <Text mb={2}>Issued June 2024</Text>
           <Button
