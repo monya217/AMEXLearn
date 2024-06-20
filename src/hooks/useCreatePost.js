@@ -31,9 +31,9 @@ const useCreatePost = () => {
         try {
             const postDocRef = await addDoc(collection(firestore, "posts"), newPost);
             const userDocRef = doc(firestore, "users", authUser.uid);
-
+            console.log("1", authUser);
             await updateDoc(userDocRef, { posts: arrayUnion(postDocRef.id) });
-
+            console.log("2")
             if (selectedFile) {
                 const imageRef = ref(storage, `posts/${postDocRef.id}`);
                 await uploadString(imageRef, selectedFile, "data_url");
@@ -41,11 +41,14 @@ const useCreatePost = () => {
                 await updateDoc(postDocRef, { imageURL: downloadURL });
                 newPost.imageURL = downloadURL;
             }
-
-            if (userProfile.uid === authUser.uid) createPost({ ...newPost, id: postDocRef.id });
-
-            if (pathname !== "/" && userProfile.uid === authUser.uid) addPost({ ...newPost, id: postDocRef.id });
-
+            console.log("3")
+            if (authUser && userProfile) {
+                console.log("authUser:", authUser);
+                console.log("userProfile:", userProfile);
+                if (userProfile.uid === authUser.uid) createPost({ ...newPost, id: postDocRef.id });
+                if (pathname !== "/" && userProfile.uid === authUser.uid) addPost({ ...newPost, id: postDocRef.id });
+                console.log("4")
+            }
             showToast("Success", "Post created successfully", "success");
         } catch (error) {
             showToast("Error", error.message, "error");

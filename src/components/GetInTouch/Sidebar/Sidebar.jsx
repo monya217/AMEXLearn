@@ -1,13 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Box, Flex, Link } from "@chakra-ui/react";
-import { FaPen, FaRegListAlt, FaSearch, FaUser } from 'react-icons/fa';
+import { FaPen, FaRegListAlt, FaBell, FaUser } from 'react-icons/fa';
 import Feed from './Feed';
 import SearchUser from './SearchUser';
 import CreatePost from './CreatePost';
 import useUserProfileStore from '../../../store/userProfileStore';
 import useAuthStore from '../../../store/authStore';
-import { MdNotifications } from 'react-icons/md';
 
 const Sidebar = () => {
     const { userProfile } = useUserProfileStore();
@@ -36,7 +35,7 @@ const Sidebar = () => {
             action: () => createPostRef.current.openModal(),
         },
         {
-            icon: MdNotifications ,
+            icon: FaBell ,
             text: "Notifications",
         },
     ];

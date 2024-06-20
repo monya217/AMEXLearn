@@ -22,4 +22,3 @@ const useUserProfileStore = create((set) => ({
   }));
   
   export default useUserProfileStore;
-  

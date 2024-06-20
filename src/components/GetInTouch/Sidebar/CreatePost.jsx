@@ -101,4 +101,3 @@ const CreatePost = forwardRef(({ onClose: handleSidebarClose }, ref) => {
 });
 
 export default CreatePost;
-
