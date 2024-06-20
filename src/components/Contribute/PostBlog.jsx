@@ -186,7 +186,7 @@ const PostBlog = () => {
   return (
     <Flex direction="row" width="100%" height="100vh" overflow="hidden">
       <ContributeSidebar />
-      <Flex direction="column" width="100%" overflowY="auto" p={4}>
+      <Flex direction="column" width="100%" overflowY="auto">
         <Flex direction="column" align="center" justify="center" w="full">
           <Box
             bgImage={`url(${bannerImg2})`}
