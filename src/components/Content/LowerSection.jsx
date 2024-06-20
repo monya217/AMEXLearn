@@ -30,7 +30,9 @@ const LowerSection = () => {
 
   return (
     <Flex width="100%">
+      <Box mt = {10}>
       <LearnSidebar />
+      </Box>
       <Flex direction="column" width="100%">
         <Box
           bgImage={`url(${bannerImg})`}

@@ -188,7 +188,10 @@ const PostBlog = () => {
 
   return (
     <Flex direction="row" width="100%" height="100vh" overflow="hidden">
+      <Box mt = {10}>
       <ContributeSidebar />
+      </Box>
+      
       <Flex direction="column" width="100%" overflowY="auto">
         <Flex direction="column" align="center" justify="center" w="full" >
         <Box

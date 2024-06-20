@@ -223,7 +223,9 @@ const LiveSession = () => {
 
   return (
     <Flex width="100%">
+      <Box mt = {10}>
       <LearnSidebar />
+      </Box>
       <Flex direction="column" flex="1" overflowX="hidden">
         <Box
           bgImage={`url(${bannerImg})`}

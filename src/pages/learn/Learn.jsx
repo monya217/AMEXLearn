@@ -8,7 +8,10 @@ import CoinsWidget from '../../components/Dashboard/CoinsWidget';
 const Learn = () => {
   return (
     <Flex width="100%">
+      <Box mt = {10}>
       <LearnSidebar />
+      </Box>
+      
       <Flex direction="column" width="100%">
         <Box width="100%">
           <Hero />
