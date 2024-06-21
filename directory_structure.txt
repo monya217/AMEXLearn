@@ -1,0 +1,369 @@
+.
+├── README.md
+├── build
+│   ├── Consultant2.jpg
+│   ├── asset-manifest.json
+│   ├── consultant1.png
+│   ├── consultant3.jpeg
+│   ├── consultant4.jpeg
+│   ├── consultant5.jpeg
+│   ├── consultant6.jpeg
+│   ├── google.png
+│   ├── index.html
+│   ├── signup.jpg
+│   └── static
+│       ├── css
+│       │   ├── main.701f59ed.css
+│       │   └── main.701f59ed.css.map
+│       ├── js
+│       │   ├── main.573d3353.js
+│       │   ├── main.573d3353.js.LICENSE.txt
+│       │   └── main.573d3353.js.map
+│       └── media
+│           ├── aim_img.1eea8a56df145e3469e4.jpeg
+│           ├── amex_landing_page.ede1f77adf7ecf554767.mp4
+│           ├── cfi_certi.65a38500b991470d8d13.png
+│           ├── community-support.c3b79413410d076b7d21.jpeg
+│           ├── contribute.b7ba8e687cb13e58cbb7.jpeg
+│           ├── contribute_banner.2da39f4066967c161828.webp
+│           ├── courses.73cda23f107cc5fe54df.jpeg
+│           ├── econai.0e0f48163924435153c5.jpeg
+│           ├── est_1.8eaf3c6c6d6e90140919.jpeg
+│           ├── est_2.d667c3a3314f532bb9e9.jpeg
+│           ├── est_3.3a9fe5ad60e2c83be1d9.jpeg
+│           ├── est_4.2be8146e0d2b0690703e.jpeg
+│           ├── est_5.f0a6663b8406f36ee29a.jpeg
+│           ├── gameimg_1.e02722e3e5fbe3a5f3b6.jpeg
+│           ├── gameimg_10.b72b457510a1755cb5ec.jpeg
+│           ├── gameimg_2.925d0d1e37e159b8f754.jpeg
+│           ├── gameimg_3.36c01f3ed93009a1397c.jpeg
+│           ├── gameimg_4.cff537502cb58b7e8d3b.jpeg
+│           ├── gameimg_5.790787e6a92e0d630831.jpeg
+│           ├── gameimg_6.77628a65e5b0fe0f6615.jpeg
+│           ├── gameimg_7.6a4c77c76149a3c1e260.jpeg
+│           ├── gameimg_8.fcefe43fcd6b8785e26b.jpeg
+│           ├── gameimg_9.fd3ceeb2ee8285b5b322.jpeg
+│           ├── hero_img11.b0f047e06bc761bf6073.jpeg
+│           ├── hero_img12.006fc0131728aafa99c5.jpg
+│           ├── hero_img7.4b875850e0bda27b9063.jpeg
+│           ├── hero_img8.d6ea952e7c4f00e27cc0.jpeg
+│           ├── hero_img9.d98079a5ebedaee191d8.jpeg
+│           ├── ins_1.f5e7421d5d0a8a7c5c85.jpeg
+│           ├── ins_2.40ababcc20cf78fbc083.jpeg
+│           ├── ins_3.5b58eaaf0a00c06e29b5.jpeg
+│           ├── inv_1.ca9a77522d0ad8e94cba.jpeg
+│           ├── inv_2.3d5e60711f041c0929cb.jpeg
+│           ├── per_1.94f246d79c53288c22f0.jpeg
+│           ├── per_2.7e9f99afd779f0cd40fb.jpeg
+│           ├── per_3.74e477e086be9314fb4e.jpeg
+│           ├── per_4.66f50d8e32c5d5cc8878.jpeg
+│           ├── per_5.e662cd6916ca92de9a5f.jpeg
+│           ├── personalised-finance-help.c726997bfcbdd9d32953.jpeg
+│           ├── play-and-learn.b7befbf91c6512dd9dcd.jpeg
+│           ├── rec_certi.50f18b18829cd0f9cf54.png
+│           ├── risk_1.5dca310571168ac8e32c.jpeg
+│           ├── risk_2.12baf9114de217c970a9.jpeg
+│           ├── risk_3.8f9953aa8e88e74b3136.jpeg
+│           ├── risk_4.5b749d710af5ee697490.jpeg
+│           ├── risk_5.8e2754bf57ef1949e950.jpeg
+│           ├── roadmap2.a36010d7587f7bdd1daf.png
+│           ├── slick.2630a3e3eab21c607e21.svg
+│           ├── slick.295183786cd8a1389865.woff
+│           ├── slick.a4e97f5a2a64f0ab1323.eot
+│           ├── slick.c94f7671dcc99dce43e2.ttf
+│           ├── user-1.1f46bb883fe387830efd.png
+│           ├── user-2.b22c59baa927c1be0d2e.png
+│           ├── user-3.12915e16ed909bbd9b48.png
+│           └── user-4.50ce69a0306667eba2c1.png
+├── directory_structure.txt
+├── package-lock.json
+├── package.json
+├── public
+│   ├── Consultant2.jpg
+│   ├── consultant1.png
+│   ├── consultant3.jpeg
+│   ├── consultant4.jpeg
+│   ├── consultant5.jpeg
+│   ├── consultant6.jpeg
+│   ├── google.png
+│   ├── index.html
+│   └── signup.jpg
+└── src
+    ├── App.jsx
+    ├── GetInTouchLayouts
+    │   └── PageLayout
+    │       └── PageLayout.jsx
+    ├── LearnRoutes.jsx
+    ├── actions.js
+    ├── assets
+    │   ├── icons
+    │   │   └── Icon.js
+    │   └── images
+    │       ├── cfi_certi.png
+    │       ├── est_1.jpeg
+    │       ├── est_2.jpeg
+    │       ├── est_3.jpeg
+    │       ├── est_4.jpeg
+    │       ├── est_5.jpeg
+    │       ├── gameimg_1.jpeg
+    │       ├── gameimg_10.jpeg
+    │       ├── gameimg_2.jpeg
+    │       ├── gameimg_3.jpeg
+    │       ├── gameimg_4.jpeg
+    │       ├── gameimg_5.jpeg
+    │       ├── gameimg_6.jpeg
+    │       ├── gameimg_7.jpeg
+    │       ├── gameimg_8.jpeg
+    │       ├── gameimg_9.jpeg
+    │       ├── hero_img11.jpeg
+    │       ├── hero_img12.jpg
+    │       ├── hero_img6.jpg
+    │       ├── hero_img7.jpeg
+    │       ├── hero_img8.jpeg
+    │       ├── hero_img9.jpeg
+    │       ├── ins_1.jpeg
+    │       ├── ins_2.jpeg
+    │       ├── ins_3.jpeg
+    │       ├── inv_1.jpeg
+    │       ├── inv_2.jpeg
+    │       ├── per_1.jpeg
+    │       ├── per_2.jpeg
+    │       ├── per_3.jpeg
+    │       ├── per_4.jpeg
+    │       ├── per_5.jpeg
+    │       ├── rec_certi.png
+    │       ├── risk_1.jpeg
+    │       ├── risk_2.jpeg
+    │       ├── risk_3.jpeg
+    │       ├── risk_4.jpeg
+    │       ├── risk_5.jpeg
+    │       └── roadmap2.png
+    ├── components
+    │   ├── Aim
+    │   │   ├── Aim.css
+    │   │   └── Aim.jsx
+    │   ├── AuthForm
+    │   │   ├── AuthForm.jsx
+    │   │   ├── GoogleAuth.jsx
+    │   │   ├── Login.jsx
+    │   │   └── Signup.jsx
+    │   ├── CardWrapper.js
+    │   ├── Chatbot.jsx
+    │   ├── Consultants
+    │   │   ├── Carousel.css
+    │   │   ├── SearchConsultants.jsx
+    │   │   └── SuggestedConsultant.jsx
+    │   ├── Contact
+    │   │   ├── Contact.css
+    │   │   └── Contact.jsx
+    │   ├── Content
+    │   │   ├── LowerSection.jsx
+    │   │   ├── LowerSectionContent.jsx
+    │   │   ├── LowerSectionHeader.jsx
+    │   │   ├── SongCard.jsx
+    │   │   └── audioPlayerService.js
+    │   ├── Contribute
+    │   │   ├── BlogSection.jsx
+    │   │   ├── ContributeSidebar.jsx
+    │   │   ├── PostBlog.jsx
+    │   │   ├── PrivateRoute.jsx
+    │   │   └── Spinner.jsx
+    │   ├── Course.jsx
+    │   ├── CourseList.js
+    │   ├── Dashboard
+    │   │   ├── Activity
+    │   │   │   ├── ActivityBlog.jsx
+    │   │   │   ├── ActivityHeader.jsx
+    │   │   │   ├── ActivityPost.jsx
+    │   │   │   ├── ActivityProfileBlogs.jsx
+    │   │   │   ├── ActivityProfilePosts.jsx
+    │   │   │   ├── ActivityProfileTabs.jsx
+    │   │   │   └── EditActivity.jsx
+    │   │   ├── Activity.jsx
+    │   │   ├── CoinsWidget.jsx
+    │   │   ├── Comment
+    │   │   │   ├── Caption.jsx
+    │   │   │   └── Comment.jsx
+    │   │   ├── DashboardSidebar.jsx
+    │   │   ├── Learn
+    │   │   │   ├── Certifications.jsx
+    │   │   │   ├── CourseList.jsx
+    │   │   │   ├── GameList.jsx
+    │   │   │   ├── LeaderboardChart.jsx
+    │   │   │   ├── LearningHoursChart.jsx
+    │   │   │   ├── ProfileHeader.css
+    │   │   │   └── ProfileHeader.jsx
+    │   │   ├── Sessions
+    │   │   │   ├── Information.jsx
+    │   │   │   ├── SessionsHistory.jsx
+    │   │   │   └── UpcomingSessions.jsx
+    │   │   └── Sessions.jsx
+    │   ├── FeedPosts
+    │   │   ├── FeedPost.jsx
+    │   │   ├── FeedPosts.jsx
+    │   │   ├── PostFooter.jsx
+    │   │   └── PostHeader.jsx
+    │   ├── Footer
+    │   │   ├── Footer.css
+    │   │   └── Footer.jsx
+    │   ├── GameCard.jsx
+    │   ├── GetInTouch
+    │   │   ├── Comment
+    │   │   │   ├── Caption.jsx
+    │   │   │   └── Comment.jsx
+    │   │   ├── Profile
+    │   │   │   ├── EditProfile.jsx
+    │   │   │   ├── GITProfileHeader.jsx
+    │   │   │   ├── ProfileBlog.jsx
+    │   │   │   ├── ProfileBlogs.jsx
+    │   │   │   ├── ProfilePage.jsx
+    │   │   │   ├── ProfilePost.jsx
+    │   │   │   ├── ProfilePosts.jsx
+    │   │   │   └── ProfileTabs.jsx
+    │   │   ├── Sidebar
+    │   │   │   ├── CreatePost.jsx
+    │   │   │   ├── Feed.jsx
+    │   │   │   ├── SearchUser.jsx
+    │   │   │   ├── Sidebar.jsx
+    │   │   │   └── SuggestedUser.jsx
+    │   │   └── Trending.jsx
+    │   ├── Hero.jsx
+    │   ├── HeroSection
+    │   │   ├── HeroSection.css
+    │   │   └── HeroSection.jsx
+    │   ├── LearnSidebar.jsx
+    │   ├── LiveSessionCard.jsx
+    │   ├── LoginButton
+    │   │   └── LoginButton.jsx
+    │   ├── Navbar
+    │   │   ├── Navbar.css
+    │   │   ├── Navbar.jsx
+    │   │   └── SearchBar.js
+    │   ├── ProfileHeader
+    │   │   └── ProfileHeader.jsx
+    │   ├── Programs
+    │   │   ├── Programs.css
+    │   │   └── Programs.jsx
+    │   ├── ScrollToTop.jsx
+    │   ├── StarRating.jsx
+    │   ├── Tabs.jsx
+    │   ├── Testimonials
+    │   │   ├── Testimonials.css
+    │   │   └── Testimonials.jsx
+    │   ├── Title
+    │   │   ├── Title.css
+    │   │   └── Title.jsx
+    │   └── videos
+    │       └── amex_landing_page.mp4
+    ├── context
+    │   ├── CoinsContext.jsx
+    │   ├── cart_context.jsx
+    │   └── course_context.jsx
+    ├── firebase
+    │   └── firebase.js
+    ├── hooks
+    │   ├── useCreatePost.js
+    │   ├── useEditProfile.js
+    │   ├── useFollowUser.js
+    │   ├── useGetFeedPosts.js
+    │   ├── useGetSuggestedUsers.js
+    │   ├── useGetUserBlogs.js
+    │   ├── useGetUserPosts.js
+    │   ├── useGetUserProfileById.js
+    │   ├── useGetUserProfileByUsername.js
+    │   ├── useLikePost.js
+    │   ├── useLogin.js
+    │   ├── useLogout.js
+    │   ├── usePostComment.js
+    │   ├── usePreviewImg.js
+    │   ├── useSearchUser.js
+    │   ├── useShowToast.js
+    │   └── useSignUpWithEmailAndPassword.js
+    ├── images
+    │   ├── aim_img.jpeg
+    │   ├── back-icon.png
+    │   ├── bg
+    │   │   ├── community-support.jpeg
+    │   │   ├── contribute.jpeg
+    │   │   ├── courses.jpeg
+    │   │   ├── econai.jpeg
+    │   │   ├── personalised-finance-help.jpeg
+    │   │   └── play-and-learn.jpeg
+    │   ├── blue_arrow.png
+    │   ├── contribute_banner.webp
+    │   ├── dark-arrow.png
+    │   ├── icons
+    │   │   ├── community-support.png
+    │   │   ├── contribute.png
+    │   │   ├── courses.png
+    │   │   ├── econ-ai.png
+    │   │   ├── personalised-finance-help.png
+    │   │   └── play-and-learn.png
+    │   ├── location-icon.png
+    │   ├── mail-icon.png
+    │   ├── mcD-logo.png
+    │   ├── msg-icon.png
+    │   ├── next-icon.png
+    │   ├── petrol-icon.png
+    │   ├── phone-icon.png
+    │   ├── program-1.png
+    │   ├── program-2.png
+    │   ├── program-3.png
+    │   ├── program-icon-1.png
+    │   ├── user-1.png
+    │   ├── user-2.png
+    │   ├── user-3.png
+    │   ├── user-4.png
+    │   ├── white-arrow.png
+    │   └── white_arrow.png
+    ├── index.css
+    ├── index.js
+    ├── pages
+    │   ├── CoursesPage
+    │   │   └── CoursesPage.jsx
+    │   ├── SinglecoursePage
+    │   │   └── SingleCoursePage.jsx
+    │   ├── authPage
+    │   │   └── AuthPage.jsx
+    │   ├── contribute
+    │   │   ├── Blogpage.jsx
+    │   │   └── Contribute.jsx
+    │   ├── dashboard
+    │   │   └── Dashboard.jsx
+    │   ├── getInTouch
+    │   │   ├── GetInTouch.jsx
+    │   │   └── getintouch.css
+    │   ├── home
+    │   │   ├── Home.jsx
+    │   │   └── home.css
+    │   ├── learn
+    │   │   ├── Learn.jsx
+    │   │   ├── livesession.jsx
+    │   │   └── playandlearn.jsx
+    │   ├── notFound
+    │   │   ├── NotFound.jsx
+    │   │   └── notfound.css
+    │   └── podcast
+    │       ├── Podcasts.css
+    │       └── Podcasts.jsx
+    ├── reducers
+    │   ├── cart_reducer.jsx
+    │   └── courses_reducer.jsx
+    ├── redux
+    │   ├── player
+    │   │   └── playerSlice.js
+    │   └── store.js
+    ├── store
+    │   ├── authStore.js
+    │   ├── blogStore.js
+    │   ├── postStore.js
+    │   └── userProfileStore.js
+    ├── theme.js
+    └── utils
+        ├── constants.jsx
+        ├── datacourse.jsx
+        ├── images.jsx
+        ├── timeAgo.js
+        └── utils.js
+
+61 directories, 306 files
