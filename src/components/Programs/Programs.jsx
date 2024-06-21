@@ -10,13 +10,40 @@ import community_support_bg from '../../images/bg/community-support.jpeg'
 import contribute_bg from '../../images/bg/contribute.jpeg'
 import courses_bg from '../../images/bg/courses.jpeg'
 import econai_bg from '../../images/bg/econai.jpeg'
-import dashboard_bg from '../../images/bg/personalised-finance-help.jpeg'
+import loyalty_bg from '../../images/bg/loyalty-program.jpg'
 import learn_bg from '../../images/bg/play-and-learn.jpeg'
 
 const Programs = () => {
   return (
     <div className = 'programs'>
       <div className='firstRow'>
+      <div className='program'>
+            <img src={learn_bg}/>
+            <div className='caption'>
+              <img src = {learn_icon}/>
+              <h1>Play and Learn</h1>
+              <p>Engage with fun games while mastering financial concepts.</p>
+            </div>
+        </div>
+
+        <div className='program'>
+            <img src={econai_bg}/>
+            <div className='caption'>
+              <img src = {econai_icon}/>
+              <h1>Econ AI</h1>
+              <p>Get expert financial advice using OpenAI's GPT-3 trained on financial documents for tailored insights.
+              </p>
+            </div>
+        </div>
+        <div className='program'>
+            <img src={loyalty_bg}/>
+            <div className='caption'>
+              <img src = {dashboard_icon}/>
+              <h1>Loyalty Program</h1>
+              <p>Play, learn, and save: earn coins through activities and courses, then use them for discounts and rewards.
+              </p>
+            </div>
+        </div>
         <div className='program'>
             <img src={community_support_bg}/>
             <div className='caption'>
@@ -46,32 +73,9 @@ const Programs = () => {
               </p>
             </div>
         </div>
-        <div className='program'>
-            <img src={econai_bg}/>
-            <div className='caption'>
-              <img src = {econai_icon}/>
-              <h1>Econ AI</h1>
-              <p>Get expert financial advice using OpenAI's GPT-3 trained on financial documents for tailored insights.
-              </p>
-            </div>
-        </div>
-        <div className='program'>
-            <img src={dashboard_bg}/>
-            <div className='caption'>
-              <img src = {dashboard_icon}/>
-              <h1>Personalised Dashboard</h1>
-              <p>Customize financial view for easy tracking and management.
-              </p>
-            </div>
-        </div>
-        <div className='program'>
-            <img src={learn_bg}/>
-            <div className='caption'>
-              <img src = {learn_icon}/>
-              <h1>Play and Learn</h1>
-              <p>Engage with fun games while mastering financial concepts.</p>
-            </div>
-        </div>
+        
+        
+        
       </div>
     </div>
 

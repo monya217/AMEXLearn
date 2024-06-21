@@ -12,8 +12,8 @@ const ProfileHeader = () => {
   const cancelRef = useRef();
 
   const handleLogoutAndNavigate = async () => {
-    await handleLogout();
     navigate('/');
+    await handleLogout();
   };
 
   const authUser = useAuthStore(state => state.user);

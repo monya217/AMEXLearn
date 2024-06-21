@@ -14,7 +14,7 @@ import { CoinsContext } from '../../context/CoinsContext';
 const consultants = [
   {
     name: "Matthew E. McNatt",
-    avatar: "/Consultant1.png",
+    avatar: "/consultant1.jpg",
     experience: "5 Years",
     rating: "4.5",
     socialProfiles: {
