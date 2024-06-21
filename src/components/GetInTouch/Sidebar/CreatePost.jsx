@@ -60,7 +60,7 @@ const CreatePost = forwardRef(({ onClose: handleSidebarClose }, ref) => {
                     bg={"#EEF3F9"}
                     border={"1px solid"}
                     borderColor={"blue.300"}
-                    mt={60} 
+                    mt={20} 
                 >
                     <ModalHeader>Create Post</ModalHeader>
                     <ModalCloseButton />
