@@ -31,7 +31,7 @@ const usePostComment = () => {
         comment,
         createdAt: Date.now(),
         createdBy: authUser.uid,
-        username, // Include username in the comment object
+        username, 
         postId,
       };
 

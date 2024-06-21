@@ -50,7 +50,7 @@ const ActivityBlog = ({ blog }) => {
   };
 
   const formatDate = (timestamp) => {
-    const date = new Date(timestamp?.seconds * 1000); // Assuming Firestore timestamp
+    const date = new Date(timestamp?.seconds * 1000); 
     if (isNaN(date)) {
       return 'Invalid Date';
     }
@@ -86,9 +86,7 @@ const ActivityBlog = ({ blog }) => {
           )}
         </Flex>
 
-        {/* Blog content section */}
         <Flex flex={1} flexDir="column" px={4}>
-          {/* Header with profile picture and username */}
           <Flex alignItems="center" gap={2}>
             <Avatar src={userProfile.profilePicURL} size="sm" name={userProfile.username} />
             <Text fontWeight="bold" fontSize={12}>
@@ -99,7 +97,7 @@ const ActivityBlog = ({ blog }) => {
           {/* Caption */}
           <Box mt={2} maxH="150px" overflow="auto">
             <Text fontWeight="bold">{blog.title}</Text>
-            <Text>{blog.overview}</Text> {/* Display the overview field */}
+            <Text>{blog.overview}</Text> 
           </Box>
 
           {/* Divider */}

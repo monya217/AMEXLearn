@@ -24,12 +24,10 @@ const trendingTopics = [
 
 const handleReport = (title) => {
   console.log(`Reporting trend: ${title}`);
-  // Implement your report functionality here
 };
 
 const handleMarkAsSpam = (title) => {
   console.log(`Marking as spam: ${title}`);
-  // Implement your mark as spam functionality here
 };
 
 const TrendingCard = ({ category, title, posts }) => (
@@ -42,7 +40,7 @@ const TrendingCard = ({ category, title, posts }) => (
     justifyContent="space-between"
     alignItems="center"
     _hover={{ bg: 'gray.100' }}
-    _last={{ borderBottom: 'none' }} // Ensures the last item does not have a bottom border
+    _last={{ borderBottom: 'none' }}
   >
     <VStack align="start" spacing={1}>
       <Text fontSize="xs" color="gray.500">

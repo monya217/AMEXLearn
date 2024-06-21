@@ -56,11 +56,11 @@ const CreatePost = forwardRef(({ onClose: handleSidebarClose }, ref) => {
             <Modal isOpen={isOpen} onClose={handleClose} size='xl'>
                 <ModalOverlay />
                 <ModalContent
-                    // Applying custom styles for positioning
+                    
                     bg={"#EEF3F9"}
                     border={"1px solid"}
                     borderColor={"blue.300"}
-                    mt={60} // Adjust this value as needed
+                    mt={60} 
                 >
                     <ModalHeader>Create Post</ModalHeader>
                     <ModalCloseButton />

@@ -8,7 +8,7 @@ import { FaLinkedin, FaTwitter, FaStar, FaChevronRight, FaChevronLeft } from 're
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import "./Carousel.css"; // Import your custom CSS file
+import "./Carousel.css"; 
 import { CoinsContext } from '../../context/CoinsContext';
 
 const consultants = [
@@ -124,10 +124,10 @@ const ConsultantCarousel = () => {
   const [paymentMethod, setPaymentMethod] = useState('amex');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [redeemCoins, setRedeemCoins] = useState(false);
-  const [discountApplied, setDiscountApplied] = useState(false); // State to track if discount is applied
+  const [discountApplied, setDiscountApplied] = useState(false); 
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
-  const [price, setPrice] = useState('₹2000'); // State to manage the price
+  const [price, setPrice] = useState('₹2000'); 
   const toast = useToast();
 
   const activeDotStyle = {
@@ -136,7 +136,7 @@ const ConsultantCarousel = () => {
     background: '#3182ce',
     borderRadius: '50%',
     display: 'inline-block',
-    margin: '0 4px', // Reduced distance between dots
+    margin: '0 4px', 
   };
 
   const inactiveDotStyle = {
@@ -145,7 +145,7 @@ const ConsultantCarousel = () => {
     background: '#a0d2eb',
     borderRadius: '50%',
     display: 'inline-block',
-    margin: '0 4px', // Reduced distance between dots
+    margin: '0 4px',
   };
 
   const openModal = () => setIsModalOpen(true);
@@ -207,10 +207,9 @@ const ConsultantCarousel = () => {
   };
 
   const handleRedeemCoins = () => {
-    // Simulate redeeming coins and applying discount
     setRedeemCoins(true);
     const originalPrice = 2000;
-    const discountedPrice = originalPrice * 0.8; // 20% discount
+    const discountedPrice = originalPrice * 0.8; 
     setPrice(`₹${discountedPrice}`);
     setDiscountApplied(true);
   };

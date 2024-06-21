@@ -60,7 +60,7 @@ body {
   font-family: 'Gafata', sans-serif;
   font-weight: 400;
   transition: var(--transition);
-  margin-left: auto; /* Ensures it pushes itself to the far right */
+  margin-left: auto;
 }
 
 .btn img {

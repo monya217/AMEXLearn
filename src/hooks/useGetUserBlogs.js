@@ -5,17 +5,17 @@ import useUserProfileStore from "../store/userProfileStore";
 const useGetUserBlogs = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
-  const authUser = useUserProfileStore((state) => state.userProfile); // Get the authenticated user
+  const authUser = useUserProfileStore((state) => state.userProfile); 
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      if (!authUser) return; // Ensure there's a logged-in user
+      if (!authUser) return; 
       console.log('here')
       setIsLoading(true);
       try {
         const blogsQuery = query(
           collection(firestore, 'blogs'),
-          where('userId', '==', authUser.uid) // Use the authenticated user's ID
+          where('userId', '==', authUser.uid) 
         );
         const blogsSnapshot = await getDocs(blogsQuery);
         const blogsList = blogsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));

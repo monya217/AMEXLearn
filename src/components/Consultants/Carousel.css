@@ -13,7 +13,7 @@
 }
 
 .slick-dots li {
-  margin: 0; /* Reduced distance between dots */
+  margin: 0; 
 }
 
 .slick-dots li button {
@@ -27,10 +27,10 @@
   width: 12px;
   height: 12px;
   display: block;
-  background: #a0d2eb; /* Light blue color for inactive dots */
+  background: #a0d2eb; 
   border-radius: 50%;
 }
 
 .slick-dots li.slick-active button:before {
-  background: #3182ce; /* Blue color for active dot */
+  background: #3182ce; 
 }

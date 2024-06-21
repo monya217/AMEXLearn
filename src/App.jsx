@@ -17,7 +17,6 @@ import PostBlog from "./components/Contribute/PostBlog.jsx";
 import PrivateRoute from "./components/Contribute/PrivateRoute.jsx";
 import ProfilePage from "./components/GetInTouch/Profile/ProfilePage.jsx";
 import Blogpage from "./pages/contribute/Blogpage.jsx";
-import { StockGeeks } from "./components/GetInTouch/StockGeeks";
 import Podcasts from './pages/podcast/Podcasts.jsx';
 import { store } from "./redux/store"; 
 import Sessions from "./components/Dashboard/Sessions.jsx";
@@ -92,7 +91,6 @@ const App = () => {
             <Route path="/auth" element={!authUser ? <AuthPage /> : <Navigate to="/" />} />
             <Route path="/:username" element={<ProfilePage />} />
             <Route path="/blog/:id" element={<Blogpage user={user} />} />
-            <Route path="/stocks" element={<StockGeeks />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Chatbot />

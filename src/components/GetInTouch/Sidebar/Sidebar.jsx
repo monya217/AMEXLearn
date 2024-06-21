@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Box, Flex, Link } from "@chakra-ui/react";
-import { FaPen, FaRegListAlt, FaBell, FaUser } from 'react-icons/fa';
+import { FaPen, FaRegListAlt, FaBell } from 'react-icons/fa';
 import Feed from './Feed';
 import SearchUser from './SearchUser';
 import CreatePost from './CreatePost';
@@ -71,7 +71,7 @@ const Sidebar = () => {
                 borderColor="gray.200"
                 py={10}
                 position="sticky"
-                top={10} /* Adjust top to match contributeSidebar */
+                top={10}
                 left={0}
                 px={4}
                 bg="white"
@@ -79,7 +79,7 @@ const Sidebar = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 transition="width 0.2s"
-                pt={20} /* Adjust pt to match contributeSidebar */
+                pt={20} 
             >
                 <Flex direction="column" gap={10} cursor="pointer">
                     {sidebarItems.map((item, index) => (
@@ -113,7 +113,6 @@ const Sidebar = () => {
                 </Flex>
             </Box>
 
-            {/* Render selected component */}
             <Flex direction="column" flex={1} ml={10} mt={20} p={4}>
                 {selectedComponent}
             </Flex>

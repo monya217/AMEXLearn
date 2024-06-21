@@ -1,6 +1,6 @@
 import { Box, Container, Flex, Skeleton, SkeletonCircle, Text, VStack } from "@chakra-ui/react";
 import FeedPost from "./FeedPost";
-import useGetFeedPosts from "../../hooks/useGetFeedPosts"; // Adjust the import as per your project structure
+import useGetFeedPosts from "../../hooks/useGetFeedPosts"; 
 
 export const FeedPosts = () => {
   const { isLoading, posts } = useGetFeedPosts();

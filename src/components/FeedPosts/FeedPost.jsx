@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Image, Skeleton, SkeletonText } from '@chakra-ui/react';
 import PostFooter from './PostFooter';
 import PostHeader from './PostHeader';
-import useGetUserProfileById from '../../hooks/useGetUserProfileById'; // Adjust the import as per your project structure
+import useGetUserProfileById from '../../hooks/useGetUserProfileById'; 
 
 const FeedPost = ({ post }) => {
   const { userProfile, isLoading } = useGetUserProfileById(post.createdBy);
@@ -20,7 +20,7 @@ const FeedPost = ({ post }) => {
       >
         <Skeleton height="40px" mb={4} />
         <SkeletonText mt="4" noOfLines={4} spacing="4" />
-        {post.imageURL && <Skeleton height="200px" mt="4" />} {/* Only show image skeleton if imageURL exists */}
+        {post.imageURL && <Skeleton height="200px" mt="4" />} 
       </Box>
     );
   }
@@ -38,10 +38,10 @@ const FeedPost = ({ post }) => {
       mb={5} 
       p={4}
       bg={"white"}
-      _hover={{ bg: "gray.100" }} // Adjust hover effect to a light bluish tone
+      _hover={{ bg: "gray.100" }} 
     >
       <PostHeader post={post} creatorProfile={userProfile} />
-      {post.imageURL && ( // Render Image component only if imageURL exists
+      {post.imageURL && ( 
         <Box my={2}>
           <Image src={post.imageURL} alt={userProfile?.username} />
         </Box>

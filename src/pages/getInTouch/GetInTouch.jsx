@@ -1,9 +1,7 @@
 import { PageLayout } from '../../GetInTouchLayouts/PageLayout/PageLayout';
 import Chatbot from '../../components/Chatbot';
-import SuggestedConsultants from '../../components/Consultants/SuggestedConsultant';
 import CoinsWidget from '../../components/Dashboard/CoinsWidget';
 import { FeedPosts } from '../../components/FeedPosts/FeedPosts';
-import Trending from '../../components/GetInTouch/Trending';
 import './getintouch.css';
 import { Box, Container, Flex, Text, useBreakpointValue } from "@chakra-ui/react";
 

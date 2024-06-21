@@ -2,13 +2,13 @@ import React from 'react';
 import { Avatar, Box, Button, Flex, Text, IconButton, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { FaEllipsisH, FaRegFrown, FaExclamationTriangle } from 'react-icons/fa';
-import useFollowUser from '../../hooks/useFollowUser'; // Adjust the import as per your project structure
+import useFollowUser from '../../hooks/useFollowUser';
 import { timeAgo } from '../../utils/timeAgo';
-import useAuthStore from '../../store/authStore'; // Import your auth store or hook
+import useAuthStore from '../../store/authStore'; 
 
 const PostHeader = ({ post, creatorProfile }) => {
   const { handleFollowUser, isFollowing, isUpdating } = useFollowUser(post?.createdBy);
-  const currentUser = useAuthStore((state) => state.user); // Adjust as per your auth store
+  const currentUser = useAuthStore((state) => state.user); 
 
   if (!post || !post.createdBy) {
     return <Box>Post data is not available.</Box>;
@@ -19,12 +19,10 @@ const PostHeader = ({ post, creatorProfile }) => {
 
   const handleReport = () => {
     console.log(`Reporting post: ${post.id}`);
-    // Implement your report functionality here
   };
 
   const handleMarkAsSpam = () => {
     console.log(`Marking post as spam: ${post.id}`);
-    // Implement your mark as spam functionality here
   };
 
   return (
@@ -52,7 +50,6 @@ const PostHeader = ({ post, creatorProfile }) => {
         </Flex>
 
         <Flex alignItems="center">
-          {/* Render Follow/Unfollow button only if it's not the current user's post */}
           {!isCurrentUser && (
             <>
               <Button

@@ -10,7 +10,7 @@ import { timeAgo } from '../../utils/timeAgo';
 const PostFooter = ({ post, isProfilePage }) => {
   const { isCommenting, handlePostComment } = usePostComment();
   const [comment, setComment] = useState("");
-  const [showComments, setShowComments] = useState(false); // State to manage showing comments
+  const [showComments, setShowComments] = useState(false); 
   const authUser = useAuthStore((state) => state.user);
   const commentRef = useRef(null);
   const { handleLikePost, isLiked, likes } = useLikePost(post);
@@ -32,7 +32,7 @@ const PostFooter = ({ post, isProfilePage }) => {
   };
 
   const handleToggleComments = () => {
-    setShowComments(!showComments); // Toggle the state to show/hide comments
+    setShowComments(!showComments); 
   };
 
   return (
@@ -43,7 +43,7 @@ const PostFooter = ({ post, isProfilePage }) => {
         </Box>
 
         <Box cursor={"pointer"} fontSize={18} onClick={() => commentRef.current.focus()}>
-          <FaRegComment size={24} onClick={handleToggleComments} /> {/* Toggle comments on click */}
+          <FaRegComment size={24} onClick={handleToggleComments} /> 
         </Box>
       </Flex>
       <Text fontWeight={600} fontSize={"sm"}>

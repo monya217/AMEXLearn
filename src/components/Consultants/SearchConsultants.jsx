@@ -10,7 +10,6 @@ const SearchConsultants = () => {
       <VStack spacing={4} align="start">
         <Input placeholder="Enter consultant's name" />
         <Button colorScheme="blue">Search</Button>
-        {/* Add search results here */}
       </VStack>
     </Box>
   );

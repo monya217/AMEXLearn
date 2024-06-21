@@ -57,7 +57,7 @@ const ProfilePost = ({ post }) => {
     setIsDeleting(true);
 
     try {
-      // Check if there's an image URL before attempting to delete it
+      
       if (post.imageURL) {
         const imageRef = ref(storage, `posts/${post.id}`);
         await deleteObject(imageRef);
