@@ -209,7 +209,7 @@ const PostBlog = () => {
       color="white"
       p={4}
     >
-      <Image src={roadmap} alt="Roadmap" width={{ base: '80%', md: '70%', lg: '55%' }} mb={4} mt = {20} />
+      <Image src={roadmap} alt="Roadmap" width={{ base: '80%', md: '70%', lg: '53%' }} mb={4} mt = {20} />
     </Box>
           <Box w={formWidth} p={6} mt="20px">
             <Heading as="h2" size="xl" textAlign="center" mb={6}>
