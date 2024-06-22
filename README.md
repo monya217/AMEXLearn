@@ -1,4 +1,4 @@
-# 🌟 Welcome to AMEXLearn! 📚💡
+# 🌟 Welcome to AMEXLearn!🌟 
 
 Welcome to AMEXLearn, your one-stop shop for financial literacy, empowering you to secure your financial future. Through interactive courses, engaging games, insightful podcasts 🎧, and live advisor sessions 💬, we equip you with the essential skills and knowledge to navigate your financial journey with confidence.
 We demystify personal finance, offering clear guidance and practical tips 💡, whether your goal is building wealth 💰, managing debt 💳, or planning for retirement 🏖️. Our comprehensive resources and expert insights provide the support you need every step of the way. Join our community and embark on a path to financial empowerment and security 🔒.
@@ -57,6 +57,7 @@ At AMEXLearn, we believe in making smart investments today to secure a prosperou
   - [📺 Live Sessions](#live-sessions)
   - [🤖 Econ-AI Chatbot](#econ-ai-chatbot)
 - [💻 Technology Stack](#technology-stack)
+- [💻 Architecture-Diagram](#Architecture-Diagram)
 - [🚀 Getting Started](#getting-started)
   - [✅ Prerequisites](#prerequisites)
   - [🔧 Installation](#installation)
@@ -78,7 +79,7 @@ At AMEXLearn, we believe in making smart investments today to secure a prosperou
 ### 🎧 Podcasts
 - **Expert Discussions**: Tune in to podcasts featuring expert discussions on financial planning, investment strategies, and economic trends.
 - **Accessible Learning**: Podcasts provide an accessible learning medium, particularly favored by over 80% of young adults who prefer this format over social media.
-- **Flexible Learning**: Listen to podcasts on-the-go, making it easy to integrate learning into your daily routine.
+- **Flexible Learning**: Listen to podcasts on the go, making it easy to integrate learning into your daily routine.
 
 ### 📝 Blogs
 - **Extensive Content**: Explore a rich collection of articles covering a wide range of topics, from personal finance tips to market analysis.
@@ -98,6 +99,10 @@ At AMEXLearn, we believe in making smart investments today to secure a prosperou
 ### 🤖 Econ-AI Chatbot
 - An intelligent financial assistant powered by OpenAI's API and a comprehensive financial knowledge base.
 - Provides precise answers to finance-related questions, enhancing user support.
+
+## Architecture-Diagram
+![WhatsApp Image 2024-06-22 at 22 34 00_5d8c5e89](https://github.com/monya217/AMEXLearn/assets/115079077/a68bf194-cac5-4d58-a356-2153c3c2d418)
+
 
 ## 💻 Technology Stack
 - **Frontend**: React
