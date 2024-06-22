@@ -23,6 +23,7 @@ const GoogleAuth = ({ isLogin }) => {
             if (userSnap.exists()) {
                 // login
                 const userDoc = userSnap.data();
+                console.log("Existing userDoc:", userDoc);
                 localStorage.setItem("user-info", JSON.stringify(userDoc));
                 loginUser(userDoc);
             }
@@ -34,8 +35,13 @@ const GoogleAuth = ({ isLogin }) => {
                     username: newUser.user.email.split("@")[0],
                     fullName: newUser.user.displayName,
                     profilePicURL: newUser.user.photoURL,
+                    followers:[],
+                    following:[],
+                    posts:[],
+                    bio:"",
                     createdAt: Date.now()
                 };
+                console.log("New userDoc:", userDoc);
                 await setDoc(doc(firestore, "users", newUser.user.uid), userDoc);
                 localStorage.setItem("user-info", JSON.stringify(userDoc));
                 loginUser(userDoc);

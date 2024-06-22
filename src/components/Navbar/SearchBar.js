@@ -48,6 +48,7 @@ const SearchBar = () => {
     };
 
     const handleUserClick = (user) => {
+        console.log("Searching with user:", user);
         navigate(`/${user.username}`, { state: { user } });
         setShowResults(false);
         setUser(null);
