@@ -1,6 +1,3 @@
-Here's an enhanced and detailed summary for AMEXLearn, incorporating the specified points:
-
----
 
 # 🌟 AmexLearn 🌟
 
