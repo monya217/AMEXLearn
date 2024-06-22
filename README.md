@@ -1,7 +1,7 @@
 # 🌟 Welcome to AMEXLearn!🌟 
 
-Welcome to AMEXLearn, your one-stop shop for financial literacy, empowering you to secure your financial future. Through interactive courses, engaging games, insightful podcasts 🎧, and live advisor sessions 💬, we equip you with the essential skills and knowledge to navigate your financial journey with confidence.
-We demystify personal finance, offering clear guidance and practical tips 💡, whether your goal is building wealth 💰, managing debt 💳, or planning for retirement 🏖️. Our comprehensive resources and expert insights provide the support you need every step of the way. Join our community and embark on a path to financial empowerment and security 🔒.
+Welcome to AMEXLearn, your one-stop shop for financial literacy, empowering you to secure your financial future. Through interactive courses, engaging games, insightful podcasts, and live advisor sessions, we equip you with the essential skills and knowledge to navigate your financial journey with confidence.
+We demystify personal finance, offering clear guidance and practical tips, whether your goal is building wealth, managing debt, or planning for retirement. Our comprehensive resources and expert insights provide the support you need every step of the way. Join our community and embark on a path to financial empowerment and security.
 
 
 https://github.com/monya217/AMEXLearn/assets/115079077/69c19fe0-9406-4c5c-9927-d14dfb77f177
