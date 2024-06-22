@@ -141,7 +141,7 @@ At AMEXLearn, we believe in making smart investments today to secure a prosperou
     # or
     yarn start
     ```
-2. Open your browser and navigate to `http://localhost:3000` to view the application.
+2. Open your browser and navigate to localhost to view the application.
 
 
 ## 📜 License
