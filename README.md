@@ -17,7 +17,6 @@ AmexLearn is a comprehensive educational platform designed to improve financial 
   - [✅ Prerequisites](#prerequisites)
   - [🔧 Installation](#installation)
 - [📖 Usage](#usage)
-- [🤝 Contributing](#contributing)
 - [📜 License](#license)
 
 ## 🌟 Features
@@ -93,8 +92,6 @@ AmexLearn is a comprehensive educational platform designed to improve financial 
     ```
 2. Open your browser and navigate to `http://localhost:3000` to view the application.
 
-## 🤝 Contributing
-Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
