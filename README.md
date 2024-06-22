@@ -1,9 +1,9 @@
 
-# 🌟 AmexLearn 🌟
+# 🌟 AMEXLearn 🌟
 
 Welcome to AmexLearn, a comprehensive educational platform designed to bridge the gap between financial literacy and the financial habits of today's youth. Our mission is to empower individuals, especially Gen Z and millennials, with the knowledge and tools needed to make informed financial decisions, break the cycle of doom spending, and secure a financially stable future.
 
-## Why AmexLearn?
+## Why AMEXLearn?
 
 ### Gen Z: Thin Wallets, Expensive Tastes
 In a world where instant gratification is just a click away, many young people find themselves spending impulsively, often leading to long-term financial damage. Despite their expensive tastes, Gen Z often struggles with managing their finances, living paycheck to paycheck. 
