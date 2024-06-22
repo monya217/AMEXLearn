@@ -9,8 +9,12 @@ const ActivityHeader = () => {
   const authUser = useAuthStore((state) => state.user);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isFollowing, isUpdating, handleFollowUser } = useFollowUser(userProfile?.uid);
-  const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username;
-  const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile.username;
+  const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile?.username;
+  const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile?.username;
+
+  if (!userProfile) {
+    return <Text>Loading...</Text>; // or any other placeholder while userProfile is being fetched
+  }
 
   return (
     <Flex gap={{ base: 4, sm: 10 }} py={10} direction={{ base: "column", sm: "row" }}>
@@ -59,19 +63,19 @@ const ActivityHeader = () => {
         <Flex alignItems={"center"} gap={{ base: 2, sm: 4 }}>
           <Text fontSize={{ base: "xs", md: "sm" }}>
             <Text as='span' fontWeight={"bold"} mr={1}>
-              {userProfile.posts.length}
+              {userProfile.posts?.length || 0}
             </Text>
             Posts
           </Text>
           <Text fontSize={{ base: "xs", md: "sm" }}>
             <Text as='span' fontWeight={"bold"} mr={1}>
-              {userProfile.followers.length}
+              {userProfile.followers?.length || 0}
             </Text>
             Followers
           </Text>
           <Text fontSize={{ base: "xs", md: "sm" }}>
             <Text as='span' fontWeight={"bold"} mr={1}>
-              {userProfile.following.length}
+              {userProfile.following?.length || 0}
             </Text>
             Following
           </Text>
