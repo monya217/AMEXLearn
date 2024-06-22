@@ -28,7 +28,7 @@ import ScrollToTop from './components/ScrollToTop';
 import { CoinsProvider } from './context/CoinsContext';  
 import CoinsWidget from "./components/Dashboard/CoinsWidget.jsx";
 import { useLocation } from "react-router-dom";
-
+import { SpeedInsights } from "@vercel/speed-insights/react"
 const App = () => {
   const [authUser] = useAuthState(auth);
   const [user, setUser] = useState(null);
@@ -48,7 +48,9 @@ const App = () => {
   }, []);
 
   return (
+    
     <Provider store={store}>
+      <SpeedInsights/>
       <BrowserRouter>
         <ScrollToTop />
         <Navbar />
