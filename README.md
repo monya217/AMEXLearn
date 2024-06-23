@@ -108,6 +108,9 @@ At AMEXLearn, we believe in making smart investments today to secure a prosperou
 - **Chatbot**: OpenAI's GPT integration (Econ-AI)
 - **Games**: Gemini API, Ren'Py
 
+## 📺 Architecture Diagram
+![WhatsApp Image 2024-06-22 at 22 34 01_433ec1f1](https://github.com/monya217/AMEXLearn/assets/115079077/ded813c1-08cb-4793-81c0-87188f4136c2)
+
 ## 🚀 Getting Started
 
 ### ✅ Prerequisites
