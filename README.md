@@ -50,21 +50,21 @@ At AMEXLearn, we believe in making smart investments today to secure a prosperou
 
 ## 📚 Table of Contents
 
-- [Features](#features)
-  - [📘 Courses](#courses)
-  - [🎮 Play and Learn Games](#play-and-learn-games)
-  - [🎧 Podcasts](#podcasts)
-  - [📝 Blogs](#blogs)
-  - [🌐 Community](#community)
-  - [📺 Live Sessions](#live-sessions)
-  - [🤖 Econ-AI Chatbot](#econ-ai-chatbot)
-- [💻 Technology Stack](#technology-stack)
-- [💻 Architecture-Diagram](#Architecture-Diagram)
-- [🚀 Getting Started](#getting-started)
-  - [✅ Prerequisites](#prerequisites)
-  - [🔧 Installation](#installation)
-- [📖 Usage](#usage)
-- [📜 License](#license)
+- [🌟 Features](#-features)
+  - [📘 Courses](#-courses)
+  - [🎮 Play and Learn Games](#-play-and-learn-games)
+  - [🎧 Podcasts](#-podcasts)
+  - [📝 Blogs](#-blogs)
+  - [🌐 Community](#-community)
+  - [📺 Live Sessions](#-live-sessions)
+  - [🤖 Econ-AI Chatbot](#-econ-ai-chatbot)
+- [💻 Technology Stack](#-technology-stack)
+- [💻 Architecture Diagram](#-architecture-diagram)
+- [🚀 Getting Started](#-getting-started)
+  - [✅ Prerequisites](#-prerequisites)
+  - [🔧 Installation](#-installation)
+- [📖 Usage](#-usage)
+- [📜 License](#-license)
 
 ## 🌟 Features
 
@@ -102,10 +102,6 @@ At AMEXLearn, we believe in making smart investments today to secure a prosperou
 - An intelligent financial assistant powered by OpenAI's API and a comprehensive financial knowledge base.
 - Provides precise answers to finance-related questions, enhancing user support.
 
-## Architecture-Diagram
-![WhatsApp Image 2024-06-22 at 22 34 00_5d8c5e89](https://github.com/monya217/AMEXLearn/assets/115079077/a68bf194-cac5-4d58-a356-2153c3c2d418)
-
-
 ## 💻 Technology Stack
 - **Frontend**: React
 - **Backend**: Firebase
@@ -142,7 +138,6 @@ At AMEXLearn, we believe in making smart investments today to secure a prosperou
     yarn start
     ```
 2. Open your browser and navigate to localhost to view the application.
-
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
