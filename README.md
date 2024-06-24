@@ -104,7 +104,8 @@ At AMEXLearn, we believe in making smart investments today to secure a prosperou
 
 ## 💻 Technology Stack
 - **Frontend**: React
-- **Backend**: Firebase
+- **Authentication and Database**: Firebase
+- **State Management**: Zustand
 - **Chatbot**: OpenAI's GPT integration (Econ-AI)
 - **Games**: Gemini API, Ren'Py
 
