@@ -6,9 +6,9 @@ const UpcomingSessions = () => {
   // Sample data for upcoming session
   const upcomingSession = {
     consultantName: 'Michael Johnson',
-    sessionDate: '2024-06-20',
-    sessionTime: '10:00 AM',
-    bookedOn: '2024-06-15',
+    sessionDate: '2024-06-25',
+    sessionTime: '4:00 PM',
+    bookedOn: '2024-06-25',
   };
 
   return (
