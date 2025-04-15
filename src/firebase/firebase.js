@@ -5,13 +5,13 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyBtZLNld7rsnRH_83ECnJX8spSdId7Wmrc",
+  authDomain: "amexlearn-dfbd7.firebaseapp.com",
+  projectId: "amexlearn-dfbd7",
+  storageBucket: "amexlearn-dfbd7.appspot.com",
+  messagingSenderId: "761325956199",
+  appId: "1:761325956199:web:3d092e139a26b06e5338c2",
+  measurementId: "G-NQZK4XN97H"
 };
 
 // Log the config to ensure variables are read correctly

@@ -17,12 +17,12 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { firestore, storage } from '../../firebase/firebase';
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { addDoc, updateDoc, doc, collection, serverTimestamp, getDoc } from "firebase/firestore";
 import useAuthStore from '../../store/authStore';
 import ContributeSidebar from '../../components/Contribute/ContributeSidebar';
 import headerBg from '../../assets/images/hero_img9.jpeg'; // Adjust the path to your background image
 import roadmap from '../../assets/images/roadmap2.png'; 
+const imgUrl = "https://cdn.corporatefinanceinstitute.com/assets/finance-definition.jpg";
 
 const categoryOptions = [
   "Debt Management",
@@ -48,7 +48,6 @@ const PostBlog = () => {
     title: '',
     description: '',
     category: '',
-    imgUrl: '',
     overview: ''
   });
 
@@ -56,8 +55,7 @@ const PostBlog = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [file, setFile] = useState(null);
-  const [progress, setProgress] = useState(null);
+
   const navigate = useNavigate();
   const authUser = useAuthStore(state => state.user);
 
@@ -71,7 +69,6 @@ const PostBlog = () => {
             title: blogData.title,
             description: blogData.description,
             category: blogData.category,
-            imgUrl: blogData.imgUrl,
             overview: blogData.overview
           });
         }
@@ -80,32 +77,7 @@ const PostBlog = () => {
     }
   }, [blogId]);
 
-  useEffect(() => {
-    if (file) {
-      const uploadFile = () => {
-        const storageRef = ref(storage, file.name);
-        const uploadTask = uploadBytesResumable(storageRef, file);
 
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log("Upload is " + progress + "% done");
-            setProgress(progress);
-          },
-          (error) => {
-            console.log(error);
-          },
-          () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
-              setForm((prev) => ({ ...prev, imgUrl: downloadUrl }));
-            });
-          }
-        );
-      };
-      uploadFile();
-    }
-  }, [file]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -114,8 +86,11 @@ const PostBlog = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { title, category, description, overview, imgUrl } = form;
-    if (!title || !category || !description || !overview || !imgUrl) {
+    const { title, category, description, overview } = form;
+  
+    const defaultImgUrl = "https://cdn.corporatefinanceinstitute.com/assets/finance-definition.jpg";
+  
+    if (!title || !category || !description || !overview) {
       toast({
         title: 'Error',
         description: 'Please fill out all fields.',
@@ -125,25 +100,18 @@ const PostBlog = () => {
       });
       return;
     }
-    if (progress !== null && progress < 100) {
-      toast({
-        title: 'Error',
-        description: 'Image upload in progress. Please wait until it is completed.',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      });
-      return;
-    }
-    console.log("Form data:", form);
+  
+    const formData = {
+      ...form,
+      imgUrl: defaultImgUrl, // Set static image here
+      Timestamp: serverTimestamp(),
+      author: authUser.fullName,
+      userId: authUser.uid
+    };
+  
     try {
       if (blogId) {
-        await updateDoc(doc(firestore, "blogs", blogId), {
-          ...form,
-          Timestamp: serverTimestamp(),
-          author: authUser.fullName,
-          userId: authUser.uid
-        });
+        await updateDoc(doc(firestore, "blogs", blogId), formData);
         toast({
           title: 'Success',
           description: 'Blog updated successfully.',
@@ -153,12 +121,7 @@ const PostBlog = () => {
         });
         navigate(`/blog/${blogId}`);
       } else {
-        const docRef = await addDoc(collection(firestore, "blogs"), {
-          ...form,
-          Timestamp: serverTimestamp(),
-          author: authUser.fullName,
-          userId: authUser.uid
-        });
+        const docRef = await addDoc(collection(firestore, "blogs"), formData);
         toast({
           title: 'Success',
           description: 'Blog created successfully.',
@@ -179,6 +142,7 @@ const PostBlog = () => {
       });
     }
   };
+  
 
   const handleCancel = () => {
     navigate("/blogs");
@@ -262,21 +226,13 @@ const PostBlog = () => {
                   rows={6}
                 />
               </FormControl>
-              <FormControl mb={4}>
-                <FormLabel>Insert Image</FormLabel>
-                <Input
-                  type="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                />
-              </FormControl>
               <Stack direction={{ base: "column", md: "row" }} spacing={4}>
                 <Button
                   colorScheme="blue"
                   variant="solid"
                   type="submit"
                   isFullWidth
-                  isLoading={progress !== null && progress < 100}
-                  loadingText="Submitting"
+                  
                 >
                   Submit
                 </Button>
