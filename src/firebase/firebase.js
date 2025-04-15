@@ -4,29 +4,24 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBtZLNld7rsnRH_83ECnJX8spSdId7Wmrc",
-  authDomain: "amexlearn-dfbd7.firebaseapp.com",
-  projectId: "amexlearn-dfbd7",
-  storageBucket: "amexlearn-dfbd7.appspot.com",
-  messagingSenderId: "761325956199",
-  appId: "1:761325956199:web:3d092e139a26b06e5338c2",
-  measurementId: "G-NQZK4XN97H"
-};
+// Log to check if env vars are loading
+console.log('API Key:', process.env.REACT_APP_FIREBASE_API_KEY);
 
-// Log the config to ensure variables are read correctly
-console.log('Firebase config:', firebaseConfig);
+// Your Firebase configuration
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const firestore = getFirestore(app);
+export const storage = getStorage(app);
 
-// Check if the app is initialized correctly
-if (!app) {
-  throw new Error("Firebase app initialization failed");
-}
-
-const auth = getAuth(app);
-const firestore = getFirestore(app);
-const storage = getStorage(app);
-
-export { app, auth, firestore, storage };
+export default app;

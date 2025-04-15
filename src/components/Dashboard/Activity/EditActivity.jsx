@@ -66,12 +66,12 @@ const EditActivity = ({ isOpen, onClose }) => {
 												border={"2px solid white "}
 											/>
 										</Center>
-										<Center w='full'>
+										{/* <Center w='full'>
 											<Button w='full' onClick={() => fileRef.current.click()} color={"blue.500"}>
 												Edit Profile Picture
 											</Button>
 										</Center>
-										<Input type='file' hidden ref={fileRef} onChange={handleImageChange} />
+										<Input type='file' hidden ref={fileRef} onChange={handleImageChange} /> */}
 									</Stack>
 								</FormControl>
 
